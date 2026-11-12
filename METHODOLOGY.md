@@ -1,0 +1,31 @@
+# Methodology
+
+> **Status: draft.** These principles come from the plan (the v0.1.0 tracker issue). They are fixed before any parser
+> is scored; a later change is made in a PR that says why, and is listed in the report.
+
+## Fairness principles
+
+- **No parser's output makes or changes a gold label.** Labels come from the source fields (where a source has them)
+  and from the owner's review. Parser output is hidden while labeling.
+- **Conventions are not errors.** Where reasonable readings differ (a letter after the house number, `EXT` after a
+  street, a compass word that starts a city, `#` before a unit), the gold lists the accepted readings, and the list is
+  fixed before any parser is scored. Each convention is cited from a source (USPS Publication 28, a parser's own docs
+  or training data).
+- **Score only what all parsers claim to do** for the headline. Finer labels (usaddress's pre-type and pre-modifier,
+  doorplate's unit types) are scored on a separate track that is reported apart.
+- **Score by character spans, not tokens**, so the way a parser splits text does not decide the score.
+- **Default settings only**, no retraining, versions and model checksums pinned beside every figure.
+- **Disclose what each parser was built near.** usaddress's and libpostal's own test files are regression sets for
+  them; doorplate's rules were written while reading some public sets; libpostal was trained on OpenAddresses, which
+  overlaps the National Address Database. A set that is "home" for any parser is reported but left out of every
+  parser's aggregate.
+- **Conflict of interest stated plainly:** doorplate's author builds the repository. The mitigations are blind
+  labeling, a pre-registered score formula, a private twin of the golden set and the publication of every prediction
+  file.
+- **The sets are not a work list** for any parser: a rule change in a parser still needs a reason from another source.
+
+## Sections to come
+
+- The canonical schema and the conventions list (`schema/`).
+- How the golden set is sampled, labeled and adjudicated (`sets/golden/`).
+- The scoring and the Parser Score formula (`scorer/`), merged before the first scored run.

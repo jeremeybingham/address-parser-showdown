@@ -1,0 +1,24 @@
+# Local notes and settings (per machine)
+SESSION.md
+.claude/settings.local.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Rust
+target/
+
+# Node
+node_modules/
+
+# Editors and OS
+.vscode/
+*:Zone.Identifier
+.DS_Store
+
+# Private data
+local-data/
