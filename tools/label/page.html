@@ -26,6 +26,7 @@
   <label>flag <select id="flag" title="non-address: no fields are right; ambiguous: list every accepted reading as alternatives">
     <option value="">none</option><option value="non_address">non-address</option><option value="ambiguous">ambiguous</option></select></label>
   <button id="altb">Accept as alternative (=): off</button>
+  <button id="copy" title="Copy this card's address text (to look it up on a map)">Copy address</button>
 </div>
 <div id="text"></div>
 <div id="q"></div>
@@ -128,6 +129,12 @@ async function go(d) {
   I = Math.min(CARDS.length - 1, Math.max(0, I + d)); show();
 }
 $('flag').onchange = () => $('flag').blur(); // so Enter saves again
+$('copy').onclick = async () => { // clipboard API needs a secure context (localhost is one); else the old textarea way
+  const t = card().text, b = $('copy'); b.blur();
+  try { await navigator.clipboard.writeText(t); }
+  catch { const a = document.createElement('textarea'); a.value = t; document.body.append(a); a.select(); document.execCommand('copy'); a.remove(); }
+  b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy address'; }, 1200);
+};
 $('next').onclick = () => go(1); $('prev').onclick = () => go(-1);
 $('altb').onclick = () => { ALT = !ALT; $('altb').textContent = `Accept as alternative (=): ${ALT ? 'ON' : 'off'}`; $('altb').classList.toggle('on', ALT); };
 document.onkeydown = e => {

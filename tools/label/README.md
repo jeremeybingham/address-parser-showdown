@@ -19,7 +19,7 @@ uv run python -m tools.label.server label 1     # then open http://127.0.0.1:876
 
 The page shows one card at a time (text only; the rounds hold no pre-labels). Drag over characters, or click a word, and
 press the label's key (the palette lists them). `=` switches to **accept as alternative**: the next label is recorded as
-an extra accepted reading of that span (the per-card conventions). Tab flags the card `doubtful`. The **flag** menu marks a card with no right
+an extra accepted reading of that span (the per-card conventions). Tab flags the card `doubtful`. **Copy address** puts the card's text on the clipboard (for a map lookup). The **flag** menu marks a card with no right
 reading: `non-address` (leave it with no spans) or `ambiguous` (label one reading and add the others as alternatives); such
 a card is reported apart and is in no score (`sets/golden/COMPOSITION.md`, "Difficulty tiers"). Enter saves and moves
 on; the page opens at the first unlabeled card, so a stopped session resumes where it ended. Spans may not overlap and
