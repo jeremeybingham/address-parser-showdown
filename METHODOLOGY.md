@@ -59,7 +59,10 @@ run on a candidate. Every record is checked by string against doorplate's corpus
 training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). Public-record cards are labeled on the row's own text
 (kept private, so a hard card can be checked on a map); the shipped text is then made from the labels by replacing the
 private values with invented ones of the same length, so the shipped gold is the hand gold unchanged
-(`tools/golden/derive.py`). A private twin
+(`tools/golden/derive.py`). Rounds 1 to 6
+drop a candidate the anonymizer could not keep faithful or left a real word in; round 9 restores those rows (issue #26,
+`tools/golden/sample.py --restore`) so no filter depends on how a parser reads a row, and the report can show the public
+stratum with and without them (`restored` in `provenance.jsonl`). A private twin
 with the same recipe and an unpublished seed is kept outside this repository to catch tuning to the public set.
 ## Scoring and the Parser Score
 

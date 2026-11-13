@@ -51,3 +51,15 @@ def test_leak_guard_and_deal():
             "template": 100,
             "clean": 50,
         }
+
+
+def test_restore_keeps_its_own_generator_and_drops_duplicates():
+    kept = [{"real": "1 Elm Street, Reno, NV 89501"}]
+    skipped = [
+        {"stratum": "public", "source": "nad", "shape": "as-found", "force": None, "row": (st, "Reno", "NV", "89501")}
+        for st in ("1 ELM STREET", "2 Oak Road", "3 Pine Lane")
+    ]
+    a, drop = sample.restore(skipped, kept, 5, set())
+    b, _ = sample.restore(skipped, kept, 5, set())
+    assert a == b and len(a) == 2 and all(x["restored"] for x in a)
+    assert drop == {"nad:duplicate": 1}

@@ -269,8 +269,10 @@ def draw_messy(con, root: Path, source: str, seed: int, k: int):
     return out
 
 
-def build(root: Path, seed: int, banned: set[str]):
-    """All records as dicts (text, stratum, source, shape, style), before rounds."""
+def build(root: Path, seed: int, banned: set[str], skipped: list[dict] | None = None):
+    """All records as dicts (text, stratum, source, shape, style), before rounds.
+
+    `skipped`, if given, receives the rows the walk dropped as leak-or-unfaithful (round 9, `restore`)."""
     r = random.Random(seed)
     con = duckdb.connect()
     recs: list[dict] = []
@@ -299,6 +301,16 @@ def build(root: Path, seed: int, banned: set[str]):
                 break
             if anon is None:
                 dropped[f"{source}:leak-or-unfaithful"] += 1
+                if skipped is not None:
+                    skipped.append(
+                        {
+                            "stratum": stratum,
+                            "source": source,
+                            "shape": shape,
+                            "force": force_style,
+                            "row": (street, city, st, z),
+                        }
+                    )
                 continue
             text, sty = style(r, anon, city, st, z, force_style)
             real, _ = style(r, street, city, st, z, sty)  # a named style draws nothing from r: the draw is unchanged
@@ -327,6 +339,40 @@ def build(root: Path, seed: int, banned: set[str]):
             break
         n += add("template", "template", text, shape, mod)
     return recs, dropped
+
+
+def restore(skipped: list[dict], recs: list[dict], seed: int, banned: set[str]):
+    """Round 9: the rows the walk dropped as leak-or-unfaithful, on their own text (no anonymizer call here).
+
+    Own random generator, so rounds 1 to 6 are untouched. Duplicates (of a kept row's own text or of each other) and
+    exclusion-corpus hits are dropped as before; they are not parser behavior. Returns (records, dropped counts)."""
+    r = random.Random(seed + 9)
+    seen = {exclusions.norm(x["real"]) for x in recs}
+    out, dropped = [], collections.Counter()
+    for x in skipped:
+        street, city, st, z = x["row"]
+        sty = x["force"] or weighted(r, STYLES)
+        text, _ = style(r, street, city, st, z, sty)
+        k = exclusions.norm(text)
+        if k in seen:
+            dropped[f"{x['source']}:duplicate"] += 1
+        elif exclusions.hit(text, banned):
+            dropped[f"{x['source']}:excluded"] += 1
+        else:
+            seen.add(k)
+            out.append(
+                {
+                    "text": text,
+                    "real": text,
+                    "stratum": x["stratum"],
+                    "source": x["source"],
+                    "shape": x["shape"],
+                    "style": sty,
+                    "restored": True,
+                }
+            )
+    r.shuffle(out)
+    return out, dropped
 
 
 def deal(recs: list[dict], seed: int) -> list[list[dict]]:
@@ -360,6 +406,101 @@ def round_lines(rounds, tag: str, key: str = "text") -> list[str]:
         + "\n"
         for i, rd in enumerate(rounds, 1)
     ]
+
+
+R9_BEGIN, R9_END = "<!-- round-9 begin -->", "<!-- round-9 end -->"
+
+
+def restore_round(
+    root: Path, seed: int, banned: set[str], out: Path, real_dir: Path, tag: str, confirm: bool, twin: bool
+):
+    """Round 9 (issue #26): redraw, check rounds 1 to 6 reproduce, then write the restored rows' own text (private)."""
+    skipped: list[dict] = []
+    recs, dropped = build(root, seed, banned, skipped)
+    rounds = deal(recs, seed)
+    for i, body in enumerate(round_lines(rounds, tag), 1):
+        p = out / "rounds" / f"round-{i}.jsonl"
+        if not p.exists() or p.read_text(encoding="utf-8") != body:
+            raise SystemExit(f"round {i}: the draw does not reproduce {p}; nothing written")
+    rrecs, rdrop = restore(skipped, recs, seed, banned)
+    body = (
+        "\n".join(
+            json.dumps({"id": f"{tag}-r9-{j:03d}", "text": x["real"]}, ensure_ascii=False)
+            for j, x in enumerate(rrecs, 1)
+        )
+        + "\n"
+    )
+    by = collections.Counter(f"{x['stratum']}/{x['source']}" for x in rrecs)
+    print(f"rounds 1 to 6 reproduced; walk dropped {len(skipped)} as leak-or-unfaithful; round 9: {len(rrecs)} records")
+    print(
+        f"by stratum/source: {dict(sorted(by.items()))}; dropped again (not parser behavior): {dict(sorted(rdrop.items()))}"
+    )
+    real = real_dir / "rounds" / "round-9.jsonl"
+    if real.exists():
+        print(
+            "round 9 file " + ("reproduced" if real.read_text(encoding="utf-8") == body else "DIFFERS from this draw")
+        )
+    if not confirm:
+        print("(dry run: pass --confirm to write)")
+        return
+    real.parent.mkdir(parents=True, exist_ok=True)
+    real.write_text(body, encoding="utf-8")
+    pl = [
+        json.dumps(
+            {
+                "id": f"{tag}-r9-{j:03d}",
+                "round": 9,
+                **{k: x[k] for k in ("stratum", "source", "shape", "style")},
+                "restored": True,
+            }
+        )
+        for j, x in enumerate(rrecs, 1)
+    ]
+    if twin:
+        (out / "provenance-r9.jsonl").write_text("\n".join(pl) + "\n", encoding="utf-8")
+        print(f"wrote {real} and {out / 'provenance-r9.jsonl'}")
+        return
+    pp = out / "provenance.jsonl"
+    kept = [x for x in pp.read_text().splitlines() if x.strip() and json.loads(x)["round"] != 9]
+    pp.write_text("\n".join(kept + pl) + "\n", encoding="utf-8")
+    sha = lambda b: hashlib.sha256(b).hexdigest()  # noqa: E731
+    cnt = lambda key: "\n".join(  # noqa: E731
+        f"| {k} | {v} |" for k, v in sorted(collections.Counter(x[key] for x in rrecs).items())
+    )
+    block = f"""{R9_BEGIN}
+## Round 9 (restored rows, issue #26)
+
+Seed {seed}, drawn by `tools/golden/sample.py --restore`: {len(rrecs)} unlabeled records, the rows the seed-{seed} walk
+dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order and with the same style rule, and
+no anonymizer call on them. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
+exclusion-corpus drops stay: {json.dumps(dict(sorted(rdrop.items())))}. Each record keeps the stratum and source of its
+walk and has `restored: true` in `provenance.jsonl`.
+
+**No text ships for this round.** These rows are not anonymized, so `sets/golden/rounds/round-9.jsonl` does not exist;
+the cards are labeled on the row's own text (`local-data/golden-real/rounds/round-9.jsonl`, git-ignored) and the shipped
+text is made from the labels by `tools/golden/derive.py`, which holds a card back when a real word is left outside a
+kept label (the count held is added here after derivation).
+
+- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `{sha(chr(10).join(pl).encode())}`
+- `provenance.jsonl` (all rounds): `{sha(pp.read_bytes())}`
+
+| Stratum | Records |
+|---|---|
+{cnt("stratum")}
+
+| Source | Records |
+|---|---|
+{cnt("source")}
+
+| Style | Records |
+|---|---|
+{cnt("style")}
+{R9_END}
+"""
+    mp = out / "MANIFEST.md"
+    md = re.sub(rf"\n?{re.escape(R9_BEGIN)}.*?{re.escape(R9_END)}\n?", "", mp.read_text(encoding="utf-8"), flags=re.S)
+    mp.write_text(md.rstrip("\n") + "\n\n" + block, encoding="utf-8")
+    print(f"wrote {real}; {len(pl)} provenance rows and the manifest section updated")
 
 
 def write_real(rounds, out: Path, real_dir: Path, tag: str) -> None:
@@ -453,6 +594,9 @@ def main():
     )
     ap.add_argument("--check", action="store_true", help="re-check the committed rounds against the exclusion corpora")
     ap.add_argument("--real", action="store_true", help="write the unmasked text of the same draw (for labeling)")
+    ap.add_argument(
+        "--restore", action="store_true", help="round 9: the rows the anonymizer filter dropped (issue #26)"
+    )
     ap.add_argument("--private-root", type=Path, default=DEFAULT_PRIVATE)
     a = ap.parse_args()
     root = a.private_root
@@ -486,7 +630,7 @@ def main():
         f"plan: {TOTAL} records in rounds of {ROUND_SIZE}: {QUOTA}; public sources {PUBLIC_SOURCES}; "
         f"oversample x{OVERSAMPLE}; output {out}"
     )
-    if not a.confirm:
+    if not a.confirm and not a.restore:
         print("(dry run: pass --confirm to write)")
         return
     banned, counts = exclusion_set(root)
@@ -494,6 +638,9 @@ def main():
     if a.twin:  # the twin must not repeat a public record either
         for p in (ROOT / "sets/golden/rounds").glob("round-*.jsonl"):
             banned |= {exclusions.norm(json.loads(line)["text"]) for line in p.read_text().splitlines()}
+    if a.restore:
+        restore_round(root, seed, banned, out, out / "real" if a.twin else REAL_DIR, tag, a.confirm, a.twin)
+        return
     recs, dropped = build(root, seed, banned)
     rounds = deal(recs, seed)
     if a.real:
