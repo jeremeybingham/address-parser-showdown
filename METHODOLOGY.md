@@ -1,7 +1,10 @@
 # Methodology
 
-> **Status: draft.** These principles come from the plan (the v0.1.0 tracker issue). They are fixed before any parser
-> is scored; a later change is made in a PR that says why, and is listed in the report.
+> **Status (2026-11-13): fixed in principle, still open in two places.** These principles come from the plan (the v0.1.0
+> tracker issue) and are fixed before any parser is scored; a later change is made in a PR that says why, and is listed
+> in the report. Still open: which part of the golden set is the headline (issue #26: the random public stratum is the
+> proposal, so the weights under "Scoring" may change to version 2 before the first run) and the adjudication write-up
+> below. Nothing has been scored yet; hand labeling is in progress.
 
 ## Fairness principles
 
@@ -36,8 +39,22 @@
 - Parsers run with default settings. libpostal is the Senzing model at a pinned commit and data checksum
   (`tools/libpostal/pins.env`).
 
-## Sections to come
-- How the golden set is labeled and adjudicated (`sets/golden/`).
+## How the golden set is labeled and adjudicated
+
+- **One labeler, blind.** The owner labels each card by dragging character spans in a local page
+  (`tools/label/README.md`); the page shows text only, no pre-labels and no parser output. Where reasonable readings
+  differ, the labeler records extra accepted readings on the card (`alternatives`); a card with no right reading is
+  flagged `non_address` or `ambiguous`, and a card the labeler is unsure of is flagged `doubtful`.
+- **Real text for labeling, invented text for shipping.** Public-record cards are labeled on the row's own text (kept
+  private) so a hard card can be checked on a map. The shipped text is made from the labels by replacing private values
+  with invented ones of the same length; the spans are the hand gold unchanged. A card is held back if a real word
+  would remain, and the held-back counts go in `sets/golden/MANIFEST.md`.
+- **Adjudication comes after every round is labeled.** Only then are parsers run, once, to list each span a parser read
+  that the gold does not hold. The page shows these readings without the parser's name; the labeler decides, card by
+  card, whether to change the gold or keep it. The gold is never edited from a parser's output except by that decision.
+  The report publishes how many labels changed and in which direction (toward which parser's reading), so a reader can
+  see whether adjudication favored anyone.
+- **Limitation:** there is one labeler and no second human check. The report states this plainly.
 
 ## Difficulty tiers
 
@@ -52,8 +69,11 @@ Parser Score. Tiers are reported apart, never averaged by record count. The rule
 
 ## How the golden set is sampled
 
-About 1,500 records in six rounds of 250: 40% drawn at random from public-record sources and anonymized, 40% from hand
-templates with invented values, 20% clean ordinary forms (`sets/golden/COMPOSITION.md`, fixed before any draw). Records
+About 2,500 records in ten rounds. Rounds 1 to 6 (1,500 records, 250 each): 40% drawn at random from public-record
+sources and anonymized, 40% from hand templates with invented values, 20% clean ordinary forms
+(`sets/golden/COMPOSITION.md`, fixed before any draw). Later rounds were added with their rules written first: round 7
+(`hard`, invented), round 8 (`nightmare`, invented, paired covered and adjacent forms), round 9 (the public rows the
+anonymizer filter had dropped, restored) and round 10 (SBA PPP loans, as written by the borrower). Records
 are picked by a seeded hash and the strata are fixed by shape and source, never by where parsers disagree. No parser is
 run on a candidate. Every record is checked by string against doorplate's corpus, the benchmark suite, usaddress's
 training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). Public-record cards are labeled on the row's own text
