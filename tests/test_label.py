@@ -147,3 +147,25 @@ def test_alternative_may_be_none():
         "none",
         "unit_type",
     ]
+
+
+def test_a_save_made_on_other_text_is_stale(dirs, tmp_path):
+    rounds, logs = dirs
+    legacy = tmp_path / "legacy"
+    legacy.mkdir()
+    # the anonymized text of a1 differs from the labeled text; a2 is the same in both (a template card)
+    (legacy / "round-1.jsonl").write_text(
+        json.dumps({"id": "a1", "text": "12 N Zub St Apt 4, Tampa, FL 33601"})
+        + "\n"
+        + json.dumps({"id": "a2", "text": "9 Elm Ct, Reno, NV 89501"})
+        + "\n"
+    )
+    old = {"phase": "label", "spans": [], "alternatives": [], "doubtful": False, "flag": None, "ms": 1, "keys": 1}
+    logs.mkdir()
+    (logs / "round-1.jsonl").write_text(json.dumps({"id": "a1", **old}) + "\n" + json.dumps({"id": "a2", **old}) + "\n")
+    cards = {c["id"]: c for c in store.gold_cards(1, rounds, logs, legacy)}
+    assert cards["a1"]["stale"] and not cards["a1"]["labeled"]  # saved before the stamp, on the anonymized text
+    assert cards["a2"]["labeled"] and not cards["a2"]["stale"]
+    store.save_card(1, {"id": "a1", "text": TEXT}, {"spans": GOOD}, log_dir=logs)
+    cards = {c["id"]: c for c in store.gold_cards(1, rounds, logs, legacy)}
+    assert cards["a1"]["labeled"] and cards["a1"]["spans"] == GOOD

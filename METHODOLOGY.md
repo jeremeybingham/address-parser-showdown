@@ -56,7 +56,10 @@ About 1,500 records in six rounds of 250: 40% drawn at random from public-record
 templates with invented values, 20% clean ordinary forms (`sets/golden/COMPOSITION.md`, fixed before any draw). Records
 are picked by a seeded hash and the strata are fixed by shape and source, never by where parsers disagree. No parser is
 run on a candidate. Every record is checked by string against doorplate's corpus, the benchmark suite, usaddress's
-training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). A private twin
+training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). Public-record cards are labeled on the row's own text
+(kept private, so a hard card can be checked on a map); the shipped text is then made from the labels by replacing the
+private values with invented ones of the same length, so the shipped gold is the hand gold unchanged
+(`tools/golden/derive.py`). A private twin
 with the same recipe and an unpublished seed is kept outside this repository to catch tuning to the public set.
 ## Scoring and the Parser Score
 

@@ -19,7 +19,7 @@
 |---|---|
 | A convention or a schema field | `schema/`; `METHODOLOGY.md`; every adapter mapping; the conformance test |
 | An adapter or a pinned version | its mapping; the version pins; `runs/` (a new run, never an edit to an old one) |
-| The labeling tool or the gold format | `tools/label/README.md`; `sets/golden/MANIFEST.md`; the scorer's reader |
+| The labeling tool or the gold format | `tools/label/README.md`; `sets/golden/MANIFEST.md`; `sets/golden/COMPOSITION.md`; the scorer's reader |
 | A set or its converter | its `MANIFEST.md` (counts, checksums); `sets/README.md`; `tools/sets/README.md` |
 | The scorer or the formula | `METHODOLOGY.md` (a formula change after the first run is listed in the report) |
 | Build commands, layout, CI | `AGENTS.md`; `CLAUDE.md`; `README.md`; this index |

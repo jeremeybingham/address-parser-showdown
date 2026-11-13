@@ -13,6 +13,13 @@ Practice labels go to `local-data/practice/labels/`, not the real logs. Delete `
 
 ## Labeling a round (blind)
 
+The rounds are labeled on the unmasked text of the same cards (public-record cards show the row's own text, so a hard
+card can be looked up on a map). Write it once (git-ignored, `local-data/golden-real/rounds/`):
+
+```sh
+uv run python tools/golden/sample.py --confirm --real   # redoes the draw; refuses unless it reproduces sets/golden/rounds/
+```
+
 ```sh
 uv run python -m tools.label.server label 1     # then open http://127.0.0.1:8765/
 ```
@@ -25,8 +32,9 @@ a card is reported apart and is in no score (`sets/golden/COMPOSITION.md`, "Diff
 on; the page opens at the first unlabeled card, so a stopped session resumes where it ended. Spans may not overlap and
 may not start or end on a space; the server refuses a bad card (the error never quotes the text).
 
-Every save is appended to `local-data/labels/round-N.jsonl` (git-ignored; the log keeps the time in ms and the key count
-per save). The latest save per card is the label.
+Every save is appended to `local-data/labels/round-N.jsonl` (git-ignored; the log keeps the time in ms, the key count
+and a hash of the text per save). The latest save per card is the label. A save made on other text (the anonymized
+text, before labeling moved to the unmasked text) does not count: the card shows as new again.
 
 ## Adjudication (after all rounds are labeled and the parsers have run)
 
@@ -47,8 +55,16 @@ output except by the owner's decision on that card.
 uv run python -c "from tools.label import store; print(store.export_round(1))"
 ```
 
-Writes `sets/golden/gold/round-N.jsonl` (committed; `id`, `text`, `spans`, `alternatives`, `doubtful`, `flag`) once
+Writes the private gold `local-data/golden-real/gold/round-N.jsonl` (git-ignored; `id`, `text`, `spans`, `alternatives`, `doubtful`, `flag`) once
 every card of the round is labeled, and returns the counts (cards, doubtful, flagged, with alternatives, adjudicated
 saves) for the manifest. The tier is not stored here: `tools/sets/golden.py` adds it from the shape class when it
 converts the gold for the scorer (`tools/golden/tiers.py`).
-Only the invented and anonymized text of `sets/golden/rounds/` ever reaches this folder.
+Then make the shipped gold, with invented values in place of the private ones and the spans unchanged:
+
+```sh
+uv run python -m tools.golden.derive 1    # -> sets/golden/gold/round-1.jsonl (committed); counts and held card ids only
+```
+
+It holds back a card that would ship a real word (label that word, often as `other`, and run it again) and writes a
+side-by-side review file, `local-data/golden-real/review/round-N.md`, to read before committing.
+Only invented or anonymized text ever reaches `sets/golden/gold/`.

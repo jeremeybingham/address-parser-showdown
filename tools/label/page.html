@@ -56,7 +56,7 @@ function show() {
   SPANS = (c.spans || []).map(s => [...s]); ALTS = (c.alternatives || []).map(a => ({...a}));
   $('doubt').checked = !!c.doubtful; $('flag').value = c.flag || ''; SEL = null; T0 = Date.now(); KEYS = 0;
   $('pos').textContent = `${I + 1} / ${CARDS.length}` + (c.round ? ` (round ${c.round})` : '');
-  $('saved').textContent = c.labeled ? 'saved' : 'new';
+  $('saved').textContent = c.labeled ? 'saved' : c.stale ? 'new (the text changed since your last save: label it again)' : 'new';
   render();
 }
 
