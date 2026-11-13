@@ -98,3 +98,9 @@ def test_align_error_does_not_quote_input():
     with pytest.raises(AlignmentError) as e:
         align("secretname 1", [("zzz", "x")])
     assert "secretname" not in str(e.value)
+
+
+def test_conventions_load_with_sources():
+    conv = schema.conventions()
+    assert set(conv) == {"letter-after-number", "hash-before-unit"}
+    assert all(c["source"] for c in conv.values())

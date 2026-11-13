@@ -36,3 +36,18 @@ def coarse(label: str) -> str:
 def fine_parts(field: str) -> list[str]:
     """The fine labels of a coarse field (empty when it has none)."""
     return [lab.name for lab in labels().values() if lab.parent == field]
+
+
+CONVENTIONS_PATH = Path(__file__).with_name("conventions.toml")
+
+
+@cache
+def conventions() -> dict[str, dict]:
+    """The accepted-reading conventions by id. Readings are canonical labels, or `none` (the span is left unlabeled)."""
+    out = {}
+    for c in tomllib.loads(CONVENTIONS_PATH.read_text()).get("convention", []):
+        known = set(labels()) | {"none"}
+        if not (c.get("source") and c.get("question") and set(c["readings"]) <= known and len(c["readings"]) >= 2):
+            raise ValueError(f"convention {c.get('id')}: needs a source, a question and known readings (two or more)")
+        out[c["id"]] = c
+    return out

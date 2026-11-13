@@ -133,3 +133,10 @@ def test_http_round_trip(dirs):
 def test_common_labels_get_the_first_keys():
     keys = store.key_map()
     assert keys["1"] == "house_number_value" and keys["0"] == "postal_code"
+
+
+def test_alternative_may_be_none():
+    assert store.check_alternatives(TEXT, [{"start": 9, "end": 10, "labels": ["none", "unit_type"]}])[0]["labels"] == [
+        "none",
+        "unit_type",
+    ]

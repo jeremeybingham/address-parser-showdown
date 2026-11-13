@@ -24,10 +24,8 @@ a parser's label with no home here goes; it is never scored.
 ## Conventions
 
 Where reasonable readings differ, the gold accepts each reading listed in `conventions.toml` (format in the file's
-header; every entry needs a source). The list may be empty and is fixed before the first scored run (see
-[`METHODOLOGY.md`](../METHODOLOGY.md)). It is empty now: the candidates to decide, from doorplate's notes, are a letter
-after a house number (`123 B ELM ST`), `EXT` after a street, a compass word that starts a city (`S ELGIN`) and `#`
-before a unit.
+header; every entry needs a source). The list is fixed before the first scored run (see
+[`METHODOLOGY.md`](../METHODOLOGY.md)). It holds two conventions, chosen by the owner on 2026-11-13: a letter after a house number (`123 B ELM ST`: suffix or street name) and `#` before a unit (the `#` is the unit type, or left unlabeled). `EXT` after a street and a compass word that starts a city (`S ELGIN`) were considered and left to the gold.
 
 ## Mappings
 

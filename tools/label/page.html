@@ -39,6 +39,7 @@ async function init() {
   $('mode').textContent = META.mode === 'label' ? 'Blind labeling' : 'Adjudication';
   $('pal').innerHTML = Object.entries(META.keys).map(([k, l]) =>
     `<button data-l="${l}" title="${META.labels[l].replace(/"/g, '')}"><kbd>${k}</kbd>${l}</button>`).join('');
+  $('pal').innerHTML += '<button data-l="none" title="With = on: this span may also be left unlabeled"><kbd>-</kbd>none (alternative only)</button>';
   $('pal').onclick = e => { const b = e.target.closest('button'); if (b) apply(b.dataset.l); };
   I = Math.max(0, CARDS.findIndex(c => !c.labeled && META.mode === 'label'));
   show();
@@ -98,7 +99,7 @@ function apply(l) {
   if (!SEL) return; KEYS++;
   const [s, e] = SEL;
   if (ALT) { const a = ALTS.find(x => x.start === s && x.end === e); if (a) { if (!a.labels.includes(l)) a.labels.push(l); } else ALTS.push({start: s, end: e, labels: [l]}); }
-  else { clearRange(s, e); SPANS.push([s, e, l]); SPANS.sort((x, y) => x[0] - y[0]); }
+  else if (l !== 'none') { clearRange(s, e); SPANS.push([s, e, l]); SPANS.sort((x, y) => x[0] - y[0]); }
   SEL = null; render();
 }
 $('q').onclick = e => { const b = e.target.closest('button'); if (b) { SEL = [+b.dataset.s, +b.dataset.e]; apply(b.dataset.l); } };
@@ -125,6 +126,7 @@ document.onkeydown = e => {
   else if (e.key === '=') $('altb').click();
   else if (e.key === 'Escape') { SEL = null; render(); }
   else if (e.key === 'Delete' || e.key === 'Backspace') { if (SEL) { clearRange(SEL[0], SEL[1]); SEL = null; render(); } }
+  else if (e.key === '-' && ALT) apply('none');
   else if (META.keys[e.key] && !e.ctrlKey && !e.metaKey) apply(META.keys[e.key]);
 };
 init();

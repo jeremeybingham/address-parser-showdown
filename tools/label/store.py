@@ -5,7 +5,7 @@ blind. Only `adjudicate.py` runs parsers, and only after a round is fully labele
 
 A card's spans are `[start, end, label]` over the card text, with canonical *leaf* labels (the fine part where a field
 has fine parts, the coarse label otherwise). Text with no span is unlabeled. `alternatives` lists extra readings the
-gold accepts for a span: `{"start", "end", "labels": [...]}` (the conventions list, per card).
+gold accepts for a span: `{"start", "end", "labels": [...]}` (the conventions in `schema/conventions.toml`, per card).
 """
 
 import json
@@ -69,7 +69,7 @@ def check_spans(text: str, spans: list, *, what: str = "span") -> list[list]:
 
 
 def check_alternatives(text: str, alts: list) -> list[dict]:
-    leaves = set(leaf_labels())
+    leaves = set(leaf_labels()) | {"none"}  # `none`: the span may also be left unlabeled (the `#` convention)
     out = []
     for alt in alts:
         s, e, labs = alt.get("start"), alt.get("end"), alt.get("labels")

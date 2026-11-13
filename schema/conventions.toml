@@ -6,3 +6,19 @@
 # question = "What is the B in `123 B ELM ST`?"
 # readings = ["house_number_suffix", "unit_value", "street_name"]   # canonical labels the gold accepts for the span
 # source = "where the readings come from (Pub 28 section, a parser's docs or training data)"
+
+# Decided 2026-11-13 by the owner. Considered and left out (the gold decides them): `EXT` after a street (Pub 28
+# Appendix C1 makes it a street suffix) and a compass word that starts a city (`S ELGIN`: the source city decides; a
+# genuinely ambiguous card is flagged `doubtful` and gets a per-card alternative).
+
+[[convention]]
+id = "letter-after-number"
+question = "What is the B in `123 B ELM ST`?"
+readings = ["house_number_suffix", "street_name"]
+source = "USPS Pub 28 (no rule for a lone letter after the number); doorplate benchmarks.md (212 records turn on this reading); usaddress and libpostal training data (to be confirmed before the first scored run)"
+
+[[convention]]
+id = "hash-before-unit"
+question = "Is the `#` in `# 4` or `#4` part of the unit type, or left out of the labeled spans?"
+readings = ["unit_type", "none"]   # `none`: the `#` is unlabeled and only the value is labeled unit_value
+source = "USPS Pub 28 section 213 and Appendix C2 (`#` stands in for a designator); parsers draw the span differently (to be confirmed from their docs before the first scored run)"
