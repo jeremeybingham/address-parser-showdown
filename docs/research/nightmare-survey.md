@@ -104,3 +104,25 @@ draw (the remaining steps of #22).
 6. `military` and `urbanization` kept with a Pub 28 covered form (thin; noted in their `source`).
 
 Recorded in `CLASSES` (`tools/golden/tiers.py`) and `sets/golden/COMPOSITION.md`.
+
+## 7. Cap decision (2026-11-13, owner: go ahead with the recommendation)
+
+The draw script could not meet the one-third cap: `urbanization`, `grid-wisconsin` and `intersection` have adjacent forms
+from one tracker only, and the best draw gave usaddress 36%. Option 2 was taken: libpostal-backed `adjacent` forms were
+added, each from a real open libpostal issue, and cell sizes were fixed once (before any confirmed draw) so the three
+trackers each supply 20 of the 60 outside `adjacent` records. Tracker letters, not parser output, set the sizes; no
+parser was run. The cap stays at one third.
+
+New libpostal forms (all invented strings, only the shape is from the issue):
+
+| Class | Form | Issue (open) |
+|---|---|---|
+| `second-number` | a house range with a hyphen, `912-914 8th St` | L#151 |
+| `no-so-direction` | a trailing directional on a street, `84 Blossom Ci E` | L#353 |
+| `unit-before-street` | a `#` unit after the street, `1141 Kendall Town Blvd #3202` | L#671 |
+| `paren-unit` | a floor after the street, `777 S. Figueroa St, 41st Floor` | L#580 |
+| `fraction-form` | a Unicode fraction after the number (second form), `537½` | L#191 |
+| `highway-lettered` | a `#` unit after a US highway, as in L#238 | L#238 |
+
+Cell sizes: `SIZE` in `tools/golden/nightmare.py` (`spelled-number` 6, `highway-lettered` 8, `fraction-form` 8, others as
+before).
