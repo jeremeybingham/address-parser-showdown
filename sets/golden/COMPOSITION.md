@@ -121,6 +121,8 @@ check.
     `grid-wisconsin`; `box-glued`, `fraction-form` and `lot-trailer-site` were added from the survey. `military` and
     `urbanization` keep a Pub 28 covered form and an open-issue adjacent form.
   - Round 7 (`hard`) is not paired: its classes are not derived from doorplate's rules.
+  - Round 7 (`hard`, seed 20261114, `tools/golden/hard.py`): 299 records; the six added shape classes get 30 each, the
+    non-addresses 20, and nine base `hard` classes 11 each. Sizes were fixed before the draw, by class only.
 - **Typos (`hard` only)** are applied from observed typo classes (one-character slips, a dropped or doubled letter, glued
   words, a missing comma) onto invented values, never chosen by checking whether a parser fails.
 - **Non-addresses and unparsable strings** carry a flag: `non_address` (gold: no fields) or `ambiguous` (more than one
