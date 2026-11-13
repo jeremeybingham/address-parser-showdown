@@ -16,10 +16,11 @@ import sys
 from pathlib import Path
 
 from adapters.base import AlignmentError, Mapping
-from tools.sets.common import BUILD, SpanError, check_sha, components_to_spans, set_path, sha256, write_jsonl
+from tools.sets.common import BUILD, SpanError, check_sha, components_to_spans, fetched, set_path, sha256, write_jsonl
 
 NAME = "libpostal-us"
 FILE = "test/test_parser.c"
+COMMIT = "25099c506612b34b23b1bfe286ca6321fcf06f35"  # openvenues/libpostal
 SHA256 = "d979b2606ff6928f9ad0026fba2594bd07b06150b4967d6355bdfc9e5b5714f0"  # the Senzing fork's clone; see MANIFEST.md
 PARTS = {"us": "home set (libpostal's own regression tests)"}
 CASE = re.compile(r'test_parse_result_equals\(\s*"((?:[^"\\]|\\.)*)",\s*options,\s*(\d+),(.*?)\)\);', re.S)
@@ -27,7 +28,7 @@ COMP = re.compile(r'\{"(\w+)",\s*"((?:[^"\\]|\\.)*)"\}')
 
 
 def source_file() -> Path:
-    home = Path(os.environ.get("LIBPOSTAL_HOME", Path.home() / "projects/libpostal-senzing"))
+    home = Path(os.environ.get("LIBPOSTAL_HOME", fetched("libpostal-us", Path.home() / "projects/libpostal-senzing")))
     return home / "src" / FILE
 
 

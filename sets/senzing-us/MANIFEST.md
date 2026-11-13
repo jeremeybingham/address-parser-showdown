@@ -2,8 +2,9 @@
 
 **Source:** `test_data_v1.2.0.csv` from Senzing's libpostal test data (12,868 rows, 2,233 with `country_code=us`), kept in
 doorplate's `local-data/senzing-libpostal-test/` (`$SENZING_TEST_DATA`). **License:** mixed provenance (OpenStreetMap, libpostal's
-tests, bug reports), so it is **not shipped**: `tools/sets/senzing_us.py` reads it and checks it by SHA-256 first. The fetch
-script is not written yet.
+tests, bug reports), so it is **not shipped**: `tools/sets/senzing_us.py` reads it and checks it by SHA-256 first. `python -m tools.sets.fetch senzing-us` downloads
+`files/tests/v1.2.0/test_data.csv` from Senzing/libpostal-data at commit `fa19eff80e28c517956274c90479a017b3f63557` (tag 1.2.0;
+Apache-2.0 repository) into `build/sources/`.
 
 ## Checksums (SHA-256)
 

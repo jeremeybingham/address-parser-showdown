@@ -3,7 +3,7 @@
 **Source:** [datamade/usaddress](https://github.com/datamade/usaddress) at commit `aa7699b53a0843fc443f9e87285b88cbd9eaf50a`
 (2025-08-07), `measure_performance/test_data/`. **License:** MIT, copyright 2014 The Atlanta Journal Constitution.
 **Not shipped here:** `tools/sets/usaddress_tests.py` reads unchanged copies from a directory (`$USADDRESS_TESTS`;
-default doorplate's vendored copy) and checks each file by SHA-256 first. The fetch script is not written yet.
+default doorplate's vendored copy) and checks each file by SHA-256 first. `python -m tools.sets.fetch usaddress-tests` downloads the six files at that commit into `build/sources/`.
 
 ## Checksums (SHA-256)
 

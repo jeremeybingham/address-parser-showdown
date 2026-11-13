@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from adapters.base import AlignmentError, Mapping
-from tools.sets.common import BUILD, SpanError, check_sha, set_path, sha256, tokens_to_spans, write_jsonl
+from tools.sets.common import BUILD, SpanError, check_sha, fetched, set_path, sha256, tokens_to_spans, write_jsonl
 
 NAME = "usaddress-tests"
 COMMIT = "aa7699b53a0843fc443f9e87285b88cbd9eaf50a"  # datamade/usaddress, 2025-08-07
@@ -34,7 +34,7 @@ PARTS = {p.removesuffix(".xml"): "home set (usaddress's regression tests)" for p
 
 def source_dir() -> Path:
     default = Path.home() / "projects/temp-postal/doorplate-v051/tests/external/usaddress"
-    return Path(os.environ.get("USADDRESS_TESTS", default))
+    return Path(os.environ.get("USADDRESS_TESTS", fetched("usaddress-tests", default)))
 
 
 def read_xml(path: Path):

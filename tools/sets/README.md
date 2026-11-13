@@ -5,6 +5,7 @@ Step 4 (issue #5): the existing test sets, each converted to one record format a
 ```sh
 uv run python -m tools.sets.doorplate_suite          # build/sets/doorplate-suite.jsonl.gz (--fetch to download it)
 uv run python -m tools.sets.usaddress_tests          # likewise: libpostal_us, senzing_us, geocode_dev (local copies, checked by SHA-256)
+uv run python -m tools.sets.fetch                  # download the four external sources (3 MB + 7 MB), checked by SHA-256
 uv run python -m tools.sets.predict doorplate-suite  # build/predictions/doorplate-suite/<parser>.jsonl.gz
 ```
 
@@ -27,6 +28,7 @@ files hold `native` spans (the parser's own labels), canonical `spans` and `erro
 | [geocode benchmark `dev`](../../sets/geocode-dev/MANIFEST.md) | `geocode_dev.py` | `dev.txt`, `$GEOCODE_BENCHMARK` (not shipped, no license stated) |
 
 The four sets after the first read local copies (no download); each checks its source by SHA-256 and stops on a
-difference. The fetch scripts (a download with the same check) are not written yet: a rerun elsewhere needs the files in place.
+difference. `uv run python -m tools.sets.fetch` downloads them (pinned commits, same SHA-256 check) into `build/sources/`, which the
+converters use when the environment variable is not set; a rerun elsewhere needs nothing else.
 Adding a set: a converter here that checks its source by SHA-256 and writes through `common.write_jsonl`; a folder in
 `sets/` with `MANIFEST.md` (source, license, counts, checksums, home parts); a row above and in `sets/README.md`.

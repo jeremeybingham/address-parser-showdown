@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 from adapters.base import AlignmentError, Mapping
-from tools.sets.common import BUILD, SpanError, check_sha, set_path, sha256, tokens_to_spans, write_jsonl
+from tools.sets.common import BUILD, SpanError, check_sha, fetched, set_path, sha256, tokens_to_spans, write_jsonl
 
 NAME = "geocode-dev"
 COMMIT = "424f94167c21d1ad3f8e70b50a75174f68dfe1f0"
@@ -51,7 +51,10 @@ def read_iob(path: Path):
 
 def source_file() -> Path:
     home = Path(
-        os.environ.get("GEOCODE_BENCHMARK", Path.home() / "projects/temp-postal/doorplate/local-data/geocode-benchmark")
+        os.environ.get(
+            "GEOCODE_BENCHMARK",
+            fetched("geocode-dev", Path.home() / "projects/temp-postal/doorplate/local-data/geocode-benchmark"),
+        )
     )
     return home / "dev.txt"
 
