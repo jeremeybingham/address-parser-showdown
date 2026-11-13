@@ -29,6 +29,7 @@ uv run python -m tools.sets.doorplate_suite      # convert a set to build/sets/ 
 uv run python -m tools.sets.usaddress_tests      # likewise libpostal_us, senzing_us, geocode_dev (local copies, SHA-256 checked)
 uv run python -m tools.sets.fetch          # download the external sources of the step 4 sets (SHA-256 checked) to build/sources/
 uv run python -m tools.sets.predict SET         # every adapter on a converted set -> build/predictions/SET/
+uv run python -m scorer                       # score every converted set with predictions (tables; --out DIR writes results.md/json)
 just all                  # the full pinned run (not written yet)
 ```
 
@@ -47,5 +48,5 @@ just all                  # the full pinned run (not written yet)
 
 `schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
-scoring; `runs/` prediction files and results per run; `report/` the report; `tests/` pytest; `tools/` scripts
+scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report; `tests/` pytest; `tools/` scripts
 (`check.sh`; `golden/` the golden-set sampler, hand templates and exclusion check; `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).

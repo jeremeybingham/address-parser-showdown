@@ -57,4 +57,33 @@ are picked by a seeded hash and the strata are fixed by shape and source, never 
 run on a candidate. Every record is checked by string against doorplate's corpus, the benchmark suite, usaddress's
 training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). A private twin
 with the same recipe and an unpublished seed is kept outside this repository to catch tuning to the public set.
-- The scoring and the Parser Score formula (`scorer/`), merged before the first scored run.
+## Scoring and the Parser Score
+
+Fixed in `scorer/formula.toml` (issue #6) and merged before the first scored run; a later change is a PR that says why and
+is listed in the report. Code: `scorer/` (see `scorer/README.md` for how to run it).
+
+- **Record accuracy** (the headline): a record is right when every coarse field the gold has (house number, street, unit,
+  PO box, route, city, state, postal code) is predicted with exactly the same character span and label, in any one of the
+  gold's accepted readings (the conventions list and a card's `alternatives`). Text the gold leaves unlabeled is not
+  scored; a predicted field the gold does not have costs precision (field F1), not record accuracy. Fine parts are folded
+  into their coarse field first, so a parser that cannot split a street is not penalized on the headline.
+- **Conventions are applied to every set and both sides alike** (`scorer/spans.py`): a lone letter after the house number
+  is one answer whether read as a suffix or as the start of the street name; a `#` before a unit is never part of it.
+- **Intervals:** 95% Wilson per part; the Parser Score and the field F1 score get a paired bootstrap (1,000 resamples,
+  seed in the formula, records resampled within each part, the same draws for every parser).
+- **Field F1:** micro-averaged precision and recall over the coarse fields of a part, plus a per-field table.
+- **Fine track, reported apart:** record accuracy and F1 over the leaf labels (`street_name`, `unit_type`, ...), on records
+  whose gold is fully fine-labeled. Every gold leaf counts for every parser, so a field a parser can only label whole
+  (libpostal's `road`) is a miss on this track; it is not folded into any score. Adjacent words of one label join into one
+  span, so the way a parser splits words does not count.
+- **Parser Score** = 100 x the sum over scored parts of weight x coarse record accuracy. Weights: the golden set 0.50, shared
+  equally by its three tiers (`normal`, `hard`, `nightmare`; flagged `non_address` and `ambiguous` records are reported
+  on their own lines and are in no score); the other neutral parts share 0.50 equally: doorplate suite `natural` and
+  `hand`, Senzing US `osm`, geocode `dev`. A parser's home sets (`usaddress-tests`, `libpostal-us`) and the parts drawn
+  from a parser's failures (suite `hard`, Senzing `bug`) are reported apart and are in no score. The field F1 score is the
+  same sum over micro F1. Speed and cost are never in the score (own table, step 8).
+- **Sensitivity table:** the score under equal weights across parts, and with each set left out (weights renormalized),
+  with the ranking, so a reader can see whether one set decides it.
+- **Out-of-scope labels** (`recipient`, `building_name`, `country`) are scored only where every parser models them.
+  Today none is: doorplate drops a trailing country on purpose and does not model building names (its
+  `docs/usaddress-compat.md`, "Out of scope"), though its mapping file lists both. They are left out of every figure.
