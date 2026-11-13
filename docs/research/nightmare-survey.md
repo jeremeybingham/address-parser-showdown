@@ -93,3 +93,14 @@ as proposals.
 
 After the owner settles these: the class table gets `variant` and `source`, `COMPOSITION.md` states the shares, then the
 draw (the remaining steps of #22).
+
+## 6. Decisions taken (2026-11-13, owner accepted the suggested defaults)
+
+1. `milepost` dropped; `box-glued`, `fraction-form`, `lot-trailer-site` added.
+2. `grid` split into `grid-utah` and `grid-wisconsin`.
+3. Variants split equally.
+4. Cap: no parser's own tracker supplies more than a third of the outside `adjacent` records.
+5. `nightmare` stays at about 300; the gap is reported at tier level.
+6. `military` and `urbanization` kept with a Pub 28 covered form (thin; noted in their `source`).
+
+Recorded in `CLASSES` (`tools/golden/tiers.py`) and `sets/golden/COMPOSITION.md`.

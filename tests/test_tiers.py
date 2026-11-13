@@ -31,6 +31,16 @@ def test_nightmare_classes_are_at_most_half_doorplate_research():
     assert sum(c.origin == "doorplate-research" for c in night) * 2 <= len(night)
 
 
+def test_nightmare_classes_are_paired_and_sourced():
+    for name, c in tiers.CLASSES.items():
+        if c.tier == "nightmare":
+            assert c.variants == ("covered", "adjacent"), name
+            assert c.covered and c.adjacent and c.source, name
+        else:
+            assert c.variants == ("neutral",), name
+            assert not (c.covered or c.adjacent or c.source), name
+
+
 def test_every_template_shape_is_in_the_table():
     assert {s[0] for s in templates.SHAPES} <= set(tiers.CLASSES)
 
@@ -62,7 +72,7 @@ def test_tier_of_moves_normal_up_and_never_down():
     assert tiers.tier_of(tmpl, card | {"flag": "ambiguous"}) == ("hard", "street-unit", True)
     assert tiers.tier_of({"id": "x", "shape": "street-unit", "style": "typo"}, card)[0] == "hard"
     assert tiers.tier_of({"id": "x", "shape": "rural-route", "style": "none"}, card)[0] == "hard"
-    assert tiers.tier_of({"id": "x", "shape": "grid", "style": "none"}, card)[0] == "nightmare"
+    assert tiers.tier_of({"id": "x", "shape": "grid-utah", "style": "none"}, card)[0] == "nightmare"
     clean = {"id": "x", "shape": "ordinary", "style": "none"}
     plain = {"spans": [[0, 2, "house_number_value"], [3, 6, "street_name"], [7, 9, "street_post_type"]]}
     assert tiers.tier_of(clean, plain) == ("normal", "ordinary", False)

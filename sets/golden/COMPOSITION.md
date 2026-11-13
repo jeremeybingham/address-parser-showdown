@@ -80,8 +80,8 @@ The class-to-tier table is `CLASSES` in `tools/golden/tiers.py`, committed befor
   `pre-type`, `non-address-hard`.
 - `nightmare` (round 8): 7 classes from doorplate's rule research (`second-number`, `letter-before-street`,
   `no-so-direction`, `county-road-compass`, `zip4-cut`, `unit-before-street`, `paren-unit`) and 8 from outside it
-  (`military`, `urbanization`, `grid`, `spelled-number`, `intersection`, `highway-lettered`, `milepost`,
-  `non-address-nightmare`). The record share of each side is fixed with the round 8 weights and stated in the manifest.
+  (`military`, `urbanization`, `grid-utah`, `grid-wisconsin`, `spelled-number`, `intersection`, `highway-lettered`,
+  `non-address-nightmare`, `box-glued`, `fraction-form`, `lot-trailer-site`). The record share of each side is fixed with the round 8 weights and stated in the manifest.
 
 A template record's class is the shape it was written from; the typo modifier makes it `typo`. A public or clean record
 has no written shape, so its class is read from its **gold** fields (`class_from_gold`: a route, a box, a box with a
@@ -103,6 +103,24 @@ check.
   must pass the exclusion check against doorplate's corpus and changelog examples), and at least half from outside it:
   usaddress's and libpostal's own failure modes (issues and docs), USPS Publication 28 odd forms, and the geocode
   benchmark's error types.
+- **`nightmare` classes are paired (issue #22; survey in `docs/research/nightmare-survey.md`).** Every `nightmare` class
+  has a `covered` variant (the form a closed rule or fixed report handles) and an `adjacent` variant (a nearby form an open
+  issue leaves out), each with a `source` line in `CLASSES`. Why: doorplate's own rule research would otherwise make the
+  tier a list of shapes doorplate was fixed for, so it would win by construction. The same pairing applies to the outside
+  classes, using usaddress's and libpostal's closed and open issues. Rules:
+  - Variants are defined by shape from the issue text. Doorplate is never run to confirm which variant fails, and a tag is
+    never changed after a scored run. Every string is invented and passes the exclusion check.
+  - The two variants of a class get equal numbers of records. With 18 classes and about 300 records that is about 8 per
+    variant, so the report states the covered-versus-adjacent gap per parser at tier level only; per-class figures are
+    descriptive.
+  - No single parser's own tracker supplies more than a third of the outside `adjacent` records.
+  - The doorplate-research side is 7 of 18 classes (about 39% of records, under the half cap); the manifest states the final
+    shares (side, covered, adjacent) after the draw.
+  - Adjacent records may be `ambiguous` or `doubtful`; they are reported apart as in the rules below.
+  - `milepost` was dropped (no issue in any of the three trackers mentions it); `grid` is split into `grid-utah` and
+    `grid-wisconsin`; `box-glued`, `fraction-form` and `lot-trailer-site` were added from the survey. `military` and
+    `urbanization` keep a Pub 28 covered form and an open-issue adjacent form.
+  - Round 7 (`hard`) is not paired: its classes are not derived from doorplate's rules.
 - **Typos (`hard` only)** are applied from observed typo classes (one-character slips, a dropped or doubled letter, glued
   words, a missing comma) onto invented values, never chosen by checking whether a parser fails.
 - **Non-addresses and unparsable strings** carry a flag: `non_address` (gold: no fields) or `ambiguous` (more than one
