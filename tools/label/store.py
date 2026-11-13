@@ -125,8 +125,19 @@ def load_log(n: int, log_dir: Path = LOG_DIR) -> dict[str, dict]:
         for line in path.read_text().splitlines():
             if line.strip():
                 rec = json.loads(line)
-                latest[rec["id"]] = rec
+                if rec.get("void"):  # a re-queue: the card is unlabeled again (earlier saves stay in the log)
+                    latest.pop(rec["id"], None)
+                else:
+                    latest[rec["id"]] = rec
     return latest
+
+
+def requeue(n: int, ids: list[str], log_dir: Path = LOG_DIR) -> None:
+    """Mark cards of round `n` as unlabeled again by appending a void record for each (the log is never rewritten)."""
+    log_dir.mkdir(parents=True, exist_ok=True)
+    with log_path(n, log_dir).open("a") as f:
+        for cid in ids:
+            f.write(json.dumps({"id": cid, "void": True, "ts": int(time.time())}) + "\n")
 
 
 def save_card(n: int, card: dict, payload: dict, *, phase: str = "label", log_dir: Path = LOG_DIR) -> dict:

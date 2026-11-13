@@ -14,25 +14,36 @@
   .alt { border-bottom-style: dotted; }
   #pal button { margin: 2px; font-size: 13px; }
   #pal kbd { background: #eee; border: 1px solid #aaa; border-radius: 3px; padding: 0 4px; margin-right: 4px; }
-  #bar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  /* top bar: two fixed rows (status, controls) with fixed-width items, so nothing moves or wraps from card to card */
+  #bar { display: grid; gap: .5rem; }
+  #bar .row { display: flex; gap: .75rem; align-items: center; height: 2rem; white-space: nowrap; }
+  #mode { width: 9rem; } #pos { width: 9rem; }
+  #saved { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  #prev { width: 5.5rem; } #next { width: 10.5rem; } #altb { width: 15rem; } #copy { width: 7.5rem; }
+  #flag { width: 8.5rem; }
+  #text { min-height: 7.5rem; }
   #q li { margin: .4rem 0; }
   .on { background: #ffe9a8; }
   small { color: #555; }
 </style>
 <div id="bar">
-  <b id="mode"></b> <span id="pos"></span> <span id="saved"></span>
+ <div class="row"><b id="mode"></b><span id="pos"></span><span id="saved"></span></div>
+ <div class="row">
   <button id="prev">&larr; Prev</button> <button id="next">Save &amp; next (Enter)</button>
   <label><input type="checkbox" id="doubt"> doubtful (Tab)</label>
   <label>flag <select id="flag" title="non-address: no fields are right; ambiguous: list every accepted reading as alternatives">
     <option value="">none</option><option value="non_address">non-address</option><option value="ambiguous">ambiguous</option></select></label>
   <button id="altb">Accept as alternative (=): off</button>
   <button id="copy" title="Copy this card's address text (to look it up on a map)">Copy address</button>
+ </div>
 </div>
 <div id="text"></div>
 <div id="q"></div>
 <div id="pal"></div>
-<p><small>Drag over characters, or click a word, then press the label's key. Delete clears labels on the selection,
-Esc clears the selection, &larr; goes back. Nothing here shows any parser's output.</small></p>
+<p><small>The first unlabeled word is selected for you; press a label's key and the selection moves to the next
+word on the right (Left and Right arrows move between words). For several words, drag over them first.
+Or click a word, then press the label's key. Delete clears labels on the selection,
+Esc clears the selection; use the Prev button to go back. Nothing here shows any parser's output.</small></p>
 <script>
 let META, CARDS = [], I = 0, SEL = null, DRAG = null, ALT = false, T0 = 0, KEYS = 0, SPANS = [], ALTS = [];
 const hue = l => `hsl(${[...l].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 360, 7)} 65% 50%)`;
@@ -54,8 +65,10 @@ async function init() {
 function show() {
   const c = card();
   SPANS = (c.spans || []).map(s => [...s]); ALTS = (c.alternatives || []).map(a => ({...a}));
-  $('doubt').checked = !!c.doubtful; $('flag').value = c.flag || ''; SEL = null; T0 = Date.now(); KEYS = 0;
-  $('pos').textContent = `${I + 1} / ${CARDS.length}` + (c.round ? ` (round ${c.round})` : '');
+  $('doubt').checked = !!c.doubtful; $('flag').value = c.flag || ''; SEL = wordFrom(0); T0 = Date.now(); KEYS = 0;
+  const left = CARDS.filter(x => !x.labeled).length;
+  $('pos').textContent = `card ${c.n || I + 1} / ${CARDS.length}`;
+  $('pos').title = `${left} not yet labeled; the unlabeled cards come first`;
   $('saved').textContent = c.labeled ? 'saved' : c.stale ? 'new (the text changed since your last save: label it again)' : 'new';
   render();
 }
@@ -102,6 +115,33 @@ window.onmouseup = () => {
 };
 function trim() { if (!SEL) return; const t = card().text; while (SEL[0] < SEL[1] && t[SEL[0]] === ' ') SEL[0]++; while (SEL[1] > SEL[0] && t[SEL[1] - 1] === ' ') SEL[1]--; if (SEL[0] >= SEL[1]) SEL = null; }
 
+function words() { // [start, end) of each space-separated word; trailing , or ; are left out, and a lone comma is no word
+  const out = [], t = card().text;
+  for (const m of t.matchAll(/[^ ]+/g)) {
+    let e = m.index + m[0].length;
+    while (e > m.index && ',;'.includes(t[e - 1])) e--;
+    if (e > m.index) out.push([m.index, e]);
+  }
+  return out;
+}
+function wordFrom(pos) { // the first word at or after pos that has no label yet, as [start, end), else null
+  const t = card().text, lab = new Array(t.length).fill(false);
+  SPANS.forEach(([a, b]) => { for (let i = a; i < b; i++) lab[i] = true; });
+  for (const [ws, we] of words()) {
+    let s = Math.max(ws, pos); while (s < we && lab[s]) s++;
+    if (s >= we) continue;
+    let e = s; while (e < we && !lab[e]) e++;
+    return [s, e];
+  }
+  return null;
+}
+function step(d) { // arrow keys: the next or previous word, labeled or not
+  const ws = words(); if (!ws.length) return;
+  if (!SEL) SEL = d > 0 ? ws[0] : ws[ws.length - 1];
+  else if (d > 0) SEL = ws.find(w => w[0] >= SEL[1]) || SEL;
+  else SEL = [...ws].reverse().find(w => w[1] <= SEL[0]) || SEL;
+  render();
+}
 function clearRange(s, e) { // remove labels on [s,e), keeping the parts of spans that stick out
   const out = [];
   for (const [a, b, l] of SPANS) { if (b <= s || a >= e) out.push([a, b, l]); else { if (a < s) out.push([a, s, l]); if (b > e) out.push([e, b, l]); } }
@@ -112,22 +152,29 @@ function apply(l) {
   const [s, e] = SEL;
   if (ALT) { const a = ALTS.find(x => x.start === s && x.end === e); if (a) { if (!a.labels.includes(l)) a.labels.push(l); } else ALTS.push({start: s, end: e, labels: [l]}); }
   else if (l !== 'none') { clearRange(s, e); SPANS.push([s, e, l]); SPANS.sort((x, y) => x[0] - y[0]); }
-  SEL = null; render();
+  SEL = ALT ? null : wordFrom(e); render();
 }
 $('q').onclick = e => { const b = e.target.closest('button'); if (b) { SEL = [+b.dataset.s, +b.dataset.e]; apply(b.dataset.l); } };
 
 async function save() {
-  const c = card();
+  const c = card(), spans = SPANS, alts = ALTS, doubt = $('doubt').checked, flag = $('flag').value || null; // copies: show() replaces the globals
+  if (!spans.length && !alts.length && !flag) { $('saved').textContent = 'NOT SAVED: no labels (label the words, or set the flag to non-address)'; return false; }
   const r = await fetch('/api/save', {method: 'POST', body: JSON.stringify({round: c.round || 0, id: c.id,
-    spans: SPANS, alternatives: ALTS, doubtful: $('doubt').checked, flag: $('flag').value || null, ms: Date.now() - T0, keys: KEYS})});
+    spans, alternatives: alts, doubtful: doubt, flag, ms: Date.now() - T0, keys: KEYS})});
   if (!r.ok) { $('saved').textContent = 'NOT SAVED: ' + (await r.json()).error; return false; }
-  Object.assign(c, {spans: SPANS, alternatives: ALTS, doubtful: $('doubt').checked, flag: $('flag').value || null, labeled: true});
+  Object.assign(c, {spans, alternatives: alts, doubtful: doubt, flag, labeled: true});
   return true;
 }
+let BUSY = false; // one move at a time: a second Enter or click while a save is in flight would skip a card
 async function go(d) {
-  if (d > 0 && !(await save())) return;
-  I = Math.min(CARDS.length - 1, Math.max(0, I + d)); show();
+  if (BUSY) return; BUSY = true;
+  try {
+    if (d > 0 && !(await save())) return;
+    I = Math.min(CARDS.length - 1, Math.max(0, I + d)); show();
+  } finally { BUSY = false; }
 }
+// a clicked button must not keep focus: Enter would then press it again as well as run the Enter shortcut
+document.addEventListener('click', e => { const b = e.target.closest('button'); if (b) b.blur(); });
 $('flag').onchange = () => $('flag').blur(); // so Enter saves again
 $('copy').onclick = async () => { // clipboard API needs a secure context (localhost is one); else the old textarea way
   const t = card().text, b = $('copy'); b.blur();
@@ -140,7 +187,8 @@ $('altb').onclick = () => { ALT = !ALT; $('altb').textContent = `Accept as alter
 document.onkeydown = e => {
   if ((e.target.tagName === 'INPUT' && e.key !== 'Tab') || e.target.tagName === 'SELECT') return;
   if (e.key === 'Enter') go(1);
-  else if (e.key === 'ArrowLeft') go(-1);
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
   else if (e.key === 'Tab') { e.preventDefault(); $('doubt').checked = !$('doubt').checked; }
   else if (e.key === '=') $('altb').click();
   else if (e.key === 'Escape') { SEL = null; render(); }
