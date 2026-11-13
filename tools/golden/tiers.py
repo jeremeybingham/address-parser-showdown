@@ -92,7 +92,7 @@ CLASSES: dict[str, ShapeClass] = {
         "a second number after the house number",
         "a building and a unit (`31 208 Birch Ln`), or a close same-parity pair (`7310 7312 Oak Dr`)",
         "two numbers joined by `&` (`3 & 5 E 41st St`)",
-        "D#590 D#591 D#274 D#617 L#85",
+        "D#590 D#591 D#274 D#617 L#85 L#151",
     ),
     "letter-before-street": _n(
         "doorplate-research",
@@ -106,7 +106,7 @@ CLASSES: dict[str, ShapeClass] = {
         "`NO` and `SO` for north and south",
         "`464 NO Maple Ave`, `84 Elmhurst Pl SO`",
         "`County Rd SO` with no number; a street named for a direction (`250 South St E`)",
-        "D#470 D#269 D#643 U#402",
+        "D#470 D#269 D#643 U#402 L#353",
     ),
     "county-road-compass": _n(
         "doorplate-research",
@@ -127,14 +127,14 @@ CLASSES: dict[str, ShapeClass] = {
         "the unit before the street (`Apt 4 12 Oak St`)",
         "a suffix word follows the unit value (`12-40 Suite 9 Delmar Blvd`)",
         "no suffix word (`242 Apt B Example`); `Apt S` plus street with the value on line 2",
-        "D#296 D#529 D#498 U#208",
+        "D#296 D#529 D#498 U#208 L#671",
     ),
     "paren-unit": _n(
         "doorplate-research",
         "a unit in parentheses (`12 Oak St (Unit 4)`)",
         "a floor or unit at the edge of a segment (`12 Elm St (3rd Fl)`)",
         "a parenthesized group that is not a unit (`(Rear Entrance)`); a parenthesis inside a name",
-        "D#291 D#516 D#644 D#645",
+        "D#291 D#516 D#644 D#645 L#580",
     ),
     # From outside doorplate (Pub 28, usaddress and libpostal reports, and the doorplate leftovers they share).
     "military": _n(

@@ -84,3 +84,45 @@ locations; passes. Strings read per location:
 
 Candidates dropped while drawing (counts only): {"fcc-amateur:duplicate": 5, "fcc-amateur:leak-or-unfaithful": 9, "fmcsa:duplicate": 46, "fmcsa:leak-or-unfaithful": 16, "nad:duplicate": 1, "nad:leak-or-unfaithful": 112, "ny-corps:duplicate": 17, "ny-corps:leak-or-unfaithful": 28, "tdlr:duplicate": 11, "tdlr:leak-or-unfaithful": 9, "template:excluded": 9, "va-scc:duplicate": 28, "va-scc:leak-or-unfaithful": 45}.
 libpostal's training data is not on disk here and could not be checked; its test sources under `src/test` were.
+
+<!-- round-8 begin -->
+## Round 8 (`nightmare`, issue #22)
+
+Seed 20261113, drawn by `tools/golden/nightmare.py`: 264 unlabeled records, (class, variant) cells of 9 unless `SIZE` says otherwise
+for 18 paired classes (cell sizes in `SIZE`, equal for the two variants of a class). Every string is invented; city, state and ZIP are real. The variant is set by the form that
+wrote the string, never by a parser run (`COMPOSITION.md`, "`nightmare` classes are paired").
+
+- `round-8.jsonl`: `212a194f599060af6c7fec4207409a54a8c4fd416806dd2b130e3a4ef08c380a`
+- `provenance.jsonl` (all rounds, with `variant` and `tracker` on round 8): `2cad3f542c7a3e671bb7b0462e1357e2fd1892800a5779f655e05a823f46a5a7`
+
+| Share | Records |
+|---|---|
+| covered | 132 |
+| adjacent | 132 |
+| doorplate-research classes | 126 (48%) |
+| outside classes | 138 (52%) |
+
+Outside `adjacent` records by the tracker the shape came from (cap one third each; Pub 28 forms excluded, 60 records):
+doorplate 33%, usaddress 33%, libpostal 33%.
+
+| Class | Records |
+|---|---|
+| box-glued | 12 |
+| county-road-compass | 18 |
+| fraction-form | 16 |
+| grid-utah | 16 |
+| grid-wisconsin | 4 |
+| highway-lettered | 16 |
+| intersection | 4 |
+| letter-before-street | 18 |
+| lot-trailer-site | 24 |
+| military | 18 |
+| no-so-direction | 18 |
+| non-address-nightmare | 12 |
+| paren-unit | 18 |
+| second-number | 18 |
+| spelled-number | 12 |
+| unit-before-street | 18 |
+| urbanization | 4 |
+| zip4-cut | 18 |
+<!-- round-8 end -->
