@@ -6,6 +6,7 @@ requires-python = ">=3.12"
 license = "MIT"
 dependencies = [
     "doorplate>=0.6.0",
+    "duckdb>=2.0.0",
     "usaddress>=0.5.16",
 ]
 
@@ -27,3 +28,6 @@ line-length = 120
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tools/golden/*" = ["E501"]  # long template and SQL lines
