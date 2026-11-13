@@ -16,7 +16,7 @@ uv run python -m scorer --parsers doorplate,usaddress --out runs/RUN/   # result
 | `formula.toml` | group and part weights, which parts are reported apart and why, bootstrap resamples and seed |
 
 **Input.** A converted set (`build/sets/NAME.jsonl.gz`; the record format is in `tools/sets/README.md`) and its prediction
-files. A record's `part` is what a figure is reported on. The golden set's export must carry `part` = its tier, and may
+files. A record's `part` is what a figure is reported on. The golden set's converted file (`tools/sets/golden.py`) carries `part` = its tier, and may
 carry `alternatives` and `flag` (`non_address` or `ambiguous`; such a record goes to its own part, `tier/flag`, which is in
 no score). A set or prediction file that is missing is named in the output and the Parser Score is then marked incomplete:
 the golden set is not exported yet, so no figure here is the Parser Score until it is.

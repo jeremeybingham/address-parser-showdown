@@ -25,6 +25,8 @@ uv sync                   # the Python environment
 tools/libpostal/build.sh  # the pinned libpostal build (about 3 GB; needs a go-ahead); `--verify` checks an existing one
 uv run python tools/golden/sample.py --check   # the exclusion string check on the committed golden set (reads doorplate's local-data)
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
+uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
+uv run python -m tools.sets.golden            # the exported gold -> build/sets/golden.jsonl.gz, part = tier
 uv run python -m tools.sets.doorplate_suite      # convert a set to build/sets/ (one module per set; see tools/sets/README.md)
 uv run python -m tools.sets.usaddress_tests      # likewise libpostal_us, senzing_us, geocode_dev (local copies, SHA-256 checked)
 uv run python -m tools.sets.fetch          # download the external sources of the step 4 sets (SHA-256 checked) to build/sources/
@@ -49,4 +51,4 @@ just all                  # the full pinned run (not written yet)
 `schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
 scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report; `tests/` pytest; `tools/` scripts
-(`check.sh`; `golden/` the golden-set sampler, hand templates and exclusion check; `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).
+(`check.sh`; `golden/` the golden-set sampler, hand templates, exclusion check and tier tagger (`tiers.py`); `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).

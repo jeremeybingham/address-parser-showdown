@@ -6,7 +6,7 @@ shipped carry checksums so a rerun can prove it used the same file.
 
 | Set | State |
 |---|---|
-| [`golden/`](golden/MANIFEST.md) | 1,500 unlabeled records in six rounds (step 2); composition in [`golden/COMPOSITION.md`](golden/COMPOSITION.md); labels come in step 3; difficulty tiers `normal`/`hard`/`nightmare` are added by issue #14 (rules in the composition page) |
+| [`golden/`](golden/MANIFEST.md) | 1,500 unlabeled records in six rounds (step 2); composition in [`golden/COMPOSITION.md`](golden/COMPOSITION.md); labels come in step 3; difficulty tiers `normal`/`hard`/`nightmare` (issue #14; rules in the composition page, class table in `tools/golden/tiers.py`) |
 | [`doorplate-suite/`](doorplate-suite/MANIFEST.md) | doorplate's benchmark suite v1, 19,586 records (`natural`, `hand`; `hard` reported apart); read from a doorplate checkout or fetched, converted by `tools/sets/` |
 | [`usaddress-tests/`](usaddress-tests/MANIFEST.md) | usaddress's own test files, 9,088 records in six parts; **home set for usaddress**; read from a local copy |
 | [`libpostal-us/`](libpostal-us/MANIFEST.md) | libpostal's `test_us_parses`, 53 cases, read from the pinned clone; **home set for libpostal** |
