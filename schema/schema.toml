@@ -1,0 +1,163 @@
+# The canonical label schema (version 1). Every parser's own labels are mapped to these in adapters/mappings/.
+#
+# A label is either a coarse field (no `parent`) or a fine part of one (`parent` names the coarse field).
+# `scope = "core"` labels are scored for every parser; `scope = "out_of_scope"` labels are scored only where every
+# parser claims them; `other` is where a parser's labels with no home here go (never scored).
+# A coarse field that a parser cannot split is still mapped, as itself: its fine label for the fine track is the
+# coarse label.
+
+[[label]]
+name = "house_number"
+scope = "core"
+doc = "The house or building number, with any prefix and suffix (`E7379`, `123B`)."
+
+[[label]]
+name = "house_number_prefix"
+parent = "house_number"
+scope = "core"
+doc = "A prefix written apart from the number (`E` in `E 7379`)."
+
+[[label]]
+name = "house_number_value"
+parent = "house_number"
+scope = "core"
+doc = "The number itself."
+
+[[label]]
+name = "house_number_suffix"
+parent = "house_number"
+scope = "core"
+doc = "A suffix written apart from the number (`B` in `214 B`, when the reading is a suffix; see the conventions)."
+
+[[label]]
+name = "street"
+scope = "core"
+doc = "The street as one field: every part from the pre-direction to the post-direction."
+
+[[label]]
+name = "street_pre_direction"
+parent = "street"
+scope = "core"
+doc = "A compass word before the name (`N`)."
+
+[[label]]
+name = "street_pre_type"
+parent = "street"
+scope = "core"
+doc = "A type word before the name (`AVENUE` in `Avenue C`, a highway's `US` or `State`)."
+
+[[label]]
+name = "street_name"
+parent = "street"
+scope = "core"
+doc = "The street name (a highway's number is a name)."
+
+[[label]]
+name = "street_post_type"
+parent = "street"
+scope = "core"
+doc = "The type word after the name (`ST`, `AVE`)."
+
+[[label]]
+name = "street_post_direction"
+parent = "street"
+scope = "core"
+doc = "A compass word after the type (`NW`)."
+
+[[label]]
+name = "unit"
+scope = "core"
+doc = "A secondary unit (apartment, suite, floor), type and value. Up to two units: a second pair follows the first."
+
+[[label]]
+name = "unit_type"
+parent = "unit"
+scope = "core"
+doc = "The designator (`APT`, `STE`, `FL`, `#`)."
+
+[[label]]
+name = "unit_value"
+parent = "unit"
+scope = "core"
+doc = "The identifier (`4B`)."
+
+[[label]]
+name = "po_box"
+scope = "core"
+doc = "A PO box, general delivery included: the type words and the number."
+
+[[label]]
+name = "po_box_type"
+parent = "po_box"
+scope = "core"
+doc = "`PO BOX`, `P O BOX`, `GENERAL DELIVERY`."
+
+[[label]]
+name = "po_box_value"
+parent = "po_box"
+scope = "core"
+doc = "The box number."
+
+[[label]]
+name = "route"
+scope = "core"
+doc = "A rural, highway contract or military route and its box (`RR 2 BOX 15`, `PSC 1650 BOX 10`)."
+
+[[label]]
+name = "route_type"
+parent = "route"
+scope = "core"
+doc = "`RR`, `HC`, `PSC`, `UNIT`, `CMR`."
+
+[[label]]
+name = "route_value"
+parent = "route"
+scope = "core"
+doc = "The route number."
+
+[[label]]
+name = "route_box_type"
+parent = "route"
+scope = "core"
+doc = "`BOX` after a route."
+
+[[label]]
+name = "route_box_value"
+parent = "route"
+scope = "core"
+doc = "The box number after a route."
+
+[[label]]
+name = "city"
+scope = "core"
+doc = "The city or place name as written (a military post office such as `APO` is a city)."
+
+[[label]]
+name = "state"
+scope = "core"
+doc = "The state, as written."
+
+[[label]]
+name = "postal_code"
+scope = "core"
+doc = "The ZIP code, with ZIP+4 if written."
+
+[[label]]
+name = "recipient"
+scope = "out_of_scope"
+doc = "A person or organization line (an attention line)."
+
+[[label]]
+name = "building_name"
+scope = "out_of_scope"
+doc = "A building or venue name."
+
+[[label]]
+name = "country"
+scope = "out_of_scope"
+doc = "A trailing `USA` or `US`."
+
+[[label]]
+name = "other"
+scope = "unscored"
+doc = "Text a parser labels with something that has no place in this schema (a landmark, a second street)."

@@ -1,0 +1,32 @@
+# doorplate (its `parse_tokens` output) to the canonical schema.
+# doorplate's token output uses usaddress's label names (docs/usaddress-compat.md in the doorplate repository gives its own
+# table), so the mapping is usaddress's with these differences: doorplate never emits the labels it does not model
+# (intersections, landmarks), and it labels `GENERAL DELIVERY` as `USPSBoxType`, which maps to a PO box type here.
+# A token doorplate did not place has the label `None`; the adapter leaves it out.
+
+[labels]
+AddressNumber = "house_number_value"
+AddressNumberPrefix = "house_number_prefix"
+AddressNumberSuffix = "house_number_suffix"
+StreetNamePreDirectional = "street_pre_direction"
+StreetNamePreType = "street_pre_type"
+StreetNamePreModifier = "street"
+StreetNamePostModifier = "street"
+StreetName = "street_name"
+StreetNamePostType = "street_post_type"
+StreetNamePostDirectional = "street_post_direction"
+OccupancyType = "unit_type"
+OccupancyIdentifier = "unit_value"
+SubaddressType = "unit_type"
+SubaddressIdentifier = "unit_value"
+USPSBoxType = { default = "po_box_type", if_string_has = ["USPSBoxGroupType", "USPSBoxGroupID"], then = "route_box_type" }
+USPSBoxID = { default = "po_box_value", if_string_has = ["USPSBoxGroupType", "USPSBoxGroupID"], then = "route_box_value" }
+USPSBoxGroupType = "route_type"
+USPSBoxGroupID = "route_value"
+PlaceName = "city"
+StateName = "state"
+ZipCode = "postal_code"
+ZipPlus4 = "postal_code"
+CountryName = "country"
+Recipient = "recipient"
+BuildingName = "building_name"

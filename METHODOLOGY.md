@@ -24,8 +24,18 @@
   file.
 - **The sets are not a work list** for any parser: a rule change in a parser still needs a reason from another source.
 
-## Sections to come
+## Schema and adapters
 
-- The canonical schema and the conventions list (`schema/`).
+- The canonical schema is `schema/schema.toml`: coarse fields (house number, street, unit, PO box, route, city, state,
+  postal code) with fine parts, and out-of-scope labels (recipient, building name, country) scored only where every
+  parser claims them. The conventions list is `schema/conventions.toml` (see `schema/README.md`).
+- Each parser is read through an adapter that returns character spans in its own labels, and a mapping file sends those
+  labels to the schema. Mapping decisions are written at the top of each mapping file (for libpostal: `suburb` and
+  `city_district` are city; `level`, `staircase` and `entrance` are units). A label a parser has and the schema does not
+  is `other` and is never scored against it.
+- Parsers run with default settings. libpostal is the Senzing model at a pinned commit and data checksum
+  (`tools/libpostal/pins.env`).
+
+## Sections to come
 - How the golden set is sampled, labeled and adjudicated (`sets/golden/`).
 - The scoring and the Parser Score formula (`scorer/`), merged before the first scored run.

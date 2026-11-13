@@ -1,0 +1,35 @@
+# usaddress (token labels, its own training data) to the canonical schema.
+# Source: the labels in usaddress's model (`usaddress.TAGGER.labels()`; `usaddress.LABELS` lacks three of them).
+# A value is a canonical label, or a table: `default` unless one of the labels in `if_string_has` is among the parser's
+# labels for the same string, then `then`.
+
+[labels]
+AddressNumber = "house_number_value"
+AddressNumberPrefix = "house_number_prefix"
+AddressNumberSuffix = "house_number_suffix"
+StreetNamePreDirectional = "street_pre_direction"
+StreetNamePreType = "street_pre_type"
+StreetNamePreModifier = "street"
+StreetNamePostModifier = "street"          # no fine label here: kept whole, scored on the coarse field
+StreetName = "street_name"
+StreetNamePostType = "street_post_type"
+StreetNamePostDirectional = "street_post_direction"
+OccupancyType = "unit_type"
+OccupancyIdentifier = "unit_value"
+SubaddressType = "unit_type"
+SubaddressIdentifier = "unit_value"
+USPSBoxType = { default = "po_box_type", if_string_has = ["USPSBoxGroupType", "USPSBoxGroupID"], then = "route_box_type" }
+USPSBoxID = { default = "po_box_value", if_string_has = ["USPSBoxGroupType", "USPSBoxGroupID"], then = "route_box_value" }
+USPSBoxGroupType = "route_type"
+USPSBoxGroupID = "route_value"
+PlaceName = "city"
+StateName = "state"
+ZipCode = "postal_code"
+ZipPlus4 = "postal_code"
+CountryName = "country"
+Recipient = "recipient"
+BuildingName = "building_name"
+LandmarkName = "other"
+CornerOf = "other"
+IntersectionSeparator = "other"
+NotAddress = "other"

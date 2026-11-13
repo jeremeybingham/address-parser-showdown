@@ -4,7 +4,10 @@ version = "0.0.0"
 description = "A neutral, repeatable comparison of US address parsers"
 requires-python = ">=3.12"
 license = "MIT"
-dependencies = []
+dependencies = [
+    "doorplate>=0.6.0",
+    "usaddress>=0.5.16",
+]
 
 [dependency-groups]
 dev = [
@@ -20,7 +23,7 @@ testpaths = ["tests"]
 pythonpath = ["."]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

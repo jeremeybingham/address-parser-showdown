@@ -1,0 +1,43 @@
+# Invented strings for the adapter conformance test (no real address). Format: `kind|string`.
+# cover: ordinary addresses; every letter and digit must be inside a span.
+# wellformed: harder shapes; the spans only have to be well formed (a parser may leave text unlabeled).
+cover|123 Main St, Springfield, IL 62704
+cover|123 N Main St Apt 4, Springfield, IL 62704
+cover|4500 Oak Ridge Rd NW Suite 210, Fairview, TX 75069
+cover|17 Elm Avenue, Maplewood, NJ 07040-1234
+cover|9 Birch Ln, Riverton, WY 82501
+cover|2201 W Cedar Blvd Unit 12B, Lakeside, CA 92040
+cover|600 Harbor Dr, Port Alder, WA 98362
+cover|88 Pine Ct, Brookfield, WI 53005
+cover|1010 S Lakeview Pkwy, Northgate, OH 44101
+cover|35 Willow Way Apt 3C, Fairhaven, MA 02719
+cover|742 Evergreen Terrace, Springfield, OR 97477
+cover|1500 E Mesa Dr SE, Tempe, AZ 85281
+cover|250 5th Ave Fl 3, New Haven, CT 06510
+cover|12 County Road 45, Haywood, NC 28752
+cover|3300 Sycamore Street, Dunmore, PA 18512
+wellformed|PO Box 1234, Fairview, TX 75069
+wellformed|P.O. Box 77, Riverton, WY 82501
+wellformed|RR 2 Box 15, Brookfield, WI 53005
+wellformed|HC 61 Box 8, Northgate, OH 44101
+wellformed|General Delivery, Maplewood, NJ 07040
+wellformed|PSC 1650 Box 10, APO AE 09001
+wellformed|Unit 2050 Box 4190, APO AP 96278
+wellformed|E 7379 Oak Hollow Rd, Fairhaven, MA 02719
+wellformed|214 B Elm St, Lakeside, CA 92040
+wellformed|123B Elm St, Lakeside, CA 92040
+wellformed|N45 W2210 Pine Rd, Brookfield, WI 53005
+wellformed|US Highway 12 W, Dunmore, PA 18512
+wellformed|State Route 9, Port Alder, WA 98362
+wellformed|100 Main St #4, Springfield, IL 62704
+wellformed|100 Main St Apt 4 Bldg 2, Springfield, IL 62704
+wellformed|Attn Jane Doe, 100 Main St, Springfield, IL 62704
+wellformed|Example Plaza, 100 Main St, Springfield, IL 62704
+wellformed|100 MAIN ST SPRINGFIELD IL 62704
+wellformed|100 main st springfield il 62704
+wellformed|100 Main St, Springfield, IL 62704, USA
+wellformed|100 Main Street Ext, Springfield, IL
+wellformed|Main St & Oak Ave, Springfield, IL 62704
+wellformed|Springfield
+wellformed|62704
+wellformed|   100   Main St   ,  Springfield  ,  IL  62704  

@@ -7,7 +7,7 @@
 | What the project is, layout | [`../README.md`](../README.md) |
 | Fairness rules and method | [`../METHODOLOGY.md`](../METHODOLOGY.md) |
 | Label schema and conventions | [`../schema/README.md`](../schema/README.md) |
-| Adapters and how to add a parser | [`../adapters/README.md`](../adapters/README.md) |
+| Adapters, the conformance test, how to add a parser, the pinned libpostal build | [`../adapters/README.md`](../adapters/README.md) |
 | Sets and manifests | [`../sets/README.md`](../sets/README.md) |
 | Scoring and the Parser Score | [`../scorer/README.md`](../scorer/README.md) |
 

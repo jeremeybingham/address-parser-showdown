@@ -1,0 +1,27 @@
+# libpostal (Senzing model; `parse_address` labels) to the canonical schema.
+# Source: the libpostal README's list of parser labels. libpostal does not split a street, a unit or a PO box, so those
+# map to their coarse fields. Decisions (overrule any): `suburb` and `city_district` are read as part of the city (a
+# neighborhood written where the city goes); `level`, `staircase` and `entrance` are units; `house` (a venue name) is a
+# building name; labels for places above a US state or below a city that the schema does not hold are `other`.
+
+[labels]
+house = "building_name"
+category = "other"
+near = "other"
+house_number = "house_number"
+road = "street"
+unit = "unit"
+level = "unit"
+staircase = "unit"
+entrance = "unit"
+po_box = "po_box"
+postcode = "postal_code"
+suburb = "city"
+city_district = "city"
+city = "city"
+island = "other"
+state_district = "other"
+state = "state"
+country_region = "other"
+country = "country"
+world_region = "other"
