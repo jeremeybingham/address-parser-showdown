@@ -22,3 +22,6 @@ node_modules/
 
 # Private data
 local-data/
+
+# Converted sets and prediction files (rebuilt by tools/sets/; checksums in each MANIFEST.md)
+build/
