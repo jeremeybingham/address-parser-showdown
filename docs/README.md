@@ -12,6 +12,7 @@
 | Sets and manifests | [`../sets/README.md`](../sets/README.md) |
 | Converting the existing sets, running the adapters on them | [`../tools/sets/README.md`](../tools/sets/README.md) |
 | Scoring and the Parser Score | [`../scorer/README.md`](../scorer/README.md) |
+| Round 8 (`nightmare`) survey: covered and adjacent variants per class (issue #22) | [`research/nightmare-survey.md`](research/nightmare-survey.md) |
 
 ## When you change something, check these
 
