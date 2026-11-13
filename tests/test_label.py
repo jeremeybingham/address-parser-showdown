@@ -77,7 +77,14 @@ def test_save_load_export(dirs):
         log_dir=logs,
     )
     counts = store.export_round(1, tmp_gold, rounds, logs)
-    assert counts == {"round": 1, "cards": 2, "doubtful": 0, "with_alternatives": 1, "adjudicated_saves": 0}
+    assert counts == {
+        "round": 1,
+        "cards": 2,
+        "doubtful": 0,
+        "flagged": 0,
+        "with_alternatives": 1,
+        "adjudicated_saves": 0,
+    }
     rows = [json.loads(x) for x in (tmp_gold / "round-1.jsonl").read_text().splitlines()]
     assert rows[1]["alternatives"][0]["labels"] == ["building_name", "street_name"]
 

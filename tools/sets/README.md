@@ -21,6 +21,7 @@ files hold `native` spans (the parser's own labels), canonical `spans` and `erro
 
 | Set | Converter | Source |
 |---|---|---|
+| [golden set](../../sets/golden/MANIFEST.md) | `golden.py` | the exported gold rounds `sets/golden/gold/`; `part` is the tier (`tools/golden/tiers.py`) |
 | [doorplate suite v1](../../sets/doorplate-suite/MANIFEST.md) | `doorplate_suite.py` | a doorplate checkout or `--fetch` (2 MB, pinned commit) |
 | [usaddress tests](../../sets/usaddress-tests/MANIFEST.md) | `usaddress_tests.py` | usaddress's `measure_performance/test_data/` (six files, MIT), `$USADDRESS_TESTS` |
 | [libpostal `test_us_parses`](../../sets/libpostal-us/MANIFEST.md) | `libpostal_us.py` | `test/test_parser.c` of the pinned clone, `$LIBPOSTAL_HOME` (read, not copied) |

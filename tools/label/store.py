@@ -42,6 +42,9 @@ def key_map() -> dict[str, str]:
     return dict(zip(KEYS, leaves, strict=False))
 
 
+FLAGS = ("non_address", "ambiguous")  # a card with no right reading (COMPOSITION.md, "Difficulty tiers")
+
+
 class CardError(ValueError):
     """A card that cannot be saved. Messages never quote the text."""
 
@@ -81,6 +84,15 @@ def check_alternatives(text: str, alts: list) -> list[dict]:
     return out
 
 
+def check_flag(flag) -> str | None:
+    """`non_address` (gold: no fields), `ambiguous` (every accepted reading listed as alternatives) or none."""
+    if flag in (None, ""):
+        return None
+    if flag not in FLAGS:
+        raise CardError("unknown flag")
+    return flag
+
+
 def load_round(n: int, rounds_dir: Path = ROUNDS) -> list[dict]:
     """The unlabeled records of round `n` (`{id, text}`)."""
     path = rounds_dir / f"round-{n}.jsonl"
@@ -113,6 +125,7 @@ def save_card(n: int, card: dict, payload: dict, *, phase: str = "label", log_di
         "spans": spans,
         "alternatives": check_alternatives(text, payload.get("alternatives", [])),
         "doubtful": bool(payload.get("doubtful", False)),
+        "flag": check_flag(payload.get("flag")),
         "ms": max(0, int(payload.get("ms", 0))),
         "keys": max(0, int(payload.get("keys", 0))),
         "ts": int(time.time()),
@@ -131,7 +144,7 @@ def gold_cards(n: int, rounds_dir: Path = ROUNDS, log_dir: Path = LOG_DIR) -> li
         got = saved.get(rec["id"])
         out.append(
             {**rec, "labeled": got is not None}
-            | ({k: got[k] for k in ("spans", "alternatives", "doubtful", "phase")} if got else {})
+            | ({k: got.get(k) for k in ("spans", "alternatives", "doubtful", "flag", "phase")} if got else {})
         )
     return out
 
@@ -144,17 +157,16 @@ def export_round(n: int, gold_dir: Path = GOLD_DIR, rounds_dir: Path = ROUNDS, l
         raise CardError(f"round {n}: {missing} of {len(cards)} cards are not labeled")
     gold_dir.mkdir(parents=True, exist_ok=True)
     with (gold_dir / f"round-{n}.jsonl").open("w") as f:
+        keys = ("id", "text", "spans", "alternatives", "doubtful", "flag")
         for c in cards:
-            f.write(
-                json.dumps({k: c[k] for k in ("id", "text", "spans", "alternatives", "doubtful")}, ensure_ascii=False)
-                + "\n"
-            )
+            f.write(json.dumps({k: c[k] for k in keys}, ensure_ascii=False) + "\n")
     saved = load_log(n, log_dir)
     changed = sum(1 for c in cards if saved[c["id"]]["phase"] == "adjudicate")
     return {
         "round": n,
         "cards": len(cards),
         "doubtful": sum(c["doubtful"] for c in cards),
+        "flagged": sum(bool(c["flag"]) for c in cards),
         "with_alternatives": sum(bool(c["alternatives"]) for c in cards),
         "adjudicated_saves": changed,
     }

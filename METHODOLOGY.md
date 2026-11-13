@@ -43,7 +43,8 @@
 
 Each golden record has a tier (`normal`, `hard`, `nightmare`) fixed by its shape class before any scored run; no parser's
 output places a record in a tier. `normal` has a 100% ceiling, proved by checking that every gold label maps into all
-three parsers' mapping files, not by running a parser. `nightmare` shape classes come at most half from doorplate's own
+three parsers' mapping files, not by running a parser. A public record's shape class is read from its gold fields
+(blind labeling), a template's from the shape it was written from (`tools/golden/tiers.py`). `nightmare` shape classes come at most half from doorplate's own
 rule research (the author's parser would otherwise be favored by construction) and at least half from outside it, and the
 manifest states the split. Non-address and ambiguous records are reported apart and are not in the tier figures or the
 Parser Score. Tiers are reported apart, never averaged by record count. The rules and sizes are in

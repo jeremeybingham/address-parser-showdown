@@ -54,6 +54,27 @@ fixed by the record's shape class by a script, before any scored run, and never 
 
 Each tier has at least about 300 records (95% interval about plus or minus five points).
 
+### Shape classes and the tagger (added 2026-11-13)
+
+The class-to-tier table is `CLASSES` in `tools/golden/tiers.py`, committed before rounds 7 and 8 are drawn. In short:
+
+- `normal`: `street-plain`, `ordinary`, `street-unit`, `directional`, `number-letter`, `po-box`, `highway`.
+- `hard`: `fraction`, `hyphen-number`, `rural-route`, `care-of`, `general-delivery`, `typo`, `box-and-street`,
+  `named-place`, `no-street`; added in round 7: `typo-glued`, `typo-type`, `zip4-plain`, `state-spelled`, `two-units`,
+  `pre-type`, `non-address-hard`.
+- `nightmare` (round 8): 7 classes from doorplate's rule research (`second-number`, `letter-before-street`,
+  `no-so-direction`, `county-road-compass`, `zip4-cut`, `unit-before-street`, `paren-unit`) and 8 from outside it
+  (`military`, `urbanization`, `grid`, `spelled-number`, `intersection`, `highway-lettered`, `milepost`,
+  `non-address-nightmare`). The record share of each side is fixed with the round 8 weights and stated in the manifest.
+
+A template record's class is the shape it was written from; the typo modifier makes it `typo`. A public or clean record
+has no written shape, so its class is read from its **gold** fields (`class_from_gold`: a route, a box, a box with a
+street, a name the schema scores for nobody, two units, a number prefix or suffix, a unit, a directional, else plain).
+Gold is blind labeling, so no parser output enters. Then the `normal` check: the gold uses core fields only, each one is
+in all three mapping files, the card is not `doubtful` and has no flag; otherwise the record moves up to `hard`.
+Measured from provenance alone, the 600 template records of rounds 1 to 6 split 431 `normal` and 169 `hard` before the
+check.
+
 ### Rules
 
 - **The shape-class table is committed before the added rounds are drawn** (`tools/golden/tiers.py`): each class names its
