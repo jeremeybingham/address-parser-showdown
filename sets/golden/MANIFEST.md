@@ -13,7 +13,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 - `round-4.jsonl`: `d712bdc52bf6ff241a27cefcfbd4489846968887f5357702fb1b07c1be5990b8`
 - `round-5.jsonl`: `9a6e4a5572c46538c21d4c2909da0b84d0e0989afaa423dff110da0f14e80260`
 - `round-6.jsonl`: `94d1d7f82b5b3fa9506265620b27dd95e07b1d12a174bf332c371b4a7498f55b`
-- `provenance.jsonl`: `2017d1a9cbf949f3cf4782fb1af798da24ac13e2df588b5ed5582dd3178caefd`
+- `provenance.jsonl` (all rounds, current): `39fec47656c966b125fad826daebb66802718e53ad536cbff7ac121a2187f5de`
 
 ## Records by stratum
 
@@ -85,6 +85,36 @@ locations; passes. Strings read per location:
 Candidates dropped while drawing (counts only): {"fcc-amateur:duplicate": 5, "fcc-amateur:leak-or-unfaithful": 9, "fmcsa:duplicate": 46, "fmcsa:leak-or-unfaithful": 16, "nad:duplicate": 1, "nad:leak-or-unfaithful": 112, "ny-corps:duplicate": 17, "ny-corps:leak-or-unfaithful": 28, "tdlr:duplicate": 11, "tdlr:leak-or-unfaithful": 9, "template:excluded": 9, "va-scc:duplicate": 28, "va-scc:leak-or-unfaithful": 45}.
 libpostal's training data is not on disk here and could not be checked; its test sources under `src/test` were.
 
+<!-- round-7 begin -->
+## Round 7 (`hard`, added)
+
+Seed 20261114, drawn by `tools/golden/hard.py`: 299 unlabeled records in 16 `hard` classes (sizes in `SIZE`: 30 for each
+of the six added shape classes, 20 for the non-addresses, 11 for each of nine base `hard` classes). Every string is
+invented; city, state and ZIP are real. The class is the shape the string was written from, never a parser run.
+
+- `round-7.jsonl`: `803ec5d8076d9cbaafcb3af4635e2c26684e272cbd16717c8e096e04cdc11c6e`
+- `provenance.jsonl` (all rounds): `39fec47656c966b125fad826daebb66802718e53ad536cbff7ac121a2187f5de`
+
+| Class | Records |
+|---|---|
+| box-and-street | 11 |
+| care-of | 11 |
+| fraction | 11 |
+| general-delivery | 11 |
+| hyphen-number | 11 |
+| named-place | 11 |
+| no-street | 11 |
+| non-address-hard | 20 |
+| pre-type | 30 |
+| rural-route | 11 |
+| state-spelled | 30 |
+| two-units | 30 |
+| typo | 11 |
+| typo-glued | 30 |
+| typo-type | 30 |
+| zip4-plain | 30 |
+<!-- round-7 end -->
+
 <!-- round-8 begin -->
 ## Round 8 (`nightmare`, issue #22)
 
@@ -93,7 +123,7 @@ for 18 paired classes (cell sizes in `SIZE`, equal for the two variants of a cla
 wrote the string, never by a parser run (`COMPOSITION.md`, "`nightmare` classes are paired").
 
 - `round-8.jsonl`: `212a194f599060af6c7fec4207409a54a8c4fd416806dd2b130e3a4ef08c380a`
-- `provenance.jsonl` (all rounds, with `variant` and `tracker` on round 8): `2cad3f542c7a3e671bb7b0462e1357e2fd1892800a5779f655e05a823f46a5a7`
+- `provenance.jsonl` (all rounds, with `variant` and `tracker` on round 8): `39fec47656c966b125fad826daebb66802718e53ad536cbff7ac121a2187f5de`
 
 | Share | Records |
 |---|---|

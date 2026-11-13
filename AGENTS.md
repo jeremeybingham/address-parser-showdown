@@ -28,6 +28,7 @@ uv run python tools/golden/sample.py --confirm --real   # the same draw unmasked
 uv run python -m tools.golden.derive N          # private gold of round N -> shipped gold with invented values
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
+uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
 uv run python -m tools.golden.nightmare      # round 8 (nightmare) dry run; --confirm draws, --confirm --twin the private twin, --check redraws and compares
 uv run python -m tools.sets.golden            # the exported gold -> build/sets/golden.jsonl.gz, part = tier
 uv run python -m tools.sets.doorplate_suite      # convert a set to build/sets/ (one module per set; see tools/sets/README.md)
