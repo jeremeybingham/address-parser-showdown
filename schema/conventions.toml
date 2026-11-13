@@ -1,0 +1,8 @@
+# Conventions: places where reasonable readings differ and the gold accepts each reading (METHODOLOGY.md).
+# The list is fixed before the first scored run. An empty list is allowed; no entry is made without a source.
+#
+# [[convention]]
+# id = "letter-after-number"
+# question = "What is the B in `123 B ELM ST`?"
+# readings = ["house_number_suffix", "unit_value", "street_name"]   # canonical labels the gold accepts for the span
+# source = "where the readings come from (Pub 28 section, a parser's docs or training data)"

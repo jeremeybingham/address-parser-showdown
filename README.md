@@ -4,10 +4,10 @@ A neutral, repeatable comparison of US address parsers: [doorplate](https://gith
 [usaddress](https://github.com/datamade/usaddress) and [libpostal](https://github.com/openvenues/libpostal) to start
 with, and any other parser that supplies an adapter.
 
-> **Status: shell.** Nothing is scored yet. The plan and the v0.1.0 tracker are in the repository's issues
+> **Status: early.** The schema, adapters and environment are in place (step 1); nothing is scored yet. The plan and the v0.1.0 tracker are in the repository's issues
 > (milestone **v0.1.0**); the rules that keep the comparison fair are in [`METHODOLOGY.md`](METHODOLOGY.md).
 
-## What it will hold
+## What it holds, and will hold
 
 | Folder | What |
 |---|---|

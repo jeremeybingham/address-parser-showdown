@@ -22,6 +22,7 @@ parser, and it does not validate that an address exists.
 ```sh
 tools/check.sh            # the whole local gate (ruff, pytest); run before finishing any change
 uv sync                   # the Python environment
+tools/libpostal/build.sh  # the pinned libpostal build (about 3 GB; needs a go-ahead); `--verify` checks an existing one
 just all                  # the full pinned run (not written yet)
 ```
 
@@ -38,6 +39,7 @@ just all                  # the full pinned run (not written yet)
 
 ## Where things are
 
-`schema/` label schema and conventions; `adapters/` one module per parser; `sets/` test sets and manifests; `scorer/`
+`schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
+`adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
 scoring; `runs/` prediction files and results per run; `report/` the report; `tests/` pytest; `tools/` scripts
 (`check.sh`); `docs/` documentation index; `local-data/` private data (git-ignored).
