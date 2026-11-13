@@ -3,11 +3,14 @@
 <title>Golden set labeling</title>
 <style>
   body { font: 16px system-ui, sans-serif; margin: 1.5rem auto; max-width: 62rem; padding: 0 1rem; }
-  #text { font: 26px/3.2 ui-monospace, monospace; user-select: none; margin: 1rem 0; }
-  .c { cursor: text; padding: 4px 0; }
+  #text { font: 26px/1.5 ui-monospace, monospace; user-select: none; margin: 1.5rem 0; }
+  .c { cursor: text; padding: 4px 0; display: inline-block; }
   .sel { background: #cde; }
-  .sp { display: inline-block; position: relative; border-bottom: 4px solid var(--col); }
-  .sp::after { content: attr(data-l); position: absolute; left: 0; top: 100%; font: 11px system-ui; color: #444; white-space: nowrap; }
+  /* a labeled span is a column: the words (faded), a thick bar, then the label, so wide labels push neighbours apart */
+  .sp { display: inline-flex; flex-direction: column; vertical-align: top; margin: 0 3px 1.4rem; }
+  .sp .t { opacity: .5; border-bottom: 8px solid var(--col); }
+  .sp .lab { font: bold 13px/1.3 system-ui; color: var(--col); filter: brightness(.75); padding-top: 3px; white-space: nowrap; }
+  .w { white-space: nowrap; }
   .alt { border-bottom-style: dotted; }
   #pal button { margin: 2px; font-size: 13px; }
   #pal kbd { background: #eee; border: 1px solid #aaa; border-radius: 3px; padding: 0 4px; margin-right: 4px; }
@@ -57,15 +60,21 @@ function show() {
 function render() {
   const t = card().text, at = new Array(t.length).fill(null), alt = new Array(t.length).fill(null);
   SPANS.forEach(([s, e, l], k) => { for (let i = s; i < e; i++) at[i] = k; });
-  let h = '';
+  let h = '', inW = false; // unlabeled characters are grouped into words so a line never breaks inside one
   for (let i = 0; i < t.length;) {
     const k = at[i];
-    if (k === null) { h += ch(i, t); i++; continue; }
+    if (k === null) {
+      const w = t[i] !== ' ';
+      if (w && !inW) h += '<span class="w">'; else if (!w && inW) h += '</span>';
+      inW = w; h += ch(i, t); i++; continue;
+    }
+    if (inW) { h += '</span>'; inW = false; }
     const [s, e, l] = SPANS[k];
-    h += `<span class="sp" data-l="${l}" style="--col:${hue(l)}">`;
+    h += `<span class="sp" style="--col:${hue(l)}"><span class="t">`;
     for (let j = s; j < e; j++) h += ch(j, t);
-    h += '</span>'; i = e;
+    h += `</span><span class="lab">${l}</span></span>`; i = e;
   }
+  if (inW) h += '</span>';
   $('text').innerHTML = h;
   $('q').innerHTML = (card().questions ? '<b>Another reading exists for these (keep yours, or label the span as shown):</b><ul>' +
     card().questions.map(q => `<li class="${SEL && SEL[0] == q.start && SEL[1] == q.end ? 'on' : ''}">
