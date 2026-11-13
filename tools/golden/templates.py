@@ -34,7 +34,7 @@ ONSETS = [
     "w",
 ]
 VOWELS = ["a", "e", "i", "o", "u", "ae", "ia", "ou"]
-CODAS = ["", "", "l", "n", "r", "s", "t", "m", "nd", "rk", "ll"]
+CODAS = ["", "", "", "l", "n", "r", "s", "t", "m"]
 TYPES = [  # (full, usps abbreviation)
     ("Street", "St"),
     ("Avenue", "Ave"),
@@ -84,7 +84,7 @@ def read_places(path) -> list[tuple[str, str, str]]:
 
 
 def name(r: random.Random) -> str:
-    word = "".join(r.choice(ONSETS) + r.choice(VOWELS) + r.choice(CODAS) for _ in range(r.choice([2, 2, 3])))
+    word = "".join(r.choice(ONSETS) + r.choice(VOWELS) + r.choice(CODAS) for _ in range(r.choice([2, 2, 2, 3])))
     return word.capitalize()
 
 

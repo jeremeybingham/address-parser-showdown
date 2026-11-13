@@ -37,5 +37,14 @@
   (`tools/libpostal/pins.env`).
 
 ## Sections to come
-- How the golden set is sampled, labeled and adjudicated (`sets/golden/`).
+- How the golden set is labeled and adjudicated (`sets/golden/`).
+
+## How the golden set is sampled
+
+About 1,500 records in six rounds of 250: 40% drawn at random from public-record sources and anonymized, 40% from hand
+templates with invented values, 20% clean ordinary forms (`sets/golden/COMPOSITION.md`, fixed before any draw). Records
+are picked by a seeded hash and the strata are fixed by shape and source, never by where parsers disagree. No parser is
+run on a candidate. Every record is checked by string against doorplate's corpus, the benchmark suite, usaddress's
+training files, libpostal's test sources and the geocode benchmark (`tools/golden/sample.py --check`). A private twin
+with the same recipe and an unpublished seed is kept outside this repository to catch tuning to the public set.
 - The scoring and the Parser Score formula (`scorer/`), merged before the first scored run.

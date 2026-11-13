@@ -162,7 +162,14 @@ SAFE = {  # words the anonymizer may keep (they decide how a line parses); anyth
 # private sources: name -> (parquet, street columns, city, state, zip)
 MESSY = {
     "fmcsa": ("local-data/fmcsa-census-2026/records.parquet", ["line1", "line2"], "city", "state", "zip"),
-    "tdlr": ("local-data/tx-tdlr-2026/records.parquet", ["line1", "line2"], "city", "state", "zip"),
+    # TDLR has one `last_line` field ("CITY, ST 12345"); the three parts are cut out of it in SQL
+    "tdlr": (
+        "local-data/tx-tdlr-2026/records.parquet",
+        ["line1", "line2"],
+        "regexp_extract(last_line, '^(.*?),?\\s+([A-Za-z]{2})\\s+([0-9]{5})', 1)",
+        "regexp_extract(last_line, '^(.*?),?\\s+([A-Za-z]{2})\\s+([0-9]{5})', 2)",
+        "regexp_extract(last_line, '^(.*?),?\\s+([A-Za-z]{2})\\s+([0-9]{5})', 3)",
+    ),
     "va-scc": ("local-data/va-scc-2026/records.parquet", ["line1", "line2"], "city", "state", "zip"),
     "ny-corps": ("local-data/ny-corps-2026/records.parquet", ["line1", "line2"], "city", "state", "zip"),
     "fcc-amateur": ("local-data/fcc-uls-amateur-2026/en_addr.parquet", ["street_address"], "city", "state", "zip_code"),
