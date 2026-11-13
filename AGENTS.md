@@ -27,6 +27,7 @@ uv run python tools/golden/sample.py --check   # the exclusion string check on t
 uv run python tools/golden/sample.py --confirm --real   # the same draw unmasked, for labeling (local-data/golden-real/)
 uv run python tools/golden/sample.py --restore   # round 9 (rows the anonymizer filter dropped): dry run; --confirm writes; --twin the twin
 uv run python -m tools.golden.derive N          # private gold of round N -> shipped gold with invented values
+uv run python -m tools.golden.sba            # round 10 (SBA PPP loans of $150K and over, as written): dry run; --confirm writes the private cards
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
 uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
