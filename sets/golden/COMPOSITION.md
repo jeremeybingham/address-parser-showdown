@@ -18,12 +18,17 @@
 > likely the rarer street types and unit words). Cards are labeled on the row's own text and `derive.py` makes the shipped
 > text, so the filter is no longer needed, and each stratum becomes a plain random sample of its source after the stated
 > duplicate and exclusion filters. The 219 rows the walk dropped (NAD 112, VA SCC 45, NY corps 28, FMCSA 16, TDLR 9, FCC
-> amateur 9) are taken in the same hash order with the same style rule (own random generator; no anonymizer call on them);
+> amateur 9) are taken in the same hash order (own random generator; no anonymizer call on them);
 > the duplicate and exclusion drops stay, which leaves 177 (`MANIFEST.md`). A restored row keeps the stratum and source of
 > its walk and has `restored: true` in `provenance.jsonl`, so the report can show the public stratum with and without them.
 > No text of round 9 ships until `derive.py` has made it from the labels; a card it holds back (a real word left outside a
 > kept label) is counted in `MANIFEST.md`, so the remaining bias is visible. The anonymization rule below applies to rounds 1
 > to 6 only.
+>
+> **Round 9 text (issue #26, item 3, decided 2026-11-13):** a restored row of a messy source (FMCSA, TDLR, VA SCC, NY
+> corps, FCC amateur) keeps the source's own city, state and ZIP (case, ZIP+4) and gets no dice style (`style` is
+> `as-written`); NAD rows keep the draw's style rule. Why: no record in rounds 1 to 6 has an as-written last line, so the set
+> never tested one. Rounds 1 to 6 stay as drawn and labeled (no relabel).
 
 Step 2 of the plan (issue #3). This page and `tools/golden/sample.py` are committed before any record is drawn or
 labeled. A later change is a PR that says why and is listed in the report.

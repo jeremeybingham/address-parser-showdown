@@ -56,10 +56,32 @@ def test_leak_guard_and_deal():
 def test_restore_keeps_its_own_generator_and_drops_duplicates():
     kept = [{"real": "1 Elm Street, Reno, NV 89501"}]
     skipped = [
-        {"stratum": "public", "source": "nad", "shape": "as-found", "force": None, "row": (st, "Reno", "NV", "89501")}
+        {
+            "stratum": "public",
+            "source": "nad",
+            "shape": "as-found",
+            "force": None,
+            "row": (st, "Reno", "NV", "89501"),
+            "raw": None,
+        }
         for st in ("1 ELM STREET", "2 Oak Road", "3 Pine Lane")
     ]
     a, drop = sample.restore(skipped, kept, 5, set())
     b, _ = sample.restore(skipped, kept, 5, set())
     assert a == b and len(a) == 2 and all(x["restored"] for x in a)
     assert drop == {"nad:duplicate": 1}
+
+
+def test_restore_messy_rows_keep_the_sources_own_last_line():
+    skipped = [
+        {
+            "stratum": "public",
+            "source": "fmcsa",
+            "shape": "as-found",
+            "force": None,
+            "row": ("9 OAK RD", "Reno", "NV", "89501"),
+            "raw": ("RENO", "nv", "89501-1234"),
+        }
+    ]
+    out, _ = sample.restore(skipped, [], 5, set())
+    assert out[0]["text"] == "9 OAK RD, RENO, nv 89501-1234" and out[0]["style"] == "as-written"

@@ -250,7 +250,7 @@ def draw_nad(con, root: Path, seed: int, k: int, clean: bool):
         if st not in STATES:
             continue
         parts = [num, name] + [x for x in (bld, floor, unit, room, sub) if x]
-        out.append((" ".join(p.strip() for p in parts if p.strip()), city.strip().title(), st, zipc[:5]))
+        out.append((" ".join(p.strip() for p in parts if p.strip()), city.strip().title(), st, zipc[:5], None))
     return out
 
 
@@ -265,7 +265,8 @@ def draw_messy(con, root: Path, source: str, seed: int, k: int):
     out = []
     for r in rows:
         street = ", ".join(x.strip() for x in r[: len(scols)] if x.strip())
-        out.append((street, r[-3].strip().title(), r[-2].upper(), r[-1][:5]))
+        raw = (r[-3].strip(), r[-2].strip(), r[-1].strip())  # the source's own city, state and ZIP (kept in round 9)
+        out.append((street, r[-3].strip().title(), r[-2].upper(), r[-1][:5], raw))
     return out
 
 
@@ -296,7 +297,7 @@ def build(root: Path, seed: int, banned: set[str], skipped: list[dict] | None = 
     def take(stratum, source, rows, want, shape, force_style=None):
         streets = anonymize([x[0] for x in rows], seed)
         n = 0
-        for (street, city, st, z), anon in zip(rows, streets, strict=True):
+        for (street, city, st, z, raw), anon in zip(rows, streets, strict=True):
             if n >= want:
                 break
             if anon is None:
@@ -309,6 +310,7 @@ def build(root: Path, seed: int, banned: set[str], skipped: list[dict] | None = 
                             "shape": shape,
                             "force": force_style,
                             "row": (street, city, st, z),
+                            "raw": raw,
                         }
                     )
                 continue
@@ -344,6 +346,9 @@ def build(root: Path, seed: int, banned: set[str], skipped: list[dict] | None = 
 def restore(skipped: list[dict], recs: list[dict], seed: int, banned: set[str]):
     """Round 9: the rows the walk dropped as leak-or-unfaithful, on their own text (no anonymizer call here).
 
+    A row of a messy source keeps the source's own city, state and ZIP (case, ZIP+4) and gets no dice style (`as-written`);
+    NAD rows keep the draw's style rule.
+
     Own random generator, so rounds 1 to 6 are untouched. Duplicates (of a kept row's own text or of each other) and
     exclusion-corpus hits are dropped as before; they are not parser behavior. Returns (records, dropped counts)."""
     r = random.Random(seed + 9)
@@ -351,8 +356,11 @@ def restore(skipped: list[dict], recs: list[dict], seed: int, banned: set[str]):
     out, dropped = [], collections.Counter()
     for x in skipped:
         street, city, st, z = x["row"]
-        sty = x["force"] or weighted(r, STYLES)
-        text, _ = style(r, street, city, st, z, sty)
+        if x["raw"]:  # a messy source: the line as the source has it (case, ZIP+4), no dice style (issue #26, item 3)
+            text, sty = f"{street}, {x['raw'][0]}, {x['raw'][1]} {x['raw'][2]}", "as-written"
+        else:
+            sty = x["force"] or weighted(r, STYLES)
+            text, _ = style(r, street, city, st, z, sty)
         k = exclusions.norm(text)
         if k in seen:
             dropped[f"{x['source']}:duplicate"] += 1
@@ -471,8 +479,9 @@ def restore_round(
 ## Round 9 (restored rows, issue #26)
 
 Seed {seed}, drawn by `tools/golden/sample.py --restore`: {len(rrecs)} unlabeled records, the rows the seed-{seed} walk
-dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order and with the same style rule, and
-no anonymizer call on them. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
+dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order, and
+no anonymizer call on them. A row of a messy source keeps the source's own city, state and ZIP (case, ZIP+4) with no dice
+style (style `as-written`, issue #26 item 3); NAD rows keep the draw's style rule. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
 exclusion-corpus drops stay: {json.dumps(dict(sorted(rdrop.items())))}. Each record keeps the stratum and source of its
 walk and has `restored: true` in `provenance.jsonl`.
 
