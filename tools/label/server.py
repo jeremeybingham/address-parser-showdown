@@ -40,8 +40,11 @@ class App:
         out = []
         if self.mode == "label":
             n = self.rounds[0]
-            for c in store.gold_cards(n, self.rounds_dir, self.log_dir):
-                out.append({**c, "round": n})
+            cards = [
+                {**c, "round": n, "n": i + 1} for i, c in enumerate(store.gold_cards(n, self.rounds_dir, self.log_dir))
+            ]
+            # undone cards first (in round order), then the labeled ones for review
+            out = [c for c in cards if not c["labeled"]] + [c for c in cards if c["labeled"]]
         else:
             for q in self.queue:
                 n = q["round"]

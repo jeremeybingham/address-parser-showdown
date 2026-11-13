@@ -1,5 +1,11 @@
 # Golden set: composition (fixed before any labeling)
 
+> **Amended 2026-11-13 (labeling on the unmasked text):** the same cards (same seed, same draw, same ids; the redraw
+> reproduced the committed rounds byte for byte) are now labeled on the row's own text, kept in the git-ignored
+> `local-data/`, so a hard card can be checked on a map. The shipped text is then made from the labels (see
+> "Anonymization"). Why: on the anonymized text the owner could not check a hard card, so its gold would be a guess. 13
+> saves had been made; the 7 on public-record cards are labeled again.
+>
 > **Amended 2026-11-13 (issue #14):** difficulty tiers, added after labeling of round 1 began (15 saves; none of the
 > sample, the draw or the seed changed). Rounds 1 to 6 below are unchanged; the new section "Difficulty tiers" is an
 > addition, and rounds 7 and 8 hold the added `hard` and `nightmare` records. Why: the plan needs a tier with a 100%
@@ -31,15 +37,25 @@ general delivery, plain street. Modifiers: none, one-character typo, UPPER, lowe
   pass the filters are kept. No parser is run on a candidate. (A disagreement-driven pick is what made the benchmark
   suite's `hard` stratum unfair to a third parser.)
 - **Public seed: 20261112.** The private twin uses an unpublished seed with the same recipe.
-- **Anonymization:** house numbers, unit values and street names are replaced by invented ones with doorplate's
+- **Anonymization (draw):** house numbers, unit values and street names are replaced by invented ones with doorplate's
   `Anonymizer` (it keeps suffixes, directionals and unit words, so the shape survives); city, state and the five-digit ZIP
   are the real ones from the row. A record is dropped if the anonymizer changed how the line parses, or kept any word of
-  four letters or more that is not a street type, directional or unit word.
+  four letters or more that is not a street type, directional or unit word. This text is `sets/golden/rounds/`; it fixes
+  which records are in the set, and it is not what is labeled (amendment above).
+- **Anonymization (shipped gold, `tools/golden/derive.py`):** labeling is done on the row's own text. For each labeled
+  public-record card, the text inside the gold spans of house number, street name, unit, PO box and route values,
+  recipient, building name and `other` is replaced by invented text of the same length and shape (digits by digits,
+  words by invented words in the same case; street types, directionals, unit words and runs of one or two letters
+  stay). The spans are the hand gold unchanged. A `non_address` card has its whole text replaced. A card is held back
+  if a real word of four letters or more is left outside a type, direction, city, state or country label, or if the
+  text matches an exclusion corpus after five tries. No parser is run in this step. A real typo inside a replaced value
+  is not kept (a typo in a type, a city or the spacing is).
 - **Exclusions:** a candidate whose text, or whose street line, matches (lowercase, letters and digits only) a string in any
   of these is dropped: doorplate's regression corpus and external test files, the benchmark suite v1, usaddress's training
   files, libpostal's test sources, the geocode benchmark. `tools/golden/sample.py --check` re-runs the check on the
-  committed rounds. libpostal's training data is not on disk and cannot be checked.
-- **Sources are public records** (see each `NOTICE.md` in doorplate's `local-data/`); only anonymized text ships.
+  committed rounds and the shipped gold. libpostal's training data is not on disk and cannot be checked.
+- **Sources are public records** (see each `NOTICE.md` in doorplate's `local-data/`); only invented or anonymized text ships; the row's own
+  text stays in `local-data/`.
 
 ## Difficulty tiers (added 2026-11-13, issue #14)
 

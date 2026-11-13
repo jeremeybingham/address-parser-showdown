@@ -6,8 +6,13 @@ blind. Only `adjudicate.py` runs parsers, and only after a round is fully labele
 A card's spans are `[start, end, label]` over the card text, with canonical *leaf* labels (the fine part where a field
 has fine parts, the coarse label otherwise). Text with no span is unlabeled. `alternatives` lists extra readings the
 gold accepts for a span: `{"start", "end", "labels": [...]}` (the conventions in `schema/conventions.toml`, per card).
+
+Labeling is done on the unmasked text (`local-data/golden-real/rounds/`, written by `tools/golden/sample.py --real`),
+so a hard card can be looked up on a map. The gold export stays in `local-data/golden-real/gold/`; only
+`tools/golden/derive.py` writes the shipped gold, with invented values in place of the private ones.
 """
 
+import hashlib
 import json
 import time
 from pathlib import Path
@@ -15,9 +20,11 @@ from pathlib import Path
 from schema import labels
 
 ROOT = Path(__file__).resolve().parents[2]
-ROUNDS = ROOT / "sets" / "golden" / "rounds"
+PUBLIC_ROUNDS = ROOT / "sets" / "golden" / "rounds"  # the anonymized draw (committed)
+ROUNDS = ROOT / "local-data" / "golden-real" / "rounds"  # the same cards unmasked: what is labeled (git-ignored)
 LOG_DIR = ROOT / "local-data" / "labels"
-GOLD_DIR = ROOT / "sets" / "golden" / "gold"
+GOLD_DIR = ROOT / "local-data" / "golden-real" / "gold"  # private gold on the unmasked text
+SHIPPED_GOLD_DIR = ROOT / "sets" / "golden" / "gold"  # written by tools/golden/derive.py only
 
 KEYS = "1234567890qwertyuiopasdfgh"
 # The most used labels get the first keys; the rest follow in schema order.
@@ -96,7 +103,14 @@ def check_flag(flag) -> str | None:
 def load_round(n: int, rounds_dir: Path = ROUNDS) -> list[dict]:
     """The unlabeled records of round `n` (`{id, text}`)."""
     path = rounds_dir / f"round-{n}.jsonl"
+    if not path.exists():
+        raise SystemExit(f"{path} is missing; run `uv run python tools/golden/sample.py --confirm --real` first")
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+
+
+def text_hash(text: str) -> str:
+    """Stamped on every save: a save counts only for the text it was made on."""
+    return hashlib.sha256(text.encode()).hexdigest()[:12]
 
 
 def log_path(n: int, log_dir: Path = LOG_DIR) -> Path:
@@ -111,8 +125,19 @@ def load_log(n: int, log_dir: Path = LOG_DIR) -> dict[str, dict]:
         for line in path.read_text().splitlines():
             if line.strip():
                 rec = json.loads(line)
-                latest[rec["id"]] = rec
+                if rec.get("void"):  # a re-queue: the card is unlabeled again (earlier saves stay in the log)
+                    latest.pop(rec["id"], None)
+                else:
+                    latest[rec["id"]] = rec
     return latest
+
+
+def requeue(n: int, ids: list[str], log_dir: Path = LOG_DIR) -> None:
+    """Mark cards of round `n` as unlabeled again by appending a void record for each (the log is never rewritten)."""
+    log_dir.mkdir(parents=True, exist_ok=True)
+    with log_path(n, log_dir).open("a") as f:
+        for cid in ids:
+            f.write(json.dumps({"id": cid, "void": True, "ts": int(time.time())}) + "\n")
 
 
 def save_card(n: int, card: dict, payload: dict, *, phase: str = "label", log_dir: Path = LOG_DIR) -> dict:
@@ -129,6 +154,7 @@ def save_card(n: int, card: dict, payload: dict, *, phase: str = "label", log_di
         "ms": max(0, int(payload.get("ms", 0))),
         "keys": max(0, int(payload.get("keys", 0))),
         "ts": int(time.time()),
+        "th": text_hash(text),
     }
     log_dir.mkdir(parents=True, exist_ok=True)
     with log_path(n, log_dir).open("a") as f:
@@ -136,14 +162,25 @@ def save_card(n: int, card: dict, payload: dict, *, phase: str = "label", log_di
     return rec
 
 
-def gold_cards(n: int, rounds_dir: Path = ROUNDS, log_dir: Path = LOG_DIR) -> list[dict]:
-    """Records of round `n` with their latest labels (unlabeled records have `labeled: false`)."""
+def gold_cards(
+    n: int, rounds_dir: Path = ROUNDS, log_dir: Path = LOG_DIR, legacy_dir: Path = PUBLIC_ROUNDS
+) -> list[dict]:
+    """Records of round `n` with their latest labels (unlabeled records have `labeled: false`).
+
+    A save made on other text (the anonymized text, before labeling moved to the unmasked text) does not count: the card
+    is unlabeled again and `stale: true`. Saves from before the text stamp were made on the round in `legacy_dir`.
+    """
     saved = load_log(n, log_dir)
+    legacy_path = legacy_dir / f"round-{n}.jsonl"
+    legacy = {r["id"]: text_hash(r["text"]) for r in load_round(n, legacy_dir)} if legacy_path.exists() else {}
     out = []
     for rec in load_round(n, rounds_dir):
         got = saved.get(rec["id"])
+        stale = got is not None and got.get("th", legacy.get(rec["id"])) != text_hash(rec["text"])
+        if stale:
+            got = None
         out.append(
-            {**rec, "labeled": got is not None}
+            {**rec, "labeled": got is not None, "stale": stale}
             | ({k: got.get(k) for k in ("spans", "alternatives", "doubtful", "flag", "phase")} if got else {})
         )
     return out
@@ -151,7 +188,7 @@ def gold_cards(n: int, rounds_dir: Path = ROUNDS, log_dir: Path = LOG_DIR) -> li
 
 def export_round(n: int, gold_dir: Path = GOLD_DIR, rounds_dir: Path = ROUNDS, log_dir: Path = LOG_DIR) -> dict:
     """Write the committed gold file of a fully labeled round and return its counts."""
-    cards = gold_cards(n, rounds_dir, log_dir)
+    cards = gold_cards(n, rounds_dir, log_dir, legacy_dir=rounds_dir)
     missing = sum(not c["labeled"] for c in cards)
     if missing:
         raise CardError(f"round {n}: {missing} of {len(cards)} cards are not labeled")
@@ -160,8 +197,7 @@ def export_round(n: int, gold_dir: Path = GOLD_DIR, rounds_dir: Path = ROUNDS, l
         keys = ("id", "text", "spans", "alternatives", "doubtful", "flag")
         for c in cards:
             f.write(json.dumps({k: c[k] for k in keys}, ensure_ascii=False) + "\n")
-    saved = load_log(n, log_dir)
-    changed = sum(1 for c in cards if saved[c["id"]]["phase"] == "adjudicate")
+    changed = sum(1 for c in cards if c["phase"] == "adjudicate")
     return {
         "round": n,
         "cards": len(cards),

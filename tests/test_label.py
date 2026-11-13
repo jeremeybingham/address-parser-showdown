@@ -125,7 +125,9 @@ def test_http_round_trip(dirs):
         assert [c["labeled"] for c in cards] == [False, False] and "spans" not in cards[0]
         body = json.dumps({"round": 1, "id": "a1", "spans": GOOD}).encode()
         assert json.load(urllib.request.urlopen(urllib.request.Request(base + "/api/save", body)))["ok"]
-        assert json.load(urllib.request.urlopen(base + "/api/cards"))[0]["spans"] == GOOD
+        after = json.load(urllib.request.urlopen(base + "/api/cards"))
+        assert [c["id"] for c in after] == ["a2", "a1"]  # the undone card is served first, the labeled one after
+        assert after[1]["spans"] == GOOD and after[1]["n"] == 1
         bad = urllib.request.Request(
             base + "/api/save", json.dumps({"round": 1, "id": "a1", "spans": [[0, 99, "city"]]}).encode()
         )
@@ -147,3 +149,36 @@ def test_alternative_may_be_none():
         "none",
         "unit_type",
     ]
+
+
+def test_a_save_made_on_other_text_is_stale(dirs, tmp_path):
+    rounds, logs = dirs
+    legacy = tmp_path / "legacy"
+    legacy.mkdir()
+    # the anonymized text of a1 differs from the labeled text; a2 is the same in both (a template card)
+    (legacy / "round-1.jsonl").write_text(
+        json.dumps({"id": "a1", "text": "12 N Zub St Apt 4, Tampa, FL 33601"})
+        + "\n"
+        + json.dumps({"id": "a2", "text": "9 Elm Ct, Reno, NV 89501"})
+        + "\n"
+    )
+    old = {"phase": "label", "spans": [], "alternatives": [], "doubtful": False, "flag": None, "ms": 1, "keys": 1}
+    logs.mkdir()
+    (logs / "round-1.jsonl").write_text(json.dumps({"id": "a1", **old}) + "\n" + json.dumps({"id": "a2", **old}) + "\n")
+    cards = {c["id"]: c for c in store.gold_cards(1, rounds, logs, legacy)}
+    assert cards["a1"]["stale"] and not cards["a1"]["labeled"]  # saved before the stamp, on the anonymized text
+    assert cards["a2"]["labeled"] and not cards["a2"]["stale"]
+    store.save_card(1, {"id": "a1", "text": TEXT}, {"spans": GOOD}, log_dir=logs)
+    cards = {c["id"]: c for c in store.gold_cards(1, rounds, logs, legacy)}
+    assert cards["a1"]["labeled"] and cards["a1"]["spans"] == GOOD
+
+
+def test_requeue_makes_a_card_unlabeled_again(dirs):
+    rounds, logs = dirs
+    card = store.load_round(1, rounds)[0]
+    store.save_card(1, card, {"spans": GOOD}, log_dir=logs)
+    assert store.gold_cards(1, rounds, logs)[0]["labeled"]
+    store.requeue(1, [card["id"]], log_dir=logs)
+    assert not store.gold_cards(1, rounds, logs)[0]["labeled"]
+    store.save_card(1, card, {"spans": GOOD}, log_dir=logs)  # and it can be labeled again
+    assert store.gold_cards(1, rounds, logs)[0]["labeled"]

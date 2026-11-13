@@ -5,11 +5,16 @@
     uv run python tools/golden/sample.py --confirm    # writes sets/golden/ (the public set, seed in COMPOSITION.md)
     uv run python tools/golden/sample.py --confirm --twin   # the private twin, an unpublished seed, in doorplate's local-data
     uv run python tools/golden/sample.py --check      # re-runs the exclusion string check on the committed rounds
+    uv run python tools/golden/sample.py --confirm --real   # the same draw unmasked, for labeling (local-data/golden-real/)
 
 The composition is in `sets/golden/COMPOSITION.md` and the constants below; both are fixed before any labeling. Records are
 drawn by a seeded hash (never by what a parser does with them), anonymized, checked against every exclusion corpus and
 dealt into rounds so each round has the same mix. Maintainers only: it reads the private data in doorplate's
 `local-data/`. It prints counts and shapes, never a record.
+
+`--real` redoes the draw, checks that it reproduces the committed rounds byte for byte, and writes the same cards with
+the row's own text (before anonymizing) to the git-ignored `local-data/golden-real/rounds/` (with `--twin`: the twin's
+`real/rounds/`). Labeling is done on that text; `tools/golden/derive.py` makes the shipped text from the labels.
 """
 
 from __future__ import annotations
@@ -104,6 +109,7 @@ STATES = set(
 )
 
 DEFAULT_PRIVATE = Path.home() / "projects/temp-postal/doorplate"
+REAL_DIR = ROOT / "local-data/golden-real"  # unmasked rounds and private gold (git-ignored)
 SAFE = {  # words the anonymizer may keep (they decide how a line parses); anything else it keeps is a leak
     "street",
     "avenue",
@@ -271,7 +277,7 @@ def build(root: Path, seed: int, banned: set[str]):
     seen: set[str] = set()
     dropped = collections.Counter()
 
-    def add(stratum, source, text, shape, sty):
+    def add(stratum, source, text, shape, sty, real=None):
         k = exclusions.norm(text)
         if k in seen:
             dropped[f"{source}:duplicate"] += 1
@@ -280,20 +286,23 @@ def build(root: Path, seed: int, banned: set[str]):
             dropped[f"{source}:excluded"] += 1
             return False
         seen.add(k)
-        recs.append({"text": text, "stratum": stratum, "source": source, "shape": shape, "style": sty})
+        recs.append(
+            {"text": text, "real": real or text, "stratum": stratum, "source": source, "shape": shape, "style": sty}
+        )
         return True
 
     def take(stratum, source, rows, want, shape, force_style=None):
         streets = anonymize([x[0] for x in rows], seed)
         n = 0
-        for (_, city, st, z), anon in zip(rows, streets, strict=True):
+        for (street, city, st, z), anon in zip(rows, streets, strict=True):
             if n >= want:
                 break
             if anon is None:
                 dropped[f"{source}:leak-or-unfaithful"] += 1
                 continue
             text, sty = style(r, anon, city, st, z, force_style)
-            n += add(stratum, source, text, shape, sty)
+            real, _ = style(r, street, city, st, z, sty)  # a named style draws nothing from r: the draw is unchanged
+            n += add(stratum, source, text, shape, sty, real)
         if n < want:
             raise SystemExit(f"{source}: only {n} of {want} records after filters; raise OVERSAMPLE")
 
@@ -340,6 +349,30 @@ def deal(recs: list[dict], seed: int) -> list[list[dict]]:
 def exclusion_set(root: Path):
     paths = [root / p for p in EXCLUSION_PATHS] + [LIBPOSTAL_TESTS]
     return exclusions.load([p for p in paths if p.exists()])
+
+
+def round_lines(rounds, tag: str, key: str = "text") -> list[str]:
+    """The text of each round file, as `write` lays it out."""
+    return [
+        "\n".join(
+            json.dumps({"id": f"{tag}-r{i}-{j:03d}", "text": x[key]}, ensure_ascii=False) for j, x in enumerate(rd, 1)
+        )
+        + "\n"
+        for i, rd in enumerate(rounds, 1)
+    ]
+
+
+def write_real(rounds, out: Path, real_dir: Path, tag: str) -> None:
+    """The unmasked rounds, after checking that this draw reproduces the committed (anonymized) rounds exactly."""
+    for i, body in enumerate(round_lines(rounds, tag), 1):
+        p = out / "rounds" / f"round-{i}.jsonl"
+        if not p.exists() or p.read_text(encoding="utf-8") != body:
+            raise SystemExit(f"round {i}: the draw does not reproduce {p}; nothing written")
+    (real_dir / "rounds").mkdir(parents=True, exist_ok=True)
+    for i, body in enumerate(round_lines(rounds, tag, "real"), 1):
+        (real_dir / "rounds" / f"round-{i}.jsonl").write_text(body, encoding="utf-8")
+    changed = sum(x["real"] != x["text"] for rd in rounds for x in rd)
+    print(f"draw reproduced; wrote {len(rounds)} unmasked rounds to {real_dir / 'rounds'} ({changed} cards differ)")
 
 
 def write(rounds, out: Path, tag: str, seed_note: str, counts, dropped):
@@ -419,6 +452,7 @@ def main():
         "--twin", action="store_true", help="the private twin: unpublished seed, writes to doorplate's local-data"
     )
     ap.add_argument("--check", action="store_true", help="re-check the committed rounds against the exclusion corpora")
+    ap.add_argument("--real", action="store_true", help="write the unmasked text of the same draw (for labeling)")
     ap.add_argument("--private-root", type=Path, default=DEFAULT_PRIVATE)
     a = ap.parse_args()
     root = a.private_root
@@ -426,7 +460,8 @@ def main():
     if a.check:
         banned, counts = exclusion_set(root)
         bad = 0
-        for p in sorted((ROOT / "sets/golden/rounds").glob("round-*.jsonl")):
+        paths = sorted((ROOT / "sets/golden/rounds").glob("round-*.jsonl"))
+        for p in paths + sorted((ROOT / "sets/golden/gold").glob("round-*.jsonl")):
             bad += sum(exclusions.hit(json.loads(line)["text"], banned) for line in p.read_text().splitlines())
         print(f"{len(banned):,} corpus strings from {len(counts)} locations; {bad} golden records match")
         raise SystemExit(1 if bad else 0)
@@ -461,6 +496,9 @@ def main():
             banned |= {exclusions.norm(json.loads(line)["text"]) for line in p.read_text().splitlines()}
     recs, dropped = build(root, seed, banned)
     rounds = deal(recs, seed)
+    if a.real:
+        write_real(rounds, out, out / "real" if a.twin else REAL_DIR, tag)
+        return
     prov, sums = write(rounds, out, tag, note, counts, dropped)
     manifest(out, prov, sums, note, counts, dropped)
     print(f"wrote {len(prov)} records in {len(rounds)} rounds to {out}; dropped {sum(dropped.values()):,} candidates")
