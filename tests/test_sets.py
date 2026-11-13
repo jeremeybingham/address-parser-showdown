@@ -2,7 +2,7 @@
 
 import pytest
 
-from adapters.base import Mapping, Span
+from adapters.base import AlignmentError, Mapping, Span
 from adapters.usaddress_parser import UsaddressAdapter
 from tools.sets import doorplate_suite
 from tools.sets.common import SpanError, check_spans, merge_adjacent, read_jsonl, tokens_to_spans, write_jsonl
@@ -77,3 +77,55 @@ def test_predict_writes_native_and_canonical_spans():
     first = preds[0]
     assert first["error"] is None and len(first["native"]) == len(first["spans"])
     assert ("city" in {lab for _, _, lab in first["spans"]}) and preds[1]["spans"] == []
+
+
+def test_components_to_spans_finds_lowercased_values_in_order():
+    from tools.sets.common import components_to_spans
+
+    text = "Acme Co 12 Oak Rd, Fair Haven, VT 00001"
+    comps = [("house", "acme co"), ("house_number", "12"), ("road", "oak rd"), ("city", "fair haven"),
+             ("state", "vt"), ("postcode", "00001")]  # fmt: skip
+    spans = components_to_spans(text, comps, Mapping("libpostal"))
+    assert [(text[s:e], lab) for s, e, lab in spans] == [
+        ("Acme Co", "building_name"), ("12", "house_number"), ("Oak Rd", "street"), ("Fair Haven", "city"),
+        ("VT", "state"), ("00001", "postal_code"),
+    ]  # fmt: skip
+    with pytest.raises(AlignmentError):
+        components_to_spans(text, [("road", "elm st")], Mapping("libpostal"))
+
+
+def test_libpostal_us_cases_skip_comments_and_check_counts(tmp_path):
+    from tools.sets import libpostal_us
+
+    src = tmp_path / "t.c"
+    src.write_text(
+        "TEST test_us_parses(void) {\n"
+        "    CHECK_CALL(test_parse_result_equals(\n"
+        "        // a comment between the call and the string\n"
+        '        "12 Oak Rd, Fair Haven, VT",\n'
+        "        options,\n"
+        "        2,\n"
+        '        (labeled_component_t){"house_number", "12"},\n'
+        '        (labeled_component_t){"road", "oak rd"}\n'
+        "    ));\n"
+        "}\n"
+    )
+    assert list(libpostal_us.us_cases(src)) == [
+        ("12 Oak Rd, Fair Haven, VT", [("house_number", "12"), ("road", "oak rd")])
+    ]
+
+
+def test_geocode_iob_and_usaddress_xml_readers(tmp_path):
+    from tools.sets import geocode_dev, usaddress_tests
+
+    iob = tmp_path / "dev.txt"
+    iob.write_text("12 B-HOUSENUM\nOAK B-STREET\nRD B-ROADTYPE\nFAIR B-CITY\nHAVEN I-CITY\n-END- -X- -X- \n\t\n")
+    (tokens,) = geocode_dev.read_iob(iob)
+    assert tokens[0] == ("12", "AddressNumber") and len(tokens) == 5
+    xml = tmp_path / "t.xml"
+    xml.write_text(
+        "<AddressCollection><AddressString><AddressNumber>12</AddressNumber> "
+        "<StreetName>Oak,</StreetName> <PlaceName>Haven</PlaceName></AddressString></AddressCollection>"
+    )
+    ((text, toks),) = usaddress_tests.read_xml(xml)
+    assert text == "12 Oak, Haven" and toks[1] == ("Oak,", "StreetName")
