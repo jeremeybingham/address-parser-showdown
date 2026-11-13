@@ -107,3 +107,13 @@ def read_jsonl(path: Path):
 
 def set_path(name: str) -> Path:
     return SETS_OUT / f"{name}.jsonl.gz"
+
+
+def components_to_spans(text: str, comps: list[tuple[str, str]], mapping: Mapping) -> list[list]:
+    """Gold `(native label, value)` components of libpostal's kind (lowercased, free of commas) to checked spans.
+
+    Each value is found in `text`, ignoring case, after the previous one; a value that is not there raises
+    `AlignmentError` and the record is dropped and counted by the caller.
+    """
+    spans = mapping.to_canonical(align(text, [(v, lab) for lab, v in comps], ignore_case=True))
+    return check_spans(text, [[s.start, s.end, s.label] for s in merge_adjacent(text, spans)])
