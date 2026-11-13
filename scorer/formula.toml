@@ -1,0 +1,48 @@
+# The Parser Score formula (version 1), fixed in a PR before the first scored run (METHODOLOGY.md, issue #6).
+# A change after the first run is a PR that says why and is listed in the report.
+#
+#   Score = 100 x sum over scored parts p of w_p x acc_p        (acc_p: coarse record accuracy on part p)
+#   F1 score = 100 x sum over scored parts p of w_p x F1_p      (F1_p: micro field F1 over the coarse fields of part p)
+#
+# A group has a weight; the parts of a group share it equally. Group weights sum to 1.
+# A (set, part) not listed in a group is reported apart and is in no score. Home parts are named below for the report.
+
+version = 1
+bootstrap_resamples = 1000
+bootstrap_seed = 20261113
+
+# Out-of-scope labels scored because every parser really models them. None: doorplate drops a trailing country on
+# purpose and does not model building names (its docs/usaddress-compat.md, "Out of scope"), though its mapping file
+# lists both. A test checks this list is inside every parser's claims. Core labels are scored for every parser; a parser that cannot produce one (libpostal has no route) simply misses it.
+out_of_scope_scored = []
+
+[[group]]
+name = "golden"
+weight = 0.50
+parts = [["golden", "normal"], ["golden", "hard"], ["golden", "nightmare"]]
+
+[[group]]
+name = "neutral"
+weight = 0.50
+parts = [["doorplate-suite", "natural"], ["doorplate-suite", "hand"], ["senzing-us", "osm"], ["geocode-dev", "dev"]]
+
+# Reported on their own lines, in no score. `why` is shown in the report.
+[[apart]]
+set = "usaddress-tests"
+part = "*"
+why = "home set of usaddress (its own regression tests)"
+
+[[apart]]
+set = "libpostal-us"
+part = "*"
+why = "home set of libpostal (its own test_us_parses)"
+
+[[apart]]
+set = "doorplate-suite"
+part = "hard"
+why = "drawn from the blind spots of two of the three parsers"
+
+[[apart]]
+set = "senzing-us"
+part = "bug"
+why = "cases reported as libpostal bugs"
