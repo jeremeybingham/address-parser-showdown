@@ -39,6 +39,16 @@
 ## Sections to come
 - How the golden set is labeled and adjudicated (`sets/golden/`).
 
+## Difficulty tiers
+
+Each golden record has a tier (`normal`, `hard`, `nightmare`) fixed by its shape class before any scored run; no parser's
+output places a record in a tier. `normal` has a 100% ceiling, proved by checking that every gold label maps into all
+three parsers' mapping files, not by running a parser. `nightmare` shape classes come at most half from doorplate's own
+rule research (the author's parser would otherwise be favored by construction) and at least half from outside it, and the
+manifest states the split. Non-address and ambiguous records are reported apart and are not in the tier figures or the
+Parser Score. Tiers are reported apart, never averaged by record count. The rules and sizes are in
+`sets/golden/COMPOSITION.md`; the weights go in the Parser Score formula.
+
 ## How the golden set is sampled
 
 About 1,500 records in six rounds of 250: 40% drawn at random from public-record sources and anonymized, 40% from hand
