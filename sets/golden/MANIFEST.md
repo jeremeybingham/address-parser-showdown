@@ -156,3 +156,42 @@ doorplate 33%, usaddress 33%, libpostal 33%.
 | urbanization | 4 |
 | zip4-cut | 18 |
 <!-- round-8 end -->
+
+<!-- round-9 begin -->
+## Round 9 (restored rows, issue #26)
+
+Seed 20261112, drawn by `tools/golden/sample.py --restore`: 177 unlabeled records, the rows the seed-20261112 walk
+dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order and with the same style rule, and
+no anonymizer call on them. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
+exclusion-corpus drops stay: {"fmcsa:duplicate": 7, "ny-corps:duplicate": 10, "tdlr:duplicate": 1, "va-scc:duplicate": 23, "va-scc:excluded": 1}. Each record keeps the stratum and source of its
+walk and has `restored: true` in `provenance.jsonl`.
+
+**No text ships for this round.** These rows are not anonymized, so `sets/golden/rounds/round-9.jsonl` does not exist;
+the cards are labeled on the row's own text (`local-data/golden-real/rounds/round-9.jsonl`, git-ignored) and the shipped
+text is made from the labels by `tools/golden/derive.py`, which holds a card back when a real word is left outside a
+kept label (the count held is added here after derivation).
+
+- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `c58cfe32d1c34007b2507347e3a223ad277a1a899b02c002325ba908d11cf86b`
+- `provenance.jsonl` (all rounds): `230d3bbb116fd106f4d2dac0041376828858de4186f7b6513019f40c92cdb7b7`
+
+| Stratum | Records |
+|---|---|
+| clean | 52 |
+| public | 125 |
+
+| Source | Records |
+|---|---|
+| fcc-amateur | 9 |
+| fmcsa | 9 |
+| nad | 112 |
+| ny-corps | 18 |
+| tdlr | 8 |
+| va-scc | 21 |
+
+| Style | Records |
+|---|---|
+| mixed-commas | 99 |
+| mixed-nocommas | 12 |
+| upper-commas | 45 |
+| upper-nocommas | 21 |
+<!-- round-9 end -->

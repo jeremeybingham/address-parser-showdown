@@ -10,6 +10,20 @@
 > sample, the draw or the seed changed). Rounds 1 to 6 below are unchanged; the new section "Difficulty tiers" is an
 > addition, and rounds 7 and 8 hold the added `hard` and `nightmare` records. Why: the plan needs a tier with a 100%
 > ceiling and two harder tiers, and redrawing would throw away labeling already done.
+>
+> **Amended 2026-11-13 (issue #26, round 9):** the rows the draw-time anonymizer filter dropped are restored as round 9
+> (`tools/golden/sample.py --restore`). Rounds 1 to 6 and the walk that made them are unchanged (the redraw reproduces them
+> byte for byte). Why: the filter dropped a candidate when doorplate's `Anonymizer` read the line differently after
+> anonymizing (a parser run on a candidate, which the rules below forbid) or kept a word of four letters or more (most
+> likely the rarer street types and unit words). Cards are labeled on the row's own text and `derive.py` makes the shipped
+> text, so the filter is no longer needed, and each stratum becomes a plain random sample of its source after the stated
+> duplicate and exclusion filters. The 219 rows the walk dropped (NAD 112, VA SCC 45, NY corps 28, FMCSA 16, TDLR 9, FCC
+> amateur 9) are taken in the same hash order with the same style rule (own random generator; no anonymizer call on them);
+> the duplicate and exclusion drops stay, which leaves 177 (`MANIFEST.md`). A restored row keeps the stratum and source of
+> its walk and has `restored: true` in `provenance.jsonl`, so the report can show the public stratum with and without them.
+> No text of round 9 ships until `derive.py` has made it from the labels; a card it holds back (a real word left outside a
+> kept label) is counted in `MANIFEST.md`, so the remaining bias is visible. The anonymization rule below applies to rounds 1
+> to 6 only.
 
 Step 2 of the plan (issue #3). This page and `tools/golden/sample.py` are committed before any record is drawn or
 labeled. A later change is a PR that says why and is listed in the report.
