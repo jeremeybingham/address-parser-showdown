@@ -1,0 +1,131 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Golden set labeling</title>
+<style>
+  body { font: 16px system-ui, sans-serif; margin: 1.5rem auto; max-width: 62rem; padding: 0 1rem; }
+  #text { font: 26px/3.2 ui-monospace, monospace; user-select: none; margin: 1rem 0; }
+  .c { cursor: text; padding: 4px 0; }
+  .sel { background: #cde; }
+  .sp { display: inline-block; position: relative; border-bottom: 4px solid var(--col); }
+  .sp::after { content: attr(data-l); position: absolute; left: 0; top: 100%; font: 11px system-ui; color: #444; white-space: nowrap; }
+  .alt { border-bottom-style: dotted; }
+  #pal button { margin: 2px; font-size: 13px; }
+  #pal kbd { background: #eee; border: 1px solid #aaa; border-radius: 3px; padding: 0 4px; margin-right: 4px; }
+  #bar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  #q li { margin: .4rem 0; }
+  .on { background: #ffe9a8; }
+  small { color: #555; }
+</style>
+<div id="bar">
+  <b id="mode"></b> <span id="pos"></span> <span id="saved"></span>
+  <button id="prev">&larr; Prev</button> <button id="next">Save &amp; next (Enter)</button>
+  <label><input type="checkbox" id="doubt"> doubtful (Tab)</label>
+  <button id="altb">Accept as alternative (=): off</button>
+</div>
+<div id="text"></div>
+<div id="q"></div>
+<div id="pal"></div>
+<p><small>Drag over characters, or click a word, then press the label's key. Delete clears labels on the selection,
+Esc clears the selection, &larr; goes back. Nothing here shows any parser's output.</small></p>
+<script>
+let META, CARDS = [], I = 0, SEL = null, DRAG = null, ALT = false, T0 = 0, KEYS = 0, SPANS = [], ALTS = [];
+const hue = l => `hsl(${[...l].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 360, 7)} 65% 50%)`;
+const $ = id => document.getElementById(id);
+const card = () => CARDS[I];
+
+async function init() {
+  META = await (await fetch('/api/meta')).json();
+  CARDS = await (await fetch('/api/cards')).json();
+  $('mode').textContent = META.mode === 'label' ? 'Blind labeling' : 'Adjudication';
+  $('pal').innerHTML = Object.entries(META.keys).map(([k, l]) =>
+    `<button data-l="${l}" title="${META.labels[l].replace(/"/g, '')}"><kbd>${k}</kbd>${l}</button>`).join('');
+  $('pal').onclick = e => { const b = e.target.closest('button'); if (b) apply(b.dataset.l); };
+  I = Math.max(0, CARDS.findIndex(c => !c.labeled && META.mode === 'label'));
+  show();
+}
+
+function show() {
+  const c = card();
+  SPANS = (c.spans || []).map(s => [...s]); ALTS = (c.alternatives || []).map(a => ({...a}));
+  $('doubt').checked = !!c.doubtful; SEL = null; T0 = Date.now(); KEYS = 0;
+  $('pos').textContent = `${I + 1} / ${CARDS.length}` + (c.round ? ` (round ${c.round})` : '');
+  $('saved').textContent = c.labeled ? 'saved' : 'new';
+  render();
+}
+
+function render() {
+  const t = card().text, at = new Array(t.length).fill(null), alt = new Array(t.length).fill(null);
+  SPANS.forEach(([s, e, l], k) => { for (let i = s; i < e; i++) at[i] = k; });
+  let h = '';
+  for (let i = 0; i < t.length;) {
+    const k = at[i];
+    if (k === null) { h += ch(i, t); i++; continue; }
+    const [s, e, l] = SPANS[k];
+    h += `<span class="sp" data-l="${l}" style="--col:${hue(l)}">`;
+    for (let j = s; j < e; j++) h += ch(j, t);
+    h += '</span>'; i = e;
+  }
+  $('text').innerHTML = h;
+  $('q').innerHTML = (card().questions ? '<b>Another reading exists for these (keep yours, or label the span as shown):</b><ul>' +
+    card().questions.map(q => `<li class="${SEL && SEL[0] == q.start && SEL[1] == q.end ? 'on' : ''}">
+      <code>${esc(t.slice(q.start, q.end))}</code> as <b>${q.label}</b>
+      <button data-s="${q.start}" data-e="${q.end}" data-l="${q.label}">change to this</button></li>`).join('') + '</ul>' : '') +
+    (ALTS.length ? '<small>Accepted alternatives: ' + ALTS.map(a => `<code>${esc(t.slice(a.start, a.end))}</code> also ${a.labels.join('/')}`).join('; ') + '</small>' : '');
+}
+const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+const ch = (i, t) => `<span class="c${SEL && i >= SEL[0] && i < SEL[1] ? ' sel' : ''}" data-i="${i}">${t[i] === ' ' ? '&nbsp;' : esc(t[i])}</span>`;
+
+$('text').onmousedown = e => { const c = e.target.closest('.c'); if (c) { DRAG = +c.dataset.i; SEL = [DRAG, DRAG + 1]; render(); } };
+$('text').onmouseover = e => { const c = e.target.closest('.c'); if (c && DRAG !== null) { const i = +c.dataset.i; SEL = [Math.min(i, DRAG), Math.max(i, DRAG) + 1]; render(); } };
+window.onmouseup = () => {
+  if (DRAG === null) return; const was = DRAG; DRAG = null;
+  if (SEL && SEL[1] - SEL[0] === 1) { // a click: the whole word
+    const t = card().text; let s = was, e = was + 1;
+    while (s > 0 && t[s - 1] !== ' ') s--; while (e < t.length && t[e] !== ' ') e++;
+    while (e > s && ',;'.includes(t[e - 1])) e--;
+    SEL = [s, Math.max(e, s + 1)];
+  }
+  trim(); render();
+};
+function trim() { if (!SEL) return; const t = card().text; while (SEL[0] < SEL[1] && t[SEL[0]] === ' ') SEL[0]++; while (SEL[1] > SEL[0] && t[SEL[1] - 1] === ' ') SEL[1]--; if (SEL[0] >= SEL[1]) SEL = null; }
+
+function clearRange(s, e) { // remove labels on [s,e), keeping the parts of spans that stick out
+  const out = [];
+  for (const [a, b, l] of SPANS) { if (b <= s || a >= e) out.push([a, b, l]); else { if (a < s) out.push([a, s, l]); if (b > e) out.push([e, b, l]); } }
+  SPANS = out.sort((x, y) => x[0] - y[0]);
+}
+function apply(l) {
+  if (!SEL) return; KEYS++;
+  const [s, e] = SEL;
+  if (ALT) { const a = ALTS.find(x => x.start === s && x.end === e); if (a) { if (!a.labels.includes(l)) a.labels.push(l); } else ALTS.push({start: s, end: e, labels: [l]}); }
+  else { clearRange(s, e); SPANS.push([s, e, l]); SPANS.sort((x, y) => x[0] - y[0]); }
+  SEL = null; render();
+}
+$('q').onclick = e => { const b = e.target.closest('button'); if (b) { SEL = [+b.dataset.s, +b.dataset.e]; apply(b.dataset.l); } };
+
+async function save() {
+  const c = card();
+  const r = await fetch('/api/save', {method: 'POST', body: JSON.stringify({round: c.round || 0, id: c.id,
+    spans: SPANS, alternatives: ALTS, doubtful: $('doubt').checked, ms: Date.now() - T0, keys: KEYS})});
+  if (!r.ok) { $('saved').textContent = 'NOT SAVED: ' + (await r.json()).error; return false; }
+  Object.assign(c, {spans: SPANS, alternatives: ALTS, doubtful: $('doubt').checked, labeled: true});
+  return true;
+}
+async function go(d) {
+  if (d > 0 && !(await save())) return;
+  I = Math.min(CARDS.length - 1, Math.max(0, I + d)); show();
+}
+$('next').onclick = () => go(1); $('prev').onclick = () => go(-1);
+$('altb').onclick = () => { ALT = !ALT; $('altb').textContent = `Accept as alternative (=): ${ALT ? 'ON' : 'off'}`; $('altb').classList.toggle('on', ALT); };
+document.onkeydown = e => {
+  if (e.target.tagName === 'INPUT' && e.key !== 'Tab') return;
+  if (e.key === 'Enter') go(1);
+  else if (e.key === 'ArrowLeft') go(-1);
+  else if (e.key === 'Tab') { e.preventDefault(); $('doubt').checked = !$('doubt').checked; }
+  else if (e.key === '=') $('altb').click();
+  else if (e.key === 'Escape') { SEL = null; render(); }
+  else if (e.key === 'Delete' || e.key === 'Backspace') { if (SEL) { clearRange(SEL[0], SEL[1]); SEL = null; render(); } }
+  else if (META.keys[e.key] && !e.ctrlKey && !e.metaKey) apply(META.keys[e.key]);
+};
+init();
+</script>
