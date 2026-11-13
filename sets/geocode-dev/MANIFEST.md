@@ -3,7 +3,8 @@
 **Source:** [zhengcongyin/geocoding-address-parsing-benchmark](https://github.com/zhengcongyin/geocoding-address-parsing-benchmark)
 at commit `424f94167c21d1ad3f8e70b50a75174f68dfe1f0`, `dev.txt` (IOB tags; paper arXiv 2310.14360). **License: none stated**, so the file
 is **not shipped**: `tools/sets/geocode_dev.py` reads it (`$GEOCODE_BENCHMARK`; default doorplate's `local-data/geocode-benchmark/`)
-and checks it by SHA-256 first. The fetch script is not written yet.
+and checks it by SHA-256 first. `python -m tools.sets.fetch geocode-dev` downloads
+`benchmark_dataset/dev.txt` at that commit into `build/sources/` and checks it.
 
 The `test` split is excluded: doorplate's rules were written while reading it.
 

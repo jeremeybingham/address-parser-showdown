@@ -129,3 +129,30 @@ def test_geocode_iob_and_usaddress_xml_readers(tmp_path):
     )
     ((text, toks),) = usaddress_tests.read_xml(xml)
     assert text == "12 Oak, Haven" and toks[1] == ("Oak,", "StreetName")
+
+
+def test_fetch_checks_the_hash_and_deletes_a_wrong_file(tmp_path):
+    import hashlib
+
+    from tools.sets.common import SourceError
+    from tools.sets.fetch import fetch_one
+
+    body = b"invented, not a real source\n"
+    want = hashlib.sha256(body).hexdigest()
+    calls = []
+
+    def serve(content):
+        def opener(url, dest):
+            calls.append(url)
+            dest.write_bytes(content)
+
+        return opener
+
+    dest = tmp_path / "sub" / "f.txt"
+    assert fetch_one(dest, "u", want, serve(body)) is True
+    assert fetch_one(dest, "u", want, serve(body)) is False  # already in place: no second download
+    assert len(calls) == 1
+    bad = tmp_path / "bad.txt"
+    with pytest.raises(SourceError):
+        fetch_one(bad, "u", want, serve(b"changed"))
+    assert not bad.exists() and not (tmp_path / "bad.txt.part").exists()

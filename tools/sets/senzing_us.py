@@ -26,12 +26,14 @@ from tools.sets.common import (
     SpanError,
     check_sha,
     components_to_spans,
+    fetched,
     set_path,
     sha256,
     write_jsonl,
 )
 
 NAME = "senzing-us"
+COMMIT = "fa19eff80e28c517956274c90479a017b3f63557"  # Senzing/libpostal-data, tag 1.2.0
 SHA256 = "db58065bf7508b862e9c6ee68774312bfc7e675192e21b8ee6aa9f7aa32ed51a"
 PARTS = {"osm": "neutral (OpenStreetMap-derived)", "bug": "reported apart (cases reported as libpostal bugs)"}
 PART_OF = {"osm": "osm", "Libpostal-bug": "bug"}
@@ -59,7 +61,8 @@ COLUMNS = [
 def source_file() -> Path:
     home = Path(
         os.environ.get(
-            "SENZING_TEST_DATA", Path.home() / "projects/temp-postal/doorplate/local-data/senzing-libpostal-test"
+            "SENZING_TEST_DATA",
+            fetched("senzing-us", Path.home() / "projects/temp-postal/doorplate/local-data/senzing-libpostal-test"),
         )
     )
     return home / "test_data_v1.2.0.csv"

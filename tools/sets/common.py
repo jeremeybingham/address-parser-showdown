@@ -36,6 +36,12 @@ class SourceError(RuntimeError):
     """A source file is missing or is not the pinned one."""
 
 
+def fetched(name: str, fallback: Path) -> Path:
+    """`build/sources/<name>` (made by `tools.sets.fetch`) if it exists, else `fallback` (a local copy)."""
+    here = BUILD / "sources" / name
+    return here if here.is_dir() else fallback
+
+
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:

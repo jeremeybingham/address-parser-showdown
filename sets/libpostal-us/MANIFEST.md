@@ -3,6 +3,8 @@
 **Source:** `test/test_parser.c`, function `test_us_parses`, in the pinned libpostal clone (`~/projects/libpostal-senzing/src`,
 the Senzing-model build, `$LIBPOSTAL_HOME`). **License:** MIT (libpostal). Read from the clone, not copied;
 `tools/sets/libpostal_us.py` parses the C source and checks the file by SHA-256 first.
+`python -m tools.sets.fetch libpostal-us` downloads it from openvenues/libpostal at commit
+`25099c506612b34b23b1bfe286ca6321fcf06f35` into `build/sources/`.
 
 ## Checksums (SHA-256)
 

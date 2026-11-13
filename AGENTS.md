@@ -27,6 +27,7 @@ uv run python tools/golden/sample.py --check   # the exclusion string check on t
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
 uv run python -m tools.sets.doorplate_suite      # convert a set to build/sets/ (one module per set; see tools/sets/README.md)
 uv run python -m tools.sets.usaddress_tests      # likewise libpostal_us, senzing_us, geocode_dev (local copies, SHA-256 checked)
+uv run python -m tools.sets.fetch          # download the external sources of the step 4 sets (SHA-256 checked) to build/sources/
 uv run python -m tools.sets.predict SET         # every adapter on a converted set -> build/predictions/SET/
 just all                  # the full pinned run (not written yet)
 ```
