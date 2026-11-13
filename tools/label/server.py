@@ -97,10 +97,15 @@ def main() -> None:
     ap.add_argument("mode", choices=["label", "adjudicate"])
     ap.add_argument("round", nargs="?", type=int)
     ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--practice", action="store_true", help="use local-data/practice (round 0), not the real rounds")
     a = ap.parse_args()
     if a.mode == "label" and a.round is None:
         ap.error("label needs a round number")
-    app = App(a.mode, [a.round] if a.mode == "label" else list(range(1, 7)))
+    kw = {}
+    if a.practice:
+        base = store.ROOT / "local-data" / "practice"
+        kw = {"log_dir": base / "labels", "rounds_dir": base}
+    app = App(a.mode, [a.round] if a.mode == "label" else list(range(1, 7)), **kw)
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), make_handler(app))
     print(f"{a.mode} on http://127.0.0.1:{a.port}/ (Ctrl-C to stop)")
     srv.serve_forever()

@@ -2,6 +2,15 @@
 
 Hand labeling of the golden set (step 3, issue #4), blind to every parser.
 
+## Practice
+
+```sh
+uv run python -m tools.label.practice                 # 50 invented rows, easy first (local-data/practice/)
+uv run python -m tools.label.server label 0 --practice
+```
+
+Practice labels go to `local-data/practice/labels/`, not the real logs. Delete `local-data/practice/` when done.
+
 ## Labeling a round (blind)
 
 ```sh
