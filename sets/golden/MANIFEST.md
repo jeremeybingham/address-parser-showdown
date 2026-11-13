@@ -161,8 +161,9 @@ doorplate 33%, usaddress 33%, libpostal 33%.
 ## Round 9 (restored rows, issue #26)
 
 Seed 20261112, drawn by `tools/golden/sample.py --restore`: 177 unlabeled records, the rows the seed-20261112 walk
-dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order and with the same style rule, and
-no anonymizer call on them. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
+dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order, and
+no anonymizer call on them. A row of a messy source keeps the source's own city, state and ZIP (case, ZIP+4) with no dice
+style (style `as-written`, issue #26 item 3); NAD rows keep the draw's style rule. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
 exclusion-corpus drops stay: {"fmcsa:duplicate": 7, "ny-corps:duplicate": 10, "tdlr:duplicate": 1, "va-scc:duplicate": 23, "va-scc:excluded": 1}. Each record keeps the stratum and source of its
 walk and has `restored: true` in `provenance.jsonl`.
 
@@ -171,8 +172,8 @@ the cards are labeled on the row's own text (`local-data/golden-real/rounds/roun
 text is made from the labels by `tools/golden/derive.py`, which holds a card back when a real word is left outside a
 kept label (the count held is added here after derivation).
 
-- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `c58cfe32d1c34007b2507347e3a223ad277a1a899b02c002325ba908d11cf86b`
-- `provenance.jsonl` (all rounds): `230d3bbb116fd106f4d2dac0041376828858de4186f7b6513019f40c92cdb7b7`
+- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `159726eda106bef8486abe4174f98dcfe4738f2d9dfcdf9b1c361fa0f6a82e08`
+- `provenance.jsonl` (all rounds): `03dd3fa8930119ce6fa3dc97f142dc69e616af1d304651d9026ccf9ed6aa9465`
 
 | Stratum | Records |
 |---|---|
@@ -190,8 +191,9 @@ kept label (the count held is added here after derivation).
 
 | Style | Records |
 |---|---|
-| mixed-commas | 99 |
-| mixed-nocommas | 12 |
-| upper-commas | 45 |
-| upper-nocommas | 21 |
+| as-written | 65 |
+| mixed-commas | 77 |
+| mixed-nocommas | 8 |
+| upper-commas | 20 |
+| upper-nocommas | 7 |
 <!-- round-9 end -->
