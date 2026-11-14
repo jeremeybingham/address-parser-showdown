@@ -7,6 +7,15 @@ from pathlib import Path
 
 SCHEMA_PATH = Path(__file__).with_name("schema.toml")
 
+# What a golden card's text is, when it is not one door (METHODOLOGY.md, "How the golden set is labeled"). A card with
+# no flag is one door. A flagged card keeps its spans and is reported on its own line, in no tier figure or score.
+FLAGS = (
+    "non_address",  # not an address: no spans
+    "ambiguous",  # one door, several readings: one reading labeled, the others as alternatives
+    "multi_address",  # two or more doors (`12 & 14 Oak St`, `12 Oak St & 3 Elm Ave`): every part as written
+    "intersection",  # a corner (`Oak St & Elm Ave`): no door; the streets and the last line labeled
+)
+
 
 @dataclass(frozen=True)
 class Label:

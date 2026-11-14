@@ -27,7 +27,11 @@ def tables(results: dict, missing: list[str], formula: dict, parsers: list[str])
             "",
         ]
     L += ["## Record accuracy by part (coarse track, 95% Wilson interval)", ""]
-    L += ["| Set / part | Role | Records | " + " | ".join(parsers) + " |", "|---|---|---|" + "---|" * len(parsers)]
+    none_right = score.nobody_right(results, parsers)
+    L += [
+        "| Set / part | Role | Records | No parser right | " + " | ".join(parsers) + " |",
+        "|---|---|---|---|" + "---|" * len(parsers),
+    ]
     for (s, part), by in sorted(results.items()):
         n = by[parsers[0]].n
         cells = []
@@ -38,7 +42,21 @@ def tables(results: dict, missing: list[str], formula: dict, parsers: list[str])
                 f"{100 * k / n:.1f} ({100 * lo:.1f} to {100 * hi:.1f})"
                 + (f", {by[p].errors} errors" if by[p].errors else "")
             )
-        L.append(f"| {s} / {part} | {score.role_of(formula, s, part)} | {n:,} | " + " | ".join(cells) + " |")
+        L.append(
+            f"| {s} / {part} | {score.role_of(formula, s, part)} | {n:,} | {none_right[(s, part)]:,} | "
+            + " | ".join(cells)
+            + " |"
+        )
+    L += ["", "No parser right is a count only: it never drops or moves a record."]
+    held = score.held_out(results, formula)
+    if held:
+        limit = formula.get("drop_warn_share", 1.0)
+        L += ["", f"## Records reported apart from scored parts (marked when over {100 * limit:.0f}% of the part)", ""]
+        L += ["| Set / part | In the score | Reported apart | Share apart |", "|---|---|---|---|"]
+        for h in held:
+            apart = ", ".join(f"{k} {v:,}" for k, v in sorted(h["apart"].items()))
+            mark = " **over the limit**" if h["warn"] else ""
+            L.append(f"| {h['set']} / {h['part']} | {h['kept']:,} | {apart} | {100 * h['share']:.1f}%{mark} |")
     L += ["", "## Field F1 by coarse field (micro over each set's scored parts and parts reported apart)", ""]
     fields = sorted({f for by in results.values() for c in by.values() for f in c.field_counts})
     L += ["| Set / part | Field | " + " | ".join(parsers) + " |", "|---|---|" + "---|" * len(parsers)]

@@ -43,8 +43,16 @@
 
 - **One labeler, blind.** The owner labels each card by dragging character spans in a local page
   (`tools/label/README.md`); the page shows text only, no pre-labels and no parser output. Where reasonable readings
-  differ, the labeler records extra accepted readings on the card (`alternatives`); a card with no right reading is
-  flagged `non_address` or `ambiguous`, and a card the labeler is unsure of is flagged `doubtful`.
+  differ, the labeler records extra accepted readings on the card (`alternatives`). Each card also records what its
+  text is: one door (the default), `multi_address` (several doors: every part labeled as written), `intersection` (a
+  corner, no door), `ambiguous` (one door, several readings, all listed) or `non_address`; and how sure the labeler is:
+  sure (the default), `doubtful` (a best reading) or `rough` (only the clear parts labeled). A stretch no reading can be
+  defended may be marked *not scored*: it is left out of the score for every parser, so the rest of the card still
+  counts. A private note and a revisit mark help the owner look again before the gold is final; neither ships.
+- **Only blind marks take a card out of the headline.** The marks above are set in blind labeling (and the lint review,
+  which runs no parser). A mark changed during or after adjudication, once parser output has been seen, is counted per
+  round (`late_changes` in the export counts) and listed in the report, so a reader can see that no card was dropped
+  because a parser failed it.
 - **Real text for labeling, invented text for shipping.** Public-record cards are labeled on the row's own text (kept
   private) so a hard card can be checked on a map. The shipped text is made from the labels by replacing private values
   with invented ones of the same length; the spans are the hand gold unchanged. A card is held back if a real word
@@ -63,7 +71,7 @@ output places a record in a tier. `normal` has a 100% ceiling, proved by checkin
 three parsers' mapping files, not by running a parser. A public record's shape class is read from its gold fields
 (blind labeling), a template's from the shape it was written from (`tools/golden/tiers.py`). `nightmare` shape classes come at most half from doorplate's own
 rule research (the author's parser would otherwise be favored by construction) and at least half from outside it, and the
-manifest states the split. Every `nightmare` class is paired: a `covered` variant (a form a closed rule or fixed report handles) and an `adjacent` one (a nearby form an open issue leaves out), in equal numbers, tagged from the issue text and never from a parser run; the report shows the covered-versus-adjacent gap per parser at tier level. Non-address and ambiguous records are reported apart and are not in the tier figures or the
+manifest states the split. Every `nightmare` class is paired: a `covered` variant (a form a closed rule or fixed report handles) and an `adjacent` one (a nearby form an open issue leaves out), in equal numbers, tagged from the issue text and never from a parser run; the report shows the covered-versus-adjacent gap per parser at tier level. Flagged, rough and doubtful records are reported apart and are not in the tier figures or the
 Parser Score. Tiers are reported apart, never averaged by record count. The rules and sizes are in
 `sets/golden/COMPOSITION.md`; the weights go in the Parser Score formula.
 
@@ -104,13 +112,18 @@ is listed in the report. Code: `scorer/` (see `scorer/README.md` for how to run 
   (libpostal's `road`) is a miss on this track; it is not folded into any score. Adjacent words of one label join into one
   span, so the way a parser splits words does not count.
 - **Parser Score** = 100 x the sum over scored parts of weight x coarse record accuracy. Weights: the golden set 0.50, shared
-  equally by its three tiers (`normal`, `hard`, `nightmare`; flagged `non_address` and `ambiguous` records are reported
-  on their own lines and are in no score); the other neutral parts share 0.50 equally: doorplate suite `natural` and
+  equally by its three tiers (`normal`, `hard`, `nightmare`). Only one-door, sure records are in a tier's figure:
+  flagged (`non_address`, `ambiguous`, `multi_address`, `intersection`), `rough` and `doubtful` records are reported on
+  their own lines (`tier/flag`, `tier/rough`, `tier/doubtful`) and are in no score; the other neutral parts share 0.50 equally: doorplate suite `natural` and
   `hand`, Senzing US `osm`, geocode `dev`. A parser's home sets (`usaddress-tests`, `libpostal-us`) and the parts drawn
   from a parser's failures (suite `hard`, Senzing `bug`) are reported apart and are in no score. The field F1 score is the
   same sum over micro F1. Speed and cost are never in the score (own table, step 8).
-- **Sensitivity table:** the score under equal weights across parts, and with each set left out (weights renormalized),
-  with the ranking, so a reader can see whether one set decides it.
+- **Sensitivity table:** the score under equal weights across parts, with the `doubtful` records put back in their
+  tiers, and with each set left out (weights renormalized), with the ranking, so a reader can see whether one set, or how
+  the unsure cards were labeled, decides it.
+- **Records held out of a tier:** for each scored part, the records reported apart by reason and their share; a share over
+  `drop_warn_share` (15%, `formula.toml`) is marked, because the tier's figure then covers less than it claims. The
+  report also counts, per part, the records no parser reads right; that count never drops or moves a record.
 - **Out-of-scope labels** (`recipient`, `building_name`, `country`) are scored only where every parser models them.
   Today none is: doorplate drops a trailing country on purpose and does not model building names (its
   `docs/usaddress-compat.md`, "Out of scope"), though its mapping file lists both. They are left out of every figure.

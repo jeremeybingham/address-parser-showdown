@@ -14,10 +14,12 @@ Rules (each is a question about the card, never a verdict; it prints the rule an
 - `dir-side`: a pre-direction after the street name, or a post-direction before it
 - `order`: street parts out of order (number, pre-direction, pre-type, name, post-type, post-direction), or city, state
   and ZIP out of order
-- `uncovered`: a word or number outside every span (and outside every `none` alternative)
+- `uncovered`: a word or number outside every span (and outside every `none` alternative and unscored region)
 - `duplicate`: two spans of a label that occurs once (`state`, `postal_code`, the directions) on a card
+- `two-doors`: two house numbers or two street names with another field between them, on a card with no flag:
+  several doors (`multi_address`) or a corner (`intersection`)?
 
-Cards flagged `non_address` or `ambiguous` are skipped. A hit is a reason to look at the card again, not an error.
+Flagged cards (any `schema.FLAGS` value) are skipped. A hit is a reason to look at the card again, not an error.
 """
 
 from __future__ import annotations
@@ -137,6 +139,14 @@ def load_zip_states(path: Path = PLACES) -> dict[str, set[str]]:
     return out
 
 
+def _groups(spans: list, lab: str) -> int:
+    """Runs of `lab` spans: words of one name labeled one by one are one run; another field between them splits it."""
+    own = [sp for sp in spans if sp[2] == lab]
+    return len(own) and 1 + sum(
+        any(a[1] <= o[0] and o[1] <= b[0] and o[2] != lab for o in spans) for a, b in zip(own, own[1:], strict=False)
+    )
+
+
 def lint_card(card: dict, zips: dict[str, set[str]] | None = None) -> list[str]:
     """The rules a saved card breaks (`card`: `text`, `spans`, `alternatives`, `flag`); empty when none."""
     if card.get("flag"):
@@ -182,7 +192,10 @@ def lint_card(card: dict, zips: dict[str, set[str]] | None = None) -> list[str]:
             hits.append("order")
     if any(len(v) > 1 for lab, v in by.items() if lab in ONCE):
         hits.append("duplicate")
+    if _groups(spans, "house_number_value") > 1 or _groups(spans, "street_name") > 1:
+        hits.append("two-doors")
     free = [(a["start"], a["end"]) for a in card.get("alternatives", []) if "none" in a["labels"]]
+    free += [tuple(r) for r in card.get("unscored", [])]
     for m in WORD.finditer(text):
         if not any(s <= m.start() and m.end() <= e for s, e, _ in spans) and not any(
             s <= m.start() and m.end() <= e for s, e in free

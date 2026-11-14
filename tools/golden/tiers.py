@@ -11,8 +11,8 @@ A record's tier comes from its **shape class** and nothing else (`sets/golden/CO
 
 Then the `normal` check: a record whose class says `normal` stays there only if its gold uses core fields alone, every
 gold label's coarse field is something each parser's mapping file can produce, the card is not `doubtful` and has no
-flag. Otherwise it moves up to `hard` (never dropped). This proves the 100% ceiling from the mapping files, without
-running a parser. A record with a `non_address` or `ambiguous` flag keeps its tier; the scorer reports it apart.
+flag, is not `rough` and has no unscored region. Otherwise it moves up to `hard` (never dropped). This proves the 100% ceiling from the mapping files, without
+running a parser. A flagged record (`schema.FLAGS`) keeps its tier; the scorer reports it apart.
 """
 
 from __future__ import annotations
@@ -32,7 +32,6 @@ PROVENANCE = ROOT / "sets" / "golden" / "provenance.jsonl"
 GOLD_DIR = ROOT / "sets" / "golden" / "gold"
 PARSERS = ("doorplate", "usaddress", "libpostal")
 TIERS = ("normal", "hard", "nightmare")
-FLAGS = ("non_address", "ambiguous")
 
 
 @dataclass(frozen=True)
@@ -273,7 +272,8 @@ def tier_of(prov: dict, card: dict) -> tuple[str, str, bool]:
     """(tier, shape class, moved up by the mapping check) for one labeled card."""
     cls = shape_class(prov, card["spans"])
     tier = CLASSES[cls].tier
-    if tier == "normal" and (card.get("doubtful") or card.get("flag") or not mapping_ok(card["spans"])):
+    unsure = card.get("doubtful") or card.get("rough") or card.get("unscored") or card.get("flag")
+    if tier == "normal" and (unsure or not mapping_ok(card["spans"])):
         return "hard", cls, True
     return tier, cls, False
 

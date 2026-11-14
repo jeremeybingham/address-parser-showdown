@@ -101,7 +101,57 @@ def test_unclaimed_and_coarse_gold_leave_the_fine_track():
 def test_flagged_records_go_to_their_own_part():
     assert score.effective_part({"part": "hard", "flag": "non_address"}) == "hard/non_address"
     assert score.effective_part({"part": "hard"}) == "hard"
-    assert score.role_of(F, "golden", "hard/ambiguous").startswith("not in the formula")
+    assert score.role_of(F, "golden", "hard/ambiguous").startswith("one door, several readings")
+    assert score.role_of(F, "golden", "hard/made-up").startswith("not in the formula")
+    assert score.effective_part({"part": "normal", "doubtful": True}) == "normal/doubtful"
+    assert score.effective_part({"part": "hard", "rough": True}) == "hard/rough"
+    assert score.effective_part({"part": "hard", "rough": True, "flag": "multi_address"}) == "hard/multi_address"
+
+
+def test_unscored_region_is_left_out_on_both_sides():
+    t = "12 Oak St Xq7 zzz, Reno, NV 89501"
+    gold = [
+        [0, 2, "house_number_value"],
+        [3, 6, "street_name"],
+        [7, 9, "street_post_type"],
+        [19, 23, "city"],
+        [25, 27, "state"],
+        [28, 33, "postal_code"],
+    ]
+    assert [t[a:b] for a, b, _ in gold][3:] == ["Reno", "NV", "89501"]
+    pred_junk = gold + [[10, 17, "unit_value"]]  # a reading of the garbled stretch
+    c = score.Counts()
+    score.score_record(rec(t, gold, unscored=[[10, 17]]), pred_junk, F, c)
+    assert c.correct == [1] and c.fp == [0]
+    c = score.Counts()
+    score.score_record(rec(t, gold), pred_junk, F, c)
+    assert c.fp == [1]  # without the region the same reading is an extra field
+
+
+def _toy_results():
+    def counts(correct):
+        c = score.Counts()
+        c.correct, c.tp, c.fp, c.fn = list(correct), [1] * len(correct), [0] * len(correct), [0] * len(correct)
+        c.ids = [str(i) for i in range(len(correct))]
+        return c
+
+    return {
+        ("golden", "hard"): {"a": counts([1, 1, 0, 0]), "b": counts([0, 1, 0, 1])},
+        ("golden", "hard/doubtful"): {"a": counts([0]), "b": counts([1])},
+        ("golden", "hard/multi_address"): {"a": counts([0]), "b": counts([0])},
+    }
+
+
+def test_doubtful_merge_held_out_share_and_nobody_right():
+    r = _toy_results()
+    merged = score.with_apart(r, "doubtful")
+    assert ("golden", "hard/doubtful") not in merged and merged[("golden", "hard")]["b"].correct == [0, 1, 0, 1, 1]
+    assert r[("golden", "hard")]["b"].n == 4  # the input is not changed
+    held = {(h["set"], h["part"]): h for h in score.held_out(r, F)}
+    h = held[("golden", "hard")]
+    assert (h["kept"], h["apart"], h["warn"]) == (4, {"doubtful": 1, "multi_address": 1}, True)  # 2 of 6 > 15%
+    assert score.nobody_right(r, ["a", "b"])[("golden", "hard")] == 1
+    assert score.nobody_right(r, ["a", "b"])[("golden", "hard/multi_address")] == 1
 
 
 def test_wilson_and_f1():

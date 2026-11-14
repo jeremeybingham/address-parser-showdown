@@ -60,3 +60,19 @@ def test_derive_round_ships_templates_as_is_and_holds_leaks(tmp_path):
     assert res["shipped"] == 2 and res["held"] == {"real-word": 1} and res["held_ids"] == ["x3"]
     out = [json.loads(x) for x in (tmp_path / "out/round-1.jsonl").read_text().splitlines()]
     assert out[0]["text"] != TEXT and out[0]["spans"] == SPANS and out[1]["text"] == TEXT
+
+
+def test_unscored_region_is_replaced_and_notes_never_ship(tmp_path):
+    text = "Brambleton 12"  # an unlabeled real word is a leak; the same word in an unscored region is replaced
+    card = {**CARD, "id": "x4", "text": text, "spans": [[11, 13, "house_number_value"]], "unscored": [[0, 10]]}
+    new = derive.derive_card(card)
+    assert "Brambleton" not in new and len(new) == len(text) and not derive.leaks(card, new)
+    gold = tmp_path / "gold"
+    gold.mkdir()
+    private = {**card, "rough": True, "note": "check the map", "revisit": True}  # as if a note reached the export
+    (gold / "round-1.jsonl").write_text(json.dumps(private) + "\n")
+    res = derive.derive_round(1, set(), gold, tmp_path / "out", tmp_path / "review", {"x4": {"stratum": "public"}})
+    assert res["shipped"] == 1
+    shipped = json.loads((tmp_path / "out" / "round-1.jsonl").read_text())
+    assert "note" not in shipped and "revisit" not in shipped and "check the map" not in json.dumps(shipped)
+    assert (shipped["unscored"], shipped["rough"]) == ([[0, 10]], True)

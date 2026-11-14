@@ -70,6 +70,8 @@ def test_tier_of_moves_normal_up_and_never_down():
     assert tiers.tier_of(tmpl, card) == ("normal", "street-unit", False)
     assert tiers.tier_of(tmpl, card | {"doubtful": True}) == ("hard", "street-unit", True)
     assert tiers.tier_of(tmpl, card | {"flag": "ambiguous"}) == ("hard", "street-unit", True)
+    assert tiers.tier_of(tmpl, card | {"rough": True}) == ("hard", "street-unit", True)
+    assert tiers.tier_of(tmpl, card | {"unscored": [[0, 2]]}) == ("hard", "street-unit", True)
     assert tiers.tier_of({"id": "x", "shape": "street-unit", "style": "typo"}, card)[0] == "hard"
     assert tiers.tier_of({"id": "x", "shape": "rural-route", "style": "none"}, card)[0] == "hard"
     assert tiers.tier_of({"id": "x", "shape": "grid-utah", "style": "none"}, card)[0] == "nightmare"
@@ -108,3 +110,6 @@ def test_golden_converter_sets_part_to_the_tier():
     a, b = golden.convert(gold, prov)
     assert (a["part"], a["shape_class"], "flag" in a) == ("normal", "street-unit", False)
     assert (b["part"], b["flag"]) == ("hard", "non_address")
+    c = {**gold[0], "id": "c", "rough": True, "unscored": [[0, 1]]}
+    (got,) = golden.convert([c], {"c": prov["a"]})
+    assert (got["rough"], got["unscored"], "doubtful" in got) == (True, [[0, 1]], False)

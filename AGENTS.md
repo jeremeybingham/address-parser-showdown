@@ -31,6 +31,7 @@ uv run python -m tools.golden.derive N          # private gold of round N -> shi
 uv run python -m tools.golden.sba            # round 10 (SBA PPP loans of $150K and over, as written): dry run; --confirm writes the private cards
 uv run python -m tools.label.lint [N...]      # typo check on the saved labels (state/ZIP, directions, order, uncovered words); no parser is run (`--queue` writes the hit cards; then `server review`: see tools/label/README.md)
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
+uv run python -m tools.label.server revisit     # every card marked revisit (all rounds), with its labels and private note
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
 uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
 uv run python -m tools.golden.nightmare      # round 8 (nightmare) dry run; --confirm draws, --confirm --twin the private twin, --check redraws and compares
