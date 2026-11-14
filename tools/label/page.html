@@ -53,7 +53,7 @@ const card = () => CARDS[I];
 async function init() {
   META = await (await fetch('/api/meta')).json();
   CARDS = await (await fetch('/api/cards')).json();
-  $('mode').textContent = META.mode === 'label' ? 'Blind labeling' : 'Adjudication';
+  $('mode').textContent = {label: 'Blind labeling', review: 'Lint review'}[META.mode] || 'Adjudication';
   $('pal').innerHTML = Object.entries(META.keys).map(([k, l]) =>
     `<button data-l="${l}" title="${META.labels[l].replace(/"/g, '')}"><kbd>${k}</kbd>${l}</button>`).join('');
   $('pal').innerHTML += '<button data-l="none" title="With = on: this span may also be left unlabeled"><kbd>-</kbd>none (alternative only)</button>';
@@ -92,7 +92,8 @@ function render() {
   }
   if (inW) h += '</span>';
   $('text').innerHTML = h;
-  $('q').innerHTML = (card().questions ? '<b>Another reading exists for these (keep yours, or label the span as shown):</b><ul>' +
+  $('q').innerHTML = (card().rules ? `<b>Check these (your labels are in place; change or keep them):</b> ${card().rules.map(r => `<code>${r}</code>`).join(' ')}<br>` : '') +
+    (card().questions ? '<b>Another reading exists for these (keep yours, or label the span as shown):</b><ul>' +
     card().questions.map(q => `<li class="${SEL && SEL[0] == q.start && SEL[1] == q.end ? 'on' : ''}">
       <code>${esc(t.slice(q.start, q.end))}</code> as <b>${q.label}</b>
       <button data-s="${q.start}" data-e="${q.end}" data-l="${q.label}">change to this</button></li>`).join('') + '</ul>' : '') +

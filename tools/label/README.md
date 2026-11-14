@@ -48,6 +48,19 @@ word, a direction word left inside a street name, parts out of order, a word out
 look again, not an error; fix a card by opening it in the labeling page. It runs no parser, so it does not touch the
 blind rule.
 
+### Lint review (a repeatable step: now, and again once every round is labeled, before adjudication)
+
+```sh
+uv run python -m tools.label.lint --queue        # writes local-data/labels/review-queue.jsonl (round, id, rules)
+uv run python -m tools.label.server review       # http://127.0.0.1:8765/ : one queue over all rounds
+```
+
+Each queued card opens with your saved labels in place and the rule names that hit it above the text; change what is
+wrong, or press Enter to keep it (Enter saves the card as shown). Saves go to the same round log with phase `review`, and
+the latest save wins. Re-run `lint --queue` afterwards to see what is left (a card you kept as is still hits: that is
+expected for bare numbers). It runs no parser. Run it before adjudication so the parser-disagreement pass starts from
+cleaned labels.
+
 ## Adjudication (after all rounds are labeled and the parsers have run)
 
 ```sh
