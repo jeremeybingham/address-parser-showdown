@@ -50,6 +50,16 @@ Shapes in the templates (weights in `templates.py`): street with unit, PO box in
 and county road, directionals (pre and post), fractions, number with a letter, hyphenated and grid numbers, care-of,
 general delivery, plain street. Modifiers: none, one-character typo, UPPER, lower, no commas, no ZIP, no state.
 
+## Placeholder city ("Not stated")
+
+The National Address Database (NAD) holds `Not stated` in its city field for some rows. It is the source's own placeholder,
+not a city, and a card built on it is too messy to score. The draw drops every card whose whole city field is one of
+doorplate's `[city_placeholder]` phrases (`crates/doorplate/data/special.toml`: `NOT STATED`, `UNKNOWN`, `NONE`, ...). Of the
+1,500 cards of rounds 1 to 6, 98 had one (45 `public`, 53 `clean`; all NAD); they were dropped on 2026-11-14 and their
+ids are not reused, so the other cards keep their labels. **Round 11** holds 98 replacements, the next unused rows of the
+same sources' walks (`sample.py --drop-placeholders`, `MANIFEST.md`). Round 9 drops its placeholder-city rows the same way.
+Rounds 7, 8 and 10 had none.
+
 ## Rules
 
 - **Sampling is by seeded hash, never by parser behavior.** Each source is sorted by `hash(row, seed)`; the first rows that

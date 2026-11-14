@@ -45,6 +45,7 @@ def test_leak_guard_and_deal():
     ]
     rounds = sample.deal(recs, 1)
     assert [len(r) for r in rounds] == [250] * 6
+    assert all(x["idx"] == j for rd in rounds for j, x in enumerate(rd, 1))
     for rd in rounds:
         assert {s: sum(x["stratum"] == s for x in rd) for s in sample.QUOTA} == {
             "public": 100,
@@ -66,8 +67,8 @@ def test_restore_keeps_its_own_generator_and_drops_duplicates():
         }
         for st in ("1 ELM STREET", "2 Oak Road", "3 Pine Lane")
     ]
-    a, drop = sample.restore(skipped, kept, 5, set())
-    b, _ = sample.restore(skipped, kept, 5, set())
+    a, drop = sample.restore(skipped, kept, 5, set(), set())
+    b, _ = sample.restore(skipped, kept, 5, set(), set())
     assert a == b and len(a) == 2 and all(x["restored"] for x in a)
     assert drop == {"nad:duplicate": 1}
 
@@ -83,5 +84,36 @@ def test_restore_messy_rows_keep_the_sources_own_last_line():
             "raw": ("RENO", "nv", "89501-1234"),
         }
     ]
-    out, _ = sample.restore(skipped, [], 5, set())
+    out, _ = sample.restore(skipped, [], 5, set(), set())
     assert out[0]["text"] == "9 OAK RD, RENO, nv 89501-1234" and out[0]["style"] == "as-written"
+
+
+def test_placeholder_city_and_final_rounds():
+    phrases = {"NOT STATED", "UNKNOWN"}
+    assert sample.is_placeholder("Not  Stated", phrases) and sample.is_placeholder("unknown", phrases)
+    assert not sample.is_placeholder("Stated College", phrases) and not sample.is_placeholder("", phrases)
+    rd = [
+        {"idx": 1, "text": "t", "city_placeholder": False},
+        {"idx": 2, "text": "t", "city_placeholder": True},
+        {"idx": 3, "text": "t", "city_placeholder": False},
+    ]
+    out = sample.final_rounds([rd], [{"idx": 9, "text": "t"}, {"idx": 8, "text": "t"}])
+    assert [x["idx"] for x in out[1]] == [1, 3]  # the id of card 2 is not reused
+    assert [x["idx"] for x in out[11]] == [1, 2]
+    assert sample.round_lines(out, "g")[1].count("g-r1-003") == 1
+
+
+def test_restore_drops_placeholder_city_rows():
+    skipped = [
+        {
+            "stratum": "public",
+            "source": "nad",
+            "shape": "as-found",
+            "force": None,
+            "row": ("1 ELM STREET", c, "NV", "89501"),
+            "raw": None,
+        }
+        for c in ("Not Stated", "Reno")
+    ]
+    a, drop = sample.restore(skipped, [], 5, set(), {"NOT STATED"})
+    assert len(a) == 1 and drop == {"nad:placeholder-city": 1}
