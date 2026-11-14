@@ -93,9 +93,9 @@ def test_placeholder_city_and_final_rounds():
     assert sample.is_placeholder("Not  Stated", phrases) and sample.is_placeholder("unknown", phrases)
     assert not sample.is_placeholder("Stated College", phrases) and not sample.is_placeholder("", phrases)
     rd = [
-        {"idx": 1, "text": "t", "city_placeholder": False},
-        {"idx": 2, "text": "t", "city_placeholder": True},
-        {"idx": 3, "text": "t", "city_placeholder": False},
+        {"idx": 1, "text": "t", "stratum": "public", "city_placeholder": False},
+        {"idx": 2, "text": "t", "stratum": "public", "city_placeholder": True},
+        {"idx": 3, "text": "t", "stratum": "public", "city_placeholder": False},
     ]
     out = sample.final_rounds([rd], [{"idx": 9, "text": "t"}, {"idx": 8, "text": "t"}])
     assert [x["idx"] for x in out[1]] == [1, 3]  # the id of card 2 is not reused
@@ -117,3 +117,12 @@ def test_restore_drops_placeholder_city_rows():
     ]
     a, drop = sample.restore(skipped, [], 5, set(), {"NOT STATED"})
     assert len(a) == 1 and drop == {"nad:placeholder-city": 1}
+
+
+def test_frontage_cards_dropped_after_the_labeled_rounds():
+    card = {"idx": 1, "text": "5 Interstate 40 Frontage Rd", "stratum": "template", "city_placeholder": False}
+    assert sample.drop_reason(card, 2) is None
+    assert sample.drop_reason(card, 3) == "frontage"
+    assert sample.drop_reason({**card, "stratum": "public"}, 3) is None  # a real NAD row is not touched
+    out = sample.final_rounds([[card]] * 3, [], [{"idx": 0, "text": "t"}, {"idx": 0, "text": "u"}])
+    assert [len(out[i]) for i in (1, 2, 3)] == [1, 1, 0] and len(out[11]) == 1

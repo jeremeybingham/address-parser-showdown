@@ -9,11 +9,11 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 
 - `round-1.jsonl`: `01c98835ee9074570ae444f178ef3853f14d71714bf00f59f8e8786c76687982`
 - `round-2.jsonl`: `d7062b913a24f332ca5b315775b275660fd263c31a81e95d6104f49a4223965d`
-- `round-3.jsonl`: `0a619ec1a83e2d96437a3aa24c1cbfefbd87b30f136e5c7a278fe15a31c85fe0`
-- `round-4.jsonl`: `792112f3efa279f8ca080de12ab67d2088c14564565a86287f5a94fb17c3dd12`
-- `round-5.jsonl`: `0995a466375b0cf955dbf528ff19fe8fffd75a5d56e8415a79bea13906e69e4a`
-- `round-6.jsonl`: `adb211cbbfd1657f8cd4ec30cb745355278fe98a6f1c50a37fc42f06541fb463`
-- `provenance.jsonl` (all rounds, current): `d17d1856ea46f8349844dc386bf8b36407469be0452260c37f7badd966c812fa`
+- `round-3.jsonl`: `ae1fbb7aa6299f19a1458af677b30e84d97c46707f59b20ae7bf8ea991497e70`
+- `round-4.jsonl`: `511e3211412ee706bf8e787e00231bca26c9743ed5c1ff36be68b81cd30090dc`
+- `round-5.jsonl`: `48af7ae167d62f4244d140ee27778aabdfa68d5bb171f592e8175c7a52fbcec8`
+- `round-6.jsonl`: `588c05890d7669f71a4ac57032877fa0e8ad1330f7b53ea9ebb942bb48d32880`
+- `provenance.jsonl` (all rounds, current): `f9c7b31a9b413c47439267b9bbadbf9bc57117ddc5c0a56b29800e971349575e`
 
 ## Records by stratum
 
@@ -21,7 +21,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 |---|---|
 | clean | 247 |
 | public | 555 |
-| template | 600 |
+| template | 594 |
 
 ## Records by source
 
@@ -32,7 +32,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 | nad | 502 |
 | ny-corps | 60 |
 | tdlr | 60 |
-| template | 600 |
+| template | 594 |
 | va-scc | 60 |
 
 ## Records by shape
@@ -44,7 +44,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 | directional | 48 |
 | fraction | 26 |
 | general-delivery | 2 |
-| highway | 79 |
+| highway | 73 |
 | hyphen-number | 17 |
 | number-letter | 31 |
 | ordinary | 247 |
@@ -61,11 +61,11 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 | mixed-commas | 491 |
 | mixed-nocommas | 37 |
 | nocomma | 81 |
-| none | 260 |
+| none | 257 |
 | nostate | 35 |
 | nozip | 26 |
 | typo | 68 |
-| upper | 97 |
+| upper | 94 |
 | upper-commas | 178 |
 | upper-nocommas | 96 |
 
@@ -157,21 +157,6 @@ doorplate 33%, usaddress 33%, libpostal 33%.
 | zip4-cut | 18 |
 <!-- round-8 end -->
 
-<!-- round-11 begin -->
-## Placeholder-city cards dropped, round 11 added (2026-11-14)
-
-The National Address Database holds a placeholder (`Not stated`) in its city field for some rows. A card whose whole city
-field is one of doorplate's `[city_placeholder]` phrases (`crates/doorplate/data/special.toml`) is not part of the set.
-98 cards of rounds 1 to 6 were dropped ({"clean/nad": 53, "public/nad": 45}); their ids are not reused, so the
-other cards keep their ids and labels. Round 11 holds 98 replacements, the next unused rows of the same sources'
-walks (same stratum and source as the card each replaces; own random generator `seed + 11`; no placeholder city, a
-duplicate or an exclusion hit skipped). Rounds 1 to 6 now hold 1402
-cards, round 11 98. Round 9 drops its placeholder-city rows as well (counted in its section).
-
-- `round-11.jsonl`: `fd9acdd63324309098096292e7cf931e5cdb2475187ad0554bcc88dc4151fe10`
-- `provenance.jsonl` (all rounds): `d17d1856ea46f8349844dc386bf8b36407469be0452260c37f7badd966c812fa`
-<!-- round-11 end -->
-
 <!-- round-9 begin -->
 ## Round 9 (restored rows, issue #26)
 
@@ -212,3 +197,23 @@ kept label (the count held is added here after derivation).
 | upper-commas | 18 |
 | upper-nocommas | 5 |
 <!-- round-9 end -->
+
+<!-- round-11 begin -->
+## Cards dropped from rounds 1 to 6, round 11 added (2026-11-14)
+
+Two kinds of card are not part of the set, and their ids are not reused (the other cards keep their ids and labels):
+
+- **Placeholder city** (98 cards, all NAD): the whole city field is one of doorplate's `[city_placeholder]` phrases
+  (`Not stated`, `Unknown`, ...; `crates/doorplate/data/special.toml`).
+- **Frontage road** (6 cards, `template`/`highway`, rounds 3 to 6): `Interstate N Frontage Rd` was one of nine
+  `highway` variants, so frontage roads were about 1% of the template stratum against 0.017% of NAD. Rounds 1 and 2 were
+  already labeled, so their frontage cards stay.
+
+Round 11 holds 104 replacements: for a placeholder card, the next unused row of the same source's walk (no
+placeholder city; own generator `seed + 11`); for a frontage card, a `highway` template card with no frontage road (own
+generator `seed + 12`). Duplicates and exclusion hits are skipped. Rounds 1 to 6 now hold
+1396 cards. Round 9 drops its placeholder-city rows as well.
+
+- `round-11.jsonl`: `1b50eadb87f45a774074047c3cd6a6f2e3d38b6c924c01b094da95fb014f6324`
+- `provenance.jsonl` (all rounds): `f9c7b31a9b413c47439267b9bbadbf9bc57117ddc5c0a56b29800e971349575e`
+<!-- round-11 end -->
