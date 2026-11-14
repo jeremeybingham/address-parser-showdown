@@ -182,3 +182,21 @@ def test_requeue_makes_a_card_unlabeled_again(dirs):
     assert not store.gold_cards(1, rounds, logs)[0]["labeled"]
     store.save_card(1, card, {"spans": GOOD}, log_dir=logs)  # and it can be labeled again
     assert store.gold_cards(1, rounds, logs)[0]["labeled"]
+
+
+def test_lint_flags_typos_without_quoting_text():
+    from tools.label import lint
+
+    text = "12 N Elm St, Reno, NV 89501"
+    good = [[0, 2, "house_number_value"], [3, 4, "street_pre_direction"], [5, 8, "street_name"],
+            [9, 11, "street_post_type"], [13, 17, "city"], [19, 21, "state"], [22, 27, "postal_code"]]  # fmt: skip
+    zips = {"89501": {"NV"}}
+    assert lint.lint_card({"text": text, "spans": good}, zips) == []
+    bad_state = [*good[:5], [13, 17, "city"], [19, 21, "state"], [22, 27, "postal_code"]]
+    assert lint.lint_card({"text": text.replace("NV", "NC"), "spans": bad_state}, zips) == ["zip-state"]
+    wrong = [s if s[2] != "street_pre_direction" else [3, 4, "street_name"] for s in good]
+    assert "duplicate" not in lint.lint_card({"text": text, "spans": wrong}, zips)  # a split street name is fine
+    assert lint.lint_card({"text": text, "spans": good[:6]}, zips) == ["uncovered"]
+    assert lint.lint_card({"text": text, "spans": good[:6], "flag": "ambiguous"}, zips) == []
+    ne = [[0, 2, "house_number_value"], [3, 7, "street_post_direction"]]
+    assert "dir-shape" not in lint.lint_card({"text": "12 N.E.", "spans": ne}, zips)

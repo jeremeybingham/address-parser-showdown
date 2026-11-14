@@ -36,6 +36,18 @@ Every save is appended to `local-data/labels/round-N.jsonl` (git-ignored; the lo
 and a hash of the text per save). The latest save per card is the label. A save made on other text (the anonymized
 text, before labeling moved to the unmasked text) does not count: the card shows as new again.
 
+## Typo check (any time, no parser)
+
+```sh
+uv run python -m tools.label.lint        # all rounds; or: ... lint 3 4
+```
+
+Prints, per round, the hits per rule and the card ids (never the text). Rules are in the module docstring: unknown
+state, a ZIP that is not 5 digits, ZIP and state that disagree (GeoNames list), a direction span that is not a direction
+word, a direction word left inside a street name, parts out of order, a word outside every span. A hit is a reason to
+look again, not an error; fix a card by opening it in the labeling page. It runs no parser, so it does not touch the
+blind rule.
+
 ## Adjudication (after all rounds are labeled and the parsers have run)
 
 ```sh
