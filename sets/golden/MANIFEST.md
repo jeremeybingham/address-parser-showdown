@@ -7,20 +7,20 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 
 ## Checksums (SHA-256)
 
-- `round-1.jsonl`: `b6f7dff4c9c6d6e09ab8be949e4a56941d4cc4942f5a87acd04987074d765c83`
-- `round-2.jsonl`: `4e1852a42423782a21fc667982640720b9db0373dfff7680c22320730b1315a9`
-- `round-3.jsonl`: `8ac64b1083304da0427b1d0b5b714346ed300c94868389b88f6eb2f921cad402`
-- `round-4.jsonl`: `d712bdc52bf6ff241a27cefcfbd4489846968887f5357702fb1b07c1be5990b8`
-- `round-5.jsonl`: `9a6e4a5572c46538c21d4c2909da0b84d0e0989afaa423dff110da0f14e80260`
-- `round-6.jsonl`: `94d1d7f82b5b3fa9506265620b27dd95e07b1d12a174bf332c371b4a7498f55b`
-- `provenance.jsonl` (all rounds, current): `39fec47656c966b125fad826daebb66802718e53ad536cbff7ac121a2187f5de`
+- `round-1.jsonl`: `01c98835ee9074570ae444f178ef3853f14d71714bf00f59f8e8786c76687982`
+- `round-2.jsonl`: `d7062b913a24f332ca5b315775b275660fd263c31a81e95d6104f49a4223965d`
+- `round-3.jsonl`: `0a619ec1a83e2d96437a3aa24c1cbfefbd87b30f136e5c7a278fe15a31c85fe0`
+- `round-4.jsonl`: `792112f3efa279f8ca080de12ab67d2088c14564565a86287f5a94fb17c3dd12`
+- `round-5.jsonl`: `0995a466375b0cf955dbf528ff19fe8fffd75a5d56e8415a79bea13906e69e4a`
+- `round-6.jsonl`: `adb211cbbfd1657f8cd4ec30cb745355278fe98a6f1c50a37fc42f06541fb463`
+- `provenance.jsonl` (all rounds, current): `d17d1856ea46f8349844dc386bf8b36407469be0452260c37f7badd966c812fa`
 
 ## Records by stratum
 
 | Stratum | Records |
 |---|---|
-| clean | 300 |
-| public | 600 |
+| clean | 247 |
+| public | 555 |
 | template | 600 |
 
 ## Records by source
@@ -29,7 +29,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 |---|---|
 | fcc-amateur | 60 |
 | fmcsa | 60 |
-| nad | 600 |
+| nad | 502 |
 | ny-corps | 60 |
 | tdlr | 60 |
 | template | 600 |
@@ -39,7 +39,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 
 | Shape | Records |
 |---|---|
-| as-found | 600 |
+| as-found | 555 |
 | care-of | 19 |
 | directional | 48 |
 | fraction | 26 |
@@ -47,7 +47,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 | highway | 79 |
 | hyphen-number | 17 |
 | number-letter | 31 |
-| ordinary | 300 |
+| ordinary | 247 |
 | po-box | 88 |
 | rural-route | 52 |
 | street-plain | 112 |
@@ -58,16 +58,16 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 | Style | Records |
 |---|---|
 | lower | 33 |
-| mixed-commas | 567 |
-| mixed-nocommas | 39 |
+| mixed-commas | 491 |
+| mixed-nocommas | 37 |
 | nocomma | 81 |
 | none | 260 |
 | nostate | 35 |
 | nozip | 26 |
 | typo | 68 |
 | upper | 97 |
-| upper-commas | 189 |
-| upper-nocommas | 105 |
+| upper-commas | 178 |
+| upper-nocommas | 96 |
 
 ## Exclusion string check
 
@@ -157,14 +157,29 @@ doorplate 33%, usaddress 33%, libpostal 33%.
 | zip4-cut | 18 |
 <!-- round-8 end -->
 
+<!-- round-11 begin -->
+## Placeholder-city cards dropped, round 11 added (2026-11-14)
+
+The National Address Database holds a placeholder (`Not stated`) in its city field for some rows. A card whose whole city
+field is one of doorplate's `[city_placeholder]` phrases (`crates/doorplate/data/special.toml`) is not part of the set.
+98 cards of rounds 1 to 6 were dropped ({"clean/nad": 53, "public/nad": 45}); their ids are not reused, so the
+other cards keep their ids and labels. Round 11 holds 98 replacements, the next unused rows of the same sources'
+walks (same stratum and source as the card each replaces; own random generator `seed + 11`; no placeholder city, a
+duplicate or an exclusion hit skipped). Rounds 1 to 6 now hold 1402
+cards, round 11 98. Round 9 drops its placeholder-city rows as well (counted in its section).
+
+- `round-11.jsonl`: `fd9acdd63324309098096292e7cf931e5cdb2475187ad0554bcc88dc4151fe10`
+- `provenance.jsonl` (all rounds): `d17d1856ea46f8349844dc386bf8b36407469be0452260c37f7badd966c812fa`
+<!-- round-11 end -->
+
 <!-- round-9 begin -->
 ## Round 9 (restored rows, issue #26)
 
-Seed 20261112, drawn by `tools/golden/sample.py --restore`: 177 unlabeled records, the rows the seed-20261112 walk
+Seed 20261112, drawn by `tools/golden/sample.py --restore`: 165 unlabeled records, the rows the seed-20261112 walk
 dropped as `leak-or-unfaithful` (the `Anonymizer` filter), taken in the same hash order, and
 no anonymizer call on them. A row of a messy source keeps the source's own city, state and ZIP (case, ZIP+4) with no dice
 style (style `as-written`, issue #26 item 3); NAD rows keep the draw's style rule. Rounds 1 to 6 are unchanged (the redraw reproduces them byte for byte). The duplicate and
-exclusion-corpus drops stay: {"fmcsa:duplicate": 7, "ny-corps:duplicate": 10, "tdlr:duplicate": 1, "va-scc:duplicate": 23, "va-scc:excluded": 1}. Each record keeps the stratum and source of its
+exclusion-corpus drops stay: {"fmcsa:duplicate": 7, "nad:placeholder-city": 12, "ny-corps:duplicate": 10, "tdlr:duplicate": 1, "va-scc:duplicate": 23, "va-scc:excluded": 1}. Each record keeps the stratum and source of its
 walk and has `restored: true` in `provenance.jsonl`.
 
 **No text ships for this round.** These rows are not anonymized, so `sets/golden/rounds/round-9.jsonl` does not exist;
@@ -172,19 +187,19 @@ the cards are labeled on the row's own text (`local-data/golden-real/rounds/roun
 text is made from the labels by `tools/golden/derive.py`, which holds a card back when a real word is left outside a
 kept label (the count held is added here after derivation).
 
-- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `159726eda106bef8486abe4174f98dcfe4738f2d9dfcdf9b1c361fa0f6a82e08`
-- `provenance.jsonl` (all rounds): `03dd3fa8930119ce6fa3dc97f142dc69e616af1d304651d9026ccf9ed6aa9465`
+- ids of round 9 (`provenance.jsonl` rows with `round` 9), SHA-256 of those rows: `10a7bf936db98f561122924e7a2351310e5115fea89e0216dd413136c142733b`
+- `provenance.jsonl` (all rounds): `9f8112d8eb0f75a5254bd3032dd8c4dfbd3122dc6a712340ba4ed8dc201819cc`
 
 | Stratum | Records |
 |---|---|
-| clean | 52 |
-| public | 125 |
+| clean | 48 |
+| public | 117 |
 
 | Source | Records |
 |---|---|
 | fcc-amateur | 9 |
 | fmcsa | 9 |
-| nad | 112 |
+| nad | 100 |
 | ny-corps | 18 |
 | tdlr | 8 |
 | va-scc | 21 |
@@ -192,8 +207,8 @@ kept label (the count held is added here after derivation).
 | Style | Records |
 |---|---|
 | as-written | 65 |
-| mixed-commas | 77 |
+| mixed-commas | 69 |
 | mixed-nocommas | 8 |
-| upper-commas | 20 |
-| upper-nocommas | 7 |
+| upper-commas | 18 |
+| upper-nocommas | 5 |
 <!-- round-9 end -->

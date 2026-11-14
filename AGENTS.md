@@ -26,6 +26,7 @@ tools/libpostal/build.sh  # the pinned libpostal build (about 3 GB; needs a go-a
 uv run python tools/golden/sample.py --check   # the exclusion string check on the committed golden set (reads doorplate's local-data)
 uv run python tools/golden/sample.py --confirm --real   # the same draw unmasked, for labeling (local-data/golden-real/)
 uv run python tools/golden/sample.py --restore   # round 9 (rows the anonymizer filter dropped): dry run; --confirm writes; --twin the twin
+uv run python tools/golden/sample.py --drop-placeholders   # done 2026-11-14: rounds 1-6 without placeholder-city cards, plus round 11; dry run unless --confirm
 uv run python -m tools.golden.derive N          # private gold of round N -> shipped gold with invented values
 uv run python -m tools.golden.sba            # round 10 (SBA PPP loans of $150K and over, as written): dry run; --confirm writes the private cards
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md

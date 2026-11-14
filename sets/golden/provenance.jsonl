@@ -1,7 +1,6 @@
 {"id": "g-r1-001", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r1-002", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-003", "round": 1, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nostate"}
-{"id": "g-r1-004", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-005", "round": 1, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-006", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-007", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nostate"}
@@ -16,7 +15,6 @@
 {"id": "g-r1-016", "round": 1, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
 {"id": "g-r1-017", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-018", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
-{"id": "g-r1-019", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-020", "round": 1, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-021", "round": 1, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
 {"id": "g-r1-022", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
@@ -27,7 +25,6 @@
 {"id": "g-r1-027", "round": 1, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-028", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-029", "round": 1, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r1-030", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-031", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r1-032", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r1-033", "round": 1, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
@@ -39,7 +36,6 @@
 {"id": "g-r1-039", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-040", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-041", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nostate"}
-{"id": "g-r1-042", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-043", "round": 1, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-044", "round": 1, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nostate"}
 {"id": "g-r1-045", "round": 1, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
@@ -62,7 +58,6 @@
 {"id": "g-r1-062", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-063", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nostate"}
 {"id": "g-r1-064", "round": 1, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r1-065", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-066", "round": 1, "stratum": "template", "source": "template", "shape": "care-of", "style": "none"}
 {"id": "g-r1-067", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-068", "round": 1, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
@@ -70,13 +65,10 @@
 {"id": "g-r1-070", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-071", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r1-072", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r1-073", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-074", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-075", "round": 1, "stratum": "template", "source": "template", "shape": "directional", "style": "nocomma"}
 {"id": "g-r1-076", "round": 1, "stratum": "template", "source": "template", "shape": "rural-route", "style": "upper"}
 {"id": "g-r1-077", "round": 1, "stratum": "template", "source": "template", "shape": "directional", "style": "nocomma"}
-{"id": "g-r1-078", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r1-079", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-080", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-081", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-082", "round": 1, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-nocommas"}
@@ -93,7 +85,6 @@
 {"id": "g-r1-093", "round": 1, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-094", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r1-095", "round": 1, "stratum": "template", "source": "template", "shape": "rural-route", "style": "upper"}
-{"id": "g-r1-096", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-097", "round": 1, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-098", "round": 1, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r1-099", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
@@ -135,7 +126,6 @@
 {"id": "g-r1-135", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-136", "round": 1, "stratum": "template", "source": "template", "shape": "care-of", "style": "none"}
 {"id": "g-r1-137", "round": 1, "stratum": "template", "source": "template", "shape": "highway", "style": "lower"}
-{"id": "g-r1-138", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-139", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-140", "round": 1, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r1-141", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
@@ -166,7 +156,6 @@
 {"id": "g-r1-166", "round": 1, "stratum": "template", "source": "template", "shape": "number-letter", "style": "nocomma"}
 {"id": "g-r1-167", "round": 1, "stratum": "template", "source": "template", "shape": "street-unit", "style": "lower"}
 {"id": "g-r1-168", "round": 1, "stratum": "template", "source": "template", "shape": "directional", "style": "nostate"}
-{"id": "g-r1-169", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-170", "round": 1, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r1-171", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-172", "round": 1, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
@@ -177,7 +166,6 @@
 {"id": "g-r1-177", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-178", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-179", "round": 1, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
-{"id": "g-r1-180", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-181", "round": 1, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-182", "round": 1, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r1-183", "round": 1, "stratum": "template", "source": "template", "shape": "directional", "style": "nostate"}
@@ -200,7 +188,6 @@
 {"id": "g-r1-200", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-201", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-202", "round": 1, "stratum": "template", "source": "template", "shape": "po-box", "style": "typo"}
-{"id": "g-r1-203", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-204", "round": 1, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r1-205", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-206", "round": 1, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
@@ -210,7 +197,6 @@
 {"id": "g-r1-210", "round": 1, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-211", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r1-212", "round": 1, "stratum": "template", "source": "template", "shape": "care-of", "style": "typo"}
-{"id": "g-r1-213", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-214", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r1-215", "round": 1, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-216", "round": 1, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -249,7 +235,6 @@
 {"id": "g-r1-249", "round": 1, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r1-250", "round": 1, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-001", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r2-002", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-003", "round": 2, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-004", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r2-005", "round": 2, "stratum": "template", "source": "template", "shape": "rural-route", "style": "nocomma"}
@@ -273,7 +258,6 @@
 {"id": "g-r2-023", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-024", "round": 2, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
 {"id": "g-r2-025", "round": 2, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r2-026", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-027", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-028", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-029", "round": 2, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
@@ -289,13 +273,10 @@
 {"id": "g-r2-039", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-040", "round": 2, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-041", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-042", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-043", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r2-044", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-045", "round": 2, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-046", "round": 2, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
-{"id": "g-r2-047", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-048", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-049", "round": 2, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-050", "round": 2, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-051", "round": 2, "stratum": "template", "source": "template", "shape": "po-box", "style": "nocomma"}
@@ -318,11 +299,9 @@
 {"id": "g-r2-068", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-069", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-070", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nostate"}
-{"id": "g-r2-071", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-072", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-073", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-074", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-075", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-076", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r2-077", "round": 2, "stratum": "template", "source": "template", "shape": "hyphen-number", "style": "nocomma"}
 {"id": "g-r2-078", "round": 2, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
@@ -331,7 +310,6 @@
 {"id": "g-r2-081", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-082", "round": 2, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
 {"id": "g-r2-083", "round": 2, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
-{"id": "g-r2-084", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-085", "round": 2, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-086", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r2-087", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -347,7 +325,6 @@
 {"id": "g-r2-097", "round": 2, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r2-098", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-099", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-100", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-101", "round": 2, "stratum": "template", "source": "template", "shape": "care-of", "style": "typo"}
 {"id": "g-r2-102", "round": 2, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r2-103", "round": 2, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
@@ -368,9 +345,7 @@
 {"id": "g-r2-118", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-119", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-120", "round": 2, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
-{"id": "g-r2-121", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-122", "round": 2, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nozip"}
-{"id": "g-r2-123", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-124", "round": 2, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r2-125", "round": 2, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-126", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -394,8 +369,6 @@
 {"id": "g-r2-144", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-145", "round": 2, "stratum": "template", "source": "template", "shape": "highway", "style": "nostate"}
 {"id": "g-r2-146", "round": 2, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r2-147", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-148", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-149", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-150", "round": 2, "stratum": "template", "source": "template", "shape": "rural-route", "style": "upper"}
 {"id": "g-r2-151", "round": 2, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
@@ -403,7 +376,6 @@
 {"id": "g-r2-153", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-154", "round": 2, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r2-155", "round": 2, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r2-156", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-157", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r2-158", "round": 2, "stratum": "template", "source": "template", "shape": "po-box", "style": "nocomma"}
 {"id": "g-r2-159", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
@@ -452,9 +424,7 @@
 {"id": "g-r2-202", "round": 2, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-203", "round": 2, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r2-204", "round": 2, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r2-205", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-206", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r2-207", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-208", "round": 2, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r2-209", "round": 2, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r2-210", "round": 2, "stratum": "template", "source": "template", "shape": "directional", "style": "upper"}
@@ -503,7 +473,6 @@
 {"id": "g-r3-003", "round": 3, "stratum": "template", "source": "template", "shape": "number-letter", "style": "upper"}
 {"id": "g-r3-004", "round": 3, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-005", "round": 3, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
-{"id": "g-r3-006", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-007", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-008", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-009", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
@@ -540,7 +509,6 @@
 {"id": "g-r3-040", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-041", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-042", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
-{"id": "g-r3-043", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-044", "round": 3, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
 {"id": "g-r3-045", "round": 3, "stratum": "template", "source": "template", "shape": "rural-route", "style": "upper"}
 {"id": "g-r3-046", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
@@ -567,7 +535,6 @@
 {"id": "g-r3-067", "round": 3, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-068", "round": 3, "stratum": "template", "source": "template", "shape": "fraction", "style": "none"}
 {"id": "g-r3-069", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r3-070", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-071", "round": 3, "stratum": "template", "source": "template", "shape": "highway", "style": "nozip"}
 {"id": "g-r3-072", "round": 3, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r3-073", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas"}
@@ -599,9 +566,7 @@
 {"id": "g-r3-099", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-100", "round": 3, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-101", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r3-102", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-103", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r3-104", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-105", "round": 3, "stratum": "template", "source": "template", "shape": "directional", "style": "typo"}
 {"id": "g-r3-106", "round": 3, "stratum": "template", "source": "template", "shape": "rural-route", "style": "lower"}
 {"id": "g-r3-107", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -628,7 +593,6 @@
 {"id": "g-r3-128", "round": 3, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r3-129", "round": 3, "stratum": "template", "source": "template", "shape": "hyphen-number", "style": "upper"}
 {"id": "g-r3-130", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r3-131", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-132", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "typo"}
 {"id": "g-r3-133", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-134", "round": 3, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
@@ -647,21 +611,18 @@
 {"id": "g-r3-147", "round": 3, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r3-148", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-149", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
-{"id": "g-r3-150", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-151", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-152", "round": 3, "stratum": "template", "source": "template", "shape": "fraction", "style": "none"}
 {"id": "g-r3-153", "round": 3, "stratum": "template", "source": "template", "shape": "fraction", "style": "none"}
 {"id": "g-r3-154", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
 {"id": "g-r3-155", "round": 3, "stratum": "template", "source": "template", "shape": "number-letter", "style": "upper"}
 {"id": "g-r3-156", "round": 3, "stratum": "template", "source": "template", "shape": "number-letter", "style": "upper"}
-{"id": "g-r3-157", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-158", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
 {"id": "g-r3-159", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-160", "round": 3, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r3-161", "round": 3, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
 {"id": "g-r3-162", "round": 3, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
 {"id": "g-r3-163", "round": 3, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r3-164", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-165", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r3-166", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "upper"}
 {"id": "g-r3-167", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
@@ -705,7 +666,6 @@
 {"id": "g-r3-205", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-206", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-207", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
-{"id": "g-r3-208", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-209", "round": 3, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r3-210", "round": 3, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-211", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -714,20 +674,17 @@
 {"id": "g-r3-214", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-215", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-216", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r3-217", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-218", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r3-219", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r3-220", "round": 3, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r3-221", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-222", "round": 3, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r3-223", "round": 3, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r3-224", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-225", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
 {"id": "g-r3-226", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r3-227", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-228", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r3-229", "round": 3, "stratum": "template", "source": "template", "shape": "fraction", "style": "upper"}
-{"id": "g-r3-230", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-231", "round": 3, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
 {"id": "g-r3-232", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-233", "round": 3, "stratum": "template", "source": "template", "shape": "directional", "style": "nocomma"}
@@ -739,12 +696,10 @@
 {"id": "g-r3-239", "round": 3, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r3-240", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r3-241", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r3-242", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r3-243", "round": 3, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-244", "round": 3, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r3-245", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-246", "round": 3, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
-{"id": "g-r3-247", "round": 3, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r3-248", "round": 3, "stratum": "template", "source": "template", "shape": "po-box", "style": "nocomma"}
 {"id": "g-r3-249", "round": 3, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r3-250", "round": 3, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -768,7 +723,6 @@
 {"id": "g-r4-018", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nozip"}
 {"id": "g-r4-019", "round": 4, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-020", "round": 4, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r4-021", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-022", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-023", "round": 4, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r4-024", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -784,12 +738,9 @@
 {"id": "g-r4-034", "round": 4, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-035", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-036", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
-{"id": "g-r4-037", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-038", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r4-039", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-040", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "nozip"}
 {"id": "g-r4-041", "round": 4, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r4-042", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-043", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-044", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r4-045", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -819,7 +770,6 @@
 {"id": "g-r4-069", "round": 4, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r4-070", "round": 4, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-071", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r4-072", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-073", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-074", "round": 4, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-075", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -854,14 +804,12 @@
 {"id": "g-r4-104", "round": 4, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-105", "round": 4, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r4-106", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r4-107", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-108", "round": 4, "stratum": "template", "source": "template", "shape": "fraction", "style": "upper"}
 {"id": "g-r4-109", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
 {"id": "g-r4-110", "round": 4, "stratum": "template", "source": "template", "shape": "hyphen-number", "style": "upper"}
 {"id": "g-r4-111", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r4-112", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-113", "round": 4, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
-{"id": "g-r4-114", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r4-115", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-116", "round": 4, "stratum": "template", "source": "template", "shape": "directional", "style": "upper"}
 {"id": "g-r4-117", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -873,7 +821,6 @@
 {"id": "g-r4-123", "round": 4, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r4-124", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-125", "round": 4, "stratum": "template", "source": "template", "shape": "fraction", "style": "upper"}
-{"id": "g-r4-126", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-127", "round": 4, "stratum": "template", "source": "template", "shape": "care-of", "style": "nostate"}
 {"id": "g-r4-128", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r4-129", "round": 4, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
@@ -883,7 +830,6 @@
 {"id": "g-r4-133", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r4-134", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-135", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r4-136", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-137", "round": 4, "stratum": "template", "source": "template", "shape": "care-of", "style": "none"}
 {"id": "g-r4-138", "round": 4, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-139", "round": 4, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
@@ -905,7 +851,6 @@
 {"id": "g-r4-155", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r4-156", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-157", "round": 4, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
-{"id": "g-r4-158", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-159", "round": 4, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r4-160", "round": 4, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r4-161", "round": 4, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
@@ -933,7 +878,6 @@
 {"id": "g-r4-183", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-184", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "typo"}
 {"id": "g-r4-185", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r4-186", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-187", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-188", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r4-189", "round": 4, "stratum": "template", "source": "template", "shape": "fraction", "style": "none"}
@@ -950,7 +894,6 @@
 {"id": "g-r4-200", "round": 4, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r4-201", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "lower"}
 {"id": "g-r4-202", "round": 4, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
-{"id": "g-r4-203", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-204", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r4-205", "round": 4, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r4-206", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -985,11 +928,9 @@
 {"id": "g-r4-235", "round": 4, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r4-236", "round": 4, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
 {"id": "g-r4-237", "round": 4, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r4-238", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-239", "round": 4, "stratum": "template", "source": "template", "shape": "rural-route", "style": "upper"}
 {"id": "g-r4-240", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r4-241", "round": 4, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r4-242", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r4-243", "round": 4, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r4-244", "round": 4, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r4-245", "round": 4, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
@@ -1001,8 +942,6 @@
 {"id": "g-r5-001", "round": 5, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
 {"id": "g-r5-002", "round": 5, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-003", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "nocomma"}
-{"id": "g-r5-004", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r5-005", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-006", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
 {"id": "g-r5-007", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-008", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -1020,7 +959,6 @@
 {"id": "g-r5-020", "round": 5, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
 {"id": "g-r5-021", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-022", "round": 5, "stratum": "template", "source": "template", "shape": "number-letter", "style": "nocomma"}
-{"id": "g-r5-023", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-024", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-025", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-026", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
@@ -1053,11 +991,8 @@
 {"id": "g-r5-053", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r5-054", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-055", "round": 5, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r5-056", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r5-057", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-058", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r5-059", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
-{"id": "g-r5-060", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-061", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-062", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-063", "round": 5, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
@@ -1071,7 +1006,6 @@
 {"id": "g-r5-071", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-072", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "nozip"}
 {"id": "g-r5-073", "round": 5, "stratum": "template", "source": "template", "shape": "care-of", "style": "upper"}
-{"id": "g-r5-074", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-075", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-076", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-077", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
@@ -1079,7 +1013,6 @@
 {"id": "g-r5-079", "round": 5, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r5-080", "round": 5, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
 {"id": "g-r5-081", "round": 5, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
-{"id": "g-r5-082", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-083", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r5-084", "round": 5, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-085", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
@@ -1088,7 +1021,6 @@
 {"id": "g-r5-088", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-089", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r5-090", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "nostate"}
-{"id": "g-r5-091", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-092", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-093", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-094", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
@@ -1109,11 +1041,9 @@
 {"id": "g-r5-109", "round": 5, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-110", "round": 5, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-111", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
-{"id": "g-r5-112", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-113", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r5-114", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-115", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r5-116", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-117", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r5-118", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "nocomma"}
 {"id": "g-r5-119", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
@@ -1124,10 +1054,8 @@
 {"id": "g-r5-124", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-125", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-126", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r5-127", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-128", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-129", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r5-130", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-131", "round": 5, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nocomma"}
 {"id": "g-r5-132", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-133", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "none"}
@@ -1141,13 +1069,11 @@
 {"id": "g-r5-141", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r5-142", "round": 5, "stratum": "template", "source": "template", "shape": "fraction", "style": "none"}
 {"id": "g-r5-143", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
-{"id": "g-r5-144", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-145", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r5-146", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r5-147", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-148", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-149", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r5-150", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-151", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
 {"id": "g-r5-152", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-153", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
@@ -1160,7 +1086,6 @@
 {"id": "g-r5-160", "round": 5, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-161", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r5-162", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
-{"id": "g-r5-163", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-164", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r5-165", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-166", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
@@ -1175,17 +1100,14 @@
 {"id": "g-r5-175", "round": 5, "stratum": "template", "source": "template", "shape": "hyphen-number", "style": "none"}
 {"id": "g-r5-176", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r5-177", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
-{"id": "g-r5-178", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-179", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
 {"id": "g-r5-180", "round": 5, "stratum": "template", "source": "template", "shape": "directional", "style": "nocomma"}
 {"id": "g-r5-181", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r5-182", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-183", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-184", "round": 5, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-185", "round": 5, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r5-186", "round": 5, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-187", "round": 5, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r5-188", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-189", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-190", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r5-191", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "nocomma"}
@@ -1201,11 +1123,8 @@
 {"id": "g-r5-201", "round": 5, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
 {"id": "g-r5-202", "round": 5, "stratum": "template", "source": "template", "shape": "directional", "style": "nocomma"}
 {"id": "g-r5-203", "round": 5, "stratum": "template", "source": "template", "shape": "highway", "style": "nostate"}
-{"id": "g-r5-204", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-205", "round": 5, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-nocommas"}
-{"id": "g-r5-206", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-207", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "typo"}
-{"id": "g-r5-208", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r5-209", "round": 5, "stratum": "template", "source": "template", "shape": "rural-route", "style": "nostate"}
 {"id": "g-r5-210", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r5-211", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -1232,9 +1151,7 @@
 {"id": "g-r5-232", "round": 5, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r5-233", "round": 5, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r5-234", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r5-235", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r5-236", "round": 5, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-nocommas"}
-{"id": "g-r5-237", "round": 5, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r5-238", "round": 5, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r5-239", "round": 5, "stratum": "template", "source": "template", "shape": "number-letter", "style": "none"}
 {"id": "g-r5-240", "round": 5, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -1265,11 +1182,9 @@
 {"id": "g-r6-015", "round": 6, "stratum": "template", "source": "template", "shape": "hyphen-number", "style": "none"}
 {"id": "g-r6-016", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-017", "round": 6, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-nocommas"}
-{"id": "g-r6-018", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-019", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r6-020", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-021", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r6-022", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-023", "round": 6, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r6-024", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-025", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
@@ -1294,7 +1209,6 @@
 {"id": "g-r6-044", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "upper"}
 {"id": "g-r6-045", "round": 6, "stratum": "template", "source": "template", "shape": "rural-route", "style": "none"}
 {"id": "g-r6-046", "round": 6, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r6-047", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-048", "round": 6, "stratum": "template", "source": "template", "shape": "directional", "style": "none"}
 {"id": "g-r6-049", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-050", "round": 6, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "upper-commas"}
@@ -1315,7 +1229,6 @@
 {"id": "g-r6-065", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r6-066", "round": 6, "stratum": "template", "source": "template", "shape": "care-of", "style": "nocomma"}
 {"id": "g-r6-067", "round": 6, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r6-068", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-069", "round": 6, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-070", "round": 6, "stratum": "template", "source": "template", "shape": "highway", "style": "typo"}
 {"id": "g-r6-071", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
@@ -1371,13 +1284,11 @@
 {"id": "g-r6-121", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-122", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
 {"id": "g-r6-123", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
-{"id": "g-r6-124", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-125", "round": 6, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-126", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-127", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "typo"}
 {"id": "g-r6-128", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-129", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
-{"id": "g-r6-130", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-131", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-132", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-133", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nozip"}
@@ -1387,7 +1298,6 @@
 {"id": "g-r6-137", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r6-138", "round": 6, "stratum": "template", "source": "template", "shape": "highway", "style": "lower"}
 {"id": "g-r6-139", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
-{"id": "g-r6-140", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-141", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-142", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r6-143", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-nocommas"}
@@ -1395,7 +1305,6 @@
 {"id": "g-r6-145", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "nocomma"}
 {"id": "g-r6-146", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r6-147", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
-{"id": "g-r6-148", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-149", "round": 6, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r6-150", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nozip"}
 {"id": "g-r6-151", "round": 6, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "upper-commas"}
@@ -1404,7 +1313,6 @@
 {"id": "g-r6-154", "round": 6, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r6-155", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-156", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
-{"id": "g-r6-157", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-158", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r6-159", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-160", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -1412,18 +1320,15 @@
 {"id": "g-r6-162", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
 {"id": "g-r6-163", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-164", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "none"}
-{"id": "g-r6-165", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-166", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-167", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "mixed-nocommas"}
 {"id": "g-r6-168", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r6-169", "round": 6, "stratum": "template", "source": "template", "shape": "care-of", "style": "none"}
-{"id": "g-r6-170", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-171", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-172", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r6-173", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "nocomma"}
 {"id": "g-r6-174", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nostate"}
 {"id": "g-r6-175", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
-{"id": "g-r6-176", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-177", "round": 6, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-178", "round": 6, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "upper-nocommas"}
 {"id": "g-r6-179", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
@@ -1441,7 +1346,6 @@
 {"id": "g-r6-191", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "none"}
 {"id": "g-r6-192", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas"}
 {"id": "g-r6-193", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "upper"}
-{"id": "g-r6-194", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-195", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "lower"}
 {"id": "g-r6-196", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "none"}
 {"id": "g-r6-197", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
@@ -1450,7 +1354,6 @@
 {"id": "g-r6-200", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "upper"}
 {"id": "g-r6-201", "round": 6, "stratum": "template", "source": "template", "shape": "street-plain", "style": "nostate"}
 {"id": "g-r6-202", "round": 6, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "mixed-commas"}
-{"id": "g-r6-203", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-204", "round": 6, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-205", "round": 6, "stratum": "template", "source": "template", "shape": "highway", "style": "upper"}
 {"id": "g-r6-206", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "lower"}
@@ -1492,7 +1395,6 @@
 {"id": "g-r6-242", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-243", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-244", "round": 6, "stratum": "template", "source": "template", "shape": "street-unit", "style": "typo"}
-{"id": "g-r6-245", "round": 6, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas"}
 {"id": "g-r6-246", "round": 6, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas"}
 {"id": "g-r6-247", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "upper"}
 {"id": "g-r6-248", "round": 6, "stratum": "template", "source": "template", "shape": "po-box", "style": "nozip"}
@@ -2061,180 +1963,266 @@
 {"id": "g-r8-262", "round": 8, "stratum": "template", "source": "template", "shape": "county-road-compass", "style": "none", "variant": "adjacent", "tracker": "U"}
 {"id": "g-r8-263", "round": 8, "stratum": "template", "source": "template", "shape": "highway-lettered", "style": "none", "variant": "adjacent", "tracker": "L"}
 {"id": "g-r8-264", "round": 8, "stratum": "template", "source": "template", "shape": "second-number", "style": "none", "variant": "adjacent", "tracker": "L"}
-{"id": "g-r9-001", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-002", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-003", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-004", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-005", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r11-001", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-002", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-003", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-004", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-005", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-006", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-007", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-008", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-009", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-010", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-011", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-012", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-013", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-014", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-015", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-016", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-017", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-018", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-019", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-020", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-021", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-022", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-023", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-024", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-025", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-026", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-027", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-028", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-029", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-030", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-031", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-032", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-033", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-034", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-035", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-036", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-037", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-038", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-039", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-040", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-041", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-042", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-043", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-044", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-045", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
+{"id": "g-r11-046", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-047", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-048", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-049", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-050", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-051", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-052", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-053", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-054", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-055", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-056", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-057", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-058", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-059", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-060", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-061", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-062", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-063", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-064", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-065", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-066", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-067", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-068", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-069", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-070", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-071", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-072", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-073", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-074", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-075", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-076", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-077", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-078", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-079", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-080", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-081", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-082", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-083", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-084", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
+{"id": "g-r11-085", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-086", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-087", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-088", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-089", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-090", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-091", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-092", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-093", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-094", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-095", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-096", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-097", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-098", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r9-001", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-002", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-003", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-004", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-005", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-006", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-007", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-008", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-009", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-007", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-008", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-009", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-010", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-011", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-012", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-013", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-014", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-015", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-016", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-017", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-018", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-019", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-020", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-021", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-012", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-013", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-014", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-015", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-016", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-017", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-018", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-019", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-020", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-021", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-022", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-023", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-024", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-025", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-026", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-023", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-024", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-025", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-026", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-027", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-028", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-029", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-030", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-031", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-032", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-033", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-034", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-035", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-036", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-028", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-029", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-030", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-031", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-032", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-033", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-034", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-035", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-036", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-037", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-038", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-039", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-040", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-041", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-042", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-043", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-044", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-045", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-046", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-047", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-048", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-049", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-050", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-038", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-039", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-040", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-041", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-042", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-043", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-044", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-045", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-046", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-047", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-048", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-049", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-050", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-051", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-052", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-053", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-054", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-055", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-056", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-057", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-058", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-059", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-060", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-061", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-062", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-063", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-064", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-065", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-066", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-067", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-068", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-069", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-070", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-071", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-072", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-073", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-074", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-075", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-076", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-077", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-078", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-079", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-080", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-081", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-082", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-083", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-084", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-085", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-086", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-087", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-088", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-089", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-090", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-091", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-052", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-053", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-054", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-055", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-056", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-057", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-058", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-059", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-060", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-061", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-062", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-063", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-064", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-065", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-066", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-067", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-068", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-069", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-070", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-071", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-072", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-073", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-074", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-075", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-076", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-077", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-078", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-079", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-080", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-081", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-082", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-083", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-084", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-085", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-086", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-087", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-088", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-089", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-090", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-091", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-092", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-093", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-094", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-095", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-096", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-097", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-098", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-099", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-100", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-101", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-102", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-103", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-104", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-105", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-106", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-107", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-108", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-109", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-110", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-093", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-094", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-095", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-096", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-097", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-098", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-099", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-100", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-101", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-102", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-103", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-104", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-105", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-106", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-107", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-108", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-109", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-110", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-111", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-112", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-113", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-112", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-113", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
 {"id": "g-r9-114", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-115", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-116", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-117", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-118", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-119", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-120", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-116", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-117", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
+{"id": "g-r9-118", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-119", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-120", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-121", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-122", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-123", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-124", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-125", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-126", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-127", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-128", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-129", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-130", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-131", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-132", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
-{"id": "g-r9-133", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-134", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-122", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-123", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-124", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-125", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-126", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-127", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-128", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-129", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "restored": true}
+{"id": "g-r9-130", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-131", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-132", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-133", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-134", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-135", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-136", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-137", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-138", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-139", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-137", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-138", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-139", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
 {"id": "g-r9-140", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-141", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-142", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-143", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-144", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-145", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-146", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-147", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-148", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-149", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-150", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-151", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-152", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-153", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-141", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-142", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-143", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-144", "round": 9, "stratum": "public", "source": "tdlr", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-145", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-146", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-147", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-148", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-149", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-150", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-151", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-152", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-153", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-154", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-155", "round": 9, "stratum": "public", "source": "fmcsa", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-156", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-157", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-158", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-159", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-155", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-156", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
+{"id": "g-r9-157", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-158", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-159", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-160", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-161", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-162", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-163", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-164", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-165", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-166", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-167", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "restored": true}
-{"id": "g-r9-168", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-169", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-170", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-171", "round": 9, "stratum": "public", "source": "ny-corps", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-172", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "restored": true}
-{"id": "g-r9-173", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-174", "round": 9, "stratum": "public", "source": "fcc-amateur", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-175", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
-{"id": "g-r9-176", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r9-177", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-162", "round": 9, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-163", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
+{"id": "g-r9-164", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
+{"id": "g-r9-165", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
