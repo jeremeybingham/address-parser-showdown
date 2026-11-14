@@ -200,3 +200,20 @@ def test_lint_flags_typos_without_quoting_text():
     assert lint.lint_card({"text": text, "spans": good[:6], "flag": "ambiguous"}, zips) == []
     ne = [[0, 2, "house_number_value"], [3, 7, "street_post_direction"]]
     assert "dir-shape" not in lint.lint_card({"text": "12 N.E.", "spans": ne}, zips)
+
+
+def test_review_mode_serves_queue_with_saved_labels(tmp_path):
+    from tools.label.server import App
+
+    rounds, logs = tmp_path / "rounds", tmp_path / "labels"
+    rounds.mkdir()
+    (rounds / "round-1.jsonl").write_text(json.dumps({"id": "a", "text": "12 Oak"}) + "\n")
+    card = {"id": "a", "text": "12 Oak"}
+    store.save_card(1, card, {"spans": [[0, 2, "house_number_value"]]}, log_dir=logs)
+    logs.mkdir(exist_ok=True)
+    (logs / "review-queue.jsonl").write_text(json.dumps({"round": 1, "id": "a", "rules": ["uncovered"]}) + "\n")
+    app = App("review", [1], log_dir=logs, rounds_dir=rounds)
+    [c] = app.cards_payload()
+    assert c["rules"] == ["uncovered"] and c["spans"] == [[0, 2, "house_number_value"]]
+    app.save({"round": 1, "id": "a", "spans": [[0, 2, "house_number_value"], [3, 6, "street_name"]]})
+    assert store.load_log(1, logs)["a"]["phase"] == "review"

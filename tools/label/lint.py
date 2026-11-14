@@ -2,6 +2,7 @@
 
     uv run python -m tools.label.lint            # every round with saves; prints counts and card ids per rule
     uv run python -m tools.label.lint 3 4        # only these rounds
+    uv run python -m tools.label.lint --queue    # also write the hit cards to local-data/labels/review-queue.jsonl
 
 Rules (each is a question about the card, never a verdict; it prints the rule and the card id, never the text):
 
@@ -21,6 +22,7 @@ Cards flagged `non_address` or `ambiguous` are skipped. A hit is a reason to loo
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -116,6 +118,7 @@ STREET_ORDER = [
     "street_post_direction",
 ]
 LAST_LINE = ["city", "state", "postal_code"]
+QUEUE = "review-queue.jsonl"
 WORD = re.compile(r"[A-Za-z0-9]+")
 
 
@@ -190,11 +193,12 @@ def lint_card(card: dict, zips: dict[str, set[str]] | None = None) -> list[str]:
 
 
 def main(argv: list[str]) -> int:
-    rounds = [int(a) for a in argv] or list(range(1, 12))
+    queue = "--queue" in argv
+    rounds = [int(a) for a in argv if a != "--queue"] or list(range(1, 12))
     zips = load_zip_states()
     if not zips:
         print(f"(no ZIP list at {PLACES}: the zip-state rule is skipped)")
-    total = 0
+    total, items = 0, []
     for n in rounds:
         try:
             cards, log = store.load_round(n), store.load_log(n)
@@ -205,7 +209,9 @@ def main(argv: list[str]) -> int:
         ]
         found: dict[str, list[str]] = {}
         for c, rec in saved:
-            for rule in lint_card({"text": c["text"], **rec}, zips):
+            rules = lint_card({"text": c["text"], **rec}, zips)
+            items += [{"round": n, "id": c["id"], "rules": rules}] if rules else []
+            for rule in rules:
                 found.setdefault(rule, []).append(c["id"])
         if not saved:
             continue
@@ -216,7 +222,11 @@ def main(argv: list[str]) -> int:
         for rule, ids in sorted(found.items()):
             print(f"  {rule}: {' '.join(ids)}")
         total += sum(len(v) for v in found.values())
-    print(f"{total} hits in all")
+    print(f"{total} hits in all, on {len(items)} cards")
+    if queue:
+        store.LOG_DIR.mkdir(parents=True, exist_ok=True)
+        (store.LOG_DIR / QUEUE).write_text("".join(json.dumps(x) + "\n" for x in items))
+        print(f"wrote {len(items)} cards to {store.LOG_DIR / QUEUE}; next: uv run python -m tools.label.server review")
     return 0
 
 

@@ -29,7 +29,7 @@ uv run python tools/golden/sample.py --restore   # round 9 (rows the anonymizer 
 uv run python tools/golden/sample.py --drop-placeholders   # done 2026-11-14: rounds 1-6 without placeholder-city cards, plus round 11; dry run unless --confirm
 uv run python -m tools.golden.derive N          # private gold of round N -> shipped gold with invented values
 uv run python -m tools.golden.sba            # round 10 (SBA PPP loans of $150K and over, as written): dry run; --confirm writes the private cards
-uv run python -m tools.label.lint [N...]      # typo check on the saved labels (state/ZIP, directions, order, uncovered words); no parser is run
+uv run python -m tools.label.lint [N...]      # typo check on the saved labels (state/ZIP, directions, order, uncovered words); no parser is run (`--queue` writes the hit cards; then `server review`: see tools/label/README.md)
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
 uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
