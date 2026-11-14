@@ -283,12 +283,17 @@ def draw_messy(con, root: Path, source: str, seed: int, k: int):
     return out
 
 
+FRONTAGE = re.compile(r"\bfrontage\b|\bfrtg\b", re.I)
+FRONTAGE_KEEP_ROUNDS = 2  # rounds 1 and 2 were labeled before the change, so their frontage cards stay
+
+
 def build(
     root: Path,
     seed: int,
     banned: set[str],
     skipped: list[dict] | None = None,
     replacements: list[dict] | None = None,
+    pool: list[dict] | None = None,
 ):
     """All records as dicts (text, stratum, source, shape, style), before rounds.
 
@@ -392,7 +397,13 @@ def build(
                     n += 1
             if n < want:
                 raise SystemExit(f"{source}: only {n} of {want} replacements; raise OVERSAMPLE")
-        r2.shuffle(replacements)
+        if pool is not None:  # non-frontage `highway` cards, own generator, for the dropped frontage cards (2026-11-14)
+            r3 = random.Random(seed + 12)
+            for text, shape, mod in templates.make(r3, places, 3000):
+                if len(pool) >= 60:
+                    break
+                if shape == "highway" and not FRONTAGE.search(text) and add("template", "template", text, shape, mod):
+                    pool.append({**recs.pop(), "replacement": True})
     return recs, dropped
 
 
@@ -457,12 +468,30 @@ def deal(recs: list[dict], seed: int) -> list[list[dict]]:
     return rounds
 
 
-def final_rounds(rounds, replacements):
-    """Rounds 1 to 6 without the placeholder-city cards (ids keep their gaps), then round 11 (their replacements)."""
-    kept = [[x for x in rd if not x["city_placeholder"]] for rd in rounds]
-    for j, x in enumerate(replacements, 1):
+def drop_reason(x: dict, rnd: int, frontage: bool = True) -> str | None:
+    """Why a card of round `rnd` is not part of the set: a placeholder city, or one `Interstate N Frontage Rd` too many.
+
+    The `highway` template made frontage roads about 1,000 times as common as in NAD (0.017%); rounds 1 and 2 were
+    already labeled, so their few frontage cards stay and the later ones are dropped."""
+    if x["city_placeholder"]:
+        return "placeholder-city"
+    if frontage and x["stratum"] == "template" and rnd > FRONTAGE_KEEP_ROUNDS and FRONTAGE.search(x["text"]):
+        return "frontage"
+    return None
+
+
+def final_rounds(rounds, replacements, pool=(), frontage: bool = True):
+    """Rounds 1 to 6 without the dropped cards (ids keep their gaps), then round 11: their replacements.
+
+    A placeholder-city card is replaced by a NAD row of its walk (`replacements`), a frontage card by the next card of
+    `pool`. `frontage=False` gives the state before the frontage change (to recognize committed files)."""
+    kept = [[x for x in rd if drop_reason(x, i, frontage) is None] for i, rd in enumerate(rounds, 1)]
+    n_front = sum(drop_reason(x, i, frontage) == "frontage" for i, rd in enumerate(rounds, 1) for x in rd)
+    r11 = [*replacements, *pool[:n_front]]
+    random.Random(11).shuffle(r11)
+    for j, x in enumerate(r11, 1):
         x["idx"] = j
-    return {**{i: rd for i, rd in enumerate(kept, 1)}, 11: replacements}
+    return {**{i: rd for i, rd in enumerate(kept, 1)}, 11: r11}
 
 
 def exclusion_set(root: Path):
@@ -488,8 +517,9 @@ def restore_round(
     """Round 9 (issue #26): redraw, check rounds 1 to 6 reproduce, then write the restored rows' own text (private)."""
     skipped: list[dict] = []
     reps: list[dict] = []
-    recs, dropped = build(root, seed, banned, skipped, reps)
-    rounds = final_rounds(deal(recs, seed), reps)
+    pool: list[dict] = []
+    recs, dropped = build(root, seed, banned, skipped, reps, pool)
+    rounds = final_rounds(deal(recs, seed), reps, pool)
     for i, body in round_lines(rounds, tag).items():
         p = out / "rounds" / f"round-{i}.jsonl"
         if not p.exists() or p.read_text(encoding="utf-8") != body:
@@ -582,28 +612,37 @@ R11_BEGIN, R11_END = "<!-- round-11 begin -->", "<!-- round-11 end -->"
 
 
 def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: str, confirm: bool) -> None:
-    """One-time change (2026-11-14): drop the cards whose city is a placeholder from rounds 1 to 6; add their replacements.
+    """Drop the cards that are not part of the set from rounds 1 to 6 and write their replacements as round 11.
 
-    Redraws, checks that the unchanged draw reproduces the committed rounds 1 to 6, then writes rounds 1 to 6 without the
-    placeholder-city cards (ids keep their gaps, so labels of the other cards stay valid), round 11 (one replacement per
-    dropped card), `provenance.jsonl` and the manifest. Run `--real` afterwards for the unmasked text."""
+    Two reasons (`drop_reason`): a placeholder city (2026-11-14, doorplate's `[city_placeholder]` list) and, in rounds 3
+    to 6, a frontage road (the `highway` template made them far too common). Redraws and checks that the unchanged draw,
+    or the draw with the placeholder cards dropped, reproduces the committed rounds 1 to 6. Then writes rounds 1 to 6 (ids
+    keep their gaps, so the labels of the other cards stay valid), round 11, `provenance.jsonl` and the manifest. Run
+    `--real` afterwards for the unmasked text."""
     reps: list[dict] = []
-    recs, dropped = build(root, seed, banned, None, reps)
+    pool: list[dict] = []
+    recs, dropped = build(root, seed, banned, None, reps, pool)
     full = deal(recs, seed)
-    final = final_rounds(full, reps)
+    final = final_rounds(full, reps, pool)
     new = round_lines(final, tag)
     path = lambda i: out / "rounds" / f"round-{i}.jsonl"  # noqa: E731
     if all(path(i).exists() and path(i).read_text(encoding="utf-8") == body for i, body in new.items()):
         print("rounds 1 to 6 and 11 are already the filtered draw; nothing to do")
         return
-    old = round_lines(dict(enumerate(full, 1)), tag)
-    for i, body in old.items():
-        if path(i).read_text(encoding="utf-8") != body:
-            raise SystemExit(f"round {i}: the unfiltered draw does not reproduce {path(i)}; nothing written")
-    gone = [f"{tag}-r{i}-{x['idx']:03d}" for i, rd in enumerate(full, 1) for x in rd if x["city_placeholder"]]
-    by = collections.Counter(f"{x['stratum']}/{x['source']}" for rd in full for x in rd if x["city_placeholder"])
-    print(f"unfiltered draw reproduced; {len(gone)} placeholder-city cards: {dict(sorted(by.items()))}")
-    print(f"round 11: {len(reps)} replacements; dropped while drawing: {dict(sorted(dropped.items()))}")
+    before = round_lines({i: rd for i, rd in final_rounds(full, reps, pool, False).items() if i <= 6}, tag)
+    unfiltered = round_lines(dict(enumerate(full, 1)), tag)
+    for i in range(1, 7):
+        if path(i).read_text(encoding="utf-8") not in (before[i], unfiltered[i], new[i]):
+            raise SystemExit(f"round {i}: this draw does not reproduce {path(i)}; nothing written")
+    why = {
+        f"{tag}-r{i}-{x['idx']:03d}": (drop_reason(x, i), f"{x['stratum']}/{x['source']}")
+        for i, rd in enumerate(full, 1)
+        for x in rd
+        if drop_reason(x, i)
+    }
+    by = collections.Counter(f"{r}: {k}" for r, k in why.values())
+    print(f"draw reproduced; {len(why)} cards dropped: {dict(sorted(by.items()))}")
+    print(f"round 11: {len(final[11])} replacements; dropped while drawing: {dict(sorted(dropped.items()))}")
     if not confirm:
         print("(dry run: pass --confirm to write)")
         return
@@ -611,7 +650,7 @@ def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: s
         path(i).write_text(body, encoding="utf-8")
     pp = out / "provenance.jsonl"
     rows = [json.loads(x) for x in pp.read_text().splitlines() if x.strip()]
-    rows = [x for x in rows if x["id"] not in set(gone) and x["round"] != 11]
+    rows = [x for x in rows if x["id"] not in why and x["round"] != 11]
     rows += [
         {
             "id": f"{tag}-r11-{x['idx']:03d}",
@@ -619,7 +658,7 @@ def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: s
             **{k: x[k] for k in ("stratum", "source", "shape", "style")},
             "replacement": True,
         }
-        for x in reps
+        for x in final[11]
     ]
     pp.write_text("\n".join(json.dumps(x) for x in rows) + "\n", encoding="utf-8")
     sha = lambda b: hashlib.sha256(b).hexdigest()  # noqa: E731
@@ -643,16 +682,23 @@ def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: s
             count=1,
             flags=re.S,
         )
+    n_ph = sum(r == "placeholder-city" for r, _ in why.values())
+    n_fr = sum(r == "frontage" for r, _ in why.values())
     block = f"""{R11_BEGIN}
-## Placeholder-city cards dropped, round 11 added (2026-11-14)
+## Cards dropped from rounds 1 to 6, round 11 added (2026-11-14)
 
-The National Address Database holds a placeholder (`Not stated`) in its city field for some rows. A card whose whole city
-field is one of doorplate's `[city_placeholder]` phrases (`crates/doorplate/data/special.toml`) is not part of the set.
-{len(gone)} cards of rounds 1 to 6 were dropped ({json.dumps(dict(sorted(by.items())))}); their ids are not reused, so the
-other cards keep their ids and labels. Round 11 holds {len(reps)} replacements, the next unused rows of the same sources'
-walks (same stratum and source as the card each replaces; own random generator `seed + 11`; no placeholder city, a
-duplicate or an exclusion hit skipped). Rounds 1 to 6 now hold {sum(len(rd) for rd in final.values()) - len(reps)}
-cards, round 11 {len(reps)}. Round 9 drops its placeholder-city rows as well (counted in its section).
+Two kinds of card are not part of the set, and their ids are not reused (the other cards keep their ids and labels):
+
+- **Placeholder city** ({n_ph} cards, all NAD): the whole city field is one of doorplate's `[city_placeholder]` phrases
+  (`Not stated`, `Unknown`, ...; `crates/doorplate/data/special.toml`).
+- **Frontage road** ({n_fr} cards, `template`/`highway`, rounds 3 to 6): `Interstate N Frontage Rd` was one of nine
+  `highway` variants, so frontage roads were about 1% of the template stratum against 0.017% of NAD. Rounds 1 and 2 were
+  already labeled, so their frontage cards stay.
+
+Round 11 holds {len(final[11])} replacements: for a placeholder card, the next unused row of the same source's walk (no
+placeholder city; own generator `seed + 11`); for a frontage card, a `highway` template card with no frontage road (own
+generator `seed + 12`). Duplicates and exclusion hits are skipped. Rounds 1 to 6 now hold
+{sum(len(rd) for i, rd in final.items() if i <= 6)} cards. Round 9 drops its placeholder-city rows as well.
 
 - `round-11.jsonl`: `{sha(path(11).read_bytes())}`
 - `provenance.jsonl` (all rounds): `{sha(pp.read_bytes())}`
@@ -809,8 +855,9 @@ def main():
         drop_placeholders(root, seed, banned, out, tag, a.confirm)
         return
     reps: list[dict] = []
-    recs, dropped = build(root, seed, banned, None, reps)
-    rounds = final_rounds(deal(recs, seed), reps)
+    pool: list[dict] = []
+    recs, dropped = build(root, seed, banned, None, reps, pool)
+    rounds = final_rounds(deal(recs, seed), reps, pool)
     if a.real:
         write_real(rounds, out, out / "real" if a.twin else REAL_DIR, tag)
         return

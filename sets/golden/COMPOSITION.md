@@ -60,6 +60,13 @@ ids are not reused, so the other cards keep their labels. **Round 11** holds 98 
 same sources' walks (`sample.py --drop-placeholders`, `MANIFEST.md`). Round 9 drops its placeholder-city rows the same way.
 Rounds 7, 8 and 10 had none.
 
+## Frontage roads
+
+`Interstate N Frontage Rd` was one of nine variants of the `highway` template, so frontage roads were about 1% of the
+`template` stratum (11 of 1,163 cards) against 0.017% of NAD's 99 million addresses (372 are "Interstate ... Frontage").
+The 6 frontage cards of rounds 3 to 6 were dropped on 2026-11-14; the 5 of rounds 1 and 2 were already labeled and stay.
+Round 11 holds `highway` template cards with no frontage road in their place (`MANIFEST.md`).
+
 ## Rules
 
 - **Sampling is by seeded hash, never by parser behavior.** Each source is sorted by `hash(row, seed)`; the first rows that
