@@ -11,6 +11,10 @@ version = 1
 bootstrap_resamples = 1000
 bootstrap_seed = 20261113
 
+# A scored part whose records reported apart (flagged, rough or doubtful golden records) exceed this share of it is
+# marked in the report: the tier has lost enough records to its marks that its figure covers less than it claims.
+drop_warn_share = 0.15
+
 # Out-of-scope labels scored because every parser really models them. None: doorplate drops a trailing country on
 # purpose and does not model building names (its docs/usaddress-compat.md, "Out of scope"), though its mapping file
 # lists both. A test checks this list is inside every parser's claims. Core labels are scored for every parser; a parser that cannot produce one (libpostal has no route) simply misses it.

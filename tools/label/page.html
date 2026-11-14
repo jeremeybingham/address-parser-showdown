@@ -12,6 +12,7 @@
   .sp .lab { font: bold 13px/1.3 system-ui; color: var(--col); filter: brightness(.75); padding-top: 3px; white-space: nowrap; }
   .w { white-space: nowrap; }
   .alt { border-bottom-style: dotted; }
+  .un { color: #888; background: repeating-linear-gradient(135deg, #eee 0 4px, #ddd 4px 8px); text-decoration: line-through; }
   #pal button { margin: 2px; font-size: 13px; }
   #pal kbd { background: #eee; border: 1px solid #aaa; border-radius: 3px; padding: 0 4px; margin-right: 4px; }
   /* top bar: two fixed rows (status, controls) with fixed-width items, so nothing moves or wraps from card to card */
@@ -20,7 +21,8 @@
   #mode { width: 9rem; } #pos { width: 9rem; }
   #saved { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   #prev { width: 5.5rem; } #next { width: 10.5rem; } #altb { width: 15rem; } #copy { width: 7.5rem; }
-  #flag { width: 8.5rem; }
+  #flag { width: 10rem; } #sure { width: 9.5rem; } #note { flex: 1; min-width: 0; font-size: 14px; }
+  #sure.doubtful { background: #ffe9a8; } #sure.rough { background: #f6c6a8; }
   #text { min-height: 7.5rem; }
   #q li { margin: .4rem 0; }
   .on { background: #ffe9a8; }
@@ -30,11 +32,16 @@
  <div class="row"><b id="mode"></b><span id="pos"></span><span id="saved"></span></div>
  <div class="row">
   <button id="prev">&larr; Prev</button> <button id="next">Save &amp; next (Enter)</button>
-  <label><input type="checkbox" id="doubt"> doubtful (Tab)</label>
-  <label>flag <select id="flag" title="non-address: no fields are right; ambiguous: list every accepted reading as alternatives">
-    <option value="">none</option><option value="non_address">non-address</option><option value="ambiguous">ambiguous</option></select></label>
   <button id="altb">Accept as alternative (=): off</button>
   <button id="copy" title="Copy this card's address text (to look it up on a map)">Copy address</button>
+ </div>
+ <div class="row">
+  <label>text is <select id="flag" title="one door: as usual. several doors: label every part as written. intersection: a corner, no door. ambiguous: one door, label one reading and add the others as alternatives. not an address: no labels. Any choice but one door takes the card out of every score (its own line).">
+    <option value="">one door</option><option value="multi_address">several doors</option><option value="intersection">intersection</option>
+    <option value="ambiguous">ambiguous</option><option value="non_address">not an address</option></select></label>
+  <button id="sure" title="Tab cycles: sure / doubtful (my best reading, unsure) / rough (only the clear parts labeled; leave the rest unlabeled or mark it not scored with x)">sure (Tab)</button>
+  <label title="Mark for a second look before the gold is final (server revisit)"><input type="checkbox" id="revisit"> revisit (v)</label>
+  <input id="note" maxlength="500" placeholder="note (n): private, never shipped" autocomplete="off">
  </div>
 </div>
 <div id="text"></div>
@@ -43,9 +50,13 @@
 <p><small>The first unlabeled word is selected for you; press a label's key and the selection moves to the next
 word on the right (Left and Right arrows move between words). For several words, drag over them first.
 Or click a word, then press the label's key. Delete clears labels on the selection,
-Esc clears the selection; use the Prev button to go back. Nothing here shows any parser's output.</small></p>
+Esc clears the selection; use the Prev button to go back. On a hard card, label what is clear, select a stretch no
+reading can be defended and press <kbd>x</kbd> (not scored: left out of the score for every parser), and set Tab to
+rough. Several doors or a corner: set "text is" and label every part as written. <kbd>n</kbd> writes a private note,
+<kbd>v</kbd> marks the card for a second look. Nothing here shows any parser's output.</small></p>
 <script>
-let META, CARDS = [], I = 0, SEL = null, DRAG = null, ALT = false, T0 = 0, KEYS = 0, SPANS = [], ALTS = [];
+let META, CARDS = [], I = 0, SEL = null, DRAG = null, ALT = false, T0 = 0, KEYS = 0, SPANS = [], ALTS = [], UNSC = [], SURE = 'sure';
+const SURENESS = ['sure', 'doubtful', 'rough'];
 const hue = l => `hsl(${[...l].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 360, 7)} 65% 50%)`;
 const $ = id => document.getElementById(id);
 const card = () => CARDS[I];
@@ -53,19 +64,22 @@ const card = () => CARDS[I];
 async function init() {
   META = await (await fetch('/api/meta')).json();
   CARDS = await (await fetch('/api/cards')).json();
-  $('mode').textContent = {label: 'Blind labeling', review: 'Lint review'}[META.mode] || 'Adjudication';
+  $('mode').textContent = {label: 'Blind labeling', review: 'Lint review', revisit: 'Revisit'}[META.mode] || 'Adjudication';
   $('pal').innerHTML = Object.entries(META.keys).map(([k, l]) =>
     `<button data-l="${l}" title="${META.labels[l].replace(/"/g, '')}"><kbd>${k}</kbd>${l}</button>`).join('');
   $('pal').innerHTML += '<button data-l="none" title="With = on: this span may also be left unlabeled"><kbd>-</kbd>none (alternative only)</button>';
-  $('pal').onclick = e => { const b = e.target.closest('button'); if (b) apply(b.dataset.l); };
+  $('pal').innerHTML += '<button data-l="unscored" title="Leave the selection out of the score for every parser (a stretch no reading can be defended)"><kbd>x</kbd>not scored</button>';
+  $('pal').onclick = e => { const b = e.target.closest('button'); if (b) b.dataset.l === 'unscored' ? unscore() : apply(b.dataset.l); };
   I = Math.max(0, CARDS.findIndex(c => !c.labeled && META.mode === 'label'));
   show();
 }
 
 function show() {
   const c = card();
-  SPANS = (c.spans || []).map(s => [...s]); ALTS = (c.alternatives || []).map(a => ({...a}));
-  $('doubt').checked = !!c.doubtful; $('flag').value = c.flag || ''; SEL = wordFrom(0); T0 = Date.now(); KEYS = 0;
+  SPANS = (c.spans || []).map(s => [...s]); ALTS = (c.alternatives || []).map(a => ({...a})); UNSC = (c.unscored || []).map(r => [...r]);
+  setSure(c.rough ? 'rough' : c.doubtful ? 'doubtful' : 'sure');
+  $('flag').value = c.flag || ''; $('note').value = c.note || ''; $('revisit').checked = !!c.revisit;
+  SEL = wordFrom(0); T0 = Date.now(); KEYS = 0;
   const left = CARDS.filter(x => !x.labeled).length;
   $('pos').textContent = `card ${c.n || I + 1} / ${CARDS.length}`;
   $('pos').title = `${left} not yet labeled; the unlabeled cards come first`;
@@ -100,7 +114,8 @@ function render() {
     (ALTS.length ? '<small>Accepted alternatives: ' + ALTS.map(a => `<code>${esc(t.slice(a.start, a.end))}</code> also ${a.labels.join('/')}`).join('; ') + '</small>' : '');
 }
 const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
-const ch = (i, t) => `<span class="c${SEL && i >= SEL[0] && i < SEL[1] ? ' sel' : ''}" data-i="${i}">${t[i] === ' ' ? '&nbsp;' : esc(t[i])}</span>`;
+const inUn = i => UNSC.some(([a, b]) => i >= a && i < b);
+const ch = (i, t) => `<span class="c${SEL && i >= SEL[0] && i < SEL[1] ? ' sel' : ''}${inUn(i) ? ' un' : ''}" data-i="${i}">${t[i] === ' ' ? '&nbsp;' : esc(t[i])}</span>`;
 
 $('text').onmousedown = e => { const c = e.target.closest('.c'); if (c) { DRAG = +c.dataset.i; SEL = [DRAG, DRAG + 1]; render(); } };
 $('text').onmouseover = e => { const c = e.target.closest('.c'); if (c && DRAG !== null) { const i = +c.dataset.i; SEL = [Math.min(i, DRAG), Math.max(i, DRAG) + 1]; render(); } };
@@ -127,7 +142,7 @@ function words() { // [start, end) of each space-separated word; trailing , or ;
 }
 function wordFrom(pos) { // the first word at or after pos that has no label yet, as [start, end), else null
   const t = card().text, lab = new Array(t.length).fill(false);
-  SPANS.forEach(([a, b]) => { for (let i = a; i < b; i++) lab[i] = true; });
+  [...SPANS, ...UNSC].forEach(([a, b]) => { for (let i = a; i < b; i++) lab[i] = true; });
   for (const [ws, we] of words()) {
     let s = Math.max(ws, pos); while (s < we && lab[s]) s++;
     if (s >= we) continue;
@@ -147,7 +162,16 @@ function clearRange(s, e) { // remove labels on [s,e), keeping the parts of span
   const out = [];
   for (const [a, b, l] of SPANS) { if (b <= s || a >= e) out.push([a, b, l]); else { if (a < s) out.push([a, s, l]); if (b > e) out.push([e, b, l]); } }
   SPANS = out.sort((x, y) => x[0] - y[0]);
+  const un = []; // the same for unscored regions
+  for (const [a, b] of UNSC) { if (b <= s || a >= e) un.push([a, b]); else { if (a < s) un.push([a, s]); if (b > e) un.push([e, b]); } }
+  UNSC = un.sort((x, y) => x[0] - y[0]);
 }
+function unscore() { // the selection leaves the score: its labels go, and it is shown struck through
+  if (!SEL || ALT) return; KEYS++;
+  const [s, e] = SEL; clearRange(s, e); UNSC.push([s, e]); UNSC.sort((x, y) => x[0] - y[0]);
+  SEL = wordFrom(e); render();
+}
+function setSure(v) { SURE = v; const b = $('sure'); b.className = v; b.textContent = v === 'sure' ? 'sure (Tab)' : v.toUpperCase() + ' (Tab)'; }
 function apply(l) {
   if (!SEL) return; KEYS++;
   const [s, e] = SEL;
@@ -158,12 +182,13 @@ function apply(l) {
 $('q').onclick = e => { const b = e.target.closest('button'); if (b) { SEL = [+b.dataset.s, +b.dataset.e]; apply(b.dataset.l); } };
 
 async function save() {
-  const c = card(), spans = SPANS, alts = ALTS, doubt = $('doubt').checked, flag = $('flag').value || null; // copies: show() replaces the globals
-  if (!spans.length && !alts.length && !flag) { $('saved').textContent = 'NOT SAVED: no labels (label the words, or set the flag to non-address)'; return false; }
+  const c = card(), spans = SPANS, alts = ALTS, unscored = UNSC, flag = $('flag').value || null; // copies: show() replaces the globals
+  const doubtful = SURE === 'doubtful', rough = SURE === 'rough', note = $('note').value.trim(), revisit = $('revisit').checked;
+  if (!spans.length && !alts.length && !unscored.length && !flag) { $('saved').textContent = 'NOT SAVED: no labels (label the words, mark them not scored, or set "text is" to not an address)'; return false; }
   const r = await fetch('/api/save', {method: 'POST', body: JSON.stringify({round: c.round || 0, id: c.id,
-    spans, alternatives: alts, doubtful: doubt, flag, ms: Date.now() - T0, keys: KEYS})});
+    spans, alternatives: alts, unscored, doubtful, rough, flag, note, revisit, ms: Date.now() - T0, keys: KEYS})});
   if (!r.ok) { $('saved').textContent = 'NOT SAVED: ' + (await r.json()).error; return false; }
-  Object.assign(c, {spans, alternatives: alts, doubtful: doubt, flag, labeled: true});
+  Object.assign(c, {spans, alternatives: alts, unscored, doubtful, rough, flag, note, revisit, labeled: true});
   return true;
 }
 let BUSY = false; // one move at a time: a second Enter or click while a save is in flight would skip a card
@@ -177,6 +202,7 @@ async function go(d) {
 // a clicked button must not keep focus: Enter would then press it again as well as run the Enter shortcut
 document.addEventListener('click', e => { const b = e.target.closest('button'); if (b) b.blur(); });
 $('flag').onchange = () => $('flag').blur(); // so Enter saves again
+$('revisit').onchange = () => $('revisit').blur();
 $('copy').onclick = async () => { // clipboard API needs a secure context (localhost is one); else the old textarea way
   const t = card().text, b = $('copy'); b.blur();
   try { await navigator.clipboard.writeText(t); }
@@ -185,12 +211,20 @@ $('copy').onclick = async () => { // clipboard API needs a secure context (local
 };
 $('next').onclick = () => go(1); $('prev').onclick = () => go(-1);
 $('altb').onclick = () => { ALT = !ALT; $('altb').textContent = `Accept as alternative (=): ${ALT ? 'ON' : 'off'}`; $('altb').classList.toggle('on', ALT); };
+$('sure').onclick = () => setSure(SURENESS[(SURENESS.indexOf(SURE) + 1) % 3]);
 document.onkeydown = e => {
+  if (e.target.id === 'note') { // typing a note: Enter saves and moves on, Esc leaves the box, every other key is text
+    if (e.key === 'Enter') { e.preventDefault(); $('note').blur(); go(1); } else if (e.key === 'Escape') $('note').blur();
+    return;
+  }
   if ((e.target.tagName === 'INPUT' && e.key !== 'Tab') || e.target.tagName === 'SELECT') return;
   if (e.key === 'Enter') go(1);
   else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
   else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
-  else if (e.key === 'Tab') { e.preventDefault(); $('doubt').checked = !$('doubt').checked; }
+  else if (e.key === 'Tab') { e.preventDefault(); $('sure').click(); }
+  else if (e.key === 'n' && !e.ctrlKey && !e.metaKey) { e.preventDefault(); $('note').focus(); }
+  else if (e.key === 'v' && !e.ctrlKey && !e.metaKey) $('revisit').checked = !$('revisit').checked;
+  else if (e.key === 'x' && !e.ctrlKey && !e.metaKey) unscore();
   else if (e.key === '=') $('altb').click();
   else if (e.key === 'Escape') { SEL = null; render(); }
   else if (e.key === 'Delete' || e.key === 'Backspace') { if (SEL) { clearRange(SEL[0], SEL[1]); SEL = null; render(); } }

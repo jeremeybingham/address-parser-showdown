@@ -26,15 +26,36 @@ uv run python -m tools.label.server label 1     # then open http://127.0.0.1:876
 
 The page shows one card at a time (text only; the rounds hold no pre-labels). Drag over characters, or click a word, and
 press the label's key (the palette lists them). `=` switches to **accept as alternative**: the next label is recorded as
-an extra accepted reading of that span (the per-card conventions). Tab flags the card `doubtful`. **Copy address** puts the card's text on the clipboard (for a map lookup). The **flag** menu marks a card with no right
-reading: `non-address` (leave it with no spans) or `ambiguous` (label one reading and add the others as alternatives); such
-a card is reported apart and is in no score (`sets/golden/COMPOSITION.md`, "Difficulty tiers"). Enter saves and moves
+an extra accepted reading of that span (the per-card conventions). **Copy address** puts the card's text on the clipboard (for a map lookup).
+
+Each card also records:
+
+| Control | Choices | Use |
+|---|---|---|
+| **text is** (menu) | one door (default), several doors (`multi_address`), intersection, ambiguous, not an address | Several doors or a corner: label every part as written, no need to pick one door. Ambiguous: label one reading, add the others as alternatives. Not an address: no spans |
+| **sure** (Tab cycles) | sure, doubtful, rough | Doubtful: your best reading. Rough: you labeled only the clear parts |
+| **not scored** (`x`) | a selected stretch | Text no reading can be defended: it leaves the score for every parser, so the rest of the card still counts |
+| **note** (`n`, Enter saves) | free text, 500 characters | Private: stays in the round log; never exported or shipped |
+| **revisit** (`v`) | on or off | A second look before the gold is final: `server revisit` |
+
+Anything but one door and sure puts the card on its own line, in no score (`METHODOLOGY.md`). On a hard card, the cheap
+path is: label what is clear, mark the rest not scored, set rough. Set these marks while labeling (blind): a mark changed
+in adjudication, after parser output was seen, is counted in the export (`late_changes`) and listed in the report. Enter saves and moves
 on; the page opens at the first unlabeled card, so a stopped session resumes where it ended. Spans may not overlap and
 may not start or end on a space; the server refuses a bad card (the error never quotes the text).
 
 Every save is appended to `local-data/labels/round-N.jsonl` (git-ignored; the log keeps the time in ms, the key count
 and a hash of the text per save). The latest save per card is the label. A save made on other text (the anonymized
 text, before labeling moved to the unmasked text) does not count: the card shows as new again.
+
+## Revisit (any time, no parser)
+
+```sh
+uv run python -m tools.label.server revisit      # every card marked revisit, over all rounds, with its labels and note
+```
+
+Saves go to the round log with phase `review`. Clear the mark (`v`) once a card is settled; the export reports how many
+marks are still open (`revisit_open`).
 
 ## Typo check (any time, no parser)
 
@@ -45,7 +66,7 @@ uv run python -m tools.label.lint        # all rounds; or: ... lint 3 4
 Prints, per round, the hits per rule and the card ids (never the text). Rules are in the module docstring: unknown
 state, a ZIP that is not 5 digits, ZIP and state that disagree (GeoNames list), a direction span that is not a direction
 word, a direction word left inside a street name, parts out of order, a word outside every span. A hit is a reason to
-look again, not an error; fix a card by opening it in the labeling page. It runs no parser, so it does not touch the
+look again, not an error (`two-doors`: two house numbers or street names on an unflagged card, so several doors or a corner?); fix a card by opening it in the labeling page. It runs no parser, so it does not touch the
 blind rule.
 
 ### Lint review (a repeatable step: now, and again once every round is labeled, before adjudication)
@@ -80,9 +101,9 @@ output except by the owner's decision on that card.
 uv run python -c "from tools.label import store; print(store.export_round(1))"
 ```
 
-Writes the private gold `local-data/golden-real/gold/round-N.jsonl` (git-ignored; `id`, `text`, `spans`, `alternatives`, `doubtful`, `flag`) once
-every card of the round is labeled, and returns the counts (cards, doubtful, flagged, with alternatives, adjudicated
-saves) for the manifest. The tier is not stored here: `tools/sets/golden.py` adds it from the shape class when it
+Writes the private gold `local-data/golden-real/gold/round-N.jsonl` (git-ignored; `id`, `text`, `spans`, `alternatives`, `doubtful`, `rough`, `unscored`, `flag`; never the note or the revisit mark) once
+every card of the round is labeled, and returns the counts (cards, doubtful, rough, with unscored regions, flagged, open
+revisit marks, late changes, with alternatives, adjudicated saves) for the manifest. The tier is not stored here: `tools/sets/golden.py` adds it from the shape class when it
 converts the gold for the scorer (`tools/golden/tiers.py`).
 Then make the shipped gold, with invented values in place of the private ones and the spans unchanged:
 
@@ -90,6 +111,6 @@ Then make the shipped gold, with invented values in place of the private ones an
 uv run python -m tools.golden.derive 1    # -> sets/golden/gold/round-1.jsonl (committed); counts and held card ids only
 ```
 
-It holds back a card that would ship a real word (label that word, often as `other`, and run it again) and writes a
+It holds back a card that would ship a real word (label that word, often as `other`, or mark it not scored, and run it again) and writes a
 side-by-side review file, `local-data/golden-real/review/round-N.md`, to read before committing.
 Only invented or anonymized text ever reaches `sets/golden/gold/`.

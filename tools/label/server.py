@@ -3,6 +3,7 @@
     uv run python -m tools.label.server label ROUND [--port 8765]
     uv run python -m tools.label.server adjudicate [--port 8765]
     uv run python -m tools.label.server review [--port 8765]   # queue from lint --queue
+    uv run python -m tools.label.server revisit [--port 8765]  # every card marked `revisit`, over all rounds
 
 Labels are appended to `local-data/labels/round-N.jsonl` (git-ignored). This module never imports an adapter.
 """
@@ -39,7 +40,11 @@ class App:
     def cards_payload(self) -> list[dict]:
         """Cards to show, in order, with any saved labels. Adjudication cards carry the questions (no parser names)."""
         out = []
-        if self.mode == "label":
+        if self.mode == "revisit":
+            for n in self.rounds:
+                cards = store.gold_cards(n, self.rounds_dir, self.log_dir)
+                out += [{**c, "round": n} for c in cards if c.get("revisit")]
+        elif self.mode == "label":
             n = self.rounds[0]
             cards = [
                 {**c, "round": n, "n": i + 1} for i, c in enumerate(store.gold_cards(n, self.rounds_dir, self.log_dir))
@@ -59,7 +64,7 @@ class App:
     def save(self, payload: dict) -> dict:
         n, cid = payload["round"], payload["id"]
         card = self.cards[n][cid]  # KeyError for an unknown card
-        phase = {"adjudicate": "adjudicate", "review": "review"}.get(self.mode, "label")
+        phase = {"adjudicate": "adjudicate", "review": "review", "revisit": "review"}.get(self.mode, "label")
         return store.save_card(n, card, payload, phase=phase, log_dir=self.log_dir)
 
 
@@ -101,7 +106,7 @@ def make_handler(app: App):
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["label", "adjudicate", "review"])
+    ap.add_argument("mode", choices=["label", "adjudicate", "review", "revisit"])
     ap.add_argument("round", nargs="?", type=int)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--practice", action="store_true", help="use local-data/practice (round 0), not the real rounds")
@@ -112,8 +117,8 @@ def main() -> None:
     if a.practice:
         base = store.ROOT / "local-data" / "practice"
         kw = {"log_dir": base / "labels", "rounds_dir": base}
-    rounds = [a.round] if a.mode == "label" else list(range(1, 12 if a.mode == "review" else 7))
-    if a.mode == "review":  # only the rounds that exist and have queue cards
+    rounds = [a.round] if a.mode == "label" else list(range(1, 7 if a.mode == "adjudicate" else 12))
+    if a.mode in ("review", "revisit"):  # only the rounds that exist
         rounds = [n for n in rounds if (kw.get("rounds_dir", store.ROUNDS) / f"round-{n}.jsonl").exists()]
     app = App(a.mode, rounds, **kw)
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), make_handler(app))

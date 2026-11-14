@@ -161,9 +161,13 @@ check.
     non-addresses 20, and nine base `hard` classes 11 each. Sizes were fixed before the draw, by class only.
 - **Typos (`hard` only)** are applied from observed typo classes (one-character slips, a dropped or doubled letter, glued
   words, a missing comma) onto invented values, never chosen by checking whether a parser fails.
-- **Non-addresses and unparsable strings** carry a flag: `non_address` (gold: no fields) or `ambiguous` (more than one
-  accepted reading, all listed). The owner decides which, per record, in labeling. They are reported on their own line and
-  left out of the tier's accuracy figure and of the Parser Score, with their count shown.
+- **Non-addresses and unparsable strings** carry a flag: `non_address` (gold: no fields), `ambiguous` (one door, more
+  than one accepted reading, all listed), `multi_address` (several doors, every part labeled as written) or
+  `intersection` (a corner, no door). A card the labeler is unsure of is `doubtful`; a card labeled only where it is clear
+  is `rough`, and a stretch no reading can be defended may be marked not scored (left out on both sides). The owner
+  decides, per record, in blind labeling. Flagged, rough and doubtful records are reported on their own line and left
+  out of the tier's accuracy figure and of the Parser Score, with their count shown; a tier with more than 15% of its
+  records held out this way is marked in the report (amended 2026-11-14, before any scored run).
 - **Added rounds** use a new public seed (recorded here when drawn) and a private twin with an unpublished seed, the same
   recipe as rounds 1 to 6. Their records go through the same blind labeling and adjudication.
 - **Reporting:** each tier on its own line with its interval and ceiling. Tiers are not averaged by record count; the

@@ -4,7 +4,9 @@
     uv run python -m tools.sets.golden     # sets/golden/gold/round-*.jsonl -> build/sets/golden.jsonl.gz
 
 The tier comes from `tools/golden/tiers.py` (shape class, then the `normal` mapping check); no parser is run. A record
-keeps its `alternatives` and its `flag`; the scorer reports a flagged record apart (`tier/flag`), in no score.
+keeps its `alternatives`, its `flag`, `doubtful`, `rough` and `unscored`; the scorer reports a flagged, doubtful or
+rough record apart (`tier/flag`, `tier/doubtful`, `tier/rough`), in no score, and leaves unscored regions out on both
+sides.
 Only exported rounds are read (a round is exported once every card in it is labeled, `tools/label/README.md`).
 """
 
@@ -31,8 +33,9 @@ def convert(gold: list[dict], prov: dict[str, dict]) -> list[dict]:
             "shape_class": cls,
             "alternatives": card.get("alternatives", []),
         }
-        if card.get("flag"):
-            rec["flag"] = card["flag"]
+        for k in ("flag", "doubtful", "rough", "unscored"):
+            if card.get(k):
+                rec[k] = card[k]
         out.append(rec)
     return out
 

@@ -8,7 +8,7 @@ labels in `REPLACE` with invented text of the same length and shape: digits by o
 the same case; street types, directionals and unit words (`sample.SAFE`) and runs of one or two letters stay. Because
 every replacement has the same length, the spans and alternatives are the hand gold unchanged. City, state, ZIP and
 every type and direction label stay real, as in the draw (`COMPOSITION.md`). A `non_address` card has its whole text
-replaced. Template cards are invented already and ship as labeled.
+replaced, and so has every unscored region (as `other`). Template cards are invented already and ship as labeled.
 
 A card is held back (not shipped) when its derived text keeps a real word of four letters or more outside the kept
 labels (label that word, often as `other`, and run again) or still matches an exclusion corpus after five tries. The
@@ -45,6 +45,7 @@ REPLACE = {
     "building_name",
     "other",
 }
+SHIPPED_KEYS = store.EXPORT_KEYS  # never a note or a revisit mark (they stay in the private log)
 KEEP_WORDS = {  # labels whose real words may stay in the shipped text
     "street_pre_direction",
     "street_pre_type",
@@ -221,7 +222,10 @@ def derive_card(card: dict, salt: int = 0, seed: int = PUBLIC_SEED) -> str:
     text = card["text"]
     r = random.Random(int(hashlib.sha256(f"{seed}|{card['id']}|{salt}".encode()).hexdigest()[:16], 16))
     avoid = {w.lower() for w in re.findall(r"[A-Za-z]+", text)}
-    spans = [[0, len(text), "other"]] if card.get("flag") == "non_address" else card["spans"]
+    if card.get("flag") == "non_address":
+        spans = [[0, len(text), "other"]]
+    else:
+        spans = card["spans"] + [[s, e, "other"] for s, e in card.get("unscored", [])]
     memo: dict[str, str] = {}
     out, at = [], 0
     for s, e, lab in sorted(spans):
@@ -266,12 +270,11 @@ def derive_round(n: int, banned: set[str], gold_dir: Path, out_dir: Path, review
                 review.append(f"| {c['id']} | HELD: real word kept | {c['text']} | {new} |")
                 continue
             review.append(f"| {c['id']} | | {c['text']} | {new} |")
-        shipped.append({**{k: c[k] for k in ("id", "spans", "alternatives", "doubtful", "flag")}, "text": new})
+        shipped.append({**{k: c.get(k, store.CARD_FIELDS.get(k)) for k in SHIPPED_KEYS}, "text": new})
     out_dir.mkdir(parents=True, exist_ok=True)
     with (out_dir / f"round-{n}.jsonl").open("w") as f:
         for c in shipped:
-            keys = ("id", "text", "spans", "alternatives", "doubtful", "flag")
-            f.write(json.dumps({k: c[k] for k in keys}, ensure_ascii=False) + "\n")
+            f.write(json.dumps({k: c[k] for k in SHIPPED_KEYS}, ensure_ascii=False) + "\n")
     review_dir.mkdir(parents=True, exist_ok=True)
     (review_dir / f"round-{n}.md").write_text(
         f"# Round {n}: labeled text and shipped text (private)\n\n| id | note | labeled | shipped |\n|---|---|---|---|\n"

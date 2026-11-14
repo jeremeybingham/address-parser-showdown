@@ -81,7 +81,11 @@ def test_save_load_export(dirs):
         "round": 1,
         "cards": 2,
         "doubtful": 0,
+        "rough": 0,
+        "with_unscored": 0,
         "flagged": 0,
+        "revisit_open": 0,
+        "late_changes": 0,
         "with_alternatives": 1,
         "adjudicated_saves": 0,
     }
@@ -217,3 +221,110 @@ def test_review_mode_serves_queue_with_saved_labels(tmp_path):
     assert c["rules"] == ["uncovered"] and c["spans"] == [[0, 2, "house_number_value"]]
     app.save({"round": 1, "id": "a", "spans": [[0, 2, "house_number_value"], [3, 6, "street_name"]]})
     assert store.load_log(1, logs)["a"]["phase"] == "review"
+
+
+def test_status_sureness_unscored_and_notes_are_saved_but_notes_never_exported(dirs):
+    rounds, logs = dirs
+    cards = {c["id"]: c for c in store.load_round(1, rounds)}
+    payload = {
+        "spans": GOOD,
+        "unscored": [[12, 17]],  # "Apt 4"
+        "flag": "multi_address",
+        "rough": True,
+        "note": "  look again  ",
+        "revisit": True,
+    }
+    rec = store.save_card(1, cards["a1"], payload, log_dir=logs)
+    assert (rec["note"], rec["revisit"], rec["unscored"], rec["rough"]) == ("look again", True, [[12, 17]], True)
+    store.save_card(1, cards["a2"], {"flag": "intersection", "spans": [[2, 5, "street_name"]]}, log_dir=logs)
+    gold = rounds.parent / "gold"
+    counts = store.export_round(1, gold, rounds, logs)
+    assert (counts["rough"], counts["with_unscored"], counts["revisit_open"], counts["flagged"]) == (1, 1, 1, 2)
+    raw = (gold / "round-1.jsonl").read_text()
+    assert "look again" not in raw and '"note"' not in raw and '"revisit"' not in raw
+    assert json.loads(raw.splitlines()[0])["unscored"] == [[12, 17]]
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"spans": GOOD, "doubtful": True, "rough": True},
+        {"spans": GOOD, "unscored": [[3, 8]]},  # overlaps a span
+        {"spans": GOOD, "unscored": [[11, 17]]},  # starts on a space
+        {"spans": GOOD, "unscored": [[12, 17], [15, 20]]},
+        {"spans": GOOD, "note": "x" * 501},
+        {"spans": GOOD, "flag": "two_doors"},
+    ],
+)
+def test_bad_status_payloads_are_refused(dirs, payload):
+    rounds, logs = dirs
+    card = store.load_round(1, rounds)[0]
+    with pytest.raises(store.CardError) as e:
+        store.save_card(1, card, payload, log_dir=logs)
+    assert "Tampa" not in str(e.value) and "Oak" not in str(e.value)
+
+
+def test_old_saves_without_the_new_fields_still_load(dirs):
+    rounds, logs = dirs
+    logs.mkdir()
+    old = {"id": "a1", "phase": "label", "spans": GOOD, "alternatives": [], "doubtful": False, "flag": None}
+    (logs / "round-1.jsonl").write_text(json.dumps({**old, "th": store.text_hash(TEXT)}) + "\n")
+    card = store.gold_cards(1, rounds, logs)[0]
+    assert (card["rough"], card["unscored"], card["note"], card["revisit"]) == (False, [], "", False)
+
+
+def test_late_changes_count_only_marks_changed_after_adjudication_began(dirs):
+    rounds, logs = dirs
+    cards = {c["id"]: c for c in store.load_round(1, rounds)}
+    store.save_card(1, cards["a1"], {"spans": GOOD}, log_dir=logs)
+    store.save_card(1, cards["a1"], {"spans": GOOD, "doubtful": True}, phase="review", log_dir=logs)  # still blind
+    store.save_card(1, cards["a2"], {"spans": [[0, 1, "house_number_value"]]}, log_dir=logs)
+    assert store.late_changes(1, logs) == []
+    store.save_card(1, cards["a1"], {"spans": GOOD, "doubtful": True}, phase="adjudicate", log_dir=logs)  # same marks
+    store.save_card(1, cards["a2"], {"spans": [[0, 1, "house_number_value"]]}, phase="adjudicate", log_dir=logs)
+    assert store.late_changes(1, logs) == []
+    store.save_card(1, cards["a2"], {"spans": [[0, 1, "house_number_value"]], "rough": True}, log_dir=logs)
+    assert store.late_changes(1, logs) == ["a2"]  # a later save still counts as after the parsers ran
+
+
+def test_revisit_mode_serves_only_marked_cards(dirs):
+    rounds, logs = dirs
+    cards = {c["id"]: c for c in store.load_round(1, rounds)}
+    store.save_card(1, cards["a1"], {"spans": GOOD}, log_dir=logs)
+    store.save_card(1, cards["a2"], {"spans": [[0, 1, "house_number_value"]], "revisit": True}, log_dir=logs)
+    app = server.App("revisit", [1], logs, rounds)
+    got = app.cards_payload()
+    assert [c["id"] for c in got] == ["a2"] and got[0]["round"] == 1
+    assert app.save({"round": 1, "id": "a2", "spans": [[0, 1, "house_number_value"]]})["phase"] == "review"
+
+
+def test_lint_two_doors_and_unscored_text_is_not_uncovered():
+    from tools.label import lint
+
+    t = "12 Oak St & 14 Elm Ave"
+    two = {
+        "text": t,
+        "spans": [
+            [0, 2, "house_number_value"],
+            [3, 6, "street_name"],
+            [7, 9, "street_post_type"],
+            [12, 14, "house_number_value"],
+            [15, 18, "street_name"],
+            [19, 22, "street_post_type"],
+        ],
+    }
+    assert "two-doors" in lint.lint_card(two)
+    assert lint.lint_card({**two, "flag": "multi_address"}) == []
+    words = {
+        "text": "12 Oak Hill St",
+        "spans": [
+            [0, 2, "house_number_value"],
+            [3, 6, "street_name"],
+            [7, 11, "street_name"],
+            [12, 14, "street_post_type"],
+        ],
+    }
+    assert "two-doors" not in lint.lint_card(words)  # one name labeled word by word
+    part = {"text": t, "spans": [[0, 2, "house_number_value"], [3, 6, "street_name"], [7, 9, "street_post_type"]]}
+    assert "uncovered" in lint.lint_card(part)
+    assert "uncovered" not in lint.lint_card({**part, "unscored": [[12, 22]]})

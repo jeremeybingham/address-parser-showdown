@@ -9,13 +9,22 @@ from pathlib import Path
 
 import numpy as np
 
+from schema import FLAGS
 from schema import labels as schema_labels
 from scorer import spans as sp
 from scorer import stats
 from tools.sets.common import PREDICTIONS, SETS_OUT, read_jsonl
 
 FORMULA = Path(__file__).with_name("formula.toml")
-FLAGS = ("non_address", "ambiguous")
+SURENESS = ("rough", "doubtful")  # a golden record marked so is reported apart (`tier/rough`, `tier/doubtful`)
+APART_WHY = {  # why a golden record with this suffix is reported apart (METHODOLOGY.md)
+    "non_address": "not an address (flagged in blind labeling)",
+    "ambiguous": "one door, several readings (flagged in blind labeling)",
+    "multi_address": "several doors: fields checked, no single door (flagged in blind labeling)",
+    "intersection": "a corner, no door (flagged in blind labeling)",
+    "rough": "rough label: only the clear parts are labeled",
+    "doubtful": "doubtful label (the Parser Score is also shown with these records in)",
+}
 
 
 def load_formula(path: Path = FORMULA) -> dict:
@@ -44,6 +53,8 @@ def role_of(formula: dict, set_name: str, part: str) -> str:
     """`scored`, or why the part is reported apart."""
     if (set_name, part) in part_weights(formula):
         return "scored"
+    if "/" in part and part.split("/", 1)[1] in APART_WHY:
+        return APART_WHY[part.split("/", 1)[1]]
     for a in formula.get("apart", []):
         if a["set"] == set_name and a["part"] in ("*", part):
             return a["why"]
@@ -70,6 +81,18 @@ class Counts:
     def n(self) -> int:
         return len(self.correct)
 
+    def __add__(self, other: Counts) -> Counts:
+        out = Counts()
+        for k in ("ids", "correct", "tp", "fp", "fn"):
+            setattr(out, k, getattr(self, k) + getattr(other, k))
+        for k in ("errors", "fine_n", "fine_correct", "fine_skipped"):
+            setattr(out, k, getattr(self, k) + getattr(other, k))
+        for k in ("field_counts", "fine_counts"):
+            for src in (getattr(self, k), getattr(other, k)):
+                for lab, v in src.items():
+                    getattr(out, k)[lab] = [a + b for a, b in zip(getattr(out, k)[lab], v, strict=True)]
+        return out
+
 
 def _best(golds: list[set], pred: set):
     """The reading the prediction fits best: (matches all, tp, gold set)."""
@@ -80,7 +103,8 @@ def score_record(rec: dict, pred_spans: list, formula: dict, c: Counts) -> None:
     text = rec["text"]
     coarse_scored = scored_coarse(formula)
     readings = sp.readings([tuple(s) for s in rec["spans"]], rec.get("alternatives", []))
-    pred = [tuple(s) for s in pred_spans]
+    unscored = rec.get("unscored", [])  # left out on both sides: a predicted span touching one is not scored
+    pred = [tuple(s) for s in pred_spans if not any(s[0] < e and b < s[1] for b, e in unscored)]
 
     p = sp.coarse_spans(text, pred, coarse_scored)
     golds = [sp.coarse_spans(text, r, coarse_scored) for r in readings]
@@ -122,8 +146,53 @@ def score_record(rec: dict, pred_spans: list, formula: dict, c: Counts) -> None:
 
 
 def effective_part(rec: dict) -> str:
-    flag = rec.get("flag")
-    return f"{rec.get('part', '')}/{flag}" if flag in FLAGS else rec.get("part", "")
+    """The part a record is scored in: its own, or `part/flag`, `part/rough`, `part/doubtful` (reported apart)."""
+    part, flag = rec.get("part", ""), rec.get("flag")
+    if flag in FLAGS:
+        return f"{part}/{flag}"
+    for mark in SURENESS:
+        if rec.get(mark):
+            return f"{part}/{mark}"
+    return part
+
+
+def with_apart(results: dict, mark: str) -> dict:
+    """`results` with each `(set, part/mark)` merged into `(set, part)` (the Parser Score with those records in)."""
+    out = {k: dict(v) for k, v in results.items() if not k[1].endswith("/" + mark)}
+    for (s, part), by in results.items():
+        if part.endswith("/" + mark):
+            base = (s, part.rsplit("/", 1)[0])
+            out[base] = {p: out[base][p] + c if base in out else c for p, c in by.items()}
+    return out
+
+
+def held_out(results: dict, formula: dict) -> list[dict]:
+    """Per scored (set, part): records in it, records reported apart by suffix, and whether the apart share is over
+    `drop_warn_share` (a tier that has lost too many records to its flags and marks)."""
+    limit = formula.get("drop_warn_share", 1.0)
+    out = []
+    for s, part in part_weights(formula):
+        kept = results.get((s, part))
+        n_kept = next(iter(kept.values())).n if kept else 0
+        apart = {
+            k[1].split("/", 1)[1]: next(iter(by.values())).n
+            for k, by in results.items()
+            if k[0] == s and k[1].startswith(part + "/")
+        }
+        total = n_kept + sum(apart.values())
+        if apart:
+            share = sum(apart.values()) / total
+            out.append({"set": s, "part": part, "kept": n_kept, "apart": apart, "share": share, "warn": share > limit})
+    return out
+
+
+def nobody_right(results: dict, parsers: list[str]) -> dict[tuple[str, str], int]:
+    """Records no parser reads right, per (set, part). A count only: never used to drop or move a record."""
+    out = {}
+    for k, by in results.items():
+        cols = [by[p].correct for p in parsers if p in by]
+        out[k] = sum(1 for row in zip(*cols, strict=True) if not any(row))
+    return out
 
 
 def score_set(set_name: str, parser: str, formula: dict, sets_dir: Path = SETS_OUT, pred_dir: Path = PREDICTIONS):
@@ -190,11 +259,13 @@ def bootstrap(results: dict, formula: dict, parsers: list[str]) -> dict:
 
 
 def sensitivity(results: dict, formula: dict, parsers: list[str]) -> dict[str, dict[str, float]]:
-    """Parser Score under equal weights and with each set left out (weights renormalized)."""
+    """Parser Score under equal weights, with the doubtful golden records in, and with each set left out."""
     w = part_weights(formula)
     keep = [k for k in w if k in results]
     table = {"formula weights": aggregate(results, formula, parsers)[0]}
     table["equal weights"] = aggregate(results, formula, parsers, equal=True)[0]
+    if any(k[1].endswith("/doubtful") for k in results):
+        table["with the doubtful records"] = aggregate(with_apart(results, "doubtful"), formula, parsers)[0]
     for s in sorted({k[0] for k in keep}):
         rest = {k for k in keep if k[0] != s}
         if rest:
