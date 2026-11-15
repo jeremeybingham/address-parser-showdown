@@ -10,4 +10,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
+      # ruff, pytest (the conformance tests run for doorplate and usaddress; libpostal's skips without a build)
       - run: tools/check.sh
+
+  score:
+    # Scores doorplate and usaddress on every set that can be rebuilt without libpostal: the external sources are
+    # fetched and SHA-256 checked, the golden set is the shipped gold.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: |
+          set -e
+          uv run python -m tools.sets.fetch
+          for m in doorplate_suite usaddress_tests libpostal_us senzing_us geocode_dev golden; do
+            if [ "$m" = doorplate_suite ]; then uv run python -m tools.sets.$m --fetch; else uv run python -m tools.sets.$m; fi
+          done
+          for s in doorplate-suite usaddress-tests libpostal-us senzing-us geocode-dev golden; do
+            uv run python -m tools.sets.predict "$s" --parsers doorplate usaddress
+          done
+          uv run python -m scorer --parsers doorplate,usaddress --out score-out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: score
+          path: score-out

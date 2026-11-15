@@ -55,17 +55,22 @@ def step(n: int, total: int, label: str) -> None:
     print(f"##progress step={n}/{total} label={label}", flush=True)
 
 
+def clean_tree() -> bool:
+    return not git("status", "--porcelain")
+
+
 def prepare(stamp: str, allow_dirty: bool) -> Path:
     out = RUNS / stamp
     if out.exists():
         sys.exit(f"{out} exists: a run folder is never overwritten (use a new --date)")
-    if git("status", "--porcelain") and not allow_dirty:
+    if not clean_tree() and not allow_dirty:
         sys.exit("the working tree is not clean: commit first, so run.json names the code that ran (or --allow-dirty)")
     return out
 
 
 def full_run(stamp: str, skip_speed: bool, allow_dirty: bool) -> Path:
     out = prepare(stamp, allow_dirty)
+    tree_clean = clean_tree()  # before the run writes anything
     total = 6 if skip_speed else 7
     started = time.time()
     step(1, total, "fetch")
@@ -93,12 +98,12 @@ def full_run(stamp: str, skip_speed: bool, allow_dirty: bool) -> Path:
         step(6, total, "speed")
         sh("tools.bench.speed", "--out", str(out))
     step(total, total, "run.json")
-    write_run_json(out, stamp, started, skip_speed)
+    write_run_json(out, stamp, started, skip_speed, tree_clean)
     print(f"run written to {out}")
     return out
 
 
-def write_run_json(out: Path, stamp: str, started: float, skip_speed: bool) -> None:
+def write_run_json(out: Path, stamp: str, started: float, skip_speed: bool, tree_clean: bool) -> None:
     versions = {}
     for name, cls in ADAPTERS.items():
         a = cls()
@@ -111,10 +116,10 @@ def write_run_json(out: Path, stamp: str, started: float, skip_speed: bool) -> N
     info = {
         "date": stamp,
         "commit": git("rev-parse", "HEAD"),
-        "tree_clean": not git("status", "--porcelain"),
+        "tree_clean": tree_clean,
         "parser_versions": versions,
         "set_sha256": set_sha,
-        "machine": speed.machine(),
+        "host": speed.machine(),  # the speed table names the machine as pinned to 4 CPUs
         "speed_measured": not skip_speed,
         "seconds": round(time.time() - started),
     }

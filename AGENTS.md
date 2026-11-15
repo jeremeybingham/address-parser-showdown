@@ -43,7 +43,8 @@ uv run python -m tools.sets.fetch          # download the external sources of th
 uv run python -m tools.sets.predict SET         # every adapter on a converted set -> build/predictions/SET/
 uv run python -m tools.bench.speed         # speed, load time, memory, install size of every parser (--out DIR writes speed.md/json; ~1 min; libpostal needs its build)
 uv run python -m scorer                       # score every converted set with predictions (tables; --out DIR writes results.md/json)
-just all                  # the full pinned run (not written yet)
+just all                  # the full pinned run: fetch, convert, predict, score, speed -> runs/<date>/ (about 4 minutes; clean tree and the pinned libpostal build needed)
+just rescore runs/DATE    # score a committed run again from its prediction files only
 ```
 
 ## Rules that must hold
