@@ -2122,110 +2122,6 @@
 {"id": "g-r9-163", "round": 9, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "restored": true}
 {"id": "g-r9-164", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
 {"id": "g-r9-165", "round": 9, "stratum": "public", "source": "va-scc", "shape": "as-found", "style": "as-written", "restored": true}
-{"id": "g-r11-015", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-040", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-047", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-090", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-008", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-025", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-034", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-086", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-001", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-014", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-035", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-041", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-030", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-029", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-021", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-026", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-004", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-003", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-058", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-016", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-044", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-028", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-024", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-011", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-006", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-019", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-013", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-043", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-005", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-009", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-023", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-039", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-060", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-020", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-010", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-002", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-007", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-038", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "upper", "replacement": true}
-{"id": "g-r11-027", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-033", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-084", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-037", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-038", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-031", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-076", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-053", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-042", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-059", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-012", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-018", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-045", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-046", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-061", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-062", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-048", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-049", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-050", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-095", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-051", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-032", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-054", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-055", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-056", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-063", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-052", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-036", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-064", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-065", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-069", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
-{"id": "g-r11-067", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-068", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-017", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-070", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-071", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-072", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-073", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-074", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-075", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-069", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-022", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-077", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-078", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
-{"id": "g-r11-079", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-057", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
-{"id": "g-r11-080", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-081", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-082", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-083", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-089", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
-{"id": "g-r11-085", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-066", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-087", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-088", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-089", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-095", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
-{"id": "g-r11-091", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-092", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-093", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-094", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
-{"id": "g-r11-100", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
-{"id": "g-r11-096", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
-{"id": "g-r11-102", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "typo", "replacement": true}
-{"id": "g-r11-097", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
-{"id": "g-r11-098", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
 {"id": "g-r12-001", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
 {"id": "g-r12-002", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
 {"id": "g-r12-003", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
@@ -2256,3 +2152,357 @@
 {"id": "g-r12-028", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
 {"id": "g-r12-029", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
 {"id": "g-r12-030", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r11-001", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-002", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-003", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-004", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-005", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-006", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-007", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-008", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-009", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-010", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-011", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-012", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-013", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-014", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-015", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-016", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-017", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-018", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-019", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-020", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-021", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-022", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-023", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-024", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-025", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-026", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-027", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-028", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-029", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-030", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-031", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-032", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-033", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-034", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-035", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-036", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-037", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-038", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "upper", "replacement": true}
+{"id": "g-r11-039", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-040", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-041", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-042", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-043", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-044", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-045", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-046", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-047", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-048", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-049", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-050", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-051", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-052", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-053", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-054", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-055", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-056", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-057", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-058", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-059", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-060", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-061", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-062", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-063", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-064", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-065", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-066", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-067", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-068", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-069", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
+{"id": "g-r11-070", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-071", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-072", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-073", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-074", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-075", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-076", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-077", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-078", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-079", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-080", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-081", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-082", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
+{"id": "g-r11-083", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-084", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-commas", "replacement": true}
+{"id": "g-r11-085", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-086", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-087", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-088", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-089", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
+{"id": "g-r11-090", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-091", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-092", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-093", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-094", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-095", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
+{"id": "g-r11-096", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-097", "round": 11, "stratum": "clean", "source": "nad", "shape": "ordinary", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-098", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-099", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-commas", "replacement": true}
+{"id": "g-r11-100", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "none", "replacement": true}
+{"id": "g-r11-101", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r11-102", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "typo", "replacement": true}
+{"id": "g-r11-103", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
+{"id": "g-r11-104", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r10-001", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-002", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-003", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-004", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-005", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-006", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-007", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-008", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-009", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-010", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-011", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-012", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-013", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-014", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-015", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-016", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-017", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-018", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-019", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-020", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-021", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-022", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-023", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-024", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-025", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-026", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-027", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-028", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-029", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-030", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-031", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-032", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-033", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-034", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-035", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-036", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-037", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-038", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-039", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-040", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-041", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-042", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-043", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-044", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-045", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-046", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-047", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-048", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-049", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-050", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-051", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-052", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-053", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-054", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-055", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-056", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-057", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-058", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-059", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-060", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-061", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-062", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-063", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-064", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-065", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-066", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-067", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-068", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-069", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-070", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-071", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-072", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-073", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-074", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-075", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-076", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-077", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-078", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-079", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-080", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-081", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-082", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-083", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-084", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-085", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-086", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-087", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-088", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-089", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-090", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-091", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-092", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-093", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-094", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-095", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-096", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-097", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-098", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-099", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-100", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-101", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-102", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-103", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-104", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-105", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-106", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-107", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-108", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-109", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-110", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-111", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-112", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-113", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-114", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-115", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-116", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-117", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-118", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-119", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-120", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-121", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-122", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-123", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-124", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-125", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-126", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-127", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-128", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-129", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-130", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-131", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-132", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-133", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-134", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-135", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-136", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-137", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-138", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-139", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-140", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-141", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-142", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-143", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-144", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-145", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-146", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-147", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-148", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-149", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-150", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-151", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-152", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-153", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-154", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-155", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-156", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-157", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-158", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-159", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-160", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-161", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-162", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-163", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-164", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-165", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-166", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-167", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-168", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-169", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-170", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-171", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-172", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-173", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-174", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-175", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-176", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-177", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-178", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-179", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-180", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-181", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-182", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-183", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-184", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-185", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-186", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-187", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-188", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-189", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-190", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-191", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-192", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-193", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-194", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-195", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-196", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-197", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-198", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-199", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-200", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-201", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-202", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-203", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-204", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-205", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-206", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-207", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-208", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-209", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-210", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-211", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-212", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-213", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-214", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-215", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-216", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-217", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-218", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-219", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-220", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-221", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-222", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-223", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-224", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-225", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-226", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-227", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-228", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-229", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-230", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-231", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-232", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-233", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-234", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-235", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-236", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-237", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-238", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-239", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-240", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-241", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-242", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-243", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-244", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-245", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-246", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-247", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-248", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-249", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}
+{"id": "g-r10-250", "round": 10, "stratum": "public", "source": "sba-ppp", "shape": "as-found", "style": "as-written"}

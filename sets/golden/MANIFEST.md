@@ -13,7 +13,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 - `round-4.jsonl`: `511e3211412ee706bf8e787e00231bca26c9743ed5c1ff36be68b81cd30090dc`
 - `round-5.jsonl`: `48af7ae167d62f4244d140ee27778aabdfa68d5bb171f592e8175c7a52fbcec8`
 - `round-6.jsonl`: `588c05890d7669f71a4ac57032877fa0e8ad1330f7b53ea9ebb942bb48d32880`
-- `provenance.jsonl` (all rounds, current): `7adafd715d0d79c6fc7be006135ef8a7a1020694dc7b33178958f282461cfe17`
+- `provenance.jsonl` (all rounds, current): `92b78f928638bdbd38b23e0c6ef793bc3cdb23e9a616d25f26402dbe13ef1427`
 
 ## Records by stratum
 
@@ -222,5 +222,42 @@ generator `seed + 12`). Duplicates and exclusion hits are skipped. Rounds 1 to 6
 
 35 cards of rounds 7 and 8 are removed (`removed.jsonl`; see `COMPOSITION.md`). Round 12 (30 real cards, private text, not
 in `sets/golden/rounds/`) is drawn by `tools/golden/realforms.py`; its rows are in `provenance.jsonl` (stratum `real`).
-- `removed.jsonl`: `6df0ad255a5ecfbddcaa30f6e84f49758953eeaa1690fb697e0b208878fba673`
-- `provenance.jsonl` (all rounds): `7adafd715d0d79c6fc7be006135ef8a7a1020694dc7b33178958f282461cfe17`
+- `removed.jsonl`: `a7e5b763353f17f1f650f247338afc2451a940eb19cdd631baf9e77c07017b51`
+- `provenance.jsonl` (all rounds): `92b78f928638bdbd38b23e0c6ef793bc3cdb23e9a616d25f26402dbe13ef1427`
+
+## Shipped gold, rounds 1 to 12 (2026-11-15)
+
+All rounds were labeled blind and adjudicated (rounds 1 to 12, 1,296 cards queued, every one decided). 34 more cards the
+owner marked "remove" were added to `removed.jsonl` (now 69; 27 non-address, 1 grid, 6 other). Shipped cards per round
+(`derive` holds back a card that would ship a real word, to be fixed by labeling that word and run again):
+
+| Round | Shipped | Held |
+|---|---|---|
+| 1 | 235 | 0 |
+| 2 | 234 | 0 |
+| 3 | 232 | 0 |
+| 4 | 234 | 0 |
+| 5 | 225 | 0 |
+| 6 | 233 | 0 |
+| 7 | 270 | 0 |
+| 8 | 230 | 0 |
+| 9 | 160 | 3 |
+| 10 | 242 | 7 |
+| 11 | 100 | 4 |
+| 12 | 30 | 0 |
+
+Shipped: **2425** cards; held: 14. Round 10 had no provenance rows (added by `tools/golden/sba.py`); round 11's rows were
+written from renumbered cards, with 4 ids repeated and 4 missing (fixed in `tools/golden/sample.py`).
+- `gold/round-1.jsonl`: `0b1b3898f311a30c6db31d77dc848d9fc3ea4a51e815d25c6e9331efc86b9c81`
+- `gold/round-2.jsonl`: `0ce3716ad1d5da8a40f88312fb72ff3b51450180bbd43dbd489ab0fa5847d046`
+- `gold/round-3.jsonl`: `ceb591f2ada5f1254c7a5cfddfeb4d65d090f76c0ba13ffb1748124ae1b64031`
+- `gold/round-4.jsonl`: `9e5c989befb56799de93c3c12db8d60d713ddf4e36c2a962b6a3207ccf91eab4`
+- `gold/round-5.jsonl`: `1b404d19f29b36e2500f9e42b41c503129d98cb4012be9ab6963e6e62f02425f`
+- `gold/round-6.jsonl`: `897bfd0a0f6779017051357d4b03988e30ae88a655f4538e7dc01134319a8cac`
+- `gold/round-7.jsonl`: `afa6926f24a511636116c83edccc7aaba646bc29c556f14210b7c757facbdf81`
+- `gold/round-8.jsonl`: `32912a021741c00985a87d9ffc5d0af715c517ed510f289627e618c8b06dbc58`
+- `gold/round-9.jsonl`: `08264fd4dc29c1c5e37d183f01141264bb6b29488f08dbcdfe8e60a0cff461a2`
+- `gold/round-10.jsonl`: `859e2d0bc712e27e6ac3f3888937ed249a71d9522ad012204da6c54af1981ec8`
+- `gold/round-11.jsonl`: `2f99453845a685848cfdc006d2a85151428cee1bc03326977d4c8484ad98198e`
+- `gold/round-12.jsonl`: `9df2d85a2e6533f5371b99956cdd171fbee98853e714849c4026a99a10b669b5`
+- `removed.jsonl`: `a7e5b763353f17f1f650f247338afc2451a940eb19cdd631baf9e77c07017b51`

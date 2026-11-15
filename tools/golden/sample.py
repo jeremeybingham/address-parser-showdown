@@ -625,9 +625,30 @@ def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: s
     full = deal(recs, seed)
     final = final_rounds(full, reps, pool)
     new = round_lines(final, tag)
+    # Taken now: `final_rounds` below (frontage=False) renumbers the `idx` of the cards shared with `final`.
+    r11_prov = [
+        {
+            "id": f"{tag}-r11-{x['idx']:03d}",
+            "round": 11,
+            **{k: x[k] for k in ("stratum", "source", "shape", "style")},
+            "replacement": True,
+        }
+        for x in final[11]
+    ]
     path = lambda i: out / "rounds" / f"round-{i}.jsonl"  # noqa: E731
     if all(path(i).exists() and path(i).read_text(encoding="utf-8") == body for i, body in new.items()):
-        print("rounds 1 to 6 and 11 are already the filtered draw; nothing to do")
+        pp = out / "provenance.jsonl"
+        rows = [json.loads(x) for x in pp.read_text().splitlines() if x.strip()]
+        if sorted((x for x in rows if x["round"] == 11), key=lambda x: x["id"]) == sorted(
+            r11_prov, key=lambda x: x["id"]
+        ):
+            print("rounds 1 to 6 and 11 are already the filtered draw; nothing to do")
+        elif confirm:  # the provenance rows of round 11 were once written from renumbered cards
+            rows = [x for x in rows if x["round"] != 11] + r11_prov
+            pp.write_text("\n".join(json.dumps(x) for x in rows) + "\n", encoding="utf-8")
+            print(f"rounds are the filtered draw; rewrote the {len(r11_prov)} provenance rows of round 11")
+        else:
+            print("rounds are the filtered draw but the provenance rows of round 11 differ (dry run: pass --confirm)")
         return
     before = round_lines({i: rd for i, rd in final_rounds(full, reps, pool, False).items() if i <= 6}, tag)
     unfiltered = round_lines(dict(enumerate(full, 1)), tag)
@@ -651,15 +672,7 @@ def drop_placeholders(root: Path, seed: int, banned: set[str], out: Path, tag: s
     pp = out / "provenance.jsonl"
     rows = [json.loads(x) for x in pp.read_text().splitlines() if x.strip()]
     rows = [x for x in rows if x["id"] not in why and x["round"] != 11]
-    rows += [
-        {
-            "id": f"{tag}-r11-{x['idx']:03d}",
-            "round": 11,
-            **{k: x[k] for k in ("stratum", "source", "shape", "style")},
-            "replacement": True,
-        }
-        for x in final[11]
-    ]
+    rows += r11_prov
     pp.write_text("\n".join(json.dumps(x) for x in rows) + "\n", encoding="utf-8")
     sha = lambda b: hashlib.sha256(b).hexdigest()  # noqa: E731
     mp = out / "MANIFEST.md"
