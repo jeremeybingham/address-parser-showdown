@@ -30,9 +30,11 @@ uv run python tools/golden/sample.py --drop-placeholders   # done 2026-11-14: ro
 uv run python -m tools.golden.derive N          # private gold of round N -> shipped gold with invented values
 uv run python -m tools.golden.sba            # round 10 (SBA PPP loans of $150K and over, as written): dry run; --confirm writes the private cards
 uv run python -m tools.golden.realforms      # round 12 (real Utah and Wisconsin grid and military lines, pre-labeled from the source fields); dry run unless --confirm
+uv run python -m tools.golden.highway_alt    # done 2026-11-15: the schema's street reading of a highway as an alternative (label log, phase `schema`); dry run unless --confirm, then export and derive
 uv run python -m tools.label.lint [N...]      # typo check on the saved labels (state/ZIP, directions, order, uncovered words); no parser is run (`--queue` writes the hit cards; then `server review`: see tools/label/README.md)
 uv run python -m tools.label.server label N     # blind labeling of round N (http://127.0.0.1:8765/); see tools/label/README.md
 uv run python -m tools.label.server revisit     # every card marked revisit (all rounds), with its labels and private note
+uv run python -m tools.label.direction        # which way adjudication moved the gold, per parser (runs the parsers on the private text; counts only)
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
 uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
 uv run python -m tools.golden.nightmare      # round 8 (nightmare) dry run; --confirm draws, --confirm --twin the private twin, --check redraws and compares
@@ -45,6 +47,7 @@ uv run python -m tools.bench.speed         # speed, load time, memory, install s
 uv run python -m scorer                       # score every converted set with predictions (tables; --out DIR writes results.md/json)
 just all                  # the full pinned run: fetch, convert, predict, score, speed -> runs/<date>/ (about 4 minutes; clean tree and the pinned libpostal build needed)
 just rescore runs/DATE    # score a committed run again from its prediction files only
+uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figures for the report: stratum, restored rows, nightmare variant, shape class, paired tests; --real adds the private text (counts only)
 ```
 
 ## Rules that must hold
@@ -62,5 +65,5 @@ just rescore runs/DATE    # score a committed run again from its prediction file
 
 `schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
-scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report; `tests/` pytest; `tools/` scripts
+scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report (`REPORT.md`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
 (`check.sh`; `golden/` the golden-set sampler, hand templates, exclusion check and tier tagger (`tiers.py`), shipped-gold maker (`derive.py`); `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).
