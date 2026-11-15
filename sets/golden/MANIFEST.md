@@ -229,7 +229,7 @@ in `sets/golden/rounds/`) is drawn by `tools/golden/realforms.py`; its rows are 
 
 All rounds were labeled blind and adjudicated (rounds 1 to 12, 1,296 cards queued, every one decided). 34 more cards the
 owner marked "remove" were added to `removed.jsonl` (now 69; 27 non-address, 1 grid, 6 other). Shipped cards per round
-(`derive` holds back a card that would ship a real word, to be fixed by labeling that word and run again):
+(`derive` holds back a card that would ship a real word):
 
 | Round | Shipped | Held |
 |---|---|---|
@@ -241,12 +241,12 @@ owner marked "remove" were added to `removed.jsonl` (now 69; 27 non-address, 1 g
 | 6 | 233 | 0 |
 | 7 | 270 | 0 |
 | 8 | 230 | 0 |
-| 9 | 160 | 3 |
-| 10 | 242 | 7 |
-| 11 | 100 | 4 |
+| 9 | 163 | 0 |
+| 10 | 249 | 0 |
+| 11 | 104 | 0 |
 | 12 | 30 | 0 |
 
-Shipped: **2425** cards; held: 14. Round 10 had no provenance rows (added by `tools/golden/sba.py`); round 11's rows were
+Shipped: **2,439** cards; held: 0 (14 held for a common place or road word; the owner cleared them to ship, `OWNER_OK` in `derive.py`). Round 10 had no provenance rows (added by `tools/golden/sba.py`); round 11's rows were
 written from renumbered cards, with 4 ids repeated and 4 missing (fixed in `tools/golden/sample.py`).
 - `gold/round-1.jsonl`: `0b1b3898f311a30c6db31d77dc848d9fc3ea4a51e815d25c6e9331efc86b9c81`
 - `gold/round-2.jsonl`: `0ce3716ad1d5da8a40f88312fb72ff3b51450180bbd43dbd489ab0fa5847d046`
@@ -256,8 +256,8 @@ written from renumbered cards, with 4 ids repeated and 4 missing (fixed in `tool
 - `gold/round-6.jsonl`: `897bfd0a0f6779017051357d4b03988e30ae88a655f4538e7dc01134319a8cac`
 - `gold/round-7.jsonl`: `afa6926f24a511636116c83edccc7aaba646bc29c556f14210b7c757facbdf81`
 - `gold/round-8.jsonl`: `32912a021741c00985a87d9ffc5d0af715c517ed510f289627e618c8b06dbc58`
-- `gold/round-9.jsonl`: `08264fd4dc29c1c5e37d183f01141264bb6b29488f08dbcdfe8e60a0cff461a2`
-- `gold/round-10.jsonl`: `859e2d0bc712e27e6ac3f3888937ed249a71d9522ad012204da6c54af1981ec8`
-- `gold/round-11.jsonl`: `2f99453845a685848cfdc006d2a85151428cee1bc03326977d4c8484ad98198e`
+- `gold/round-9.jsonl`: `93d4061189dc06ede2d681a23a434b764fa0a993802e6fbeb6d99f84bb6435c6`
+- `gold/round-10.jsonl`: `5695049cfb91e27d2b62303c45077be27dd2e62cdcc3cb6bacfdf90fdc876bee`
+- `gold/round-11.jsonl`: `b332326e75ab3a992e6bf5224c798d3d59093f1a3681517c1a573bbcc8ed009b`
 - `gold/round-12.jsonl`: `9df2d85a2e6533f5371b99956cdd171fbee98853e714849c4026a99a10b669b5`
 - `removed.jsonl`: `a7e5b763353f17f1f650f247338afc2451a940eb19cdd631baf9e77c07017b51`
