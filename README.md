@@ -8,26 +8,58 @@ The question it answers: given a one-line US address, which parser splits it int
 state and ZIP correctly most often, on addresses that look like real data and not only on tidy examples? The answer is
 meant to hold up for people choosing a parser and for the authors of the parsers compared.
 
-## Status (2026-11-13): no scores yet, and why
+## Status (2026-11-15): v0.1.0 initial result
 
-**Nothing is scored yet, on purpose.** The scorer and the Parser Score formula are fixed before the first scored run,
-and the first run waits for the hand-labeled golden set. The author is labeling it now, card by card, by hand; the
-remaining work (scorer finishing, adjudication, the first pinned run, the report) depends on those labels, so it
-proceeds as the labeling does.
+**The first full pinned run is done.** The golden set is labeled and adjudicated (2,439 shipped records), the scorer and
+the pre-registered Parser Score formula are fixed, and all three parsers were run at pinned versions. This is an
+**initial result**: one labeler, one run, one reference machine, and doorplate's author wrote the golden set and the
+report. Read it with the limitations below, and treat the ranking as a first measurement to be checked, not a verdict.
+
+Full report: **[`report/REPORT.md`](report/REPORT.md)**, written from the pinned run
+[`runs/2026-11-16/`](runs/2026-11-16/) (tables in its [`results.md`](runs/2026-11-16/results.md) and
+[`speed.md`](runs/2026-11-16/speed.md)). doorplate 0.6.0, usaddress 0.5.16 and libpostal (Senzing model 1.2.0), all at
+default settings.
+
+### Summary of the initial result
+
+| | doorplate | usaddress | libpostal |
+|---|---|---|---|
+| **Parser Score** (95% interval) | **90.9** (89.8 to 92.0) | **84.7** (83.4 to 86.0) | **80.8** (79.5 to 82.2) |
+| Golden set, `normal` / `hard` / `nightmare` | 95.0 / 91.2 / 69.0 | 93.6 / 88.5 / 51.3 | 91.8 / 70.9 / 54.0 |
+| Golden set, random public stratum (829 records) | 93.7 | 93.0 | 91.3 |
+| Strings per second, one process | 72,028 | 8,952 | 14,577 |
+| Memory after loading, one process | 27 MB | 27 MB | 2,958 MB |
+
+The Parser Score is coarse record accuracy (a record is right when every house number, street, unit, PO box, route,
+city, state and ZIP span matches), half on the golden set's three tiers and half on four neutral outside sets. Speed
+and cost are never part of it.
+
+- **The ranking is doorplate, then usaddress, then libpostal.** It holds in every sensitivity row, including with each
+  set left out and with equal weights.
+- **On ordinary public address lines the three are close.** On the random public stratum, doorplate and usaddress cannot
+  be told apart at this size (exact McNemar p = 0.31); libpostal is behind both (p = 0.001 and p = 0.04). Most of the
+  Parser Score's spread comes from rarer shapes: rural routes, military lines, units in unusual places and typos.
+- **Each parser leads on its own home test set**, which is why the home sets are reported apart and kept out of the
+  headline.
+- **A scoring fault was fixed after the first run** (the 2026-11-15 run is kept unchanged; its Parser Scores were
+  86.0, 80.2 and 76.0). The prediction files are byte-identical; only the scorer and 140 highway cards changed, and the
+  ranking did not. The report's section 6.4 gives the details.
+- **Cost:** doorplate is about five times faster than libpostal and eight times faster than usaddress in one process;
+  libpostal needs about 3 GB of memory and disk where the other two need under 30 MB.
+
+Not done yet: a second labeler or outside review of the gold, more parsers through the adapter route, and
+later runs (each a new dated folder under `runs/`). The plan and its step issues are in this repository's issues
+(milestone **v0.1.0**; start at the [tracker, #1](https://github.com/jeremeybingham/address-parser-showdown/issues/1)).
 
 | Piece | State |
 |---|---|
 | Label schema and conventions list | Done ([`schema/`](schema/README.md)) |
 | Adapters for doorplate, usaddress and libpostal, with a conformance test and mapping tables | Done ([`adapters/`](adapters/README.md)); the libpostal build is pinned |
-| Existing test sets brought in (doorplate's suite, usaddress's and libpostal's own tests, Senzing's US rows, the geocode benchmark) | Converted and runnable through every adapter ([`tools/sets/`](tools/sets/README.md)) |
-| Golden set: design, sampling, difficulty tiers | Drawn: about 2,500 cards in ten rounds ([`sets/golden/`](sets/golden/COMPOSITION.md)) |
-| **Golden set: hand labeling** | **In progress.** 416 cards labeled so far (round 1 shipped as [gold](sets/golden/gold/round-1.jsonl)); the rest are drawn and waiting. Rounds are published as each is finished |
-| Scorer and Parser Score | Written ([`scorer/`](scorer/README.md)); the formula is being finalized against the sampling decisions |
-| Blind adjudication, first full pinned run, speed and cost | Waiting for the labels |
-| Research report | After the runs ([`report/`](report/README.md)) |
-
-The plan and its step issues are in this repository's issues (milestone **v0.1.0**; start at the
-[tracker, #1](https://github.com/jeremeybingham/address-parser-showdown/issues/1)).
+| Existing test sets (doorplate's suite, usaddress's and libpostal's own tests, Senzing's US rows, the geocode benchmark) | Converted and scored ([`tools/sets/`](tools/sets/README.md)) |
+| Golden set: design, sampling, hand labeling, blind adjudication | Done: 2,439 records in twelve rounds ([`sets/golden/`](sets/golden/COMPOSITION.md)) |
+| Scorer and Parser Score | Done; formula version 1, fixed before the first run ([`scorer/`](scorer/README.md)) |
+| Pinned run, speed and cost | Done: [`runs/2026-11-16/`](runs/2026-11-16/) |
+| Research report | Done: [`report/REPORT.md`](report/REPORT.md) |
 
 ## How the comparison is kept fair
 
@@ -57,7 +89,7 @@ The full rules are in [`METHODOLOGY.md`](METHODOLOGY.md). The short version:
 
 ## How the golden set is made
 
-About 2,500 records in ten rounds, mixing three kinds of text so no single source decides the result:
+About 2,400 records in twelve rounds, mixing three kinds of text so no single source decides the result:
 
 - **Public records**, drawn at random by seeded hash from public sources (the National Address Database and messy
   business and license registries such as FMCSA, Texas TDLR, Virginia SCC, NY corporations, FCC amateur licenses, SBA
@@ -76,7 +108,7 @@ the training and test data of the parsers compared. Details: [`sets/golden/COMPO
 
 - **Conflict of interest.** doorplate's author builds this repository and is the only labeler. The mitigations above
   (blind labeling, a pre-registered formula, a private twin, every prediction published) reduce this; they do not
-  remove it. The report will publish how often adjudication changed a label and in which direction.
+  remove it. The report publishes how often adjudication changed a label and in which direction (section 6.3).
 - **One labeler.** There is no second human labeler; this is a stated limitation, not hidden.
 - **Not a work list.** The sets are not meant to be tuned against by any parser, doorplate included: a rule change
   needs a reason from another source.
@@ -92,7 +124,7 @@ the training and test data of the parsers compared. Details: [`sets/golden/COMPO
 | [`scorer/`](scorer/README.md) | Span-based scoring, record accuracy, field F1 and the Parser Score |
 | [`tools/`](docs/README.md) | Sampling, the blind labeling page, set converters, the pinned libpostal build |
 | [`runs/`](runs/README.md) | Prediction files and results per pinned parser version |
-| [`report/`](report/README.md) | The research report, written after the runs |
+| [`report/`](report/README.md) | The research report for the initial v0.1.0 result |
 | [`docs/`](docs/README.md) | Index of all documentation |
 
 ## Adding your parser
