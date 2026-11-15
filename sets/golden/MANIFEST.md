@@ -261,3 +261,25 @@ written from renumbered cards, with 4 ids repeated and 4 missing (fixed in `tool
 - `gold/round-11.jsonl`: `b332326e75ab3a992e6bf5224c798d3d59093f1a3681517c1a573bbcc8ed009b`
 - `gold/round-12.jsonl`: `9df2d85a2e6533f5371b99956cdd171fbee98853e714849c4026a99a10b669b5`
 - `removed.jsonl`: `a7e5b763353f17f1f650f247338afc2451a940eb19cdd631baf9e77c07017b51`
+
+## Adjudication figures (2026-11-15)
+
+Parser-neutral: they count how often the owner changed a card after seeing anonymous parser readings, and say nothing
+about any one parser. Per-parser agreement is left to the scorer (#6), so no parser's number is read before the formula
+is fixed. Counts are over the 2,439 shipped cards (private logs; no text).
+
+| Measure | Cards | Share |
+|---|---|---|
+| Queued (some parser read the card differently from the blind gold) | 1,264 | 51.8% of 2,439 |
+| Spans changed in adjudication | 579 | 23.7% of 2,439; 45.8% of the queued |
+| Doubtful mark changed in adjudication | 12 | 0.5% |
+| Cards no parser disagreed on | 1,175 | 48.2% |
+
+Per round, queued / spans changed: 1: 108 / 56, 2: 109 / 58, 3: 110 / 56, 4: 108 / 56, 5: 112 / 59, 6: 103 / 51, 7: 185 / 58,
+8: 203 / 49, 9: 70 / 44, 10: 96 / 62, 11: 39 / 30, 12: 21 / 0 (round 12 was pre-labeled from source fields; every
+queued card was kept).
+
+Reading it: a queued card is one where some parser differed, not an error in the gold, and about half of the queued
+cards were kept as labeled. The 579 changes are the cases where the owner judged the gold wrong or less defensible than
+the other reading. The gold is therefore shaped in part by what the parsers did, one reason the report states the share
+and lists the changed cards by round. Cards were not shown with a parser name.
