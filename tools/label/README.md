@@ -114,3 +114,10 @@ uv run python -m tools.golden.derive 1    # -> sets/golden/gold/round-1.jsonl (c
 It holds back a card that would ship a real word (label that word, often as `other`, or mark it not scored, and run it again) and writes a
 side-by-side review file, `local-data/golden-real/review/round-N.md`, to read before committing.
 Only invented or anonymized text ever reaches `sets/golden/gold/`.
+
+## Removed cards and pre-labeled rounds
+
+A card the owner does not want in the set goes in `sets/golden/removed.jsonl` (id, round, shape, reason; no text):
+`store.load_round` skips it everywhere, and its id is not reused. Write "remove" in the card's private note while
+labeling to list it. Round 12 is pre-labeled from its source fields (`tools.golden.realforms`, phase `prelabel`, revisit
+marks set): glance at them with `server revisit`, fix any card, and clear the mark (`v`). See `sets/golden/COMPOSITION.md`.

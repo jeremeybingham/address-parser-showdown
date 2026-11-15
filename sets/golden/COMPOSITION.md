@@ -172,3 +172,23 @@ check.
   recipe as rounds 1 to 6. Their records go through the same blind labeling and adjudication.
 - **Reporting:** each tier on its own line with its interval and ceiling. Tiers are not averaged by record count; the
   Parser Score takes per-tier weights, fixed in the formula PR (#6) before the first scored run.
+
+## Removed cards and round 12 (2026-11-14)
+
+While labeling rounds 7 and 8 the owner marked 35 cards "remove": 21 non-address strings (bare city names, stray words),
+4 military lines, 4 grid numbers and 6 others the owner could not label. The strings of those rounds are invented, so a
+grid number or a mangled military line could not be checked on a map or defended. `removed.jsonl` lists the ids (id,
+round, shape, reason class; no text); `store.load_round` skips them, so they are never labeled, exported or scored, and
+their ids are not reused. Rounds 7 and 8 are otherwise unchanged (their draw still reproduces).
+Not replaced: the non-address cards (flagged cards are in no score, and 40 more remain in round 7).
+
+**Round 12** (`tools/golden/realforms.py`, seed 20261115) holds 30 real, well-formed replacements, drawn by seeded hash from
+the real sources (private text only; `derive.py` makes the shipped text): `grid-utah` 10 (NAD Utah: `123 W 400 S`
+covered, `123 West 400 South` adjacent), `grid-wisconsin` 8 (NAD Wisconsin, all adjacent: the form `W399S10635 Connor Dr`
+cannot be balanced) and `military` 12 (FCC amateur licenses: `PSC` n `BOX` m, covered, 6; `CMR` and `UNIT`, adjacent, 6;
+APO/FPO/DPO, AA/AE/AP). Mangled military lines are never drawn. **Labeling rules (owner, 2026-11-14):** a Wisconsin grid
+number is one `house_number_value` (`W399S10635`); a Utah grid is `house_number_value`, `street_pre_direction`,
+`street_name` (the number), `street_post_direction`; a military line is `route_type`, `route_value`, `route_box_type`,
+`route_box_value`, with `APO`/`FPO`/`DPO` as the city. Pre-labels come from the source's own fields (NAD's split columns, a
+fixed pattern for the military line): no parser is run, so the blind rule holds. They are saved with phase `prelabel` and a
+revisit mark for the owner to glance at and clear.
