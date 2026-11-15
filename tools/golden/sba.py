@@ -97,8 +97,25 @@ def main() -> None:
     if not a.confirm:
         print("(dry run: pass --confirm to write)")
         return
+    if OUT.exists() and OUT.read_text(encoding="utf-8") != body:
+        raise SystemExit("this draw differs from the labeled round 10 file; nothing written")
     OUT.write_text(body, encoding="utf-8")
     print(f"wrote {OUT}")
+    pp = ROOT / "sets/golden/provenance.jsonl"  # rows only (id, class); no text
+    rows = [json.loads(x) for x in pp.read_text().splitlines() if x.strip()]
+    rows = [x for x in rows if x["round"] != 10] + [
+        {
+            "id": f"g-r10-{j:03d}",
+            "round": 10,
+            "stratum": "public",
+            "source": "sba-ppp",
+            "shape": "as-found",
+            "style": "as-written",
+        }
+        for j in range(1, len(recs) + 1)
+    ]
+    pp.write_text("\n".join(json.dumps(x) for x in rows) + "\n", encoding="utf-8")
+    print(f"wrote {len(recs)} provenance rows of round 10")
 
 
 if __name__ == "__main__":

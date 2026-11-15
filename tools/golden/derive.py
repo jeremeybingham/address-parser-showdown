@@ -238,12 +238,19 @@ def derive_card(card: dict, salt: int = 0, seed: int = PUBLIC_SEED) -> str:
     return new
 
 
+# Common place and road words the owner reviewed in the held cards of rounds 9 to 11 and cleared to ship (2026-11-15): no
+# private information, so the real word may stay wherever it appears.
+OWNER_OK = {
+    "booth", "pike", "spur", "stadium", "columbia", "heights", "warner", "lbby", "long", "fuquay", "town", "city", "canal",
+}  # fmt: skip
+
+
 def leaks(card: dict, new: str) -> set[str]:
     """Real words of four letters or more kept outside the kept labels (none may ship)."""
     text = card["text"]
     kept = {w.lower() for s, e, lab in card["spans"] if lab in KEEP_WORDS for w in WORD4.findall(text[s:e])}
     real = {w.lower() for w in WORD4.findall(text)}
-    return ({w.lower() for w in WORD4.findall(new)} & real) - SAFE - kept
+    return ({w.lower() for w in WORD4.findall(new)} & real) - SAFE - OWNER_OK - kept
 
 
 def derive_round(n: int, banned: set[str], gold_dir: Path, out_dir: Path, review_dir: Path, prov: dict) -> dict:
