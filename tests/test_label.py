@@ -336,3 +336,18 @@ def test_removed_cards_are_not_loaded(dirs, tmp_path, monkeypatch):
     gone.write_text(json.dumps({"id": "a2", "round": 1}) + "\n")
     monkeypatch.setattr(store, "REMOVED", gone)
     assert [c["id"] for c in store.load_round(1, rounds)] == ["a1"]
+
+
+def test_adjudicate_mode_skips_cards_already_decided(tmp_path):
+    rounds, logs = tmp_path / "rounds", tmp_path / "labels"
+    rounds.mkdir()
+    rows = [{"id": i, "text": "12 Oak"} for i in ("a", "b")]
+    (rounds / "round-1.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    for r in rows:
+        store.save_card(1, r, {"spans": [[0, 2, "house_number_value"]]}, log_dir=logs)
+    q = [{"round": 1, "id": i, "questions": [{"start": 3, "end": 6, "label": "street_name"}]} for i in ("a", "b")]
+    (logs / "adjudication.jsonl").write_text("".join(json.dumps(x) + "\n" for x in q))
+    app = server.App("adjudicate", [1], logs, rounds)
+    assert [c["id"] for c in app.cards_payload()] == ["a", "b"]
+    app.save({"round": 1, "id": "a", "spans": [[0, 2, "house_number_value"]]})
+    assert [c["id"] for c in app.cards_payload()] == ["b"]  # a restart does not ask about "a" again
