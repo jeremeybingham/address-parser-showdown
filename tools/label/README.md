@@ -121,3 +121,11 @@ A card the owner does not want in the set goes in `sets/golden/removed.jsonl` (i
 `store.load_round` skips it everywhere, and its id is not reused. Write "remove" in the card's private note while
 labeling to list it. Round 12 is pre-labeled from its source fields (`tools.golden.realforms`, phase `prelabel`, revisit
 marks set): glance at them with `server revisit`, fix any card, and clear the mark (`v`). See `sets/golden/COMPOSITION.md`.
+
+## Rules applied after a run (phase `schema`)
+
+A fix of the gold by a rule that reads only the gold, decided by the owner after a run, is appended to the round log as
+phase `schema` (the log is never rewritten), then exported and derived as usual. The one so far is
+`tools.golden.highway_alt` (2026-11-15: the schema's street reading of a numbered highway added as an alternative on 140
+cards). `tools.label.direction` leaves `schema` saves out when it counts which way adjudication moved the gold. Each such
+change is listed in `sets/golden/MANIFEST.md` and in the report.

@@ -248,16 +248,26 @@ owner marked "remove" were added to `removed.jsonl` (now 69; 27 non-address, 1 g
 
 Shipped: **2,439** cards; held: 0 (14 held for a common place or road word; the owner cleared them to ship, `OWNER_OK` in `derive.py`). Round 10 had no provenance rows (added by `tools/golden/sba.py`); round 11's rows were
 written from renumbered cards, with 4 ids repeated and 4 missing (fixed in `tools/golden/sample.py`).
-- `gold/round-1.jsonl`: `0b1b3898f311a30c6db31d77dc848d9fc3ea4a51e815d25c6e9331efc86b9c81`
-- `gold/round-2.jsonl`: `0ce3716ad1d5da8a40f88312fb72ff3b51450180bbd43dbd489ab0fa5847d046`
-- `gold/round-3.jsonl`: `ceb591f2ada5f1254c7a5cfddfeb4d65d090f76c0ba13ffb1748124ae1b64031`
-- `gold/round-4.jsonl`: `9e5c989befb56799de93c3c12db8d60d713ddf4e36c2a962b6a3207ccf91eab4`
-- `gold/round-5.jsonl`: `1b404d19f29b36e2500f9e42b41c503129d98cb4012be9ab6963e6e62f02425f`
-- `gold/round-6.jsonl`: `897bfd0a0f6779017051357d4b03988e30ae88a655f4538e7dc01134319a8cac`
-- `gold/round-7.jsonl`: `afa6926f24a511636116c83edccc7aaba646bc29c556f14210b7c757facbdf81`
-- `gold/round-8.jsonl`: `32912a021741c00985a87d9ffc5d0af715c517ed510f289627e618c8b06dbc58`
-- `gold/round-9.jsonl`: `93d4061189dc06ede2d681a23a434b764fa0a993802e6fbeb6d99f84bb6435c6`
-- `gold/round-10.jsonl`: `5695049cfb91e27d2b62303c45077be27dd2e62cdcc3cb6bacfdf90fdc876bee`
-- `gold/round-11.jsonl`: `b332326e75ab3a992e6bf5224c798d3d59093f1a3681517c1a573bbcc8ed009b`
+- `gold/round-1.jsonl`: `4b73a1604719aec6cd5347e19f896584d80390f44059b1132a9688b4fe9f90e9`
+- `gold/round-2.jsonl`: `2b9cdcf8b46fc061c145a953d02a5ad2b1f01507f3f832d501bb54e6d2ee14ad`
+- `gold/round-3.jsonl`: `b1ad7904697652a490c6b755a9753bd39b34fe87272bd1d3ec49e983fc7cf1bd`
+- `gold/round-4.jsonl`: `80a2b5180224b36904235bc9a495f4d12ff2a74b2cf635fd5b0058ac4564a3ed`
+- `gold/round-5.jsonl`: `179da4179f5b81e27541d3c7d3e8442ef090f1ce23e961c966bdf2fb4d214cee`
+- `gold/round-6.jsonl`: `c78095ba0aa0da8e88493712a5968e90f7fcdb4253ef010012f8c0a0f482f79b`
+- `gold/round-7.jsonl`: `fe78efda0c9fccddf6594d7b2c5390bde7567411b9528d919b56fd2f46e0a00f`
+- `gold/round-8.jsonl`: `f72a0a36ba972adbaef02ec930af077162fff978fba82f993d01b0b3c5087ec2`
+- `gold/round-9.jsonl`: `c5543331c97b6053987d9218195f3ad96c9c4a172a0f140370ba59bff1c9d0dc`
+- `gold/round-10.jsonl`: `309d2934580eb2b303937daf1575ae8921923529b30b1515779f14708d86aafa`
+- `gold/round-11.jsonl`: `2e51c22bbc8d61bad53afbfe0bde44c8f896f5ea6253061ca42f82dcd0189aaf`
 - `gold/round-12.jsonl`: `9df2d85a2e6533f5371b99956cdd171fbee98853e714849c4026a99a10b669b5`
 - `removed.jsonl`: `a7e5b763353f17f1f650f247338afc2451a940eb19cdd631baf9e77c07017b51`
+
+## Highway alternatives (2026-11-15, after the first run)
+
+140 cards label a numbered highway (`US HWY 74`, `STATE ROUTE 9`, `COUNTY ROAD 12`) as `route_type` and `route_value`,
+where `schema/schema.toml` reads a highway as a street (`route` is for rural, highway contract and military routes). The
+owner kept that reading and added the schema's as an accepted alternative: one `street_name` span over the run of route
+spans, the form 30 cards already had by hand. The rule reads the gold only (`tools/golden/highway_alt.py`; no parser is
+run); it was found after the first run from the count of records no parser reads right, and is listed in the report.
+Cards by round: 7, 15, 23, 14, 13, 14, 4, 27, 3, 13, 7, 0 (rounds 1 to 12; round 8 has 29 alternatives on 27 cards).
+Spans, flags and tiers are unchanged; the checksums above are the files after the change.
