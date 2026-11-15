@@ -1,0 +1,10 @@
+{
+  "set": "golden",
+  "set_sha256": "022937a3cb718ef3a5a09e4d7c3bc90659e22d37c1133ec6118695bc89b03101",
+  "versions": {
+    "doorplate": "0.6.0"
+  },
+  "pin_problems": [],
+  "records": 2439,
+  "seconds": 0.1
+}

@@ -1,0 +1,11 @@
+{
+  "set": "doorplate-suite",
+  "set_sha256": "c0c068963ca3432ccce741218bfae43eab529ce68e3bb48197d7981be140990d",
+  "versions": {
+    "usaddress": "0.5.16",
+    "python-crfsuite": "0.9.12"
+  },
+  "pin_problems": [],
+  "records": 19586,
+  "seconds": 2.7
+}
