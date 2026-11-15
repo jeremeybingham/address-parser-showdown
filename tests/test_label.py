@@ -328,3 +328,11 @@ def test_lint_two_doors_and_unscored_text_is_not_uncovered():
     part = {"text": t, "spans": [[0, 2, "house_number_value"], [3, 6, "street_name"], [7, 9, "street_post_type"]]}
     assert "uncovered" in lint.lint_card(part)
     assert "uncovered" not in lint.lint_card({**part, "unscored": [[12, 22]]})
+
+
+def test_removed_cards_are_not_loaded(dirs, tmp_path, monkeypatch):
+    rounds, _ = dirs
+    gone = tmp_path / "removed.jsonl"
+    gone.write_text(json.dumps({"id": "a2", "round": 1}) + "\n")
+    monkeypatch.setattr(store, "REMOVED", gone)
+    assert [c["id"] for c in store.load_round(1, rounds)] == ["a1"]

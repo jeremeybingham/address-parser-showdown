@@ -13,7 +13,7 @@ This set is not "home" for any parser. It has no labels yet (steps 3 onward).
 - `round-4.jsonl`: `511e3211412ee706bf8e787e00231bca26c9743ed5c1ff36be68b81cd30090dc`
 - `round-5.jsonl`: `48af7ae167d62f4244d140ee27778aabdfa68d5bb171f592e8175c7a52fbcec8`
 - `round-6.jsonl`: `588c05890d7669f71a4ac57032877fa0e8ad1330f7b53ea9ebb942bb48d32880`
-- `provenance.jsonl` (all rounds, current): `f9c7b31a9b413c47439267b9bbadbf9bc57117ddc5c0a56b29800e971349575e`
+- `provenance.jsonl` (all rounds, current): `7adafd715d0d79c6fc7be006135ef8a7a1020694dc7b33178958f282461cfe17`
 
 ## Records by stratum
 
@@ -217,3 +217,10 @@ generator `seed + 12`). Duplicates and exclusion hits are skipped. Rounds 1 to 6
 - `round-11.jsonl`: `1b50eadb87f45a774074047c3cd6a6f2e3d38b6c924c01b094da95fb014f6324`
 - `provenance.jsonl` (all rounds): `f9c7b31a9b413c47439267b9bbadbf9bc57117ddc5c0a56b29800e971349575e`
 <!-- round-11 end -->
+
+## Removed cards and round 12 (2026-11-14)
+
+35 cards of rounds 7 and 8 are removed (`removed.jsonl`; see `COMPOSITION.md`). Round 12 (30 real cards, private text, not
+in `sets/golden/rounds/`) is drawn by `tools/golden/realforms.py`; its rows are in `provenance.jsonl` (stratum `real`).
+- `removed.jsonl`: `6df0ad255a5ecfbddcaa30f6e84f49758953eeaa1690fb697e0b208878fba673`
+- `provenance.jsonl` (all rounds): `7adafd715d0d79c6fc7be006135ef8a7a1020694dc7b33178958f282461cfe17`

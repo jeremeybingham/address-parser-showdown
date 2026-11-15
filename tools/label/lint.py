@@ -169,7 +169,7 @@ def lint_card(card: dict, zips: dict[str, set[str]] | None = None) -> list[str]:
     for v in val("postal_code"):
         if not re.fullmatch(r"\d{5}(-?\d{4})?", v):
             hits.append("zip-shape")
-        elif zips and state and v[:5] in zips and state not in zips[v[:5]]:
+        elif zips and state and state not in ("AA", "AE", "AP") and v[:5] in zips and state not in zips[v[:5]]:
             hits.append("zip-state")
     for lab in ("street_pre_direction", "street_post_direction"):
         if any(v.replace(" ", "") not in DIRECTIONS for v in val(lab)):  # `N.E.` is NE

@@ -30,6 +30,9 @@ ROUNDS = ROOT / "local-data" / "golden-real" / "rounds"  # the same cards unmask
 LOG_DIR = ROOT / "local-data" / "labels"
 GOLD_DIR = ROOT / "local-data" / "golden-real" / "gold"  # private gold on the unmasked text
 SHIPPED_GOLD_DIR = ROOT / "sets" / "golden" / "gold"  # written by tools/golden/derive.py only
+REMOVED = (
+    ROOT / "sets" / "golden" / "removed.jsonl"
+)  # cards the owner took out of the set (ids and a reason class only)
 
 KEYS = "1234567890qwertyuiopasdfgh"
 # The most used labels get the first keys; the rest follow in schema order.
@@ -132,7 +135,18 @@ def load_round(n: int, rounds_dir: Path = ROUNDS) -> list[dict]:
     path = rounds_dir / f"round-{n}.jsonl"
     if not path.exists():
         raise SystemExit(f"{path} is missing; run `uv run python tools/golden/sample.py --confirm --real` first")
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    gone = removed_ids()
+    return [
+        r for r in (json.loads(line) for line in path.read_text().splitlines() if line.strip()) if r["id"] not in gone
+    ]
+
+
+def removed_ids(path: Path | None = None) -> set[str]:
+    """Ids of cards removed from the set (never labeled again, never exported; ids are not reused)."""
+    path = path or REMOVED
+    if not path.exists():
+        return set()
+    return {json.loads(x)["id"] for x in path.read_text().splitlines() if x.strip()}
 
 
 def text_hash(text: str) -> str:

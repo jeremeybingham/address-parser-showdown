@@ -2226,3 +2226,33 @@
 {"id": "g-r11-102", "round": 11, "stratum": "template", "source": "template", "shape": "highway", "style": "typo", "replacement": true}
 {"id": "g-r11-097", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "mixed-nocommas", "replacement": true}
 {"id": "g-r11-098", "round": 11, "stratum": "public", "source": "nad", "shape": "as-found", "style": "upper-nocommas", "replacement": true}
+{"id": "g-r12-001", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-002", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-003", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-004", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-005", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-006", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-007", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-008", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-009", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-010", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-utah", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-011", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-012", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-013", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-014", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-015", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-016", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-017", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-018", "round": 12, "stratum": "real", "source": "nad", "shape": "grid-wisconsin", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-019", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-020", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-021", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-022", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-023", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-024", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-025", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-026", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "covered", "replacement": true}
+{"id": "g-r12-027", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-028", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-029", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
+{"id": "g-r12-030", "round": 12, "stratum": "real", "source": "fcc-amateur", "shape": "military", "style": "as-written", "variant": "adjacent", "replacement": true}
