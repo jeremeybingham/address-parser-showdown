@@ -1,0 +1,33 @@
+name: libpostal
+
+# Manual only: the pinned libpostal build (about 3 GB of model data) is cached by its pins, and the run scores all
+# three parsers on every set and uploads the result. Not run on pushes.
+on:
+  workflow_dispatch:
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    env:
+      LIBPOSTAL_HOME: /opt/libpostal
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/cache@v4
+        id: lp
+        with:
+          path: /opt/libpostal
+          key: libpostal-${{ hashFiles('tools/libpostal/pins.env', 'tools/libpostal/build.sh') }}
+      - if: steps.lp.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential autoconf automake libtool pkg-config curl
+          sudo mkdir -p /opt/libpostal && sudo chown "$USER" /opt/libpostal
+          tools/libpostal/build.sh /opt/libpostal
+      - run: tools/libpostal/build.sh --verify /opt/libpostal
+      - run: uv sync --frozen
+      - run: uv run pytest -q tests/test_conformance.py
+      - run: uv run python -m tools.run --date "$(date +%F)" --skip-speed --allow-dirty
+      - uses: actions/upload-artifact@v4
+        with:
+          name: run
+          path: runs/

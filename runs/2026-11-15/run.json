@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-15",
+  "commit": "18ee6b2bfc642739fa64fdeb5b02025926b95cc6",
+  "tree_clean": true,
+  "parser_versions": {
+    "doorplate": {
+      "doorplate": "0.6.0"
+    },
+    "usaddress": {
+      "usaddress": "0.5.16",
+      "python-crfsuite": "0.9.12"
+    },
+    "libpostal": {
+      "libpostal": "25099c506612b34b23b1bfe286ca6321fcf06f35",
+      "data_checksum": "a42c356d1283c7e1ff9994b6bfc0a1015956718840e1aff8a5afae7dec237762",
+      "pypostal": "1.1.11"
+    }
+  },
+  "set_sha256": {
+    "doorplate-suite": "c0c068963ca3432ccce741218bfae43eab529ce68e3bb48197d7981be140990d",
+    "geocode-dev": "bb9aafd04f469d960eae6638d768c654557dd1f15e73a31c9817240a82f941d0",
+    "golden": "022937a3cb718ef3a5a09e4d7c3bc90659e22d37c1133ec6118695bc89b03101",
+    "libpostal-us": "6b6ff35de7b5daca24754313277d0475bea9491437af9158ba9ebc788b0d62cb",
+    "senzing-us": "71f55f77ca4421fe4ac11375b2ec6a57349e99cc349ddef8b2f7a19e2d73e8eb",
+    "usaddress-tests": "c696d0d98f465cc92d2d14898d10b3690b4943c10df9d91e11beb4921a38d52c"
+  },
+  "host": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz; 14 of 14 CPUs usable and 49 GB visible; Linux 6.18.58.1-microsoft-standard-WSL2; Python 3.13.16",
+  "speed_measured": true,
+  "seconds": 227
+}

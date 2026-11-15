@@ -141,9 +141,15 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--parsers", default=",".join(DEFAULT_PARSERS))
     ap.add_argument("--out", type=Path, help="write results.md and results.json here")
+    ap.add_argument(
+        "--predictions",
+        type=Path,
+        default=score.PREDICTIONS,
+        help="prediction folder (default build/predictions; a run's is runs/DATE/predictions)",
+    )
     args = ap.parse_args()
     parsers = args.parsers.split(",")
-    results, missing, formula = score.run(parsers)
+    results, missing, formula = score.run(parsers, pred_dir=args.predictions)
     md = tables(results, missing, formula, parsers)
     print(md)
     if args.out:
