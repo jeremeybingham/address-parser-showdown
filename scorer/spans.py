@@ -124,7 +124,7 @@ def readings(spans: list[Span], alternatives: list[dict]) -> list[list[Span]]:
     choices = []
     for a in alternatives:
         key = (a["start"], a["end"])
-        opts = list(dict.fromkeys([by_range[key]] * (key in by_range) + a["labels"]))
+        opts = list(dict.fromkeys(([by_range[key]] if key in by_range else []) + a["labels"]))
         if key not in by_range and "none" not in opts:
             opts.append("none")
         choices.append([(key[0], key[1], o) for o in opts])

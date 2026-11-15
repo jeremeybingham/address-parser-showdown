@@ -187,3 +187,9 @@ def test_how_a_parser_splits_words_is_not_scored_on_the_fine_track():
     whole = [[0, 1, "house_number_value"], [2, 11, "street_name"], [12, 14, "street_post_type"]]
     split = [[0, 1, "house_number_value"], [2, 6, "street_name"], [7, 11, "street_name"], [12, 14, "street_post_type"]]
     assert one(t, whole, split).fine_correct == 1
+
+
+def test_alternative_on_an_unlabeled_range():
+    """An accepted alternative may sit on a range the primary reading leaves unlabeled (it then may also stay unlabeled)."""
+    got = spans.readings([(0, 3, "number")], [{"start": 4, "end": 9, "labels": ["unit"]}])
+    assert sorted(got) == [[(0, 3, "number")], [(0, 3, "number"), (4, 9, "unit")]]
