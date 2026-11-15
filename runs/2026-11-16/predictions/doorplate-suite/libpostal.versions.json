@@ -1,0 +1,12 @@
+{
+  "set": "doorplate-suite",
+  "set_sha256": "c0c068963ca3432ccce741218bfae43eab529ce68e3bb48197d7981be140990d",
+  "versions": {
+    "libpostal": "25099c506612b34b23b1bfe286ca6321fcf06f35",
+    "data_checksum": "a42c356d1283c7e1ff9994b6bfc0a1015956718840e1aff8a5afae7dec237762",
+    "pypostal": "1.1.11"
+  },
+  "pin_problems": [],
+  "records": 19586,
+  "seconds": 5.2
+}

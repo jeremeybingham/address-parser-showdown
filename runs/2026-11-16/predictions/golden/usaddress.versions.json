@@ -1,0 +1,11 @@
+{
+  "set": "golden",
+  "set_sha256": "9a7c3f6502fc3f4cea6cad34813df872c06d4a045145fcb621dca02c92d15d70",
+  "versions": {
+    "usaddress": "0.5.16",
+    "python-crfsuite": "0.9.12"
+  },
+  "pin_problems": [],
+  "records": 2439,
+  "seconds": 0.3
+}

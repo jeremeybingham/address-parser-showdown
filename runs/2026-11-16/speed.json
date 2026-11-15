@@ -1,0 +1,141 @@
+{
+  "machine": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz; 4 of 14 CPUs usable and 49 GB visible; Linux 6.18.58.1-microsoft-standard-WSL2; Python 3.13.16",
+  "reference_profile": "4 CPUs, 8 GB",
+  "strings": 100000,
+  "distinct": 2439,
+  "reps": 5,
+  "parsers": {
+    "doorplate": {
+      "versions": {
+        "doorplate": "0.6.0"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          1.4031957639963366,
+          1.382459253014531,
+          1.3883414519950747,
+          1.437149572011549,
+          1.3883025499526411
+        ],
+        "load_seconds": 0.002965422987472266,
+        "rss_after_load_mb": 26.7265625,
+        "rss_after_parses_mb": 27.82421875,
+        "pss_total_after_load_mb": 19.4873046875,
+        "per_second": 72028.39031874902,
+        "median_s": 1.3883414519950747,
+        "fastest_s": 1.382459253014531,
+        "slowest_s": 1.437149572011549
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          0.5154361019958742,
+          0.4997624529642053,
+          0.4412291990010999,
+          0.4474080540239811,
+          0.441220996028278
+        ],
+        "load_seconds": 0.003100828966125846,
+        "rss_after_load_mb": 19.68359375,
+        "rss_after_parses_mb": 20.77734375,
+        "pss_total_after_load_mb": 36.7607421875,
+        "per_second": 223509.61074706088,
+        "median_s": 0.4474080540239811,
+        "fastest_s": 0.441220996028278,
+        "slowest_s": 0.5154361019958742
+      },
+      "install_mb": 4.887945175170898,
+      "install_what": "package and required packages: doorplate"
+    },
+    "libpostal": {
+      "versions": {
+        "libpostal": "25099c506612b34b23b1bfe286ca6321fcf06f35",
+        "data_checksum": "a42c356d1283c7e1ff9994b6bfc0a1015956718840e1aff8a5afae7dec237762",
+        "pypostal": "1.1.11"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          6.897638519003522,
+          6.886940445983782,
+          6.828108499990776,
+          6.85992489597993,
+          6.829963502008468
+        ],
+        "load_seconds": 3.4796010400168598,
+        "rss_after_load_mb": 2957.953125,
+        "rss_after_parses_mb": 2959.20703125,
+        "pss_total_after_load_mb": 2951.67578125,
+        "per_second": 14577.419070375281,
+        "median_s": 6.85992489597993,
+        "fastest_s": 6.828108499990776,
+        "slowest_s": 6.897638519003522
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          2.2943099020048976,
+          2.2654392609838396,
+          2.239278637978714,
+          2.3324552559643053,
+          2.275237691006623
+        ],
+        "load_seconds": 5.053847727016546,
+        "rss_after_load_mb": 2951.0,
+        "rss_after_parses_mb": 2952.25,
+        "pss_total_after_load_mb": 11770.9052734375,
+        "per_second": 43951.45192753793,
+        "median_s": 2.275237691006623,
+        "fastest_s": 2.239278637978714,
+        "slowest_s": 2.3324552559643053
+      },
+      "install_mb": 2993.1339406967163,
+      "install_what": "libpostal library and model data"
+    },
+    "usaddress": {
+      "versions": {
+        "usaddress": "0.5.16",
+        "python-crfsuite": "0.9.12"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          11.453806796984281,
+          11.473795561993029,
+          11.17029109201394,
+          10.99729019595543,
+          11.062784481036942
+        ],
+        "load_seconds": 0.01166991499485448,
+        "rss_after_load_mb": 27.296875,
+        "rss_after_parses_mb": 27.375,
+        "pss_total_after_load_mb": 18.9853515625,
+        "per_second": 8952.318178305464,
+        "median_s": 11.17029109201394,
+        "fastest_s": 10.99729019595543,
+        "slowest_s": 11.473795561993029
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          3.392877792008221,
+          3.5645888359867968,
+          3.6175262950127944,
+          3.6974322099704295,
+          3.4943319400190376
+        ],
+        "load_seconds": 0.01609365304466337,
+        "rss_after_load_mb": 20.28515625,
+        "rss_after_parses_mb": 20.359375,
+        "pss_total_after_load_mb": 41.845703125,
+        "per_second": 28053.726418720795,
+        "median_s": 3.5645888359867968,
+        "fastest_s": 3.392877792008221,
+        "slowest_s": 3.6974322099704295
+      },
+      "install_mb": 4.8421525955200195,
+      "install_what": "package and required packages: probableparsing, python-crfsuite, usaddress"
+    }
+  }
+}
