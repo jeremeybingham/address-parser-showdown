@@ -55,6 +55,8 @@ class App:
             for q in self.queue:
                 n = q["round"]
                 card = next(c for c in store.gold_cards(n, self.rounds_dir, self.log_dir) if c["id"] == q["id"])
+                if self.mode == "adjudicate" and card.get("phase") == "adjudicate":
+                    continue  # already decided in an earlier session: do not ask again
                 out.append(
                     {**card, "round": n}
                     | ({"rules": q["rules"]} if self.mode == "review" else {"questions": q["questions"]})
@@ -117,7 +119,7 @@ def main() -> None:
     if a.practice:
         base = store.ROOT / "local-data" / "practice"
         kw = {"log_dir": base / "labels", "rounds_dir": base}
-    rounds = [a.round] if a.mode == "label" else list(range(1, 7 if a.mode == "adjudicate" else 13))
+    rounds = [a.round] if a.mode == "label" else list(range(1, 13))
     if a.mode in ("review", "revisit"):  # only the rounds that exist
         rounds = [n for n in rounds if (kw.get("rounds_dir", store.ROUNDS) / f"round-{n}.jsonl").exists()]
     app = App(a.mode, rounds, **kw)
