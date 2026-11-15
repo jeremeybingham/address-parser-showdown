@@ -6,6 +6,10 @@ default: check
 check:
     tools/check.sh
 
-# Fetch sets, check checksums, run every adapter, score, write runs/<date>/ (not written yet)
+# Fetch sets, check checksums, run every adapter, score, measure speed, write runs/<date>/ (needs the pinned libpostal build)
 all: check
-    @echo "just all: not implemented yet (step 7)"
+    uv run python -m tools.run
+
+# Score a committed run again from its prediction files only: just rescore runs/2026-11-15
+rescore RUN:
+    uv run python -m tools.run --rescore {{RUN}}

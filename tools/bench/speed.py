@@ -53,7 +53,7 @@ def machine() -> str:
         ),
         0,
     )
-    return f"{cpu}; {os.cpu_count()} CPUs and {mem:.0f} GB visible; {platform.system()} {platform.release()}; Python {platform.python_version()}"
+    return f"{cpu}; {len(os.sched_getaffinity(0))} of {os.cpu_count()} CPUs usable and {mem:.0f} GB visible; {platform.system()} {platform.release()}; Python {platform.python_version()}"
 
 
 def python_for(parser: str) -> tuple[list[str], dict]:
@@ -147,8 +147,13 @@ def main(argv=None) -> int:
     ap.add_argument("--reps", type=int, default=5)
     ap.add_argument("--procs", type=int, default=4)
     ap.add_argument("--parsers", nargs="+", choices=sorted(ADAPTERS), default=sorted(ADAPTERS))
+    ap.add_argument(
+        "--cpus", type=int, default=4, help="pin the run to this many CPUs (the reference profile's 4); 0 = no pinning"
+    )
     ap.add_argument("--out", type=Path)
     args = ap.parse_args(argv)
+    if args.cpus and hasattr(os, "sched_setaffinity"):
+        os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[: args.cpus])  # inherited by the workers
     base = [r["text"] for r in read_jsonl(set_path("golden"))]
     texts = (base * (args.strings // len(base) + 1))[: args.strings]
     results = {
