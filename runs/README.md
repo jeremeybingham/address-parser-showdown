@@ -17,4 +17,4 @@ The run refuses to start on a dirty tree and refuses to finish if any parser bui
 `uv.lock`). Speed figures are from the machine named in `speed.md`; the 8 GB memory limit of the reference profile is not enforced
 (libpostal's four processes hold about 11.8 GB together, so that row needs a larger machine).
 
-Runs: `2026-11-15` (the first full pinned run, v0.1.0).
+Runs: `2026-11-15` (the first full pinned run, kept unchanged) and `2026-11-16` (the same predictions rescored after a scorer fix and the highway alternatives; the run the v0.1.0 report uses). The report's section 6.4 explains the difference.
