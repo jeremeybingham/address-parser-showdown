@@ -190,6 +190,6 @@ def test_how_a_parser_splits_words_is_not_scored_on_the_fine_track():
 
 
 def test_alternative_on_an_unlabeled_range():
-    """An accepted alternative may sit on a range the primary reading leaves unlabeled (it then may also stay unlabeled)."""
+    """An accepted alternative may sit on a range the primary reading leaves unlabeled."""
     got = spans.readings([(0, 3, "number")], [{"start": 4, "end": 9, "labels": ["unit"]}])
     assert sorted(got) == [[(0, 3, "number")], [(0, 3, "number"), (4, 9, "unit")]]
