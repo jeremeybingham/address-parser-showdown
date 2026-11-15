@@ -113,24 +113,27 @@ def fine_spans(text: str, spans: list[Span], scored: set[str]) -> set[Span]:
 def readings(spans: list[Span], alternatives: list[dict]) -> list[list[Span]]:
     """The gold readings of one record: the primary spans, and each way the alternatives can be chosen.
 
-    An alternative `{"start", "end", "labels"}` lets the span `[start, end)` take any of `labels` (its primary label
-    stays one choice); `none` leaves it unlabeled. A record with no alternatives has one reading.
+    An alternative `{"start", "end", "labels"}` lets the range `[start, end)` be read as one span of any of `labels`, in
+    place of every primary span that overlaps the range (one span, several, or none: an alternative may sit on an
+    unlabeled range); `none` leaves the range unlabeled. Keeping the primary spans is always one choice. A record with
+    no alternatives has one reading.
     """
     if not alternatives:
         return [sorted(spans)]
-    by_range = {(s, e): lab for s, e, lab in spans}
-    ranges = {(a["start"], a["end"]) for a in alternatives}
-    base = [sp for sp in spans if (sp[0], sp[1]) not in ranges]
-    choices = []
-    for a in alternatives:
-        key = (a["start"], a["end"])
-        opts = list(dict.fromkeys(([by_range[key]] if key in by_range else []) + a["labels"]))
-        if key not in by_range and "none" not in opts:
-            opts.append("none")
-        choices.append([(key[0], key[1], o) for o in opts])
-    out = []
+    choices = [[None] + [(a["start"], a["end"], lab) for lab in dict.fromkeys(a["labels"])] for a in alternatives]
+    out: list[list[Span]] = []
     for combo in product(*choices):
-        out.append(sorted(base + [c for c in combo if c[2] != "none"]))
+        cur = list(spans)
+        for choice in combo:
+            if choice is None:
+                continue
+            s0, e0, lab = choice
+            cur = [sp for sp in cur if not (sp[0] < e0 and s0 < sp[1])]
+            if lab != "none":
+                cur.append((s0, e0, lab))
+        reading = sorted(set(cur))
+        if reading not in out:
+            out.append(reading)
         if len(out) >= MAX_READINGS:
             break
     return out

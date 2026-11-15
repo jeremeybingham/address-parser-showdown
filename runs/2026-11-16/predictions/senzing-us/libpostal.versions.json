@@ -1,0 +1,12 @@
+{
+  "set": "senzing-us",
+  "set_sha256": "71f55f77ca4421fe4ac11375b2ec6a57349e99cc349ddef8b2f7a19e2d73e8eb",
+  "versions": {
+    "libpostal": "25099c506612b34b23b1bfe286ca6321fcf06f35",
+    "data_checksum": "a42c356d1283c7e1ff9994b6bfc0a1015956718840e1aff8a5afae7dec237762",
+    "pypostal": "1.1.11"
+  },
+  "pin_problems": [],
+  "records": 2178,
+  "seconds": 3.7
+}

@@ -14,6 +14,7 @@
 | The full run, `just all`, CI or a run folder | `tools/run.py` (docstring); `runs/README.md`; `.github/workflows/`; `AGENTS.md` |
 | Speed, memory and install size (step 6) | `tools/bench/speed.py` (its docstring says the method); `runs/` holds the table from the pinned run |
 | Scoring and the Parser Score | [`../scorer/README.md`](../scorer/README.md) |
+| The research report and the scripts behind its extra figures (`tools/report/breakdown.py`, `tools/label/direction.py`) | [`../report/REPORT.md`](../report/REPORT.md) |
 | Round 8 (`nightmare`) survey: covered and adjacent variants per class (issue #22) | [`research/nightmare-survey.md`](research/nightmare-survey.md) |
 
 ## When you change something, check these

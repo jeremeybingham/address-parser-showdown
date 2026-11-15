@@ -85,6 +85,21 @@ def test_alternatives_accept_each_listed_label():
     assert one(t, gold, pred, alt).correct == [1]
 
 
+def test_alternative_over_several_spans_replaces_them():
+    """Regression (found after run 2026-11-15): an alternative covering several gold spans was added beside them."""
+    t = "35 US Hwy 50, Zed, ZZ 00001"
+    gold = [[0, 2, "house_number_value"], [3, 9, "route_type"], [10, 12, "route_value"]]
+    alt = [{"start": 3, "end": 12, "labels": ["street_name"]}]
+    pred = [[0, 2, "house_number_value"], [3, 5, "street_pre_type"], [6, 9, "street_pre_type"], [10, 12, "street_name"]]
+    assert one(t, gold, pred).correct == [0]
+    assert one(t, gold, pred, alt).correct == [1]
+    assert one(t, gold, gold, alt).correct == [1]  # the primary reading still counts
+    assert sorted(spans.readings([tuple(s) for s in gold], alt)) == [
+        [(0, 2, "house_number_value"), (3, 9, "route_type"), (10, 12, "route_value")],
+        [(0, 2, "house_number_value"), (3, 12, "street_name")],
+    ]
+
+
 def test_none_alternative_lets_a_span_go_unlabeled():
     t = "12 Elm St 4"
     gold = [[0, 2, "house_number_value"], [3, 6, "street_name"], [7, 9, "street_post_type"], [10, 11, "unit_value"]]

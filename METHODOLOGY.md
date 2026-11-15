@@ -1,10 +1,11 @@
 # Methodology
 
-> **Status (2026-11-13): fixed in principle, still open in two places.** These principles come from the plan (the v0.1.0
-> tracker issue) and are fixed before any parser is scored; a later change is made in a PR that says why, and is listed
-> in the report. Still open: which part of the golden set is the headline (issue #26: the random public stratum is the
-> proposal, so the weights under "Scoring" may change to version 2 before the first run) and the adjudication write-up
-> below. Nothing has been scored yet; hand labeling is in progress.
+> **Status (2026-11-15): fixed, and scored.** These principles come from the plan (the v0.1.0 tracker issue) and were
+> fixed before any parser was scored; a later change is made in a PR that says why, and is listed in the report
+> (`report/REPORT.md`). The headline is the Parser Score, formula version 1 (unchanged); the random public stratum of
+> the golden set is reported beside it (issue #26). Two changes were made after the first run (`runs/2026-11-15/`): a
+> scorer fix (an accepted alternative over several gold spans now replaces them) and the schema's street reading added
+> as an alternative on 140 highway cards. Both are in `runs/2026-11-16/` and listed in the report.
 
 ## Fairness principles
 
