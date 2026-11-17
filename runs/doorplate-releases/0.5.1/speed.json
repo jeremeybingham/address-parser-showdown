@@ -1,0 +1,52 @@
+{
+  "machine": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz; 4 of 14 CPUs usable and 49 GB visible; Linux 6.18.58.1-microsoft-standard-WSL2; Python 3.13.16",
+  "reference_profile": "4 CPUs, 8 GB",
+  "strings": 100000,
+  "distinct": 2439,
+  "reps": 5,
+  "parsers": {
+    "doorplate": {
+      "versions": {
+        "doorplate": "0.5.1"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          1.3502296690057847,
+          1.3498032450006576,
+          1.3550330889993347,
+          1.3563425989996176,
+          1.3523791650004569
+        ],
+        "load_seconds": 0.002959024997835513,
+        "rss_after_load_mb": 27.0703125,
+        "rss_after_parses_mb": 27.734375,
+        "pss_total_after_load_mb": 19.76171875,
+        "per_second": 73943.75969994052,
+        "median_s": 1.3523791650004569,
+        "fastest_s": 1.3498032450006576,
+        "slowest_s": 1.3563425989996176
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          0.5001043400043272,
+          0.45004621500265785,
+          0.4346122839997406,
+          0.4774947480036644,
+          0.3805940269958228
+        ],
+        "load_seconds": 0.0039730339995003305,
+        "rss_after_load_mb": 20.078125,
+        "rss_after_parses_mb": 20.73828125,
+        "pss_total_after_load_mb": 36.8740234375,
+        "per_second": 222199.40234228928,
+        "median_s": 0.45004621500265785,
+        "fastest_s": 0.3805940269958228,
+        "slowest_s": 0.5001043400043272
+      },
+      "install_mb": 4.832239151000977,
+      "install_what": "package and required packages: doorplate"
+    }
+  }
+}
