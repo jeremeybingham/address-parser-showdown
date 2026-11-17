@@ -1,0 +1,10 @@
+{
+  "set": "libpostal-us",
+  "set_sha256": "6b6ff35de7b5daca24754313277d0475bea9491437af9158ba9ebc788b0d62cb",
+  "versions": {
+    "doorplate": "0.4.1"
+  },
+  "pin_problems": [],
+  "records": 53,
+  "seconds": 0.0
+}

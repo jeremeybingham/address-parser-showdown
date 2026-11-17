@@ -47,6 +47,7 @@ uv run python -m tools.bench.speed         # speed, load time, memory, install s
 uv run python -m scorer                       # score every converted set with predictions (tables; --out DIR writes results.md/json)
 just all                  # the full pinned run: fetch, convert, predict, score, speed -> runs/<date>/ (about 4 minutes; clean tree and the pinned libpostal build needed)
 just rescore runs/DATE    # score a committed run again from its prediction files only
+uv run python -m tools.releases   # appendix: doorplate's highest point release of each minor from PyPI, scored with the reused usaddress/libpostal predictions -> runs/doorplate-releases/ (~4 min; skips releases already run)
 uv run --group report python -m tools.report.pdf   # report/REPORT.md -> report/REPORT.pdf, charts drawn from its own tables (Chromium from ~/.cache/ms-playwright, or $CHROMIUM)
 uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figures for the report: stratum, restored rows, nightmare variant, shape class, paired tests; --real adds the private text (counts only)
 ```
