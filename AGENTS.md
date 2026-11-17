@@ -47,6 +47,7 @@ uv run python -m tools.bench.speed         # speed, load time, memory, install s
 uv run python -m scorer                       # score every converted set with predictions (tables; --out DIR writes results.md/json)
 just all                  # the full pinned run: fetch, convert, predict, score, speed -> runs/<date>/ (about 4 minutes; clean tree and the pinned libpostal build needed)
 just rescore runs/DATE    # score a committed run again from its prediction files only
+uv run --group report python -m tools.report.pdf   # report/REPORT.md -> report/REPORT.pdf, charts drawn from its own tables (Chromium from ~/.cache/ms-playwright, or $CHROMIUM)
 uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figures for the report: stratum, restored rows, nightmare variant, shape class, paired tests; --real adds the private text (counts only)
 ```
 
@@ -59,11 +60,12 @@ uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figure
 - Each set has a `MANIFEST.md` (source, license, counts, checksums); sets fetched by script are checked by checksum.
 - Private data stays in `local-data/` (git-ignored). Examples, tests and the shipped golden set use invented or
   anonymized values only.
+- `report/REPORT.pdf` is rebuilt in the same commit as any change to `report/REPORT.md`.
 - Docs change in the same commit as the behavior they describe (`docs/README.md` lists what to check).
 
 ## Where things are
 
 `schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
-scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report (`REPORT.md`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
+scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report (`REPORT.md`, and `REPORT.pdf` rendered from it by `tools/report/pdf.py`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
 (`check.sh`; `golden/` the golden-set sampler, hand templates, exclusion check and tier tagger (`tiers.py`), shipped-gold maker (`derive.py`); `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).
