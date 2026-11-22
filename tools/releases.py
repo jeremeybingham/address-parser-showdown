@@ -3,6 +3,7 @@
 
     uv run python -m tools.releases [--versions 0.3.1 0.6.2] [--reference runs/2026-11-16] [--skip-speed]
     uv run python -m tools.releases --table        # only rebuild runs/doorplate-releases/releases.md
+    uv run python -m tools.releases --wheel dist/doorplate-*.whl --out local-data/scratch  # not committed
 
 Releases come from PyPI (abi3 wheels, nothing is built): the highest X.Y.Z of every X.Y, so 0.3.1 stands for 0.3.x and
 0.3.0 is not run. A release that already has a folder is skipped, so a rerun after a new release only adds that one.
@@ -15,11 +16,16 @@ usaddress and libpostal files, exactly as in a pinned run. usaddress and libpost
 
 Writes `runs/doorplate-releases/<version>/` (`predictions/<set>/doorplate.*`, `results.md|json`, `speed.md|json`,
 `release.json`) and `runs/doorplate-releases/releases.md` (one row per release; reads the folders only).
+
+`--wheel PATH` runs one locally built wheel instead (for example a release candidate before it is on PyPI) and needs
+`--out DIR`, so a scratch build never lands in `runs/doorplate-releases/`; the folder is named after the version the
+installed doorplate reports, and `release.json` records the wheel's file name and SHA-256.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -41,7 +47,7 @@ PARTS = [("golden/normal", "golden normal"), ("golden/hard", "golden hard"), ("g
 
 
 def vkey(v: str) -> tuple[int, ...]:
-    return tuple(int(x) for x in v.split("."))
+    return tuple(int(x) for x in re.findall(r"\d+", v))
 
 
 def highest_per_minor() -> list[str]:
@@ -78,25 +84,37 @@ def ensure_sets(reference: Path) -> dict[str, str]:
     return got
 
 
-def make_env(version: str) -> Path:
-    env_dir = SCRATCH / f"env-{version}"
+def make_env(name: str, requirement: str) -> Path:
+    env_dir = SCRATCH / f"env-{name}"
     shared = dict(os.environ, UV_PROJECT_ENVIRONMENT=str(env_dir))
     run(["uv", "sync", "--frozen", "--no-dev", "--quiet"], shared)
     py = env_dir / "bin" / "python"
-    run(["uv", "pip", "install", "--quiet", "--python", str(py), f"doorplate=={version}"])
+    run(["uv", "pip", "install", "--quiet", "--python", str(py), requirement])
     return py
 
 
-def one_release(version: str, reference: Path, sha: dict[str, str], skip_speed: bool) -> None:
-    out = OUT / version
-    py = make_env(version)
+def one_release(
+    version: str,
+    reference: Path,
+    sha: dict[str, str],
+    skip_speed: bool,
+    out_root: Path = OUT,
+    wheel: Path | None = None,
+) -> None:
+    """Run one release: `version` from PyPI, or with `wheel` that file (`version` is then only the env name)."""
+    py = make_env(version, str(wheel) if wheel else f"doorplate=={version}")
     shutil.rmtree(PREDICTIONS, ignore_errors=True)
     for s in SETS:
         run([str(py), "-m", "tools.sets.predict", s, "--parsers", "doorplate"])
     metas = {s: json.loads((PREDICTIONS / s / "doorplate.versions.json").read_text()) for s in SETS}
     versions = {m["versions"]["doorplate"] for m in metas.values()}
-    if versions != {version}:
+    if wheel and len(versions) == 1:
+        version = versions.pop()
+    elif versions != {version}:
         sys.exit(f"installed doorplate is {versions}, not {version}")
+    out = out_root / version
+    if out.exists():
+        sys.exit(f"{out} exists; remove it to rerun")
     if any(metas[s]["set_sha256"] != sha[s] for s in SETS):
         sys.exit("a set changed during the run")
     out.mkdir(parents=True)
@@ -104,16 +122,21 @@ def one_release(version: str, reference: Path, sha: dict[str, str], skip_speed: 
     score_dir(out, reference)
     if not skip_speed:
         run([str(py), "-m", "tools.bench.speed", "--parsers", "doorplate", "--out", str(out)])
+    if wheel:
+        digest = hashlib.sha256(wheel.read_bytes()).hexdigest()
+        source = f"local wheel {wheel.name} (sha256 {digest})"
+    else:
+        source = "PyPI wheel (abi3)"
     info = {
         "doorplate": version,
-        "source": "PyPI wheel (abi3)",
+        "source": source,
         "reference_run": reference.name,
         "set_sha256": sha,
         "host": speed.machine(),
         "speed_measured": not skip_speed,
     }
     (out / "release.json").write_text(json.dumps(info, indent=2) + "\n")
-    shutil.rmtree(SCRATCH / f"env-{version}", ignore_errors=True)
+    shutil.rmtree(py.parents[1], ignore_errors=True)
 
 
 def score_dir(out: Path, reference: Path) -> None:
@@ -130,7 +153,7 @@ def score_dir(out: Path, reference: Path) -> None:
         run([sys.executable, "-m", "scorer", "--predictions", str(pred), "--out", str(out)])
 
 
-def table(reference: Path) -> str:
+def table(reference: Path, out_root: Path = OUT) -> str:
     def score_row(md: str, parser: str) -> tuple[str, str]:
         m = re.search(rf"^\| {parser} \| ([^|]+) \| ([^|]+) \|$", md.split("## Parser Score")[1], re.M)
         return m.group(1).strip(), m.group(2).strip()
@@ -142,7 +165,7 @@ def table(reference: Path) -> str:
     rows, ref_md = [], (reference / "results.md").read_text()
     ref_res = json.loads((reference / "results.json").read_text())
     ref_speed = json.loads((reference / "speed.json").read_text())["parsers"]
-    for d in sorted((p for p in OUT.iterdir() if p.is_dir()), key=lambda p: vkey(p.name)):
+    for d in sorted((p for p in out_root.iterdir() if p.is_dir()), key=lambda p: vkey(p.name)):
         md, res = (d / "results.md").read_text(), json.loads((d / "results.json").read_text())
         ps, f1 = score_row(md, "doorplate")
         cells = [d.name, ps, f1, *(acc(res, "doorplate", k) for k, _ in PARTS)]
@@ -184,8 +207,21 @@ def main(argv=None) -> int:
     ap.add_argument("--reference", type=Path, default=ROOT / "runs" / "2026-11-16")
     ap.add_argument("--skip-speed", action="store_true")
     ap.add_argument("--table", action="store_true", help="only rebuild releases.md")
+    ap.add_argument("--wheel", type=Path, help="run this local wheel instead of PyPI releases (needs --out)")
+    ap.add_argument("--out", type=Path, help="output folder (default runs/doorplate-releases)")
     args = ap.parse_args(argv)
     reference = args.reference.resolve()
+    if args.wheel:
+        if not args.out or args.versions or args.table:
+            ap.error("--wheel needs --out and takes no --versions or --table")
+        out_root = args.out.resolve()
+        out_root.mkdir(parents=True, exist_ok=True)
+        sha = ensure_sets(reference)
+        step(1, 1, args.wheel.name)
+        one_release("wheel", reference, sha, args.skip_speed, out_root, args.wheel.resolve())
+        (out_root / "releases.md").write_text(table(reference, out_root))
+        print(f"wrote {out_root / 'releases.md'}")
+        return 0
     if not args.table:
         todo = [v for v in (args.versions or highest_per_minor()) if not (OUT / v).exists()]
         print(f"releases to run: {todo or 'none'}", flush=True)
