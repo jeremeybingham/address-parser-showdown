@@ -16,6 +16,7 @@
 | Scoring and the Parser Score | [`../scorer/README.md`](../scorer/README.md) |
 | The research report and the scripts behind its extra figures (`tools/report/breakdown.py`, `tools/label/direction.py`) | [`../report/REPORT.md`](../report/REPORT.md) (the latest; earlier reports kept as published are listed in [`../report/README.md`](../report/README.md)); the PDF with charts [`../report/REPORT.pdf`](../report/REPORT.pdf) and its renderer `tools/report/pdf.py` ([`../report/README.md`](../report/README.md)) |
 | Round 8 (`nightmare`) survey: covered and adjacent variants per class (issue #22) | [`research/nightmare-survey.md`](research/nightmare-survey.md) |
+| Rust parsers appendix (issue #55): the scores, how to read them, caveats | [`../report/RUST-PARSERS.md`](../report/RUST-PARSERS.md); `tools/rust_appendix.py`; `runs/rust-parsers/` |
 | doorplate releases appendix (issue #50): the table, method and caveats | [`../report/RELEASES.md`](../report/RELEASES.md); `tools/releases.py`; `runs/doorplate-releases/` |
 
 ## When you change something, check these

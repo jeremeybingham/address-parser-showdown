@@ -1,0 +1,10 @@
+{
+  "set": "senzing-us",
+  "set_sha256": "71f55f77ca4421fe4ac11375b2ec6a57349e99cc349ddef8b2f7a19e2d73e8eb",
+  "versions": {
+    "address_parser": "0.1.10"
+  },
+  "pin_problems": [],
+  "records": 2178,
+  "seconds": 0.5
+}
