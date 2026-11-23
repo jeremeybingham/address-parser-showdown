@@ -45,11 +45,11 @@ class UsAddressParserAdapter(Adapter):
         spans.sort(key=lambda sp: sp.start)
         # A several-word field can run over a field found inside it (the crate folds city and state into the street
         # name): the span that starts first is kept and the one it covers is dropped.
-        spans = [
-            sp
-            for i, sp in enumerate(spans)
-            if all(sp.start >= o.end or o.start >= sp.end or o.start > sp.start for o in spans[:i])
-        ]
+        kept: list[Span] = []
+        for sp in spans:
+            if not kept or sp.start >= kept[-1].end:
+                kept.append(sp)
+        spans = kept
         name = next((s for s in spans if s.label == "street_name"), None)
         if name is None:
             return spans
