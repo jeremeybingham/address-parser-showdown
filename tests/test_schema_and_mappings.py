@@ -20,7 +20,7 @@ def test_schema_parents_are_coarse_and_scopes_valid():
     ]
 
 
-@pytest.mark.parametrize("name", ["doorplate", "usaddress", "libpostal"])
+@pytest.mark.parametrize("name", ["doorplate", "usaddress", "libpostal", "us_address_parser"])
 def test_mapping_targets_exist(name):
     assert Mapping(name).claims <= set(schema.labels())
 
@@ -104,3 +104,10 @@ def test_conventions_load_with_sources():
     conv = schema.conventions()
     assert set(conv) == {"letter-after-number", "hash-before-unit"}
     assert all(c["source"] for c in conv.values())
+
+
+def test_us_address_parser_mapping_covers_every_field():
+    fields = {"street_no", "direction", "street_name", "street_type", "unit_type", "unit_no"}
+    native = Mapping("us_address_parser").native_labels
+    assert fields <= native
+    assert native - fields == {"direction_pre", "direction_post"}

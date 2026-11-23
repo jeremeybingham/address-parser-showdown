@@ -4,7 +4,8 @@ An adapter conforms when, for every string in `conformance_strings.txt`:
 
 - its spans are in order, inside the string, non-empty and not overlapping;
 - every label is one the mapping knows, and the mapping sends every label to a canonical label;
-- for the `cover` strings, every letter and digit of the string is inside a span.
+- for the `cover` strings, every letter and digit of the string is inside a span (not required of an adapter with
+  `cannot_cover = True`, a parser that has no city, state or ZIP field).
 
 Problems are described by string number and kind only, never by quoting the string (the same check may later run on
 private data).
@@ -55,7 +56,7 @@ def check(adapter: Adapter) -> list[str]:
                 end_before = s.end
             if s.label not in adapter.mapping.rules:
                 problems.append(f"{where}: label not in the mapping")
-        if kind == "cover":
+        if kind == "cover" and not getattr(adapter, "cannot_cover", False):
             covered = {i for s in spans for i in range(s.start, s.end)}
             missing = [i for i, ch in enumerate(text) if ch.isalnum() and i not in covered]
             if missing:
