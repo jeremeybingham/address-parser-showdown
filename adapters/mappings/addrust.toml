@@ -1,0 +1,21 @@
+# addrust (default configuration; the fields of its `Address`, `COL_DEFS` in src/address.rs) to the canonical schema.
+# Decisions (overrule any): `po_box` holds the type words and the number, so it maps to the coarse `po_box`; `unit` is
+# the unit value; `building` is a building name and `building_type` has no schema label, so it is `other`;
+# `extra_front` and `extra_back` are text it left over (a name, a floor, a second line), which is `other`.
+
+[labels]
+street_number = "house_number"
+pre_direction = "street_pre_direction"
+street_name = "street_name"
+suffix = "street_post_type"
+post_direction = "street_post_direction"
+unit = "unit_value"
+unit_type = "unit_type"
+po_box = "po_box"
+building = "building_name"
+building_type = "other"
+extra_front = "other"
+extra_back = "other"
+city = "city"
+state = "state"
+zip = "postal_code"

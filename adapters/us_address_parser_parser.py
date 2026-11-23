@@ -8,8 +8,8 @@ has no spans. Its one `direction` field has no position, so the adapter calls it
 the street name and `direction_post` otherwise.
 """
 
-from adapters.base import Adapter, Mapping, Span, align
-from adapters.rust_worker import RustWorker
+from adapters.base import Adapter, Mapping, Span
+from adapters.rust_worker import RustWorker, place_fields
 
 PARSER = "us_address_parser"
 CRATE_VERSION = "0.3.0"  # pinned with `=` in tools/rust-parsers/Cargo.toml
@@ -34,22 +34,7 @@ class UsAddressParserAdapter(Adapter):
 
     @staticmethod
     def _spans(text: str, fields) -> list[Span]:
-        # The crate returns its fields in a fixed order, not the order of the text, so each is looked for on its own in
-        # what is left of the text (characters already taken are blanked).
-        left, spans = text, []
-        for label, value in fields:
-            found = align(left, [(value, label)], ignore_case=True, skip_missing=True)
-            for sp in found:
-                spans.append(sp)
-                left = left[: sp.start] + "\0" * (sp.end - sp.start) + left[sp.end :]
-        spans.sort(key=lambda sp: sp.start)
-        # A several-word field can run over a field found inside it (the crate folds city and state into the street
-        # name): the span that starts first is kept and the one it covers is dropped.
-        kept: list[Span] = []
-        for sp in spans:
-            if not kept or sp.start >= kept[-1].end:
-                kept.append(sp)
-        spans = kept
+        spans = place_fields(text, fields)
         name = next((s for s in spans if s.label == "street_name"), None)
         if name is None:
             return spans
