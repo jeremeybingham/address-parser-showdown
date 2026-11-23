@@ -4,7 +4,7 @@ A short appendix to the [v0.1.0 report](REPORT.md). It shows what each doorplate
 doorplate's authors have a curve and not one point. It is not part of the report and does not change it.
 
 **Method.** The doorplate adapter was run on the highest point release of each minor version (0.1.0, 0.2.0, 0.3.1, 0.4.1,
-0.5.1, 0.6.2; the earlier `0.x.0` builds and the unreleased `0.6.3` were not run), from the PyPI wheels. Each release ran
+0.5.1, 0.6.2, and both 0.7.0 and 0.7.1; the other earlier builds and the unreleased `0.6.3` were not run), from the PyPI wheels. Each release ran
 on the sets of the pinned run `2026-11-16` (every set's SHA-256 checked equal), scored by the same scorer and formula
 (version 1) with the usaddress and libpostal predictions of that run reused unchanged, so only doorplate varies. Speed is
 from one session on the same machine, pinned to 4 CPUs. Everything is in `runs/doorplate-releases/`; `uv run python -m
@@ -18,6 +18,8 @@ tools.releases` adds a release that is not there yet and rebuilds the table, so 
 | 0.4.1 | 88.7 (87.5 to 89.9) | 96.9 (96.6 to 97.3) | 94.3 | 90.5 | 57.1 | 41,143 | 146,475 | 4.9 |
 | 0.5.1 | 89.4 (88.2 to 90.6) | 97.2 (96.9 to 97.5) | 94.6 | 91.0 | 60.2 | 73,944 | 222,199 | 4.8 |
 | 0.6.2 | 90.9 (89.7 to 92.0) | 97.6 (97.3 to 97.9) | 94.8 | 91.2 | 69.0 | 113,315 | 317,934 | 6.4 |
+| 0.7.0 | 91.8 (90.7 to 92.9) | 97.9 (97.6 to 98.1) | 94.9 | 92.4 | 73.0 | 105,833 | 309,258 | 6.4 |
+| 0.7.1 | 91.8 (90.7 to 92.9) | 97.9 (97.6 to 98.1) | 94.9 | 92.4 | 73.0 | 113,770 | 334,536 | 6.5 |
 | usaddress 0.5.16 (from 2026-11-16) | 84.7 (83.4 to 86.0) | 95.7 (95.3 to 96.1) | 93.6 | 88.5 | 51.3 | 8,952 | 28,054 | 4.8 |
 | libpostal 25099c5066 (from 2026-11-16) | 80.8 (79.5 to 82.2) | 93.4 (92.8 to 93.9) | 91.8 | 70.9 | 54.0 | 14,577 | 43,951 | 2,993.1 |
 
@@ -40,6 +42,14 @@ Read from doorplate's `CHANGELOG.md`; the score movements are this benchmark's, 
 - **0.6.2 (0.6.0 and 0.6.1 not run):** the `k5` key release and two speed releases, with no output change in 0.6.1 and 0.6.2.
   Parser Score +1.5 points, nightmare 60.2 to 69.0, and about 53% more strings per second than 0.5.1. The 0.6.2 score
   (90.9) equals the committed 0.6.0 run's (the project's v0.1.0 figure), as the changelog's byte-identical claim implies.
+- **0.7.0:** the first beta and the `k6` key release (Puerto Rico building, box and street-first lines, glued box and route
+  words, `STAR RT`, name lines as attention lines, glued directions). Parser Score +0.9 points (90.9 to 91.8), golden hard
+  91.2 to 92.4 and nightmare 69.0 to 73.0; the intervals of 0.6.2 and 0.7.0 overlap. About 7% fewer strings per second than
+  0.6.2 in one process, in line with the changelog's 7% more time per parse. The 91.8 equals the scratch run of the release
+  candidate quoted as provisional in doorplate's changelog.
+- **0.7.1:** a speed release with no parse change: every doorplate prediction file is byte for byte the same as 0.7.0's, so
+  the scores are equal. About 7% more strings per second than 0.7.0 in one process (113,770 against 105,833), back level
+  with 0.6.2.
 
 ## Caveats
 
