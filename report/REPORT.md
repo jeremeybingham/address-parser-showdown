@@ -1,37 +1,38 @@
 # US address parsers on equal terms: doorplate, usaddress and libpostal
 
-Report for v0.1.0 of `address-parser-showdown`, written from the pinned run [`runs/2026-11-16/`](../runs/2026-11-16/)
-(commit `4ef4064`, 2026-11-15). Every figure below comes from that run's committed prediction files unless it says
-otherwise, and can be reproduced from them (`just rescore runs/2026-11-16`). The figures in sections 7.4 and 7.5 come
-from `tools/report/breakdown.py`, which scores the same committed predictions.
+Report of `address-parser-showdown`, written from the pinned run [`runs/2026-11-23/`](../runs/2026-11-23/)
+(commit `7710d79`, doorplate 0.7.1). It follows the v0.1.0 report of the run [`runs/2026-11-16/`](../runs/2026-11-16/)
+(doorplate 0.6.0), which is kept unchanged as [`REPORT-2026-11-16.md`](REPORT-2026-11-16.md); section 6.5 lists what changed. Every figure below comes from the 2026-11-23 run's committed
+prediction files unless it says otherwise, and can be reproduced from them (`just rescore runs/2026-11-23`). The figures
+in sections 7.4 and 7.5 come from `tools/report/breakdown.py`, which scores the same committed predictions.
 
 **Conflict of interest.** doorplate's author built this repository, labeled the golden set and wrote this report.
 Section 10 lists what was done about that and what it does not cover.
 
 ## 1. Abstract
 
-Three US address parsers were compared on equal terms: doorplate 0.6.0 (rules), usaddress 0.5.16 (a conditional random
+Three US address parsers were compared on equal terms: doorplate 0.7.1 (rules), usaddress 0.5.16 (a conditional random
 field) and libpostal with Senzing's 1.2.0 model (an averaged-perceptron CRF trained on OpenStreetMap and
 OpenAddresses). All three are read through adapters into one neutral label schema and scored on character spans. The
 sets are a new hand-labeled golden set of 2,439 records in three difficulty tiers, four outside sets used as neutral
 parts, and each parser's home test files, which are reported apart. The headline is the pre-registered Parser Score
 (formula version 1, fixed before the first run): coarse record accuracy, half on the golden set's three tiers and half
-on the neutral parts. doorplate scores 90.9 (95% bootstrap interval 89.8 to 92.0), usaddress 84.7 (83.4 to 86.0) and
+on the neutral parts. doorplate scores 91.8 (95% bootstrap interval 90.7 to 92.9), usaddress 84.7 (83.4 to 86.0) and
 libpostal 80.8 (79.5 to 82.2). The ranking holds in every sensitivity row, including with each set left out.
 
 On the golden set's random public stratum alone (829 records drawn at random from public records), the three are
 close: 93.7, 93.0 and 91.3 for doorplate, usaddress and libpostal. On that stratum, doorplate against usaddress is not
-a significant difference (exact McNemar p = 0.31), while doorplate against libpostal (p = 0.001) and usaddress against
+a significant difference (exact McNemar p = 0.29), while doorplate against libpostal (p < 0.001) and usaddress against
 libpostal (p = 0.04) are. Most of the spread in the Parser Score comes from rarer shapes: rural routes, military
 lines, units in unusual places and typos. Two changes were made after the first run; both are in section 6 and
-neither changes the ranking. doorplate is about five times faster than libpostal and eight times faster than usaddress
+neither changes the ranking. doorplate is about seven times faster than libpostal and 13 times faster than usaddress
 in one process, and libpostal needs about 3 GB of memory and disk where the other two need under 30 MB.
 
 ## 2. Parsers and versions
 
 | Parser | Version and pins | Method | Labels |
 |---|---|---|---|
-| doorplate | 0.6.0 | Hand-written rules in Rust, with Python bindings | usaddress's label names (fine) |
+| doorplate | 0.7.1 | Hand-written rules in Rust, with Python bindings | usaddress's label names (fine) |
 | usaddress | 0.5.16, python-crfsuite 0.9.12, default model | Linear-chain CRF (Lafferty et al. 2001) through python-crfsuite | fine (pre-type, pre-modifier, ...) |
 | libpostal | commit `25099c50`, Senzing model (parser 1.2.0), data checksum `a42c356d…`, pypostal 1.1.11 | CRF trained with averaged perceptron on OpenStreetMap and OpenAddresses | coarse (`road`, `house_number`, `unit`, ...) |
 
@@ -192,6 +193,27 @@ Every prediction file of the two runs is byte-identical; only the scoring change
 the highway cards: before the change, no parser could read them right, because they read a highway as a street. That
 these went unseen until the run is a weakness of a single labeler (section 10).
 
+### 6.5 The doorplate 0.7.1 run (2026-11-23)
+
+The run [`runs/2026-11-23/`](../runs/2026-11-23/) changes one thing: doorplate 0.7.1 (from PyPI) in place of 0.6.0. The
+gold, the scorer, the formula, the conventions and the usaddress and libpostal pins are those of the 2026-11-16 run.
+libpostal's model data was downloaded again for it and matches the pinned checksum (`a42c356d…`).
+
+- **usaddress and libpostal:** every prediction file is byte-identical to the 2026-11-16 run's, on every set, so their
+  figures are unchanged. Only their speed was measured again (section 8).
+- **doorplate:** its prediction files are byte-identical to the 0.7.1 row of the releases appendix
+  ([`report/RELEASES.md`](RELEASES.md)), which was scored on the same gold.
+
+| Figure (doorplate) | run 2026-11-16 (0.6.0) | run 2026-11-23 (0.7.1) |
+|---|---|---|
+| Parser Score | 90.9 (89.8 to 92.0) | 91.8 (90.7 to 92.9) |
+| golden `normal` / `hard` / `nightmare` | 95.0 / 91.2 / 69.0 | 94.9 / 92.4 / 73.0 |
+| doorplate suite `hand` | 95.8 | 96.3 |
+| Random public stratum | 93.7 | 93.7 |
+
+Sections 6.3 and 6.4 describe the labeling and the first run, and are unchanged: the adjudication counts in 6.3 were
+measured once, with the doorplate release of that time.
+
 ## 7. Scoring and results
 
 ### 7.1 How a record is scored
@@ -212,19 +234,19 @@ field F1 score is the same sum over micro field F1.
 
 | Parser | Parser Score (95% interval) | Field F1 score (95% interval) |
 |---|---|---|
-| doorplate | **90.9** (89.8 to 92.0) | 97.6 (97.3 to 97.9) |
+| doorplate | **91.8** (90.7 to 92.9) | 97.9 (97.6 to 98.1) |
 | usaddress | **84.7** (83.4 to 86.0) | 95.7 (95.3 to 96.1) |
 | libpostal | **80.8** (79.5 to 82.2) | 93.4 (92.8 to 93.9) |
 
 | Sensitivity | doorplate | usaddress | libpostal | Ranking |
 |---|---|---|---|---|
-| formula weights | 90.9 | 84.7 | 80.8 | doorplate > usaddress > libpostal |
-| equal weights over parts | 91.7 | 85.7 | 82.1 | same |
-| doubtful records put back | 90.4 | 84.3 | 80.6 | same |
-| without doorplate suite | 88.8 | 81.7 | 77.9 | same |
-| without geocode `dev` | 90.4 | 84.2 | 80.9 | same |
-| without golden | 96.7 | 91.6 | 89.4 | same |
-| without Senzing `osm` | 89.9 | 83.9 | 78.2 | same |
+| formula weights | 91.8 | 84.7 | 80.8 | doorplate > usaddress > libpostal |
+| equal weights over parts | 92.5 | 85.7 | 82.1 | same |
+| doubtful records put back | 91.3 | 84.3 | 80.6 | same |
+| without doorplate suite | 89.9 | 81.7 | 77.9 | same |
+| without geocode `dev` | 91.4 | 84.2 | 80.9 | same |
+| without golden | 96.8 | 91.6 | 89.4 | same |
+| without Senzing `osm` | 90.9 | 83.9 | 78.2 | same |
 
 ### 7.3 Per part
 
@@ -232,38 +254,38 @@ Coarse record accuracy, 95% Wilson interval:
 
 | Set / part | Records | No parser right | doorplate | usaddress | libpostal |
 |---|---|---|---|---|---|
-| golden / normal | 1,568 | 64 | 95.0 (93.8 to 95.9) | 93.6 (92.2 to 94.7) | 91.8 (90.3 to 93.0) |
-| golden / hard | 556 | 27 | 91.2 (88.5 to 93.3) | 88.5 (85.6 to 90.9) | 70.9 (67.0 to 74.5) |
-| golden / nightmare | 226 | 34 | 69.0 (62.7 to 74.7) | 51.3 (44.8 to 57.8) | 54.0 (47.5 to 60.4) |
+| golden / normal | 1,568 | 66 | 94.9 (93.7 to 95.9) | 93.6 (92.2 to 94.7) | 91.8 (90.3 to 93.0) |
+| golden / hard | 556 | 26 | 92.4 (89.9 to 94.4) | 88.5 (85.6 to 90.9) | 70.9 (67.0 to 74.5) |
+| golden / nightmare | 226 | 32 | 73.0 (66.9 to 78.4) | 51.3 (44.8 to 57.8) | 54.0 (47.5 to 60.4) |
 | doorplate suite / natural | 16,001 | 53 | 98.6 (98.4 to 98.8) | 96.5 (96.2 to 96.7) | 95.0 (94.6 to 95.3) |
-| doorplate suite / hand | 1,000 | 15 | 95.8 (94.4 to 96.9) | 91.1 (89.2 to 92.7) | 84.0 (81.6 to 86.1) |
+| doorplate suite / hand | 1,000 | 10 | 96.3 (94.9 to 97.3) | 91.1 (89.2 to 92.7) | 84.0 (81.6 to 86.1) |
 | Senzing US / osm | 2,172 | 6 | 98.1 (97.4 to 98.6) | 90.6 (89.3 to 91.7) | 98.8 (98.3 to 99.2) |
 | geocode / dev | 60,522 | 830 | 94.4 (94.2 to 94.6) | 88.4 (88.1 to 88.6) | 79.9 (79.6 to 80.2) |
 | *Reported apart* | | | | | |
 | doorplate suite / hard | 2,585 | 145 | 73.4 | 25.7 | 69.0 |
 | Senzing US / bug | 6 | 0 | 100.0 | 83.3 | 100.0 |
-| usaddress tests / labeled | 146 | 0 | 81.5 | 100.0 | 68.5 (1 error) |
+| usaddress tests / labeled | 146 | 0 | 82.9 | 100.0 | 68.5 (1 error) |
 | usaddress tests / us50_test_tagged | 687 | 0 | 96.8 | 100.0 | 95.3 |
 | usaddress tests / synthetic (two files) | 8,242 | 6 | 99.8 to 99.9 | 99.8 to 100.0 | 99.8 to 99.9 |
 | libpostal / test_us_parses | 53 | 2 | 84.9 | 88.7 | 94.3 |
 
 Each parser leads on its own home set, as expected. Every row with intervals, the held-out records and the fine track
-are in [`runs/2026-11-16/results.md`](../runs/2026-11-16/results.md).
+are in [`runs/2026-11-23/results.md`](../runs/2026-11-23/results.md).
 
 ### 7.4 Per field (golden set, micro F1)
 
 | Tier | Field | doorplate | usaddress | libpostal |
 |---|---|---|---|---|
 | normal | street | 98.4 | 97.8 | 94.9 |
-| normal | unit | 84.8 | 81.9 | 80.0 |
+| normal | unit | 84.3 | 81.9 | 80.0 |
 | normal | house number / city / state / ZIP | 98.7 to 100.0 | 98.6 to 100.0 | 97.4 to 99.9 |
-| hard | street | 92.5 | 92.3 | 78.4 |
-| hard | unit | 88.8 | 87.9 | 61.3 |
+| hard | street | 94.0 | 92.3 | 78.4 |
+| hard | unit | 92.6 | 87.9 | 61.3 |
 | hard | PO box | 92.3 | 81.1 | 45.7 |
 | hard | route | 94.0 | 93.5 | 0.0 |
-| nightmare | street | 84.9 | 72.1 | 69.5 |
-| nightmare | unit | 65.6 | 41.2 | 64.5 |
-| nightmare | PO box | 80.0 | 30.3 | 17.1 |
+| nightmare | street | 87.4 | 72.1 | 69.5 |
+| nightmare | unit | 69.3 | 41.2 | 64.5 |
+| nightmare | PO box | 94.1 | 30.3 | 17.1 |
 | nightmare | route | 60.0 | 19.5 | 0.0 |
 
 libpostal has no route label, so every route in the gold is a miss for it. A route is 0.0 F1 by construction, not a
@@ -278,18 +300,18 @@ to a random sample of real US address lines. It is reported here beside the Pars
 | Group | Records | doorplate | usaddress | libpostal |
 |---|---|---|---|---|
 | **Public, random walk (rounds 1 to 6 and 11)** | 829 | 93.7 (91.9 to 95.2) | 93.0 (91.1 to 94.5) | 91.3 (89.2 to 93.0) |
-| Public, restored rows (round 9) | 107 | 89.7 (82.5 to 94.2) | 87.9 (80.3 to 92.8) | 86.0 (78.2 to 91.3) |
+| Public, restored rows (round 9) | 107 | 88.8 (81.4 to 93.5) | 87.9 (80.3 to 92.8) | 86.0 (78.2 to 91.3) |
 | SBA PPP, as written (round 10) | 245 | 97.1 (94.2 to 98.6) | 98.8 (96.5 to 99.6) | 95.5 (92.1 to 97.5) |
 | Clean ordinary forms | 346 | 99.1 (97.5 to 99.7) | 99.1 (97.5 to 99.7) | 97.7 (95.5 to 98.8) |
-| Templates, all tiers | 1,038 | 87.6 (85.4 to 89.4) | 81.4 (78.9 to 83.7) | 72.3 (69.5 to 74.9) |
+| Templates, all tiers | 1,038 | 89.1 (87.1 to 90.9) | 81.4 (78.9 to 83.7) | 72.3 (69.5 to 74.9) |
 | Real grid and military lines (round 12) | 30 | 90.0 (74.4 to 96.5) | 73.3 (55.6 to 85.8) | 60.0 (42.3 to 75.4) |
 
 Paired differences (exact McNemar test on the records one parser reads right and the other wrong):
 
 | Pair | Random public stratum: A only / B only, p | Whole golden set: A only / B only, p |
 |---|---|---|
-| doorplate vs usaddress | 15 / 9, p = 0.31 | 120 / 43, p < 0.001 |
-| doorplate vs libpostal | 26 / 6, p = 0.001 | 238 / 41, p < 0.001 |
+| doorplate vs usaddress | 14 / 8, p = 0.29 | 121 / 29, p < 0.001 |
+| doorplate vs libpostal | 25 / 5, p < 0.001 | 251 / 39, p < 0.001 |
 | usaddress vs libpostal | 27 / 13, p = 0.04 | 209 / 89, p < 0.001 |
 
 On ordinary public address lines, the three parsers are within 2.5 points of each other, and doorplate and usaddress
@@ -299,7 +321,7 @@ the random stratum. A reader whose data has rural routes, military mail, units i
 tiers.
 
 **Real text against invented text.** The shipped golden text replaces private values with invented ones. Scoring the
-same 1,312 public cards on their real (private) text gives doorplate 95.8, usaddress 93.7 and libpostal 92.8. On the
+same 1,312 public cards on their real (private) text gives doorplate 95.7, usaddress 93.7 and libpostal 92.8. On the
 shipped text the same cards give 94.7, 93.8 and 91.8. The invented values cost each parser at most about one point,
 and they do not change the ordering. So the concern that invented names hurt the statistical parsers more is not
 supported here.
@@ -312,21 +334,24 @@ is timed, without the adapter.
 
 | | doorplate | usaddress | libpostal |
 |---|---|---|---|
-| Strings per second, one process | 72,028 | 8,952 | 14,577 |
-| Strings per second, 4 processes | 223,510 | 28,054 | 43,951 |
-| Load time (import and first parse) | 0.003 s | 0.012 s | 3.480 s |
-| Memory after loading, one process | 27 MB | 27 MB | 2,958 MB |
-| Memory, 4 processes together | 37 MB | 42 MB | 11,771 MB |
-| Install size | 4.9 MB | 4.8 MB | 2,993.1 MB |
+| Strings per second, one process | 116,534 | 8,947 | 15,565 |
+| Strings per second, 4 processes | 360,696 | 27,999 | 45,837 |
+| Load time (import and first parse) | 0.001 s | 0.011 s | 4.325 s |
+| Memory after loading, one process | 25 MB | 27 MB | 2,958 MB |
+| Memory, 4 processes together | 31 MB | 38 MB | 11,768 MB |
+| Install size | 6.5 MB | 4.8 MB | 2,993.1 MB |
 
-Speed varies between runs on this machine by 5 to 14%: run 2026-11-15 measured 64,876, 8,395 and 12,818 strings per
-second in one process. The reference profile (4 CPUs, 8 GB) is not enforced. Four libpostal processes need 11.8 GB, so
+Speed varies between runs on this machine by 5 to 14%: with the same usaddress and libpostal builds, run 2026-11-16
+measured 8,952 and 14,577 strings per second in one process, and run 2026-11-15 8,395 and 12,818. doorplate's figure
+moved most because the parser changed: 0.6.0 measured 72,028 in the 2026-11-16 run.
+
+The reference profile (4 CPUs, 8 GB) is not enforced. Four libpostal processes need 11.8 GB, so
 libpostal cannot run four-wide inside that profile.
 
 ## 9. Error analysis by shape
 
 The tables in this section give coarse record accuracy per shape class over all tiers
-(`python -m tools.report.breakdown runs/2026-11-16`). Every example string is invented for this report.
+(`python -m tools.report.breakdown runs/2026-11-23`). Every example string is invented for this report.
 
 **Where all three do well.** All three score 97% or more on plain streets (588 records), ordinary forms (249),
 directionals (331), PO boxes (92) and spelled-out states (30).
@@ -345,10 +370,11 @@ directionals (331), PO boxes (92) and spelled-out states (30).
 | county-road-compass | 14 | 64.3 | 28.6 | 78.6 | `County Road 6 N` |
 | unit-before-street | 15 | 80.0 | 40.0 | 53.3 | `Apt 3, 15 Oak Ct` |
 | paren-unit | 17 | 17.6 | 17.6 | 52.9 | `22 Birch Ln (Unit 4)` |
-| lot-trailer-site | 19 | 52.6 | 52.6 | 73.7 | `600 Hill Rd Lot 31` |
+| lot-trailer-site | 19 | 73.7 | 52.6 | 73.7 | `600 Hill Rd Lot 31` |
 | named-place | 31 | 74.2 | 90.3 | 90.3 | `Harbor Plaza, 5 Dock St` |
-| typo-type | 30 | 63.3 | 83.3 | 56.7 | `77 Maple Stret` |
-| zip4-cut | 18 | 50.0 | 66.7 | 55.6 | `Zeller, MO 65000-12` |
+| typo-type | 30 | 83.3 | 83.3 | 56.7 | `77 Maple Stret` |
+| zip4-cut | 18 | 66.7 | 66.7 | 55.6 | `Zeller, MO 65000-12` |
+| box-glued | 9 | 66.7 | 33.3 | 22.2 | `POBox12` |
 
 **Where all three fail.**
 
@@ -356,14 +382,14 @@ directionals (331), PO boxes (92) and spelled-out states (30).
 |---|---|---|---|---|---|
 | number-letter (in `normal`) | 26 | 26.9 | 15.4 | 11.5 | `31B Cedar St` |
 | typo-glued | 30 | 43.3 | 43.3 | 43.3 | `8 OakSt Zeller,MO 65000` |
-| box-glued | 9 | 44.4 | 33.3 | 22.2 | `POBox12` |
 | fraction-form | 16 | 62.5 | 37.5 | 18.8 | `5½ Oak St` |
 
 Two readings of these tables:
 
 - **libpostal's** losses are mostly shapes its labels or training do not hold well: routes (no label), military
   lines, a second unit, hyphenated numbers and spelled-out numbers. It does better than the other two on units in
-  parentheses, lots and trailer sites and county roads with a compass word, and as well as usaddress on named places.
+  parentheses and county roads with a compass word, as well as doorplate on lots and trailer sites, and as well as
+  usaddress on named places.
 - **usaddress and doorplate** share label names and read most ordinary and `hard` shapes alike. They part on the
   `nightmare` forms, where doorplate's rules cover more: military lines, letter streets, units before the street and
   spelled numbers. doorplate's rules were written near some of these forms, so see section 10.
@@ -381,12 +407,13 @@ handles. An `adjacent` form is a nearby form that an open issue leaves out.
 | Variant | Records | doorplate | usaddress | libpostal |
 |---|---|---|---|---|
 | covered | 109 | 77.1 | 49.5 | 56.0 |
-| adjacent | 117 | 61.5 | 53.0 | 52.1 |
+| adjacent | 117 | 69.2 | 53.0 | 52.1 |
 
-doorplate drops 15.6 points from the covered forms to the adjacent ones. usaddress rises 3.5 and libpostal drops 3.9.
-That is the pattern to expect if doorplate's lead on `nightmare` comes partly from rules written for the exact forms
-drawn. On the adjacent forms alone, doorplate still leads by 8.5 points, but the intervals of the three overlap
-(52.5 to 69.9 against 44.0 to 61.8 and 43.2 to 61.0).
+doorplate drops 7.9 points from the covered forms to the adjacent ones (15.6 for 0.6.0). usaddress rises 3.5 and
+libpostal drops 3.9. That is the pattern to expect if doorplate's lead on `nightmare` comes partly from rules written for
+the exact forms drawn. On the adjacent forms alone, doorplate leads by 16.2 points, and its interval (60.4 to 76.9) still
+overlaps the other two (44.0 to 61.8 and 43.2 to 61.0) a little. Rules added between 0.6.0 and 0.7.1 for open issues
+may have been written near these adjacent forms; section 10 applies to them too.
 
 ## 10. Threats to validity
 
@@ -396,7 +423,7 @@ drawn. On the adjacent forms alone, doorplate still leads by 8.5 points, but the
   published (section 6.3); and `nightmare` classes from doorplate's own research are capped at half. What the
   mitigations do not cover: the author's sense of what an address looks like shaped the templates, the shape classes
   and the gold readings. The doorplate suite was built by the same author, and its two parts carry half of the neutral weight
-  (a quarter of the score); leaving it out keeps the ranking (88.8 / 81.7 / 77.9).
+  (a quarter of the score); leaving it out keeps the ranking (89.9 / 81.7 / 77.9).
 - **The twin's gap is not measured.** A private twin of the golden set (the same recipe with an unpublished seed) was
   drawn to catch tuning to the public draw. It has not been labeled, so v0.1.0 has no twin figure. Until it is
   labeled, nothing here shows that doorplate's golden figures would hold on a fresh draw.
@@ -413,7 +440,9 @@ drawn. On the adjacent forms alone, doorplate still leads by 8.5 points, but the
   habits may remain; one candidate is the `number-letter` reading in section 9.
 - **Changes after the first run.** Both changes in section 6.4 were found by reading the first run's results, so they
   were made with the parsers' scores in view. Neither touches the formula or the conventions. The first run is kept
-  unchanged for comparison, and the ranking is the same in both runs.
+  unchanged for comparison, and the ranking is the same in every run. The 2026-11-23 run changes only the doorplate
+  version (section 6.5). doorplate 0.6.1 to 0.7.1 were written after the golden set was labeled and published, by
+  its labeler.
 - **Mapping choices.** Each parser's labels reach the schema through a mapping file. Some choices are judgement calls,
   stated at the top of each file. For example, libpostal's `suburb` and `city_district` map to city, and its `level`,
   `staircase` and `entrance` map to units. A different mapping would move some figures.
@@ -424,9 +453,9 @@ drawn. On the adjacent forms alone, doorplate still leads by 8.5 points, but the
 ```sh
 uv sync
 tools/libpostal/build.sh            # the pinned libpostal build (about 3 GB), or --verify an existing one
-just rescore runs/2026-11-16        # score the committed predictions again: rewrites results.md/json, git diff shows no change
+just rescore runs/2026-11-23        # score the committed predictions again: rewrites results.md/json, git diff shows no change
 just all                            # a new full run (fetch, convert, predict, score, speed) into runs/<date>/
-uv run python -m tools.report.breakdown runs/2026-11-16   # the tables in sections 7.5 and 9
+uv run python -m tools.report.breakdown runs/2026-11-23   # the tables in sections 7.5 and 9
 ```
 
 `just all` needs a clean tree and takes about 4 minutes on the machine above. The external sets are downloaded by

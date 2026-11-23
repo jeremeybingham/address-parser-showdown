@@ -8,28 +8,29 @@ The question it answers: given a one-line US address, which parser splits it int
 state and ZIP correctly most often, on addresses that look like real data and not only on tidy examples? The answer is
 meant to hold up for people choosing a parser and for the authors of the parsers compared.
 
-## Status (2026-11-15): v0.1.0 initial result
+## Status (2026-11-23): initial result, rerun with doorplate 0.7.1
 
-**The first full pinned run is done.** The golden set is labeled and adjudicated (2,439 shipped records), the scorer and
+**The full pinned run is done, and was rerun on 2026-11-23 with doorplate 0.7.1.** The golden set is labeled and adjudicated (2,439 shipped records), the scorer and
 the pre-registered Parser Score formula are fixed, and all three parsers were run at pinned versions. This is an
-**initial result**: one labeler, one run, one reference machine, and doorplate's author wrote the golden set and the
+**initial result**: one labeler, one golden set, one reference machine, and doorplate's author wrote the golden set and the
 report. Read it with the limitations below, and treat the ranking as a first measurement to be checked, not a verdict.
 
 Full report: **[`report/REPORT.md`](report/REPORT.md)**, also as a typeset PDF with charts:
-**[`report/REPORT.pdf`](report/REPORT.pdf)**. Both are written from the pinned run
-[`runs/2026-11-16/`](runs/2026-11-16/) (tables in its [`results.md`](runs/2026-11-16/results.md) and
-[`speed.md`](runs/2026-11-16/speed.md)). doorplate 0.6.0, usaddress 0.5.16 and libpostal (Senzing model 1.2.0), all at
-default settings.
+**[`report/REPORT.pdf`](report/REPORT.pdf)** (earlier reports, kept as published, are listed in [`report/README.md`](report/README.md)). Both are written from the pinned run
+[`runs/2026-11-23/`](runs/2026-11-23/) (tables in its [`results.md`](runs/2026-11-23/results.md) and
+[`speed.md`](runs/2026-11-23/speed.md)). doorplate 0.7.1, usaddress 0.5.16 and libpostal (Senzing model 1.2.0), all at
+default settings. The v0.1.0 run [`runs/2026-11-16/`](runs/2026-11-16/) (doorplate 0.6.0) is kept; usaddress's and
+libpostal's predictions are byte-identical in both runs (report section 6.5).
 
 ### Summary of the initial result
 
 | | doorplate | usaddress | libpostal |
 |---|---|---|---|
-| **Parser Score** (95% interval) | **90.9** (89.8 to 92.0) | **84.7** (83.4 to 86.0) | **80.8** (79.5 to 82.2) |
-| Golden set, `normal` / `hard` / `nightmare` | 95.0 / 91.2 / 69.0 | 93.6 / 88.5 / 51.3 | 91.8 / 70.9 / 54.0 |
+| **Parser Score** (95% interval) | **91.8** (90.7 to 92.9) | **84.7** (83.4 to 86.0) | **80.8** (79.5 to 82.2) |
+| Golden set, `normal` / `hard` / `nightmare` | 94.9 / 92.4 / 73.0 | 93.6 / 88.5 / 51.3 | 91.8 / 70.9 / 54.0 |
 | Golden set, random public stratum (829 records) | 93.7 | 93.0 | 91.3 |
-| Strings per second, one process | 72,028 | 8,952 | 14,577 |
-| Memory after loading, one process | 27 MB | 27 MB | 2,958 MB |
+| Strings per second, one process | 116,534 | 8,947 | 15,565 |
+| Memory after loading, one process | 25 MB | 27 MB | 2,958 MB |
 
 The Parser Score is coarse record accuracy (a record is right when every house number, street, unit, PO box, route,
 city, state and ZIP span matches), half on the golden set's three tiers and half on four neutral outside sets. Speed
@@ -38,7 +39,7 @@ and cost are never part of it.
 - **The ranking is doorplate, then usaddress, then libpostal.** It holds in every sensitivity row, including with each
   set left out and with equal weights.
 - **On ordinary public address lines the three are close.** On the random public stratum, doorplate and usaddress cannot
-  be told apart at this size (exact McNemar p = 0.31); libpostal is behind both (p = 0.001 and p = 0.04). Most of the
+  be told apart at this size (exact McNemar p = 0.29); libpostal is behind both (p < 0.001 and p = 0.04). Most of the
   Parser Score's spread comes from rarer shapes: rural routes, military lines, units in unusual places and typos.
 - **Each parser leads on its own home test set**, which is why the home sets are reported apart and kept out of the
   headline.
@@ -59,7 +60,7 @@ later runs (each a new dated folder under `runs/`). The plan and its step issues
 | Existing test sets (doorplate's suite, usaddress's and libpostal's own tests, Senzing's US rows, the geocode benchmark) | Converted and scored ([`tools/sets/`](tools/sets/README.md)) |
 | Golden set: design, sampling, hand labeling, blind adjudication | Done: 2,439 records in twelve rounds ([`sets/golden/`](sets/golden/COMPOSITION.md)) |
 | Scorer and Parser Score | Done; formula version 1, fixed before the first run ([`scorer/`](scorer/README.md)) |
-| Pinned run, speed and cost | Done: [`runs/2026-11-16/`](runs/2026-11-16/) |
+| Pinned run, speed and cost | Done: [`runs/2026-11-16/`](runs/2026-11-16/) (v0.1.0), [`runs/2026-11-23/`](runs/2026-11-23/) (doorplate 0.7.1) |
 | Research report | Done: [`report/REPORT.md`](report/REPORT.md), and as a PDF with charts: [`report/REPORT.pdf`](report/REPORT.pdf) |
 
 ## How the comparison is kept fair

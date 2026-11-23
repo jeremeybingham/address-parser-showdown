@@ -54,3 +54,8 @@ def test_report_tables_have_every_parser():
     md = (pdf.ROOT / "report" / "REPORT.md").read_text()
     head = pdf.columns(pdf.tables(pdf.section(md, "### 7.3"))[0])
     assert set(pdf.PARSERS) <= set(head)
+
+
+def test_run_date_is_the_first_run_the_report_names():
+    md = "# T\n\nWritten from [`runs/2026-11-23/`](../runs/2026-11-23/); replaces `runs/2026-11-16/`.\n"
+    assert pdf.run_date(md) == "2026-11-23"

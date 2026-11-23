@@ -1,0 +1,10 @@
+{
+  "set": "usaddress-tests",
+  "set_sha256": "c696d0d98f465cc92d2d14898d10b3690b4943c10df9d91e11beb4921a38d52c",
+  "versions": {
+    "doorplate": "0.7.1"
+  },
+  "pin_problems": [],
+  "records": 9088,
+  "seconds": 0.1
+}

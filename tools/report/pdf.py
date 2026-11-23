@@ -469,6 +469,14 @@ def numeric_cells(html_text: str) -> str:
                   html_text)  # fmt: skip
 
 
+def run_date(md: str) -> str:
+    """The date of the pinned run the report is written from: the first `runs/DATE/` it names."""
+    m = re.search(r"runs/(\d{4}-\d{2}-\d{2})/", md)
+    if not m:
+        raise SystemExit("REPORT.md names no runs/DATE/ folder")
+    return m[1]
+
+
 def cover(md: str) -> tuple[str, str]:
     title = md.splitlines()[0].lstrip("# ").strip()
     t = tables(section(md, "### 7.2"))[0]
@@ -555,9 +563,9 @@ def build_html(md: str) -> str:
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
 <style>{CSS}</style></head><body>
 <section class="cover">
-  <div class="kicker">address-parser-showdown · report v0.1.0</div>
+  <div class="kicker">address-parser-showdown · report</div>
   <h1>{html.escape(title)}</h1>
-  <div class="meta">Pinned run 2026-11-16 · every figure reproducible from the committed prediction files</div>
+  <div class="meta">Pinned run {run_date(md)} · every figure reproducible from the committed prediction files</div>
   <div class="tiles">{tiles}</div>
   <div class="note">The Parser Score is coarse record accuracy: half on the golden set's three tiers, half on four
   neutral parts (formula version 1, fixed before the first run). The random public stratum is 829 golden records

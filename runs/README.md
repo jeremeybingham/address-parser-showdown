@@ -17,7 +17,7 @@ The run refuses to start on a dirty tree and refuses to finish if any parser bui
 `uv.lock`). Speed figures are from the machine named in `speed.md`; the 8 GB memory limit of the reference profile is not enforced
 (libpostal's four processes hold about 11.8 GB together, so that row needs a larger machine).
 
-Runs: `2026-11-15` (the first full pinned run, kept unchanged) and `2026-11-16` (the same predictions rescored after a scorer fix and the highway alternatives; the run the v0.1.0 report uses). The report's section 6.4 explains the difference.
+Runs: `2026-11-15` (the first full pinned run, kept unchanged) and `2026-11-16` (the same predictions rescored after a scorer fix and the highway alternatives; the run of the v0.1.0 report) and `2026-11-23` (doorplate 0.7.1 in place of 0.6.0; usaddress and libpostal predictions byte-identical to `2026-11-16`; the run the report uses now). The report's sections 6.4 and 6.5 explain the differences.
 
 `doorplate-releases/` is a separate appendix, not a pinned run: the doorplate adapter on the highest point release of each minor version
 (`uv run python -m tools.releases`; a release with a folder is skipped, so a rerun after a new release adds only that one). usaddress and
