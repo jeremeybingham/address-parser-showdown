@@ -1,0 +1,4503 @@
+{
+ "doorplate-suite/hand": {
+  "doorplate": {
+   "correct": 963,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     986,
+     0,
+     14
+    ],
+    "house_number": [
+     807,
+     0,
+     1
+    ],
+    "po_box": [
+     99,
+     0,
+     0
+    ],
+    "postal_code": [
+     985,
+     0,
+     0
+    ],
+    "route": [
+     78,
+     0,
+     6
+    ],
+    "state": [
+     992,
+     0,
+     0
+    ],
+    "street": [
+     804,
+     26,
+     34
+    ],
+    "unit": [
+     208,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 945,
+    "records": 1000,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.993,
+    "convention:letter_after_number": 0.7692,
+    "house_number_prefix": 1.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.987,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_box_type": 0.963,
+    "route_box_value": 0.963,
+    "route_type": 0.963,
+    "route_value": 0.963,
+    "state": 1.0,
+    "street_name": 0.958,
+    "street_post_direction": 1.0,
+    "street_post_type": 0.973,
+    "street_pre_direction": 0.9882,
+    "street_pre_type": 1.0,
+    "unit_type": 1.0,
+    "unit_value": 0.9977
+   },
+   "records": 1000
+  },
+  "libpostal": {
+   "correct": 840,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     960,
+     6,
+     40
+    ],
+    "house_number": [
+     794,
+     22,
+     14
+    ],
+    "po_box": [
+     87,
+     77,
+     12
+    ],
+    "postal_code": [
+     974,
+     0,
+     11
+    ],
+    "route": [
+     0,
+     0,
+     84
+    ],
+    "state": [
+     961,
+     0,
+     31
+    ],
+    "street": [
+     762,
+     112,
+     76
+    ],
+    "unit": [
+     186,
+     17,
+     22
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 1000,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9766,
+    "convention:letter_after_number": 0.0,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9944,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9841,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 1000
+  },
+  "usaddress": {
+   "correct": 911,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     981,
+     16,
+     19
+    ],
+    "house_number": [
+     793,
+     6,
+     15
+    ],
+    "po_box": [
+     87,
+     32,
+     12
+    ],
+    "postal_code": [
+     985,
+     0,
+     0
+    ],
+    "route": [
+     47,
+     0,
+     37
+    ],
+    "state": [
+     990,
+     1,
+     2
+    ],
+    "street": [
+     809,
+     28,
+     29
+    ],
+    "unit": [
+     203,
+     34,
+     5
+    ]
+   },
+   "fine": {
+    "correct": 891,
+    "records": 1000,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9825,
+    "convention:letter_after_number": 0.8571,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 1.0,
+    "house_number_value": 0.9944,
+    "po_box_type": 0.7768,
+    "po_box_value": 0.8208,
+    "postal_code": 1.0,
+    "route_box_type": 0.7176,
+    "route_box_value": 0.7176,
+    "route_type": 0.7176,
+    "route_value": 0.7176,
+    "state": 0.9985,
+    "street_name": 0.9562,
+    "street_post_direction": 0.8828,
+    "street_post_type": 0.9764,
+    "street_pre_direction": 0.9767,
+    "street_pre_type": 0.9268,
+    "unit_type": 0.8746,
+    "unit_value": 0.9122
+   },
+   "records": 1000
+  }
+ },
+ "doorplate-suite/hard": {
+  "doorplate": {
+   "correct": 1898,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2289,
+     259,
+     296
+    ],
+    "house_number": [
+     2558,
+     0,
+     27
+    ],
+    "postal_code": [
+     2439,
+     0,
+     0
+    ],
+    "state": [
+     2446,
+     15,
+     1
+    ],
+    "street": [
+     2090,
+     502,
+     495
+    ],
+    "unit": [
+     856,
+     210,
+     300
+    ]
+   },
+   "fine": {
+    "correct": 1769,
+    "records": 2521,
+    "skipped": 64
+   },
+   "fine_f1": {
+    "city": 0.8891,
+    "convention:letter_after_number": 0.2526,
+    "house_number_prefix": 0.965,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9878,
+    "postal_code": 1.0,
+    "state": 0.9967,
+    "street_name": 0.9011,
+    "street_post_direction": 0.9012,
+    "street_post_type": 0.9682,
+    "street_pre_direction": 0.9603,
+    "street_pre_type": 0.8411,
+    "unit_type": 0.9695,
+    "unit_value": 0.7649
+   },
+   "records": 2585
+  },
+  "libpostal": {
+   "correct": 1784,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2487,
+     41,
+     98
+    ],
+    "house_number": [
+     2180,
+     126,
+     405
+    ],
+    "postal_code": [
+     2433,
+     2,
+     6
+    ],
+    "state": [
+     2443,
+     2,
+     4
+    ],
+    "street": [
+     1919,
+     773,
+     666
+    ],
+    "unit": [
+     809,
+     8,
+     347
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 2521,
+    "skipped": 64
+   },
+   "fine_f1": {
+    "city": 0.9723,
+    "convention:letter_after_number": 0.0,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.0,
+    "postal_code": 0.9983,
+    "state": 0.9987,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 2585
+  },
+  "usaddress": {
+   "correct": 665,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     1911,
+     710,
+     674
+    ],
+    "house_number": [
+     2144,
+     197,
+     441
+    ],
+    "po_box": [
+     0,
+     94,
+     0
+    ],
+    "postal_code": [
+     2439,
+     1,
+     0
+    ],
+    "state": [
+     2377,
+     109,
+     70
+    ],
+    "street": [
+     1389,
+     1515,
+     1196
+    ],
+    "unit": [
+     290,
+     245,
+     866
+    ]
+   },
+   "fine": {
+    "correct": 581,
+    "records": 2521,
+    "skipped": 64
+   },
+   "fine_f1": {
+    "city": 0.7275,
+    "convention:letter_after_number": 0.976,
+    "house_number_prefix": 0.0725,
+    "house_number_suffix": 0.5455,
+    "house_number_value": 0.9335,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9998,
+    "state": 0.9628,
+    "street_name": 0.7598,
+    "street_post_direction": 0.1752,
+    "street_post_type": 0.8736,
+    "street_pre_direction": 0.8336,
+    "street_pre_type": 0.4066,
+    "unit_type": 0.4182,
+    "unit_value": 0.4773
+   },
+   "records": 2585
+  }
+ },
+ "doorplate-suite/natural": {
+  "doorplate": {
+   "correct": 15779,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     15875,
+     113,
+     126
+    ],
+    "house_number": [
+     15317,
+     0,
+     2
+    ],
+    "po_box": [
+     482,
+     0,
+     0
+    ],
+    "postal_code": [
+     15488,
+     0,
+     0
+    ],
+    "route": [
+     170,
+     0,
+     30
+    ],
+    "state": [
+     15679,
+     5,
+     0
+    ],
+    "street": [
+     15164,
+     187,
+     155
+    ],
+    "unit": [
+     1695,
+     35,
+     66
+    ]
+   },
+   "fine": {
+    "correct": 15674,
+    "records": 15982,
+    "skipped": 19
+   },
+   "fine_f1": {
+    "city": 0.9925,
+    "convention:letter_after_number": 0.7643,
+    "house_number_prefix": 0.963,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9992,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_box_type": 0.9189,
+    "route_box_value": 0.9189,
+    "route_type": 0.9189,
+    "route_value": 0.9189,
+    "state": 0.9998,
+    "street_name": 0.9902,
+    "street_post_direction": 0.9574,
+    "street_post_type": 0.9969,
+    "street_pre_direction": 0.9967,
+    "street_pre_type": 0.4444,
+    "unit_type": 0.9993,
+    "unit_value": 0.971
+   },
+   "records": 16001
+  },
+  "libpostal": {
+   "correct": 15197,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     15689,
+     61,
+     312
+    ],
+    "house_number": [
+     15285,
+     41,
+     34
+    ],
+    "po_box": [
+     432,
+     200,
+     50
+    ],
+    "postal_code": [
+     15451,
+     1,
+     37
+    ],
+    "route": [
+     0,
+     0,
+     200
+    ],
+    "state": [
+     15481,
+     1,
+     198
+    ],
+    "street": [
+     14871,
+     687,
+     448
+    ],
+    "unit": [
+     1516,
+     53,
+     245
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 15982,
+    "skipped": 19
+   },
+   "fine_f1": {
+    "city": 0.9883,
+    "convention:letter_after_number": 0.0,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9988,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9936,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 16001
+  },
+  "usaddress": {
+   "correct": 15435,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     15780,
+     232,
+     221
+    ],
+    "house_number": [
+     15290,
+     15,
+     29
+    ],
+    "po_box": [
+     432,
+     105,
+     50
+    ],
+    "postal_code": [
+     15488,
+     0,
+     0
+    ],
+    "route": [
+     100,
+     1,
+     100
+    ],
+    "state": [
+     15668,
+     24,
+     11
+    ],
+    "street": [
+     15036,
+     339,
+     283
+    ],
+    "unit": [
+     1576,
+     87,
+     185
+    ]
+   },
+   "fine": {
+    "correct": 15322,
+    "records": 15982,
+    "skipped": 19
+   },
+   "fine_f1": {
+    "city": 0.9858,
+    "convention:letter_after_number": 0.9948,
+    "house_number_prefix": 0.069,
+    "house_number_suffix": 1.0,
+    "house_number_value": 0.9995,
+    "po_box_type": 0.8221,
+    "po_box_value": 0.8631,
+    "postal_code": 1.0,
+    "route_box_type": 0.6711,
+    "route_box_value": 0.6711,
+    "route_type": 0.6645,
+    "route_value": 0.6711,
+    "state": 0.9989,
+    "street_name": 0.984,
+    "street_post_direction": 0.8934,
+    "street_post_type": 0.9923,
+    "street_pre_direction": 0.9964,
+    "street_pre_type": 0.3464,
+    "unit_type": 0.9249,
+    "unit_value": 0.9251
+   },
+   "records": 16001
+  }
+ },
+ "geocode-dev/dev": {
+  "doorplate": {
+   "correct": 57125,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     54044,
+     1602,
+     2953
+    ],
+    "house_number": [
+     57006,
+     42,
+     1
+    ],
+    "postal_code": [
+     53937,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     2,
+     0
+    ],
+    "state": [
+     56757,
+     25,
+     191
+    ],
+    "street": [
+     57234,
+     3241,
+     3288
+    ],
+    "unit": [
+     0,
+     300,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 51008,
+    "records": 60522,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9596,
+    "convention:letter_after_number": 0.7714,
+    "house_number_prefix": 0.0,
+    "house_number_value": 0.9995,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9981,
+    "street_name": 0.8632,
+    "street_post_direction": 0.86,
+    "street_post_type": 0.9256,
+    "street_pre_direction": 0.9854,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 60522
+  },
+  "libpostal": {
+   "correct": 48364,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     45565,
+     3289,
+     11432
+    ],
+    "house_number": [
+     56765,
+     208,
+     242
+    ],
+    "po_box": [
+     0,
+     3,
+     0
+    ],
+    "postal_code": [
+     53789,
+     133,
+     148
+    ],
+    "state": [
+     56069,
+     45,
+     879
+    ],
+    "street": [
+     48651,
+     11524,
+     11871
+    ],
+    "unit": [
+     0,
+     177,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 60522,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.8609,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "postal_code": 0.9974,
+    "state": 0.9918,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0
+   },
+   "records": 60522
+  },
+  "usaddress": {
+   "correct": 53475,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     53619,
+     5000,
+     3378
+    ],
+    "house_number": [
+     56885,
+     448,
+     122
+    ],
+    "po_box": [
+     0,
+     7,
+     0
+    ],
+    "postal_code": [
+     53931,
+     5,
+     6
+    ],
+    "route": [
+     0,
+     1,
+     0
+    ],
+    "state": [
+     54603,
+     486,
+     2345
+    ],
+    "street": [
+     55510,
+     4363,
+     5012
+    ],
+    "unit": [
+     0,
+     735,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 48591,
+    "records": 60522,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9275,
+    "convention:letter_after_number": 0.9019,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9961,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9999,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9747,
+    "street_name": 0.8761,
+    "street_post_direction": 0.8694,
+    "street_post_type": 0.9214,
+    "street_pre_direction": 0.9801,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 60522
+  }
+ },
+ "golden/hard": {
+  "doorplate": {
+   "correct": 514,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     553,
+     2,
+     2
+    ],
+    "house_number": [
+     454,
+     10,
+     16
+    ],
+    "po_box": [
+     18,
+     1,
+     2
+    ],
+    "postal_code": [
+     533,
+     0,
+     7
+    ],
+    "route": [
+     63,
+     0,
+     8
+    ],
+    "state": [
+     532,
+     8,
+     7
+    ],
+    "street": [
+     443,
+     34,
+     23
+    ],
+    "unit": [
+     94,
+     4,
+     11
+    ]
+   },
+   "fine": {
+    "correct": 368,
+    "records": 556,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9964,
+    "house_number_value": 0.9722,
+    "po_box_type": 0.9744,
+    "po_box_value": 0.9697,
+    "postal_code": 0.9935,
+    "route_box_type": 0.9688,
+    "route_box_value": 0.9764,
+    "route_type": 0.4844,
+    "route_value": 0.488,
+    "state": 0.9861,
+    "street_name": 0.7286,
+    "street_post_direction": 0.9091,
+    "street_post_type": 0.9226,
+    "street_pre_direction": 0.9449,
+    "street_pre_type": 0.0,
+    "unit_type": 0.9524,
+    "unit_value": 0.9402
+   },
+   "records": 556
+  },
+  "libpostal": {
+   "correct": 394,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     528,
+     11,
+     27
+    ],
+    "house_number": [
+     441,
+     69,
+     29
+    ],
+    "po_box": [
+     16,
+     34,
+     4
+    ],
+    "postal_code": [
+     532,
+     5,
+     8
+    ],
+    "route": [
+     0,
+     0,
+     74
+    ],
+    "state": [
+     528,
+     0,
+     11
+    ],
+    "street": [
+     402,
+     160,
+     61
+    ],
+    "unit": [
+     57,
+     24,
+     48
+    ]
+   },
+   "fine": {
+    "correct": 2,
+    "records": 556,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9653,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9879,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9897,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 556
+  },
+  "usaddress": {
+   "correct": 492,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     542,
+     8,
+     13
+    ],
+    "house_number": [
+     448,
+     12,
+     22
+    ],
+    "po_box": [
+     15,
+     2,
+     5
+    ],
+    "postal_code": [
+     533,
+     0,
+     7
+    ],
+    "route": [
+     65,
+     0,
+     9
+    ],
+    "state": [
+     532,
+     13,
+     7
+    ],
+    "street": [
+     430,
+     38,
+     34
+    ],
+    "unit": [
+     94,
+     15,
+     11
+    ]
+   },
+   "fine": {
+    "correct": 325,
+    "records": 556,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.981,
+    "convention:letter_after_number": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9484,
+    "po_box_type": 0.8649,
+    "po_box_value": 0.9697,
+    "postal_code": 0.9935,
+    "route_box_type": 0.9846,
+    "route_box_value": 0.9922,
+    "route_type": 0.4885,
+    "route_value": 0.4961,
+    "state": 0.9815,
+    "street_name": 0.6847,
+    "street_post_direction": 0.9231,
+    "street_post_type": 0.9129,
+    "street_pre_direction": 0.9333,
+    "street_pre_type": 0.0,
+    "unit_type": 0.9484,
+    "unit_value": 0.9136
+   },
+   "records": 556
+  }
+ },
+ "golden/hard/ambiguous": {
+  "doorplate": {
+   "correct": 7,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     12,
+     2,
+     2
+    ],
+    "house_number": [
+     10,
+     1,
+     1
+    ],
+    "po_box": [
+     3,
+     1,
+     0
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     14,
+     0,
+     0
+    ],
+    "street": [
+     9,
+     2,
+     3
+    ],
+    "unit": [
+     2,
+     1,
+     2
+    ]
+   },
+   "fine": {
+    "correct": 6,
+    "records": 14,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.8571,
+    "convention:letter_after_number": 0.6667,
+    "house_number_value": 0.8182,
+    "po_box_type": 0.8571,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.8182,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.9,
+    "street_pre_direction": 0.8571,
+    "street_pre_type": 0.0,
+    "unit_type": 1.0,
+    "unit_value": 0.5714
+   },
+   "records": 14
+  },
+  "libpostal": {
+   "correct": 7,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     12,
+     1,
+     2
+    ],
+    "house_number": [
+     9,
+     2,
+     2
+    ],
+    "po_box": [
+     1,
+     0,
+     2
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     14,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     7,
+     5
+    ],
+    "unit": [
+     1,
+     0,
+     2
+    ]
+   },
+   "fine": {
+    "correct": 1,
+    "records": 14,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.8889,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 14
+  },
+  "usaddress": {
+   "correct": 10,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     13,
+     1,
+     1
+    ],
+    "house_number": [
+     10,
+     2,
+     1
+    ],
+    "po_box": [
+     2,
+     0,
+     1
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     14,
+     0,
+     0
+    ],
+    "street": [
+     12,
+     2,
+     1
+    ],
+    "unit": [
+     1,
+     0,
+     2
+    ]
+   },
+   "fine": {
+    "correct": 6,
+    "records": 14,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9286,
+    "convention:letter_after_number": 0.75,
+    "house_number_value": 0.8696,
+    "po_box_type": 0.8,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.6957,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.9524,
+    "street_pre_direction": 0.6667,
+    "street_pre_type": 0.0,
+    "unit_type": 1.0,
+    "unit_value": 0.5
+   },
+   "records": 14
+  }
+ },
+ "golden/hard/doubtful": {
+  "doorplate": {
+   "correct": 5,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     12,
+     5,
+     5
+    ],
+    "house_number": [
+     16,
+     0,
+     0
+    ],
+    "po_box": [
+     0,
+     0,
+     1
+    ],
+    "postal_code": [
+     17,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     17,
+     0,
+     0
+    ],
+    "street": [
+     13,
+     4,
+     3
+    ],
+    "unit": [
+     1,
+     3,
+     6
+    ]
+   },
+   "fine": {
+    "correct": 4,
+    "records": 17,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.7059,
+    "house_number_value": 1.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.6875,
+    "street_post_direction": 0.5,
+    "street_post_type": 0.8148,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.5,
+    "unit_value": 0.3636
+   },
+   "records": 17
+  },
+  "libpostal": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     11,
+     5,
+     6
+    ],
+    "house_number": [
+     16,
+     2,
+     0
+    ],
+    "po_box": [
+     1,
+     0,
+     0
+    ],
+    "postal_code": [
+     17,
+     0,
+     0
+    ],
+    "state": [
+     17,
+     0,
+     0
+    ],
+    "street": [
+     11,
+     6,
+     6
+    ],
+    "unit": [
+     1,
+     3,
+     6
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 17,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.6667,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 17
+  },
+  "usaddress": {
+   "correct": 6,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     13,
+     5,
+     4
+    ],
+    "house_number": [
+     16,
+     0,
+     0
+    ],
+    "po_box": [
+     0,
+     2,
+     1
+    ],
+    "postal_code": [
+     17,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     17,
+     0,
+     0
+    ],
+    "street": [
+     13,
+     4,
+     3
+    ],
+    "unit": [
+     1,
+     4,
+     6
+    ]
+   },
+   "fine": {
+    "correct": 4,
+    "records": 17,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.7429,
+    "house_number_value": 1.0,
+    "po_box_type": 0.6667,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.8485,
+    "street_post_direction": 0.4,
+    "street_post_type": 0.8966,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.6667,
+    "unit_value": 0.1538
+   },
+   "records": 17
+  }
+ },
+ "golden/hard/multi_address": {
+  "doorplate": {
+   "correct": 11,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     11,
+     0,
+     0
+    ],
+    "house_number": [
+     11,
+     0,
+     0
+    ],
+    "po_box": [
+     11,
+     0,
+     0
+    ],
+    "postal_code": [
+     11,
+     0,
+     0
+    ],
+    "state": [
+     11,
+     0,
+     0
+    ],
+    "street": [
+     11,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 11,
+    "records": 11,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_type": 1.0
+   },
+   "records": 11
+  },
+  "libpostal": {
+   "correct": 10,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     11,
+     0,
+     0
+    ],
+    "house_number": [
+     11,
+     0,
+     0
+    ],
+    "po_box": [
+     10,
+     0,
+     1
+    ],
+    "postal_code": [
+     11,
+     0,
+     0
+    ],
+    "state": [
+     11,
+     0,
+     0
+    ],
+    "street": [
+     11,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 11,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0
+   },
+   "records": 11
+  },
+  "usaddress": {
+   "correct": 10,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     11,
+     0,
+     0
+    ],
+    "house_number": [
+     11,
+     0,
+     0
+    ],
+    "po_box": [
+     10,
+     0,
+     1
+    ],
+    "postal_code": [
+     11,
+     0,
+     0
+    ],
+    "state": [
+     11,
+     0,
+     0
+    ],
+    "street": [
+     11,
+     0,
+     0
+    ],
+    "unit": [
+     0,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 10,
+    "records": 11,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "po_box_type": 0.9524,
+    "po_box_value": 0.9524,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_type": 1.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 11
+  }
+ },
+ "golden/hard/non_address": {
+  "doorplate": {
+   "correct": 13,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     13,
+     0,
+     0
+    ],
+    "po_box": [
+     9,
+     0,
+     0
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     13,
+     0,
+     0
+    ],
+    "street": [
+     0,
+     2,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 13,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "po_box_type": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0
+   },
+   "records": 13
+  },
+  "libpostal": {
+   "correct": 2,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     11,
+     0,
+     2
+    ],
+    "po_box": [
+     0,
+     0,
+     9
+    ],
+    "postal_code": [
+     11,
+     0,
+     2
+    ],
+    "state": [
+     11,
+     0,
+     2
+    ],
+    "street": [
+     0,
+     7,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 2,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9167,
+    "po_box_type": 0.0,
+    "postal_code": 0.9167,
+    "state": 0.9167
+   },
+   "records": 13
+  },
+  "usaddress": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     12,
+     1,
+     1
+    ],
+    "po_box": [
+     0,
+     0,
+     9
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     13,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 4,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9231,
+    "po_box_type": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0
+   },
+   "records": 13
+  }
+ },
+ "golden/nightmare": {
+  "doorplate": {
+   "correct": 165,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     221,
+     5,
+     5
+    ],
+    "house_number": [
+     174,
+     1,
+     13
+    ],
+    "po_box": [
+     8,
+     0,
+     1
+    ],
+    "postal_code": [
+     220,
+     6,
+     6
+    ],
+    "route": [
+     15,
+     0,
+     20
+    ],
+    "state": [
+     226,
+     0,
+     0
+    ],
+    "street": [
+     170,
+     30,
+     19
+    ],
+    "unit": [
+     44,
+     21,
+     18
+    ]
+   },
+   "fine": {
+    "correct": 141,
+    "records": 226,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9779,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.9448,
+    "po_box_type": 0.7059,
+    "po_box_value": 0.8,
+    "postal_code": 0.9735,
+    "route_box_type": 0.7692,
+    "route_box_value": 0.7692,
+    "route_type": 0.5,
+    "route_value": 0.5,
+    "state": 1.0,
+    "street_name": 0.7947,
+    "street_post_direction": 0.9706,
+    "street_post_type": 0.9494,
+    "street_pre_direction": 0.8889,
+    "street_pre_type": 0.0,
+    "unit_type": 0.6585,
+    "unit_value": 0.7077
+   },
+   "records": 226
+  },
+  "libpostal": {
+   "correct": 122,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     193,
+     2,
+     33
+    ],
+    "house_number": [
+     164,
+     39,
+     23
+    ],
+    "po_box": [
+     3,
+     23,
+     6
+    ],
+    "postal_code": [
+     209,
+     8,
+     17
+    ],
+    "route": [
+     0,
+     0,
+     33
+    ],
+    "state": [
+     200,
+     1,
+     26
+    ],
+    "street": [
+     137,
+     65,
+     55
+    ],
+    "unit": [
+     39,
+     20,
+     23
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 226,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9169,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9436,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9368,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 226
+  },
+  "usaddress": {
+   "correct": 116,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     222,
+     10,
+     4
+    ],
+    "house_number": [
+     166,
+     22,
+     21
+    ],
+    "po_box": [
+     5,
+     19,
+     4
+    ],
+    "postal_code": [
+     222,
+     0,
+     4
+    ],
+    "route": [
+     4,
+     0,
+     33
+    ],
+    "state": [
+     224,
+     1,
+     2
+    ],
+    "street": [
+     136,
+     53,
+     52
+    ],
+    "unit": [
+     27,
+     42,
+     35
+    ]
+   },
+   "fine": {
+    "correct": 98,
+    "records": 226,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9694,
+    "convention:letter_after_number": 0.6667,
+    "house_number_prefix": 0.0,
+    "house_number_value": 0.9013,
+    "po_box_type": 0.25,
+    "po_box_value": 0.2564,
+    "postal_code": 0.9911,
+    "route_box_type": 0.2857,
+    "route_box_value": 0.2857,
+    "route_type": 0.1633,
+    "route_value": 0.1667,
+    "state": 0.9933,
+    "street_name": 0.7084,
+    "street_post_direction": 0.806,
+    "street_post_type": 0.9062,
+    "street_pre_direction": 0.8539,
+    "street_pre_type": 0.0,
+    "unit_type": 0.4773,
+    "unit_value": 0.4444
+   },
+   "records": 226
+  }
+ },
+ "golden/nightmare/ambiguous": {
+  "doorplate": {
+   "correct": 3,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     7,
+     0,
+     0
+    ],
+    "house_number": [
+     4,
+     0,
+     0
+    ],
+    "postal_code": [
+     7,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     3,
+     2,
+     3
+    ],
+    "unit": [
+     1,
+     3,
+     3
+    ]
+   },
+   "fine": {
+    "correct": 3,
+    "records": 7,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.5455,
+    "street_post_type": 0.8571,
+    "street_pre_direction": 1.0,
+    "unit_type": 0.5714,
+    "unit_value": 0.6
+   },
+   "records": 7
+  },
+  "libpostal": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     7,
+     0,
+     0
+    ],
+    "house_number": [
+     4,
+     1,
+     0
+    ],
+    "postal_code": [
+     7,
+     0,
+     0
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     5,
+     2,
+     2
+    ],
+    "unit": [
+     2,
+     0,
+     2
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 7,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 7
+  },
+  "usaddress": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     7,
+     0,
+     0
+    ],
+    "house_number": [
+     4,
+     0,
+     0
+    ],
+    "postal_code": [
+     7,
+     0,
+     0
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     4,
+     1,
+     3
+    ],
+    "unit": [
+     1,
+     2,
+     3
+    ]
+   },
+   "fine": {
+    "correct": 3,
+    "records": 7,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.7273,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.75,
+    "unit_value": 0.6667
+   },
+   "records": 7
+  }
+ },
+ "golden/nightmare/doubtful": {
+  "doorplate": {
+   "correct": 3,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     7,
+     0,
+     1
+    ],
+    "house_number": [
+     6,
+     0,
+     1
+    ],
+    "po_box": [
+     0,
+     0,
+     1
+    ],
+    "postal_code": [
+     7,
+     1,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     4
+    ],
+    "state": [
+     8,
+     0,
+     0
+    ],
+    "street": [
+     4,
+     2,
+     0
+    ],
+    "unit": [
+     2,
+     3,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 2,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9333,
+    "house_number_prefix": 0.0,
+    "house_number_value": 1.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9333,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.6,
+    "street_post_type": 0.8571,
+    "unit_type": 0.5,
+    "unit_value": 0.5714
+   },
+   "records": 8
+  },
+  "libpostal": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     7,
+     0,
+     1
+    ],
+    "house_number": [
+     5,
+     1,
+     2
+    ],
+    "po_box": [
+     1,
+     0,
+     0
+    ],
+    "postal_code": [
+     7,
+     1,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     2
+    ],
+    "state": [
+     7,
+     0,
+     1
+    ],
+    "street": [
+     3,
+     3,
+     3
+    ],
+    "unit": [
+     1,
+     0,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9333,
+    "house_number_prefix": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9333,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9333,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 8
+  },
+  "usaddress": {
+   "correct": 2,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     8,
+     0,
+     0
+    ],
+    "house_number": [
+     4,
+     0,
+     3
+    ],
+    "po_box": [
+     1,
+     0,
+     0
+    ],
+    "postal_code": [
+     7,
+     1,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     4
+    ],
+    "state": [
+     8,
+     0,
+     0
+    ],
+    "street": [
+     1,
+     4,
+     3
+    ],
+    "unit": [
+     0,
+     3,
+     2
+    ]
+   },
+   "fine": {
+    "correct": 2,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 0.0,
+    "house_number_prefix": 0.0,
+    "house_number_value": 0.8,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 0.9333,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.4444,
+    "street_post_type": 0.8571,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 8
+  }
+ },
+ "golden/nightmare/intersection": {
+  "doorplate": {
+   "correct": 1,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     4,
+     0,
+     0
+    ],
+    "house_number": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     4,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     4
+    ],
+    "state": [
+     4,
+     0,
+     0
+    ],
+    "street": [
+     3,
+     2,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 4,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.4444,
+    "street_post_type": 0.6667,
+    "street_pre_type": 0.0
+   },
+   "records": 4
+  },
+  "libpostal": {
+   "correct": 0,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     4,
+     0,
+     0
+    ],
+    "house_number": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     4,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     4
+    ],
+    "state": [
+     4,
+     0,
+     0
+    ],
+    "street": [
+     0,
+     4,
+     4
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 4,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0
+   },
+   "records": 4
+  },
+  "usaddress": {
+   "correct": 3,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     4,
+     0,
+     0
+    ],
+    "house_number": [
+     2,
+     1,
+     0
+    ],
+    "postal_code": [
+     4,
+     0,
+     0
+    ],
+    "state": [
+     4,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     0,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 4,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.8,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.3636,
+    "street_post_type": 0.6667,
+    "street_pre_type": 0.0
+   },
+   "records": 4
+  }
+ },
+ "golden/nightmare/multi_address": {
+  "doorplate": {
+   "correct": 5,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     13,
+     0,
+     0
+    ],
+    "house_number": [
+     5,
+     7,
+     8
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     13,
+     0,
+     0
+    ],
+    "street": [
+     12,
+     1,
+     1
+    ],
+    "unit": [
+     1,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 5,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.4,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.9231,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0,
+    "unit_type": 1.0,
+    "unit_value": 0.6667
+   },
+   "records": 13
+  },
+  "libpostal": {
+   "correct": 7,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     12,
+     0,
+     1
+    ],
+    "house_number": [
+     8,
+     5,
+     5
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     13,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     6,
+     6
+    ],
+    "unit": [
+     1,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.96,
+    "house_number_value": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 13
+  },
+  "usaddress": {
+   "correct": 3,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     13,
+     1,
+     0
+    ],
+    "house_number": [
+     4,
+     6,
+     9
+    ],
+    "postal_code": [
+     13,
+     0,
+     0
+    ],
+    "state": [
+     13,
+     0,
+     0
+    ],
+    "street": [
+     8,
+     7,
+     5
+    ],
+    "unit": [
+     1,
+     5,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 3,
+    "records": 13,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.963,
+    "house_number_value": 0.3478,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.6667,
+    "street_post_type": 0.96,
+    "street_pre_direction": 1.0,
+    "unit_type": 1.0,
+    "unit_value": 0.2857
+   },
+   "records": 13
+  }
+ },
+ "golden/nightmare/non_address": {
+  "doorplate": {
+   "correct": 1,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     2,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     2,
+     0,
+     0
+    ],
+    "street": [
+     0,
+     1,
+     0
+    ],
+    "unit": [
+     1,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 1,
+    "records": 2,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "postal_code": 1.0,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "unit_type": 1.0,
+    "unit_value": 1.0
+   },
+   "records": 2
+  },
+  "libpostal": {
+   "correct": 0,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     1,
+     0,
+     1
+    ],
+    "po_box": [
+     0,
+     1,
+     0
+    ],
+    "postal_code": [
+     1,
+     0,
+     1
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     1,
+     0,
+     1
+    ],
+    "street": [
+     0,
+     1,
+     0
+    ],
+    "unit": [
+     0,
+     2,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 2,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.6667,
+    "postal_code": 0.6667,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.6667,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 2
+  },
+  "usaddress": {
+   "correct": 1,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2,
+     0,
+     0
+    ],
+    "po_box": [
+     0,
+     1,
+     0
+    ],
+    "postal_code": [
+     2,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     1
+    ],
+    "state": [
+     2,
+     0,
+     0
+    ],
+    "unit": [
+     1,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 1,
+    "records": 2,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "unit_type": 0.8,
+    "unit_value": 0.8
+   },
+   "records": 2
+  }
+ },
+ "golden/normal": {
+  "doorplate": {
+   "correct": 1488,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     1559,
+     8,
+     9
+    ],
+    "house_number": [
+     1457,
+     19,
+     19
+    ],
+    "po_box": [
+     91,
+     0,
+     0
+    ],
+    "postal_code": [
+     1550,
+     0,
+     0
+    ],
+    "state": [
+     1548,
+     3,
+     1
+    ],
+    "street": [
+     1455,
+     24,
+     24
+    ],
+    "unit": [
+     264,
+     34,
+     64
+    ]
+   },
+   "fine": {
+    "correct": 1480,
+    "records": 1568,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9946,
+    "convention:letter_after_number": 0.7273,
+    "house_number_value": 0.9871,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "state": 0.9987,
+    "street_name": 0.979,
+    "street_post_direction": 0.9574,
+    "street_post_type": 0.9869,
+    "street_pre_direction": 0.9947,
+    "street_pre_type": 0.0,
+    "unit_type": 0.9519,
+    "unit_value": 0.8607
+   },
+   "records": 1568
+  },
+  "libpostal": {
+   "correct": 1439,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     1548,
+     15,
+     20
+    ],
+    "house_number": [
+     1440,
+     40,
+     36
+    ],
+    "po_box": [
+     90,
+     1,
+     1
+    ],
+    "postal_code": [
+     1550,
+     3,
+     0
+    ],
+    "state": [
+     1548,
+     1,
+     1
+    ],
+    "street": [
+     1399,
+     71,
+     80
+    ],
+    "unit": [
+     240,
+     32,
+     88
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 1568,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9888,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.999,
+    "state": 0.9994,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 1568
+  },
+  "usaddress": {
+   "correct": 1467,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     1546,
+     20,
+     22
+    ],
+    "house_number": [
+     1456,
+     22,
+     20
+    ],
+    "po_box": [
+     91,
+     1,
+     0
+    ],
+    "postal_code": [
+     1550,
+     0,
+     0
+    ],
+    "state": [
+     1548,
+     10,
+     1
+    ],
+    "street": [
+     1449,
+     36,
+     30
+    ],
+    "unit": [
+     253,
+     37,
+     75
+    ]
+   },
+   "fine": {
+    "correct": 1458,
+    "records": 1568,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9866,
+    "convention:letter_after_number": 0.5333,
+    "house_number_value": 0.9858,
+    "po_box_type": 0.9945,
+    "po_box_value": 0.9945,
+    "postal_code": 1.0,
+    "route_type": 0.0,
+    "state": 0.9965,
+    "street_name": 0.9793,
+    "street_post_direction": 0.9405,
+    "street_post_type": 0.9873,
+    "street_pre_direction": 0.9934,
+    "street_pre_type": 0.0,
+    "unit_type": 0.9231,
+    "unit_value": 0.8315
+   },
+   "records": 1568
+  }
+ },
+ "libpostal-us/us": {
+  "doorplate": {
+   "correct": 45,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     44,
+     5,
+     6
+    ],
+    "house_number": [
+     36,
+     0,
+     1
+    ],
+    "po_box": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     33,
+     0,
+     0
+    ],
+    "state": [
+     43,
+     2,
+     0
+    ],
+    "street": [
+     37,
+     4,
+     2
+    ],
+    "unit": [
+     10,
+     2,
+     3
+    ]
+   },
+   "fine": {
+    "correct": 9,
+    "records": 11,
+    "skipped": 41
+   },
+   "fine_f1": {
+    "city": 0.9,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0
+   },
+   "records": 53
+  },
+  "libpostal": {
+   "correct": 50,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     47,
+     1,
+     3
+    ],
+    "house_number": [
+     37,
+     0,
+     0
+    ],
+    "po_box": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     33,
+     0,
+     0
+    ],
+    "state": [
+     42,
+     0,
+     1
+    ],
+    "street": [
+     38,
+     1,
+     1
+    ],
+    "unit": [
+     12,
+     0,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 10,
+    "records": 11,
+    "skipped": 41
+   },
+   "fine_f1": {
+    "city": 0.9524,
+    "postal_code": 1.0,
+    "state": 1.0
+   },
+   "records": 53
+  },
+  "usaddress": {
+   "correct": 47,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     44,
+     3,
+     6
+    ],
+    "house_number": [
+     37,
+     0,
+     0
+    ],
+    "po_box": [
+     2,
+     0,
+     0
+    ],
+    "postal_code": [
+     33,
+     0,
+     0
+    ],
+    "state": [
+     43,
+     2,
+     0
+    ],
+    "street": [
+     38,
+     0,
+     1
+    ],
+    "unit": [
+     12,
+     1,
+     1
+    ]
+   },
+   "fine": {
+    "correct": 8,
+    "records": 11,
+    "skipped": 41
+   },
+   "fine_f1": {
+    "city": 0.8,
+    "postal_code": 1.0,
+    "state": 1.0
+   },
+   "records": 53
+  }
+ },
+ "senzing-us/bug": {
+  "doorplate": {
+   "correct": 6,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     5,
+     0,
+     0
+    ],
+    "house_number": [
+     6,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     6,
+     0,
+     0
+    ],
+    "street": [
+     6,
+     0,
+     0
+    ],
+    "unit": [
+     3,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 6
+   },
+   "fine_f1": {},
+   "records": 6
+  },
+  "libpostal": {
+   "correct": 6,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     5,
+     0,
+     0
+    ],
+    "house_number": [
+     6,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     6,
+     0,
+     0
+    ],
+    "street": [
+     6,
+     0,
+     0
+    ],
+    "unit": [
+     3,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 6
+   },
+   "fine_f1": {},
+   "records": 6
+  },
+  "usaddress": {
+   "correct": 5,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     5,
+     1,
+     0
+    ],
+    "house_number": [
+     6,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     5,
+     0,
+     1
+    ],
+    "street": [
+     6,
+     1,
+     0
+    ],
+    "unit": [
+     3,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 6
+   },
+   "fine_f1": {},
+   "records": 6
+  }
+ },
+ "senzing-us/osm": {
+  "doorplate": {
+   "correct": 2130,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2149,
+     1,
+     23
+    ],
+    "house_number": [
+     2169,
+     1,
+     3
+    ],
+    "postal_code": [
+     2093,
+     1,
+     1
+    ],
+    "state": [
+     1628,
+     23,
+     0
+    ],
+    "street": [
+     2155,
+     17,
+     17
+    ],
+    "unit": [
+     164,
+     9,
+     9
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 2172
+   },
+   "fine_f1": {},
+   "records": 2172
+  },
+  "libpostal": {
+   "correct": 2147,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2157,
+     4,
+     15
+    ],
+    "house_number": [
+     2170,
+     2,
+     2
+    ],
+    "postal_code": [
+     2093,
+     1,
+     1
+    ],
+    "state": [
+     1628,
+     0,
+     0
+    ],
+    "street": [
+     2149,
+     24,
+     23
+    ],
+    "unit": [
+     166,
+     1,
+     7
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 2172
+   },
+   "fine_f1": {},
+   "records": 2172
+  },
+  "usaddress": {
+   "correct": 1967,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2012,
+     78,
+     160
+    ],
+    "house_number": [
+     2168,
+     4,
+     4
+    ],
+    "postal_code": [
+     2093,
+     1,
+     1
+    ],
+    "state": [
+     1626,
+     157,
+     2
+    ],
+    "street": [
+     2120,
+     55,
+     52
+    ],
+    "unit": [
+     123,
+     7,
+     50
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 0,
+    "skipped": 2172
+   },
+   "fine_f1": {},
+   "records": 2172
+  }
+ },
+ "usaddress-tests/labeled": {
+  "doorplate": {
+   "correct": 121,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     102,
+     2,
+     6
+    ],
+    "house_number": [
+     114,
+     0,
+     4
+    ],
+    "po_box": [
+     8,
+     1,
+     6
+    ],
+    "postal_code": [
+     97,
+     0,
+     1
+    ],
+    "route": [
+     14,
+     0,
+     0
+    ],
+    "state": [
+     103,
+     0,
+     1
+    ],
+    "street": [
+     102,
+     21,
+     17
+    ],
+    "unit": [
+     28,
+     4,
+     11
+    ]
+   },
+   "fine": {
+    "correct": 107,
+    "records": 146,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9623,
+    "convention:letter_after_number": 0.6667,
+    "house_number_value": 0.9828,
+    "po_box_type": 0.6957,
+    "po_box_value": 0.6957,
+    "postal_code": 0.9949,
+    "route_box_type": 1.0,
+    "route_box_value": 1.0,
+    "route_type": 1.0,
+    "route_value": 1.0,
+    "state": 0.9952,
+    "street_name": 0.7333,
+    "street_post_direction": 0.7857,
+    "street_post_type": 0.8655,
+    "street_pre_direction": 0.9275,
+    "street_pre_type": 0.8372,
+    "unit_type": 0.7857,
+    "unit_value": 0.8
+   },
+   "records": 146
+  },
+  "libpostal": {
+   "correct": 100,
+   "errors": 1,
+   "field_counts": {
+    "city": [
+     96,
+     6,
+     12
+    ],
+    "house_number": [
+     117,
+     3,
+     1
+    ],
+    "po_box": [
+     13,
+     14,
+     1
+    ],
+    "postal_code": [
+     97,
+     0,
+     1
+    ],
+    "route": [
+     0,
+     0,
+     14
+    ],
+    "state": [
+     100,
+     1,
+     4
+    ],
+    "street": [
+     95,
+     26,
+     24
+    ],
+    "unit": [
+     32,
+     1,
+     7
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 146,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9143,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 0.9949,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 0.9756,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 146
+  },
+  "usaddress": {
+   "correct": 146,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     108,
+     0,
+     0
+    ],
+    "house_number": [
+     118,
+     0,
+     0
+    ],
+    "po_box": [
+     14,
+     0,
+     0
+    ],
+    "postal_code": [
+     98,
+     0,
+     0
+    ],
+    "route": [
+     14,
+     0,
+     0
+    ],
+    "state": [
+     104,
+     0,
+     0
+    ],
+    "street": [
+     119,
+     0,
+     0
+    ],
+    "unit": [
+     39,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 146,
+    "records": 146,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 1.0,
+    "house_number_value": 1.0,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_box_type": 1.0,
+    "route_box_value": 1.0,
+    "route_type": 1.0,
+    "route_value": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_direction": 1.0,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 1.0,
+    "unit_type": 1.0,
+    "unit_value": 1.0
+   },
+   "records": 146
+  }
+ },
+ "usaddress-tests/multi_word_state_addresses": {
+  "doorplate": {
+   "correct": 2,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     2,
+     0,
+     3
+    ],
+    "house_number": [
+     5,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     5,
+     0,
+     0
+    ],
+    "street": [
+     2,
+     3,
+     3
+    ]
+   },
+   "fine": {
+    "correct": 2,
+    "records": 5,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.5714,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.4,
+    "street_post_type": 0.2857,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 1.0
+   },
+   "records": 5
+  },
+  "libpostal": {
+   "correct": 4,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     4,
+     1,
+     1
+    ],
+    "house_number": [
+     5,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     4,
+     1,
+     1
+    ],
+    "street": [
+     5,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 5,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.8,
+    "house_number_value": 0.0,
+    "postal_code": 1.0,
+    "state": 0.8,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0
+   },
+   "records": 5
+  },
+  "usaddress": {
+   "correct": 5,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     5,
+     0,
+     0
+    ],
+    "house_number": [
+     5,
+     0,
+     0
+    ],
+    "postal_code": [
+     5,
+     0,
+     0
+    ],
+    "state": [
+     5,
+     0,
+     0
+    ],
+    "street": [
+     5,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 5,
+    "records": 5,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0,
+    "street_pre_type": 1.0
+   },
+   "records": 5
+  }
+ },
+ "usaddress-tests/simple_address_patterns": {
+  "doorplate": {
+   "correct": 7,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     8,
+     0,
+     0
+    ],
+    "house_number": [
+     7,
+     0,
+     0
+    ],
+    "po_box": [
+     0,
+     0,
+     1
+    ],
+    "postal_code": [
+     8,
+     0,
+     0
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     1,
+     0
+    ],
+    "unit": [
+     0,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 7,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.9333,
+    "street_post_direction": 1.0,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0,
+    "unit_value": 0.0
+   },
+   "records": 8
+  },
+  "libpostal": {
+   "correct": 7,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     8,
+     0,
+     0
+    ],
+    "house_number": [
+     7,
+     0,
+     0
+    ],
+    "po_box": [
+     0,
+     1,
+     1
+    ],
+    "postal_code": [
+     8,
+     0,
+     0
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0
+   },
+   "records": 8
+  },
+  "usaddress": {
+   "correct": 8,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     8,
+     0,
+     0
+    ],
+    "house_number": [
+     7,
+     0,
+     0
+    ],
+    "po_box": [
+     1,
+     0,
+     0
+    ],
+    "postal_code": [
+     8,
+     0,
+     0
+    ],
+    "state": [
+     7,
+     0,
+     0
+    ],
+    "street": [
+     7,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 8,
+    "records": 8,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "house_number_value": 1.0,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_direction": 1.0,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0
+   },
+   "records": 8
+  }
+ },
+ "usaddress-tests/synthetic_clean_osm_data": {
+  "doorplate": {
+   "correct": 4113,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3654,
+     1,
+     0
+    ],
+    "house_number": [
+     4114,
+     5,
+     6
+    ],
+    "postal_code": [
+     3986,
+     0,
+     1
+    ],
+    "state": [
+     71,
+     1,
+     0
+    ],
+    "street": [
+     4119,
+     0,
+     1
+    ],
+    "unit": [
+     1,
+     0,
+     3
+    ]
+   },
+   "fine": {
+    "correct": 4112,
+    "records": 4120,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9999,
+    "house_number_value": 0.9987,
+    "postal_code": 0.9999,
+    "state": 0.993,
+    "street_name": 0.9996,
+    "street_post_type": 0.9999,
+    "street_pre_direction": 0.9992,
+    "unit_value": 0.4
+   },
+   "records": 4120
+  },
+  "libpostal": {
+   "correct": 4110,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3652,
+     0,
+     2
+    ],
+    "house_number": [
+     4115,
+     3,
+     5
+    ],
+    "postal_code": [
+     3986,
+     0,
+     1
+    ],
+    "state": [
+     70,
+     1,
+     1
+    ],
+    "street": [
+     4115,
+     5,
+     5
+    ],
+    "unit": [
+     0,
+     0,
+     4
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 4120,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9997,
+    "house_number_value": 0.0,
+    "postal_code": 0.9999,
+    "state": 0.9859,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 4120
+  },
+  "usaddress": {
+   "correct": 4113,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3654,
+     0,
+     0
+    ],
+    "house_number": [
+     4115,
+     6,
+     5
+    ],
+    "postal_code": [
+     3986,
+     0,
+     1
+    ],
+    "state": [
+     71,
+     1,
+     0
+    ],
+    "street": [
+     4119,
+     1,
+     1
+    ],
+    "unit": [
+     0,
+     1,
+     4
+    ]
+   },
+   "fine": {
+    "correct": 4112,
+    "records": 4120,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.9987,
+    "postal_code": 0.9999,
+    "state": 0.993,
+    "street_name": 0.9998,
+    "street_post_type": 1.0,
+    "street_pre_direction": 0.9992,
+    "unit_value": 0.0
+   },
+   "records": 4120
+  }
+ },
+ "usaddress-tests/synthetic_osm_data": {
+  "doorplate": {
+   "correct": 4118,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3649,
+     0,
+     0
+    ],
+    "house_number": [
+     4119,
+     0,
+     3
+    ],
+    "postal_code": [
+     4005,
+     0,
+     0
+    ],
+    "state": [
+     76,
+     0,
+     0
+    ],
+    "street": [
+     4118,
+     4,
+     4
+    ],
+    "unit": [
+     0,
+     1,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 4114,
+    "records": 4122,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 0.6667,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9989,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.999,
+    "street_post_type": 1.0,
+    "street_pre_direction": 0.9983,
+    "unit_value": 0.0
+   },
+   "records": 4122
+  },
+  "libpostal": {
+   "correct": 4118,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3647,
+     0,
+     2
+    ],
+    "house_number": [
+     4120,
+     0,
+     2
+    ],
+    "postal_code": [
+     4005,
+     0,
+     0
+    ],
+    "state": [
+     76,
+     0,
+     0
+    ],
+    "street": [
+     4118,
+     4,
+     4
+    ]
+   },
+   "fine": {
+    "correct": 0,
+    "records": 4122,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9997,
+    "convention:letter_after_number": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0
+   },
+   "records": 4122
+  },
+  "usaddress": {
+   "correct": 4122,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     3649,
+     0,
+     0
+    ],
+    "house_number": [
+     4122,
+     0,
+     0
+    ],
+    "postal_code": [
+     4005,
+     0,
+     0
+    ],
+    "state": [
+     76,
+     0,
+     0
+    ],
+    "street": [
+     4122,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 4122,
+    "records": 4122,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 1.0,
+    "house_number_suffix": 1.0,
+    "house_number_value": 1.0,
+    "postal_code": 1.0,
+    "state": 1.0,
+    "street_name": 1.0,
+    "street_post_type": 1.0,
+    "street_pre_direction": 1.0
+   },
+   "records": 4122
+  }
+ },
+ "usaddress-tests/us50_test_tagged": {
+  "doorplate": {
+   "correct": 665,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     687,
+     0,
+     0
+    ],
+    "house_number": [
+     596,
+     0,
+     3
+    ],
+    "po_box": [
+     2,
+     0,
+     5
+    ],
+    "postal_code": [
+     687,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     1,
+     4
+    ],
+    "state": [
+     687,
+     0,
+     0
+    ],
+    "street": [
+     617,
+     40,
+     19
+    ],
+    "unit": [
+     14,
+     12,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 65,
+    "records": 687,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 1.0,
+    "house_number_value": 0.9975,
+    "po_box_type": 0.4,
+    "po_box_value": 0.4444,
+    "postal_code": 1.0,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0264,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 0.963,
+    "unit_value": 0.6667
+   },
+   "records": 687
+  },
+  "libpostal": {
+   "correct": 655,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     685,
+     7,
+     2
+    ],
+    "house_number": [
+     595,
+     1,
+     4
+    ],
+    "po_box": [
+     2,
+     4,
+     5
+    ],
+    "postal_code": [
+     687,
+     0,
+     0
+    ],
+    "route": [
+     0,
+     0,
+     4
+    ],
+    "state": [
+     687,
+     0,
+     0
+    ],
+    "street": [
+     608,
+     28,
+     28
+    ],
+    "unit": [
+     14,
+     8,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 46,
+    "records": 687,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 0.9935,
+    "convention:letter_after_number": 0.0,
+    "house_number_value": 0.0,
+    "po_box_type": 0.0,
+    "po_box_value": 0.0,
+    "postal_code": 1.0,
+    "route_box_type": 0.0,
+    "route_box_value": 0.0,
+    "route_type": 0.0,
+    "route_value": 0.0,
+    "state": 1.0,
+    "street_name": 0.0,
+    "unit_type": 0.0,
+    "unit_value": 0.0
+   },
+   "records": 687
+  },
+  "usaddress": {
+   "correct": 687,
+   "errors": 0,
+   "field_counts": {
+    "city": [
+     687,
+     0,
+     0
+    ],
+    "house_number": [
+     599,
+     0,
+     0
+    ],
+    "po_box": [
+     7,
+     0,
+     0
+    ],
+    "postal_code": [
+     687,
+     0,
+     0
+    ],
+    "route": [
+     4,
+     0,
+     0
+    ],
+    "state": [
+     687,
+     0,
+     0
+    ],
+    "street": [
+     636,
+     0,
+     0
+    ],
+    "unit": [
+     14,
+     0,
+     0
+    ]
+   },
+   "fine": {
+    "correct": 68,
+    "records": 687,
+    "skipped": 0
+   },
+   "fine_f1": {
+    "city": 1.0,
+    "convention:letter_after_number": 1.0,
+    "house_number_prefix": 0.0,
+    "house_number_suffix": 0.0,
+    "house_number_value": 0.9933,
+    "po_box_type": 1.0,
+    "po_box_value": 1.0,
+    "postal_code": 1.0,
+    "route_box_type": 1.0,
+    "route_box_value": 1.0,
+    "route_type": 1.0,
+    "route_value": 1.0,
+    "state": 1.0,
+    "street_name": 0.0237,
+    "street_post_direction": 0.0,
+    "street_post_type": 0.0,
+    "street_pre_direction": 0.0,
+    "street_pre_type": 0.0,
+    "unit_type": 1.0,
+    "unit_value": 1.0
+   },
+   "records": 687
+  }
+ }
+}
