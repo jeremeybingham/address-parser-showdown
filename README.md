@@ -57,6 +57,7 @@ later runs (each a new dated folder under `runs/`). The plan and its step issues
 |---|---|
 | Label schema and conventions list | Done ([`schema/`](schema/README.md)) |
 | Adapters for doorplate, usaddress and libpostal, with a conformance test and mapping tables | Done ([`adapters/`](adapters/README.md)); the libpostal build is pinned |
+| Adapters for three Rust-only parsers (`address_parser`, `addrust`, `us_address_parser`) | Done, conformance passes; not yet in a pinned run (tracker #49) |
 | Existing test sets (doorplate's suite, usaddress's and libpostal's own tests, Senzing's US rows, the geocode benchmark) | Converted and scored ([`tools/sets/`](tools/sets/README.md)) |
 | Golden set: design, sampling, hand labeling, blind adjudication | Done: 2,439 records in twelve rounds ([`sets/golden/`](sets/golden/COMPOSITION.md)) |
 | Scorer and Parser Score | Done; formula version 1, fixed before the first run ([`scorer/`](scorer/README.md)) |

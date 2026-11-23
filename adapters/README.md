@@ -24,6 +24,8 @@ An adapter (`adapters/base.py`, class `Adapter`) has:
 | `doorplate_parser.py` | `doorplate.parse_tokens` (its token labels, which are usaddress's names) aligned to the input | A blank input or an intersection is a `ParseError`: no spans |
 | `usaddress_parser.py` | `usaddress.parse`, default model | |
 | `us_address_parser_parser.py` | the Rust crate, through `rust_worker.py` (one JSON-lines process per parser, binary from `tools/rust-parsers`, restarted if it stops) | No city, state or ZIP; normalized values not found in the input are dropped; `cannot_cover`. Needs the worker build (below) |
+| `addrust_parser.py` | `addrust` (git commit `8e28a7e`, shipped default pipeline, no `.addrust.toml`), same worker | Standardizes its values (`STREET`), so a value not in the input as a whole word is dropped; sometimes folds city, state and unit into `street_name`; `cannot_cover` |
+| `address_parser_parser.py` | `address_parser` 0.1.10, same worker | Normalizes street type, direction and state, so those values are dropped when not in the input; ZIP and extension merge into one `zip` span; no parse for a PO box or intersection; `cannot_cover` |
 | `libpostal_parser.py` | `parse_address` in libpostal's own virtualenv (`libpostal_worker.py`), tokens found in the input ignoring case | Needs the pinned build below |
 
 ## Conformance test
@@ -48,7 +50,11 @@ string. The libpostal case is skipped when there is no build (CI); run it locall
 
 `cargo build --release --locked` in `tools/rust-parsers/` (about 10 s; Rust 1.91 from `rust-toolchain.toml`) makes
 `target/release/rust-parsers`; `$RUST_PARSERS_BIN` overrides the path. The conformance case is skipped when it is not
-built (CI). An adapter with `cannot_cover = True` is not required to label every letter and digit in the `cover` strings.
+built (CI). The worker is one binary for the three crates (`--parser {address_parser,addrust,us_address_parser}`); each
+adapter starts its own process. The pins are in `tools/rust-parsers/Cargo.toml` and `Cargo.lock` (`addrust` is not on
+crates.io, so it is pinned to a git commit and built without its DuckDB and terminal-UI features). A crate that panics
+on a string gives a parse failure for that string, not a crash of the run. The first build fetches the crates from
+crates.io and GitHub. An adapter with `cannot_cover = True` is not required to label every letter and digit in the `cover` strings.
 
 ## Pinned libpostal
 
