@@ -1,5 +1,6 @@
 """The adapter contract: a string in, character spans in the parser's own labels out, and a mapping to the schema."""
 
+import re
 import tomllib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
@@ -24,11 +25,22 @@ class AlignmentError(ValueError):
     """A token the parser returned could not be found in the input (the message never quotes the input)."""
 
 
-def align(text: str, pieces: list[tuple[str, str | None]], *, ignore_case: bool = False) -> list[Span]:
+def _find(hay: str, word: str, cursor: int, *, whole_word: bool) -> int:
+    if not whole_word:
+        return hay.find(word, cursor)
+    found = re.compile(rf"(?<![A-Za-z0-9]){re.escape(word)}(?![A-Za-z0-9])").search(hay, cursor)
+    return found.start() if found else -1
+
+
+def align(
+    text: str, pieces: list[tuple[str, str | None]], *, ignore_case: bool = False, skip_missing: bool = False
+) -> list[Span]:
     """Place `(token, label)` pieces in `text`, in order, as character spans.
 
     A piece with label None is skipped. A piece of several words (libpostal's) spans from its first word to its last.
-    `,;` at the ends of a word are not part of the span.
+    `,;` at the ends of a word are not part of the span. With `skip_missing`, a word that cannot be found is left out
+    (for parsers that rewrite their values) instead of raising `AlignmentError`, and a word only matches whole (`ST` is
+    not found inside `Street`).
     """
     hay = text.lower() if ignore_case else text
     cursor = 0
@@ -39,8 +51,10 @@ def align(text: str, pieces: list[tuple[str, str | None]], *, ignore_case: bool 
             word = word.strip(SEPARATORS)
             if not word:
                 continue
-            start = hay.find(word.lower() if ignore_case else word, cursor)
+            start = _find(hay, word.lower() if ignore_case else word, cursor, whole_word=skip_missing)
             if start < 0:
+                if skip_missing:
+                    continue
                 raise AlignmentError(f"token of length {len(word)} not found after offset {cursor}")
             cursor = start + len(word)
             first = start if first is None else first

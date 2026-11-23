@@ -1,0 +1,15 @@
+# us_address_parser 0.3.0 (Rust crate; the fields of its `Address` struct) to the canonical schema.
+# The crate returns street_no, direction, street_name, street_type, unit_type and unit_no. The adapter splits
+# `direction` into `direction_pre` and `direction_post` by where it sits against the street name (the crate does not say).
+# A PO box comes back as unit_type "PO BOX" and unit_no; the crate has no PO box field, so it maps as a unit
+# (decision, overrule any). It has no city, state or ZIP field.
+
+[labels]
+street_no = "house_number_value"
+direction_pre = "street_pre_direction"
+direction_post = "street_post_direction"
+direction = "street_pre_direction"    # only if the adapter could not place it against a street name
+street_name = "street_name"
+street_type = "street_post_type"
+unit_type = "unit_type"
+unit_no = "unit_value"
