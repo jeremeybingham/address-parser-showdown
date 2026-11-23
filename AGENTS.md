@@ -38,6 +38,7 @@ uv run python -m tools.label.direction        # which way adjudication moved the
 uv run python -m tools.golden.tiers          # counts per tier and shape class of the exported gold (no parser is run)
 uv run python -m tools.golden.hard           # round 7 (hard) dry run; same flags as nightmare below
 uv run python -m tools.golden.nightmare      # round 8 (nightmare) dry run; --confirm draws, --confirm --twin the private twin, --check redraws and compares
+(cd tools/rust-parsers && cargo build --release --locked)   # the worker for address_parser, addrust and us_address_parser (about 10 s; needs network the first time); the adapters' conformance case is skipped without it
 uv run python -m tools.sets.golden            # the exported gold -> build/sets/golden.jsonl.gz, part = tier
 uv run python -m tools.sets.doorplate_suite      # convert a set to build/sets/ (one module per set; see tools/sets/README.md)
 uv run python -m tools.sets.usaddress_tests      # likewise libpostal_us, senzing_us, geocode_dev (local copies, SHA-256 checked)
@@ -69,7 +70,7 @@ uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figure
 
 ## Where things are
 
-`schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
+`schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser (the Rust ones share `rust_worker.py` and the `tools/rust-parsers/` worker), its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
 scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the reports (`REPORT.md` the latest, earlier ones as `REPORT-<run date>.md`/`.pdf`, and `REPORT.pdf` rendered from it by `tools/report/pdf.py`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
 (`check.sh`; `golden/` the golden-set sampler, hand templates, exclusion check and tier tagger (`tiers.py`), shipped-gold maker (`derive.py`); `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).
