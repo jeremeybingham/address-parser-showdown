@@ -14,7 +14,7 @@
 | The full run, `just all`, CI or a run folder | `tools/run.py` (docstring); `runs/README.md`; `.github/workflows/`; `AGENTS.md` |
 | Speed, memory and install size (step 6) | `tools/bench/speed.py` (its docstring says the method); `runs/` holds the table from the pinned run |
 | Scoring and the Parser Score | [`../scorer/README.md`](../scorer/README.md) |
-| The research report and the scripts behind its extra figures (`tools/report/breakdown.py`, `tools/label/direction.py`) | [`../report/REPORT.md`](../report/REPORT.md); the PDF with charts [`../report/REPORT.pdf`](../report/REPORT.pdf) and its renderer `tools/report/pdf.py` ([`../report/README.md`](../report/README.md)) |
+| The research report and the scripts behind its extra figures (`tools/report/breakdown.py`, `tools/label/direction.py`) | [`../report/REPORT.md`](../report/REPORT.md) (the latest; earlier reports kept as published are listed in [`../report/README.md`](../report/README.md)); the PDF with charts [`../report/REPORT.pdf`](../report/REPORT.pdf) and its renderer `tools/report/pdf.py` ([`../report/README.md`](../report/README.md)) |
 | Round 8 (`nightmare`) survey: covered and adjacent variants per class (issue #22) | [`research/nightmare-survey.md`](research/nightmare-survey.md) |
 | doorplate releases appendix (issue #50): the table, method and caveats | [`../report/RELEASES.md`](../report/RELEASES.md); `tools/releases.py`; `runs/doorplate-releases/` |
 

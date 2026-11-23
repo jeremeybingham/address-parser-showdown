@@ -63,11 +63,13 @@ uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figure
 - Private data stays in `local-data/` (git-ignored). Examples, tests and the shipped golden set use invented or
   anonymized values only.
 - `report/REPORT.pdf` is rebuilt in the same commit as any change to `report/REPORT.md`.
+- `report/REPORT.md` is the latest report. Earlier reports (`report/REPORT-<run date>.md` and `.pdf`) are kept as published and
+  never edited; before a new report replaces `REPORT.md`, copy the current one there unchanged (`report/README.md`).
 - Docs change in the same commit as the behavior they describe (`docs/README.md` lists what to check).
 
 ## Where things are
 
 `schema/` label schema (`schema.toml`) and conventions; `adapters/` one module per parser, its mapping in
 `adapters/mappings/`, the conformance test; `Dockerfile` the whole stack in one image; `sets/` test sets and manifests; `scorer/`
-scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the report (`REPORT.md`, and `REPORT.pdf` rendered from it by `tools/report/pdf.py`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
+scoring (`spans.py` conventions, `score.py`, `formula.toml` weights); `runs/` prediction files and results per run; `report/` the reports (`REPORT.md` the latest, earlier ones as `REPORT-<run date>.md`/`.pdf`, and `REPORT.pdf` rendered from it by `tools/report/pdf.py`; its extra figures come from `tools/report/breakdown.py`); `tests/` pytest; `tools/` scripts
 (`check.sh`; `golden/` the golden-set sampler, hand templates, exclusion check and tier tagger (`tiers.py`), shipped-gold maker (`derive.py`); `label/` the blind labeling page, adjudication queue and gold export; `sets/` the set converters and the prediction runner); `build/` converted sets and predictions (git-ignored); `docs/` documentation index; `local-data/` private data (git-ignored).

@@ -16,7 +16,7 @@ the pre-registered Parser Score formula are fixed, and all three parsers were ru
 report. Read it with the limitations below, and treat the ranking as a first measurement to be checked, not a verdict.
 
 Full report: **[`report/REPORT.md`](report/REPORT.md)**, also as a typeset PDF with charts:
-**[`report/REPORT.pdf`](report/REPORT.pdf)**. Both are written from the pinned run
+**[`report/REPORT.pdf`](report/REPORT.pdf)** (earlier reports, kept as published, are listed in [`report/README.md`](report/README.md)). Both are written from the pinned run
 [`runs/2026-11-23/`](runs/2026-11-23/) (tables in its [`results.md`](runs/2026-11-23/results.md) and
 [`speed.md`](runs/2026-11-23/speed.md)). doorplate 0.7.1, usaddress 0.5.16 and libpostal (Senzing model 1.2.0), all at
 default settings. The v0.1.0 run [`runs/2026-11-16/`](runs/2026-11-16/) (doorplate 0.6.0) is kept; usaddress's and

@@ -1,8 +1,18 @@
 # report
 
-[`REPORT.md`](REPORT.md) (plain markdown) is the research report, written from the pinned run `runs/2026-11-23/`
-(doorplate 0.7.1; the v0.1.0 report was written from `runs/2026-11-16/`, and section 6.5 says what changed): the parsers, the schema and conventions, how the golden set was made, labeled and adjudicated,
+| Report | Run | doorplate | Status |
+|---|---|---|---|
+| [`REPORT.md`](REPORT.md), [`REPORT.pdf`](REPORT.pdf) | [`runs/2026-11-23/`](../runs/2026-11-23/) | 0.7.1 | **latest** |
+| [`REPORT-2026-11-16.md`](REPORT-2026-11-16.md), [`REPORT-2026-11-16.pdf`](REPORT-2026-11-16.pdf) | [`runs/2026-11-16/`](../runs/2026-11-16/) | 0.6.0 | v0.1.0 report, kept as published |
+
+`REPORT.md` is always the latest research report; its section 6.5 says what changed since the one before. Earlier
+reports are kept as they were published, named by their run date, and are never edited (their links into `runs/` still
+work, since they sit in the same folder). When a new run gets a new report, first copy `REPORT.md` and `REPORT.pdf` to
+`REPORT-<its run date>.md` and `.pdf` unchanged, then write the new one in `REPORT.md` and add a row above.
+
+The report covers the parsers, the schema and conventions, how the golden set was made, labeled and adjudicated,
 results with intervals, speed and cost, error analysis by shape, threats to validity, how to reproduce, references.
+[`RELEASES.md`](RELEASES.md) is a short appendix: each doorplate release scored on the same sets.
 
 Its figures come from the run's `results.md` and `speed.md`, plus two scripts: `tools/report/breakdown.py` (the golden
 set by stratum and shape class, with paired tests) and `tools/label/direction.py` (which way adjudication moved the

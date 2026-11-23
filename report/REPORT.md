@@ -1,8 +1,8 @@
 # US address parsers on equal terms: doorplate, usaddress and libpostal
 
 Report of `address-parser-showdown`, written from the pinned run [`runs/2026-11-23/`](../runs/2026-11-23/)
-(commit `7710d79`, doorplate 0.7.1). It replaces the v0.1.0 report of the run [`runs/2026-11-16/`](../runs/2026-11-16/)
-(doorplate 0.6.0); section 6.5 lists what changed. Every figure below comes from the 2026-11-23 run's committed
+(commit `7710d79`, doorplate 0.7.1). It follows the v0.1.0 report of the run [`runs/2026-11-16/`](../runs/2026-11-16/)
+(doorplate 0.6.0), which is kept unchanged as [`REPORT-2026-11-16.md`](REPORT-2026-11-16.md); section 6.5 lists what changed. Every figure below comes from the 2026-11-23 run's committed
 prediction files unless it says otherwise, and can be reproduced from them (`just rescore runs/2026-11-23`). The figures
 in sections 7.4 and 7.5 come from `tools/report/breakdown.py`, which scores the same committed predictions.
 
