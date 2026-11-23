@@ -1,6 +1,6 @@
 # doorplate releases on the showdown
 
-A short appendix to the [v0.1.0 report](REPORT.md). It shows what each doorplate release scores on the same sets and gold, so
+A short appendix to the [report](REPORT.md). It shows what each doorplate release scores on the same sets and gold, so
 doorplate's authors have a curve and not one point. It is not part of the report and does not change it.
 
 **Method.** The doorplate adapter was run on the highest point release of each minor version (0.1.0, 0.2.0, 0.3.1, 0.4.1,
@@ -9,6 +9,8 @@ on the sets of the pinned run `2026-11-16` (every set's SHA-256 checked equal), 
 (version 1) with the usaddress and libpostal predictions of that run reused unchanged, so only doorplate varies. Speed is
 from one session on the same machine, pinned to 4 CPUs. Everything is in `runs/doorplate-releases/`; `uv run python -m
 tools.releases` adds a release that is not there yet and rebuilds the table, so this page grows by a row and a line below.
+The pinned run `2026-11-23` (doorplate 0.7.1) produced usaddress and libpostal predictions byte-identical to the reused
+ones, and doorplate predictions byte-identical to the 0.7.1 row, so this table needs no rerun.
 
 | Release | Parser Score (95% interval) | Field F1 score (95% interval) | golden normal accuracy | golden hard accuracy | golden nightmare accuracy | Strings/s, 1 process | Strings/s, 4 processes | Install MB |
 |---|---|---|---|---|---|---|---|---|

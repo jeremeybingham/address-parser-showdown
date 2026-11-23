@@ -1,7 +1,7 @@
 # report
 
-[`REPORT.md`](REPORT.md) (plain markdown) is the research report for the initial v0.1.0 result, written from the pinned run
-`runs/2026-11-16/`: the parsers, the schema and conventions, how the golden set was made, labeled and adjudicated,
+[`REPORT.md`](REPORT.md) (plain markdown) is the research report, written from the pinned run `runs/2026-11-23/`
+(doorplate 0.7.1; the v0.1.0 report was written from `runs/2026-11-16/`, and section 6.5 says what changed): the parsers, the schema and conventions, how the golden set was made, labeled and adjudicated,
 results with intervals, speed and cost, error analysis by shape, threats to validity, how to reproduce, references.
 
 Its figures come from the run's `results.md` and `speed.md`, plus two scripts: `tools/report/breakdown.py` (the golden
