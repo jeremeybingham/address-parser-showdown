@@ -13,6 +13,8 @@ import os
 import subprocess
 from pathlib import Path
 
+from adapters.base import Span, align
+
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_BIN = ROOT / "tools" / "rust-parsers" / "target" / "release" / "rust-parsers"
 
@@ -70,3 +72,26 @@ class RustWorker:
             self._proc.kill()
             self._proc.wait()
             self._proc = None
+
+
+def place_fields(text: str, fields) -> list[Span]:
+    """Character spans for `(label, value)` fields that carry no positions, in the order of the text.
+
+    The crates return their fields in a fixed order, not the order of the text, and often rewrite the values (upper
+    case, `STREET` for `St`). So each value is looked for on its own, ignoring case, as whole words, in what is left
+    of the text (characters already taken are blanked); a word that is not in the input is skipped, and a field of
+    several words spans from its first found word to its last. A several-word field can run over a field found inside
+    it (a crate may fold the city and state into the street name): the span that starts first is kept and the one it
+    covers is dropped.
+    """
+    left, spans = text, []
+    for label, value in fields:
+        for sp in align(left, [(value, label)], ignore_case=True, skip_missing=True):
+            spans.append(sp)
+            left = left[: sp.start] + "\0" * (sp.end - sp.start) + left[sp.end :]
+    spans.sort(key=lambda sp: sp.start)
+    kept: list[Span] = []
+    for sp in spans:
+        if not kept or sp.start >= kept[-1].end:
+            kept.append(sp)
+    return kept

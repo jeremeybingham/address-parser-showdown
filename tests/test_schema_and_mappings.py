@@ -20,7 +20,9 @@ def test_schema_parents_are_coarse_and_scopes_valid():
     ]
 
 
-@pytest.mark.parametrize("name", ["doorplate", "usaddress", "libpostal", "us_address_parser"])
+@pytest.mark.parametrize(
+    "name", ["doorplate", "usaddress", "libpostal", "us_address_parser", "addrust", "address_parser"]
+)
 def test_mapping_targets_exist(name):
     assert Mapping(name).claims <= set(schema.labels())
 
@@ -111,3 +113,21 @@ def test_us_address_parser_mapping_covers_every_field():
     native = Mapping("us_address_parser").native_labels
     assert fields <= native
     assert native - fields == {"direction_pre", "direction_post"}
+
+
+def test_addrust_mapping_covers_every_field():
+    # the field keys of addrust's `COL_DEFS` at the pinned commit
+    fields = {
+        "street_number", "pre_direction", "street_name", "suffix", "post_direction", "unit", "unit_type", "po_box",
+        "building", "building_type", "extra_front", "extra_back", "city", "state", "zip",
+    }  # fmt: skip
+    assert Mapping("addrust").native_labels == fields
+
+
+def test_address_parser_mapping_covers_every_component():
+    comps = {
+        "number", "prefix", "street", "type", "suffix", "sec_unit_type", "sec_unit_num", "city", "state", "zip",
+        "plus4",
+        "street1", "street2", "type1", "type2", "prefix1", "prefix2", "suffix1", "suffix2",
+    }  # fmt: skip
+    assert Mapping("address_parser").native_labels == comps

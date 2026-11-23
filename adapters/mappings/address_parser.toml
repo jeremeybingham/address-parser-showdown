@@ -1,0 +1,27 @@
+# address_parser 0.1.10 (Rust crate `address-parser`; the names of its `Component` enum) to the canonical schema.
+# Decisions (overrule any): `prefix`/`suffix` are the crate's leading and trailing directionals; `type` is the street
+# type. `sec_unit_type` and `sec_unit_num` are a unit (a "PO Box" unit type, which the crate may return, is still a unit
+# there). The adapter joins `zip` and `plus4` into one `zip` span when only a hyphen or space separates them, so `plus4`
+# maps to the postal code only if it stands alone. An intersection uses the numbered fields: the first street maps to
+# the street fields and the second is `other` (the schema has no second street).
+
+[labels]
+number = "house_number"
+prefix = "street_pre_direction"
+street = "street_name"
+type = "street_post_type"
+suffix = "street_post_direction"
+sec_unit_type = "unit_type"
+sec_unit_num = "unit_value"
+city = "city"
+state = "state"
+zip = "postal_code"
+plus4 = "postal_code"
+street1 = "street_name"
+type1 = "street_post_type"
+prefix1 = "street_pre_direction"
+suffix1 = "street_post_direction"
+street2 = "other"
+type2 = "other"
+prefix2 = "other"
+suffix2 = "other"
