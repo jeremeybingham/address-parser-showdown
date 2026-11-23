@@ -1,0 +1,10 @@
+{
+  "set": "geocode-dev",
+  "set_sha256": "bb9aafd04f469d960eae6638d768c654557dd1f15e73a31c9817240a82f941d0",
+  "versions": {
+    "doorplate": "0.7.0"
+  },
+  "pin_problems": [],
+  "records": 60522,
+  "seconds": 1.8
+}
