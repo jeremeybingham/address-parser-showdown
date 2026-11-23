@@ -5,7 +5,7 @@ description = "A neutral, repeatable comparison of US address parsers"
 requires-python = ">=3.12"
 license = "MIT"
 dependencies = [
-    "doorplate>=0.6.0",
+    "doorplate>=0.7.1",
     "duckdb>=2.0.0",
     "numpy>=2.5.4",
     "usaddress>=0.5.16",

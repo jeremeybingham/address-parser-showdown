@@ -26,7 +26,7 @@ report = [
 
 [package.metadata]
 requires-dist = [
-    { name = "doorplate", specifier = ">=0.6.0" },
+    { name = "doorplate", specifier = ">=0.7.1" },
     { name = "duckdb", specifier = ">=2.0.0" },
     { name = "numpy", specifier = ">=2.5.4" },
     { name = "usaddress", specifier = ">=0.5.16" },
@@ -143,14 +143,14 @@ wheels = [
 
 [[package]]
 name = "doorplate"
-version = "0.6.0"
+version = "0.7.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3e/b6/7d535d186e03086dc28b996e969bb9db6651d76f79c47f681ad3c7c18d75/doorplate-0.6.0.tar.gz", hash = "sha256:56334bda62883b186a3d042d9b05684b66ca57b9a5d5e61c0d7cf2c03a1434d9", size = 977204, upload-time = "2026-11-12T20:06:12.2Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/bf/62/8b0096282cd6e0b0de79be6b0f0ac2ed402f7b78d99807b0956e2c884bf1/doorplate-0.7.1.tar.gz", hash = "sha256:eab0a520f71509047189742756fcc07298e1a6867c5f7ce6623c0379f95f39d5", size = 1016146, upload-time = "2026-11-23T01:44:26.37Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f1/f6/d3618546f6d3a2abd1abcee7da70ef59fa86e2875b1d14b9ab3ec3a6f2e1/doorplate-0.6.0-cp310-abi3-macosx_10_12_universal2.macosx_10_12_x86_64.macosx_11_0_arm64.whl", hash = "sha256:b408f7ccef9c6767d8b3a40608b0e86ac877477b4e64803e0f11e6ccc05c0a09", size = 4129672, upload-time = "2026-11-12T20:06:05.237Z" },
-    { url = "https://files.pythonhosted.org/packages/e5/9b/8f8a43248082c1b2d5ad4f2e3c87861cf99d1b162a3f55c5ee0f6a50d36d/doorplate-0.6.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:cbe5f93107d38ec42313848d5e1f4199cc03d2d703a8cdc120b451dc7fe2ffac", size = 2108121, upload-time = "2026-11-12T20:06:06.94Z" },
-    { url = "https://files.pythonhosted.org/packages/53/f0/f8d85eb7920aacbb7b92fafbf27e385f6b9867f9c90b0a0684f7bd02d4c1/doorplate-0.6.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:c18d7047c62f39abfc3f2ed999d9e30a36b6db2f4c5301066b002c8b4eb8977b", size = 2134859, upload-time = "2026-11-12T20:06:08.394Z" },
-    { url = "https://files.pythonhosted.org/packages/27/94/a236e99299df0270cb78641a8f15e5784c59656a227c2690a28975f34dc1/doorplate-0.6.0-cp310-abi3-win_amd64.whl", hash = "sha256:c468ecc18ae19d1f06a5a56d98466356ecc2855dad9303291f876a4ca0c1e8e1", size = 2057057, upload-time = "2026-11-12T20:06:09.75Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/c9/018d2cb402300e7f5384cad51121296822d107e1cf72fef6c7b1260ac301/doorplate-0.7.1-cp310-abi3-macosx_10_12_universal2.macosx_10_12_x86_64.macosx_11_0_arm64.whl", hash = "sha256:5a3dd4b1bfd82bc0309b899f59d26df28863fbdc89402d965cf02750c1fb0553", size = 5012644, upload-time = "2026-11-23T01:44:19.146Z" },
+    { url = "https://files.pythonhosted.org/packages/a7/e2/38552e60c0fad4dd86cd343a5d426f52db143cab86333e4c069e4a23dabe/doorplate-0.7.1-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:2df9f254f2829102896e38a408036c0466e950721eb1766594a3ef7ad764f3cd", size = 2539115, upload-time = "2026-11-23T01:44:21.156Z" },
+    { url = "https://files.pythonhosted.org/packages/65/0a/e33c5196b0fbc498e41fcd2645bcb6f32fd0964af210647231c85a7beeb5/doorplate-0.7.1-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:cd0c1dd8c68bd3db14f929355480b996b7e96629bc4733d5df1c9c72e8d94222", size = 2571637, upload-time = "2026-11-23T01:44:23.019Z" },
+    { url = "https://files.pythonhosted.org/packages/85/9d/fb7638c78b25c072955935173c928a4815f2372a9647299f4524585ca52a/doorplate-0.7.1-cp310-abi3-win_amd64.whl", hash = "sha256:94605c19a1b21fc752b0888de5b69d4b06aa8bd39d2a1ea0c2b8108fc11a93d8", size = 2509101, upload-time = "2026-11-23T01:44:24.649Z" },
 ]
 
 [[package]]
