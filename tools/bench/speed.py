@@ -34,6 +34,7 @@ from tools.sets.common import read_jsonl, set_path
 
 WORKER = Path(__file__).with_name("worker.py")
 REFERENCE = "4 CPUs, 8 GB"
+RUST = {"address_parser", "addrust", "us_address_parser"}
 
 
 def machine() -> str:
@@ -118,6 +119,9 @@ def install_bytes(parser: str) -> tuple[int, str]:
     if parser == "libpostal":
         h = libpostal_parser.home()
         return dir_size(h / "install") + dir_size(h / "data"), "libpostal library and model data"
+    if parser in RUST:
+        binary = Path(__file__).resolve().parents[1] / "rust-parsers" / "target" / "release" / "rust-parsers"
+        return binary.stat().st_size, "the one worker binary shared by the three Rust parsers"
     top = {"doorplate": ["doorplate"], "usaddress": ["usaddress"]}[parser]
     seen, todo, total = set(), list(top), 0
     while todo:

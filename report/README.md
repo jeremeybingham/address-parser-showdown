@@ -13,6 +13,7 @@ work, since they sit in the same folder). When a new run gets a new report, firs
 The report covers the parsers, the schema and conventions, how the golden set was made, labeled and adjudicated,
 results with intervals, speed and cost, error analysis by shape, threats to validity, how to reproduce, references.
 [`RELEASES.md`](RELEASES.md) is a short appendix: each doorplate release scored on the same sets.
+[`RUST-PARSERS.md`](RUST-PARSERS.md) is another: the three Rust-only parsers scored on the `2026-11-23` sets, without a full run.
 
 Its figures come from the run's `results.md` and `speed.md`, plus two scripts: `tools/report/breakdown.py` (the golden
 set by stratum and shape class, with paired tests) and `tools/label/direction.py` (which way adjudication moved the

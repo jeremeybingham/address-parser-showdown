@@ -22,3 +22,5 @@ Runs: `2026-11-15` (the first full pinned run, kept unchanged) and `2026-11-16` 
 `doorplate-releases/` is a separate appendix, not a pinned run: the doorplate adapter on the highest point release of each minor version
 (`uv run python -m tools.releases`; a release with a folder is skipped, so a rerun after a new release adds only that one). usaddress and
 libpostal predictions are reused from the reference run named in each `release.json`; `releases.md` is the table.
+
+`rust-parsers/` is likewise an appendix: the address_parser, addrust and us_address_parser adapters on the sets of `2026-11-23` (`uv run python -m tools.rust_appendix`), scored with that run's reused doorplate, usaddress and libpostal predictions; `report/RUST-PARSERS.md` reads it.

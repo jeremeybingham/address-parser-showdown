@@ -12,9 +12,15 @@ import resource
 import sys
 import time
 
+CHILD = []  # the Rust worker process, when there is one: its memory counts too
+
 
 def rss_mb() -> float:
-    with open("/proc/self/status") as f:
+    return _rss("self") + sum(_rss(p.pid) for p in CHILD)
+
+
+def _rss(pid) -> float:
+    with open(f"/proc/{pid}/status") as f:
         for line in f:
             if line.startswith("VmRSS:"):
                 return int(line.split()[1]) / 1024
@@ -43,6 +49,25 @@ def load(name):
         def call(t):
             parse_address(t)
 
+    elif name in ("address_parser", "addrust", "us_address_parser"):
+        import subprocess
+        from pathlib import Path
+
+        binary = Path(__file__).resolve().parents[1] / "rust-parsers" / "target" / "release" / "rust-parsers"
+        proc = subprocess.Popen(
+            [str(binary), "--parser", name], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True, cwd="/"
+        )
+        CHILD.append(proc)
+
+        def call(texts):  # the adapter's own call: batches of 500 over the worker's JSON-lines protocol
+            for i in range(0, len(texts), 500):
+                proc.stdin.write(json.dumps({"strings": texts[i : i + 500]}) + "\n")
+                proc.stdin.flush()
+                json.loads(proc.stdout.readline())
+
+        call.batch = True
+        call(["1 Main St, Springfield, IL 62701"])
+        return call
     else:
         raise SystemExit(f"unknown parser {name}")
     call("1 Main St, Springfield, IL 62701")  # models load on first use
@@ -62,8 +87,11 @@ def main():
     passes = []
     for _ in range(reps):
         t = time.perf_counter()
-        for s in texts:
-            call(s)
+        if getattr(call, "batch", False):
+            call(texts)
+        else:
+            for s in texts:
+                call(s)
         passes.append(time.perf_counter() - t)
     out = {
         "load_seconds": load_s,

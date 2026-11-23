@@ -1,0 +1,126 @@
+{
+  "machine": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz; 4 of 14 CPUs usable and 49 GB visible; Linux 6.18.58.1-microsoft-standard-WSL2; Python 3.13.16",
+  "reference_profile": "4 CPUs, 8 GB",
+  "strings": 20000,
+  "distinct": 2439,
+  "reps": 3,
+  "parsers": {
+    "address_parser": {
+      "versions": {
+        "address_parser": "0.1.10"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          0.5490370219340548,
+          0.5490843220613897,
+          0.5637285439297557
+        ],
+        "load_seconds": 0.007834265939891338,
+        "rss_after_load_mb": 21.234375,
+        "rss_after_parses_mb": 23.20703125,
+        "pss_total_after_load_mb": 7.94921875,
+        "per_second": 36424.27801419528,
+        "median_s": 0.5490843220613897,
+        "fastest_s": 0.5490370219340548,
+        "slowest_s": 0.5637285439297557
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          0.22262867295648903,
+          0.2179512339644134,
+          0.15136347291991115
+        ],
+        "load_seconds": 0.008057567989453673,
+        "rss_after_load_mb": 19.8125,
+        "rss_after_parses_mb": 21.4140625,
+        "pss_total_after_load_mb": 25.4931640625,
+        "per_second": 91763.64655620878,
+        "median_s": 0.2179512339644134,
+        "fastest_s": 0.15136347291991115,
+        "slowest_s": 0.22262867295648903
+      },
+      "install_mb": 4.252555847167969,
+      "install_what": "the one worker binary shared by the three Rust parsers"
+    },
+    "addrust": {
+      "versions": {
+        "addrust": "0.1.2@8e28a7e (default configuration)"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          2.905298028024845,
+          2.8762826009187847,
+          2.8669965480221435
+        ],
+        "load_seconds": 0.02594321791548282,
+        "rss_after_load_mb": 25.8515625,
+        "rss_after_parses_mb": 29.9765625,
+        "pss_total_after_load_mb": 7.951171875,
+        "per_second": 6953.419665234322,
+        "median_s": 2.8762826009187847,
+        "fastest_s": 2.8669965480221435,
+        "slowest_s": 2.905298028024845
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          1.0402563560055569,
+          0.9604871809715405,
+          0.8980184530373663
+        ],
+        "load_seconds": 0.03516249603126198,
+        "rss_after_load_mb": 24.5390625,
+        "rss_after_parses_mb": 28.6796875,
+        "pss_total_after_load_mb": 25.4970703125,
+        "per_second": 20822.766192225325,
+        "median_s": 0.9604871809715405,
+        "fastest_s": 0.8980184530373663,
+        "slowest_s": 1.0402563560055569
+      },
+      "install_mb": 4.252555847167969,
+      "install_what": "the one worker binary shared by the three Rust parsers"
+    },
+    "us_address_parser": {
+      "versions": {
+        "us_address_parser": "0.3.0"
+      },
+      "one": {
+        "procs": 1,
+        "passes": [
+          0.23594138398766518,
+          0.22707591007929295,
+          0.2298149320995435
+        ],
+        "load_seconds": 0.03852242405992001,
+        "rss_after_load_mb": 32.61328125,
+        "rss_after_parses_mb": 33.58984375,
+        "pss_total_after_load_mb": 7.9462890625,
+        "per_second": 87026.54704498083,
+        "median_s": 0.2298149320995435,
+        "fastest_s": 0.22707591007929295,
+        "slowest_s": 0.23594138398766518
+      },
+      "4": {
+        "procs": 4,
+        "passes": [
+          0.092893481021747,
+          0.0751101829810068,
+          0.07993904501199722
+        ],
+        "load_seconds": 0.04032403905875981,
+        "rss_after_load_mb": 31.39453125,
+        "rss_after_parses_mb": 32.30859375,
+        "pss_total_after_load_mb": 25.5009765625,
+        "per_second": 250190.62958530974,
+        "median_s": 0.07993904501199722,
+        "fastest_s": 0.0751101829810068,
+        "slowest_s": 0.092893481021747
+      },
+      "install_mb": 4.252555847167969,
+      "install_what": "the one worker binary shared by the three Rust parsers"
+    }
+  }
+}

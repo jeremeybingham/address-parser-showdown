@@ -31,8 +31,12 @@ fn us_address_parser(s: &str) -> Result<Fields, String> {
 }
 
 fn addrust(s: &str) -> Result<Fields, String> {
-    // Shipped defaults: Pipeline::default(), no config file read.
-    let a = ::addrust::parse(s);
+    // Shipped defaults: Pipeline::default(), no config file read. Built once: `addrust::parse` rebuilds it (compiles
+    // every pattern) on each call, which made it about 500 times slower.
+    thread_local! {
+        static PIPELINE: ::addrust::pipeline::Pipeline = ::addrust::pipeline::Pipeline::default();
+    }
+    let a = PIPELINE.with(|p| p.parse(s));
     Ok(::addrust::address::COL_DEFS
         .iter()
         .filter_map(|d| a.field(d.col).clone().map(|v| (d.key.to_string(), v)))
