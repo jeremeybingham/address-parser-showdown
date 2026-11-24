@@ -100,9 +100,29 @@ def one_release(
     skip_speed: bool,
     out_root: Path = OUT,
     wheel: Path | None = None,
+    speed_only: bool = False,
 ) -> None:
     """Run one release: `version` from PyPI, or with `wheel` that file (`version` is then only the env name)."""
     py = make_env(version, str(wheel) if wheel else f"doorplate=={version}")
+    if speed_only:
+        out = out_root / version
+        if out.exists():
+            sys.exit(f"{out} exists; remove it to rerun")
+        out.mkdir(parents=True)
+        run([str(py), "-m", "tools.bench.speed", "--parsers", "doorplate", "--out", str(out)])
+        info = {
+            "doorplate": version,
+            "source": f"local wheel {wheel.name} (sha256 {hashlib.sha256(wheel.read_bytes()).hexdigest()})"
+            if wheel
+            else "PyPI wheel (abi3)",
+            "reference_run": reference.name,
+            "host": speed.machine(),
+            "speed_measured": True,
+            "scored": False,
+        }
+        (out / "release.json").write_text(json.dumps(info, indent=2) + "\n")
+        shutil.rmtree(py.parents[1], ignore_errors=True)
+        return
     shutil.rmtree(PREDICTIONS, ignore_errors=True)
     for s in SETS:
         run([str(py), "-m", "tools.sets.predict", s, "--parsers", "doorplate"])
@@ -166,9 +186,12 @@ def table(reference: Path, out_root: Path = OUT) -> str:
     ref_res = json.loads((reference / "results.json").read_text())
     ref_speed = json.loads((reference / "speed.json").read_text())["parsers"]
     for d in sorted((p for p in out_root.iterdir() if p.is_dir()), key=lambda p: vkey(p.name)):
-        md, res = (d / "results.md").read_text(), json.loads((d / "results.json").read_text())
-        ps, f1 = score_row(md, "doorplate")
-        cells = [d.name, ps, f1, *(acc(res, "doorplate", k) for k, _ in PARTS)]
+        if (d / "results.md").exists():
+            md, res = (d / "results.md").read_text(), json.loads((d / "results.json").read_text())
+            ps, f1 = score_row(md, "doorplate")
+            cells = [d.name, ps, f1, *(acc(res, "doorplate", k) for k, _ in PARTS)]
+        else:  # speed-only release: not scored
+            cells = [d.name, *["-"] * (2 + len(PARTS))]
         sp = d / "speed.json"
         if sp.exists():
             s = json.loads(sp.read_text())["parsers"]["doorplate"]
@@ -198,7 +221,16 @@ def table(reference: Path, out_root: Path = OUT) -> str:
         + " | Strings/s, 1 process | Strings/s, 4 processes | Install MB |",
         "|---|---|---|" + "---|" * (len(PARTS) + 3),
     ]
-    return "\n".join([*head, *rows, *ref_rows, ""]) + "\n"
+    notes = []
+    for d in sorted((p for p in out_root.iterdir() if p.is_dir()), key=lambda p: vkey(p.name)):
+        rj = d / "release.json"
+        if rj.exists() and json.loads(rj.read_text()).get("scored") is False:
+            info = json.loads(rj.read_text())
+            notes.append(
+                f"{d.name}: speed only (not scored); {info['source']}, built from doorplate's main branch "
+                "(version 0.7.2-dev) before the release."
+            )
+    return "\n".join([*head, *rows, *ref_rows, "", *notes, ""]) + "\n"
 
 
 def main(argv=None) -> int:
@@ -206,6 +238,10 @@ def main(argv=None) -> int:
     ap.add_argument("--versions", nargs="+", help="default: the highest X.Y.Z of every minor on PyPI")
     ap.add_argument("--reference", type=Path, default=ROOT / "runs" / "2026-11-16")
     ap.add_argument("--skip-speed", action="store_true")
+    ap.add_argument(
+        "--speed-only", action="store_true", help="with --wheel: only the speed step, no predictions or scores"
+    )
+    ap.add_argument("--version", help="with --wheel --speed-only: the folder name (the version the wheel stands for)")
     ap.add_argument("--table", action="store_true", help="only rebuild releases.md")
     ap.add_argument("--wheel", type=Path, help="run this local wheel instead of PyPI releases (needs --out)")
     ap.add_argument("--out", type=Path, help="output folder (default runs/doorplate-releases)")
@@ -218,7 +254,9 @@ def main(argv=None) -> int:
         out_root.mkdir(parents=True, exist_ok=True)
         sha = ensure_sets(reference)
         step(1, 1, args.wheel.name)
-        one_release("wheel", reference, sha, args.skip_speed, out_root, args.wheel.resolve())
+        one_release(
+            args.version or "wheel", reference, sha, args.skip_speed, out_root, args.wheel.resolve(), args.speed_only
+        )
         (out_root / "releases.md").write_text(table(reference, out_root))
         print(f"wrote {out_root / 'releases.md'}")
         return 0

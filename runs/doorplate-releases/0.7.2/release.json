@@ -1,0 +1,8 @@
+{
+  "doorplate": "0.7.2",
+  "source": "local wheel doorplate-0.7.2.dev0-cp310-abi3-manylinux_2_34_x86_64.whl (sha256 47aae4eba9d045c42d5a0ad59afa6ce6b2744bd53516ad7c3209507d919ed39f)",
+  "reference_run": "2026-11-16",
+  "host": "Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz; 14 of 14 CPUs usable and 49 GB visible; Linux 6.18.58.1-microsoft-standard-WSL2; Python 3.13.16",
+  "speed_measured": true,
+  "scored": false
+}

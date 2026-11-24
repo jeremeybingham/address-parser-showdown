@@ -12,6 +12,9 @@ The doorplate adapter on the highest point release of each minor version, on the
 | 0.6.2 | 90.9 (89.7 to 92.0) | 97.6 (97.3 to 97.9) | 94.8 | 91.2 | 69.0 | 113,315 | 317,934 | 6.4 |
 | 0.7.0 | 91.8 (90.7 to 92.9) | 97.9 (97.6 to 98.1) | 94.9 | 92.4 | 73.0 | 105,833 | 309,258 | 6.4 |
 | 0.7.1 | 91.8 (90.7 to 92.9) | 97.9 (97.6 to 98.1) | 94.9 | 92.4 | 73.0 | 113,770 | 334,536 | 6.5 |
+| 0.7.2 | - | - | - | - | - | 118,356 | 368,281 | 6.5 |
 | usaddress 0.5.16 (from 2026-11-16) | 84.7 (83.4 to 86.0) | 95.7 (95.3 to 96.1) | 93.6 | 88.5 | 51.3 | 8,952 | 28,054 | 4.8 |
 | libpostal 25099c5066 (from 2026-11-16) | 80.8 (79.5 to 82.2) | 93.4 (92.8 to 93.9) | 91.8 | 70.9 | 54.0 | 14,577 | 43,951 | 2,993.1 |
+
+0.7.2: speed only (not scored); local wheel doorplate-0.7.2.dev0-cp310-abi3-manylinux_2_34_x86_64.whl (sha256 47aae4eba9d045c42d5a0ad59afa6ce6b2744bd53516ad7c3209507d919ed39f), built from doorplate's main branch (version 0.7.2-dev) before the release.
 
