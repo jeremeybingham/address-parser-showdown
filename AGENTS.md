@@ -51,6 +51,7 @@ just rescore runs/DATE    # score a committed run again from its prediction file
 uv run python -m tools.releases   # appendix: doorplate's highest point release of each minor from PyPI, scored with the reused usaddress/libpostal predictions -> runs/doorplate-releases/ (~4 min; skips releases already run)
 uv run python -m tools.rust_appendix   # appendix: the three Rust parsers on the sets of runs/2026-11-23, scored with its reused doorplate/usaddress/libpostal predictions -> runs/rust-parsers/ (~2 min, resumes from build/predictions; --speed-only adds the speed step)
 uv run python -m tools.releases --wheel FILE.whl --out local-data/DIR   # the same for a locally built doorplate wheel (a release candidate); output stays out of runs/
+uv run python -m tools.releases --wheel FILE.whl --speed-only --version X.Y.Z --out runs/doorplate-releases   # speed step only, no scores (a build of doorplate's main before its release); the table shows `-` for the scores
 uv run --group report python -m tools.report.pdf   # report/REPORT.md -> report/REPORT.pdf, charts drawn from its own tables (Chromium from ~/.cache/ms-playwright, or $CHROMIUM)
 uv run python -m tools.report.breakdown runs/DATE [--real]   # golden-set figures for the report: stratum, restored rows, nightmare variant, shape class, paired tests; --real adds the private text (counts only)
 ```
